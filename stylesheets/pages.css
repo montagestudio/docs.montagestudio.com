@@ -5,7 +5,7 @@
 
 
 
-.withSubnav .main {
+.withSidenav .main {
     position: relative;
     float: right;
     width: 75%;
@@ -13,18 +13,18 @@
     box-sizing: border-box;
 }
 
-.withSubnav .content {
+.withSidenav .content {
     background: #fff;
     padding: 10px 30px 30px 30px;
     border-radius: 8px;
     box-shadow: 0 0 2px hsla(0, 0%, 0%, 0.12);
 }
 
-.withSubnav .comments {
+.withSidenav .comments {
     padding-top: 2em;
 }
 
-.withSubnav .wrapper:after {
+.withSidenav .wrapper:after {
     content: "";
     display: block;
     clear: both;
@@ -33,7 +33,7 @@
 
 /* Subnav ----------------------------------------- */
 
-.subnav {
+.sidenav {
     float: left;
     width: 25%;
     padding-right: 20px;
@@ -41,11 +41,11 @@
     box-sizing: border-box;
 }
 
-.subnav details[open] {
+.sidenav details[open] {
     padding: 0 0 20px 0;
 }
 
-.subnav summary {
+.sidenav summary {
     padding: 5px 0;
     outline: none;
     cursor: pointer;
@@ -53,7 +53,7 @@
     color: hsl(0, 0%, 30%);
 }
 
-.subnav a {
+.sidenav a {
     display: block;
     margin-left: 5px;
     padding: 5px 5px 5px 13px;
@@ -63,27 +63,27 @@
     color: hsl(0,0%,30%);
 }
 
-.subnav a:visited {
+.sidenav a:visited {
     color: hsl(0,0%,60%);
     border-color: hsl(0,0%,85%);
 }
 
-.subnav a:hover {
+.sidenav a:hover {
     color: hsl(0, 0%, 20%);
     background-color: hsl(210,75%,92%);
     border-color: hsl(210,75%,57%);
     text-shadow: none;
 }
 
-.subnav a:active,
-.subnav a.active {
+.sidenav a:active,
+.sidenav a.active {
     color: hsl(0,0%,100%);
     text-shadow: none;
     border-left-color: transparent;
     background-color: hsl(210,75%,57%);
 }
 
-.subnav a[target="_blank"]:after {
+.sidenav a[target="_blank"]:after {
      content: "";
      display: inline-block;
      margin-left: 4px;
@@ -93,13 +93,13 @@
      background-size: 8px;    
 }
 
-.subnav ul {
+.sidenav ul {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.subnav input[type="search"] {
+.sidenav input[type="search"] {
     padding: 0.4em 0.6em;
     border-radius: 2em;
     margin-bottom: 20px;
@@ -112,17 +112,17 @@
     background: hsla(0,0%,0%,.04);
 }
 
-.subnav input[type="search"]:focus {
+.sidenav input[type="search"]:focus {
     outline: none;
     border-color: hsl(210,75%,57%);
     background: transparent;
 }
 
-.subnav--noDetails {
+.sidenav--noDetails {
     margin-bottom: 20px;
 }
 
-.subnav--noDetails a {
+.sidenav--noDetails a {
     margin-left: 0;
 }
 
@@ -337,20 +337,20 @@ code[data-lang]:after {
 
 @media all and (max-width: 700px) {
     
-    .subnav {
+    .sidenav {
         float: none;
         width: 100%;
         padding-right: 0;
         text-align: center;
     }
 
-    .subnav a {
+    .sidenav a {
         font-size: 18px;
         line-height: 1.8;
         margin-left: 0;
     }
 
-    .subnav summary {
+    .sidenav summary {
         margin-bottom: 10px;
         border-radius: 8px;
         padding: 10px 0;
@@ -359,27 +359,27 @@ code[data-lang]:after {
         -webkit-tap-highlight-color: transparent;
     }
     
-    .subnav summary:active {
+    .sidenav summary:active {
         background-color: hsl(0, 0%, 90%);
     }
     
-    section.withSubnav {
+    section.withSidenav {
         padding: 10px;
     }
     
-    .withSubnav .main {
+    .withSidenav .main {
         width: 100%;
     }
     
-    .withSubnav .content {
+    .withSidenav .content {
         padding: 1px 20px 20px 20px;
     }
     
-    .subnav {
+    .sidenav {
         display: none;
     }
     
-    .nav-toggle--sub:checked ~ .subnav {
+    .nav-toggle--sub:checked ~ .sidenav {
         display: block;
     }
     
