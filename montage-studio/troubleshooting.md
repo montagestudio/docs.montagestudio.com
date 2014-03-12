@@ -1,6 +1,6 @@
 ---
 
-layout: docs
+layout: montage-studio
 title: Troubleshooting - Montage Studio Documentation
 
 this-page: troubleshooting
