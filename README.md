@@ -1,4 +1,4 @@
-This is the repo for the [montagejs.org](http://montagejs.org) website.
+This is the repo for the [docs.montagestudio.com](http://docs.montagestudio.com) site.
 
 ## Contributing
 If you find any bugs or want to contribute, feel free to create an issue or send a pull request.
