@@ -1,7 +1,7 @@
 ---
 
 layout: api
-title: "Component - MontageJS API"
+title: "Overlay - MontageJS API"
 
 ---
 
@@ -18,20 +18,18 @@ title: "Component - MontageJS API"
 <header>
     <h2>
         
-        Component
+        Overlay
         
         
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/component.js#L30">source</a></span>
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/overlay.reel/overlay.js#L12">source</a></span>
         
     </h2>
-    
-        <div class="class-description"><p>Base class for all Montage components.</p></div>
     
 </header>
 
 <article>
     
-        <p>Specializes <a href="Montage.html">Montage</a> </p>
+        <p>Specializes <a href="Component.html">Component</a> </p>
     
     <div class="container-overview">
     
@@ -45,6 +43,19 @@ title: "Component - MontageJS API"
 </dt>
 <dd>
 
+    
+    <div class="description markdown-body">
+        <p>/*
+This component uses a &quot;trick&quot; to measure its element when it is shown.
+Since the element is &quot;display: none&quot; when it's hidden it's not possible to
+measure it at willDraw in order to calculate the correct position to center it.
+The solution used is to have two draws when it is shown. The first draw only
+makes the element part of the layout of the browser while still being invisible
+to the user, this is achieved by setting &quot;visiblity: hidden&quot; and the --visible
+class that has a &quot;display: block&quot;. A second draw is then forced.
+On the second draw the element is now measurable and the visibility is set
+back to &quot;visible&quot;. This mechanism is controlled by the _isDisplayed flag.</p>
+    </div>
     
 
     
@@ -108,6 +119,58 @@ title: "Component - MontageJS API"
         <dl>
             
 <dt>
+    <h4 class="name" id="anchor">
+        anchor<span class="type-signature"></span> <span class="type-signature"></span>
+        
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/overlay.reel/overlay.js#L49">source</a></span>
+        
+    </h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The anchor element or component to display the overlay next to.</p>
+    </div>
+    
+
+    
+
+
+
+<table class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</table>
+
+
+    
+</dd>
+
+
+        
+            
+<dt>
     <h4 class="name" id="application">
         application<span class="type-signature"> :<a href="Application.html">Application</a></span> <span class="type-signature"></span>
         
@@ -133,6 +196,17 @@ title: "Component - MontageJS API"
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#application">Component#application</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -186,6 +260,17 @@ This property is readonly and should never be changed.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#childComponents">Component#childComponents</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -243,6 +328,17 @@ example to toggle the complete class:</p>
     
 
     
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#classList">Component#classList</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
+    
 
     
 
@@ -277,7 +373,7 @@ example to toggle the complete class:</p>
     <h4 class="name" id="delegate">
         delegate<span class="type-signature"> :Object</span> <span class="type-signature"></span>
         
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/component.js#L62">source</a></span>
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/overlay.reel/overlay.js#L119">source</a></span>
         
     </h4>
 
@@ -286,13 +382,17 @@ example to toggle the complete class:</p>
 <dd>
     
     <div class="description">
-        <p>A delegate is an object that has helper methods specific to particular
-components.
-For example, a TextField may consult its <code>deletate</code>'s
-<code>shouldBeginEditing()</code> method, or inform its <code>delegate</code> that it
-<code>didBeginEditing()</code>.
-Look for details on the documentation of individual components'
-<code>delegate</code> properties.</p>
+        <p>A delegate that can implement <code>willPositionOverlay</code> and/or
+<code>shouldDismissOverlay</code>.</p>
+<ul>
+<li><code>willPositionOverlay(overlay, calculatedPosition)</code> is called when the
+overlay is being shown, and should return an object with <code>top</code> and
+<code>left</code> properties.</li>
+<li><code>shouldDismissOverlay(overlay, target, event)</code> is called when the user
+clicks outside of the overlay or presses escape inside the overlay.
+Usually this will hide the overlay. Return <code>true</code> to hide the overlay,
+or <code>false</code> to leave the overlay visible.</li>
+</ul>
     </div>
     
 
@@ -316,11 +416,59 @@ Look for details on the documentation of individual components'
     
 
     
-	<tr>
-	    <th class="details-header tag-default">Default Value:</th>
-	    <td class="details-content tag-default"><ul class="dummy"><li>null</li></ul></td>
-	</tr>
-	
+
+    
+
+    
+
+    
+</table>
+
+
+    
+</dd>
+
+
+        
+            
+<dt>
+    <h4 class="name" id="dismissOverlay">
+        dismissOverlay<span class="type-signature"></span> <span class="type-signature"></span>
+        
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/overlay.reel/overlay.js#L297">source</a></span>
+        
+    </h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>User event has requested that we dismiss the overlay. Give the delegate
+an opportunity to prevent it. Returns whether the overlay was hidden.</p>
+    </div>
+    
+
+    
+
+
+
+<table class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
 
@@ -398,6 +546,17 @@ to change it.</p>
     
 
     
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#element">Component#element</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
+    
 
     
 
@@ -455,6 +614,17 @@ to change it.</p>
     
 
     
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#eventManager">Component#eventManager</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
+    
 
     
 
@@ -506,6 +676,17 @@ to change it.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#getTemplateArgumentElement">Component#getTemplateArgumentElement</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -559,6 +740,17 @@ it.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#hasTemplate">Component#hasTemplate</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -616,6 +808,17 @@ it.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#localizer">Component#localizer</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -681,6 +884,17 @@ exist, the methods: <code>willDraw</code>, <code>draw</code>, and <code>didDraw<
     
 
     
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#needsDraw">Component#needsDraw</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
+    
 
     
 
@@ -743,6 +957,17 @@ nextTarget needs to be set at a component's nextTarget.</p>
     
 
     
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#nextTarget">Component#nextTarget</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
+    
 
     
 
@@ -796,6 +1021,17 @@ component was instantiated.</p>
     
 
     
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#ownerComponent">Component#ownerComponent</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
+    
 
     
 
@@ -844,6 +1080,69 @@ DOM tree, starting at the component's <code>element</code>. Each component eleme
 has a <code>component</code> property that points back to the component object, this
 way it's possible to know which component an element represents.</p>
 <p>This value is null for the <a href="RootComponent.html">RootComponent</a>.</p>
+    </div>
+    
+
+    
+
+
+
+<table class="details">
+    
+
+    
+
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#parentComponent">Component#parentComponent</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</table>
+
+
+    
+</dd>
+
+
+        
+            
+<dt>
+    <h4 class="name" id="position">
+        position<span class="type-signature"> :Object</span> <span class="type-signature"></span>
+        
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/overlay.reel/overlay.js#L67">source</a></span>
+        
+    </h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Where to position the overlay in the screen.</p>
     </div>
     
 
@@ -909,6 +1208,134 @@ way it's possible to know which component an element represents.</p>
     
 
     
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#rootComponent">Component#rootComponent</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</table>
+
+
+    
+</dd>
+
+
+        
+            
+<dt>
+    <h4 class="name" id="show">
+        show<span class="type-signature"></span> <span class="type-signature"></span>
+        
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/overlay.reel/overlay.js#L202">source</a></span>
+        
+    </h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Show the overlay. The overlay is displayed at the position determined by
+the following conditions:</p>
+<ol>
+<li>If a delegate is provided and the willPositionOverlay function is
+implemented, the position is always determined by the delegate.</li>
+<li>If &quot;position&quot; is set, the overlay is always displayed at this
+location.</li>
+<li>If an anchor is set, the overlay is displayed below the anchor.</li>
+<li>If no positional hints are provided, the overlay is displayed at the
+center of the screen.</li>
+</ol>
+<p>FIXME: We have to add key events on both this component and the keyComposer
+because of a bug in KeyComposer.</p>
+    </div>
+    
+
+    
+
+
+
+<table class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</table>
+
+
+    
+</dd>
+
+
+        
+            
+<dt>
+    <h4 class="name" id="surrendersActiveTarget">
+        surrendersActiveTarget<span class="type-signature"></span> <span class="type-signature"></span>
+        
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/overlay.reel/overlay.js#L253">source</a></span>
+        
+    </h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The overlay should only surrender focus if it is hidden, non-modal, or
+if the other component is one of its descendants.</p>
+    </div>
+    
+
+    
+
+
+
+<table class="details">
+    
+
+    
+
+    
 
     
 
@@ -960,6 +1387,17 @@ way it's possible to know which component an element represents.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#template">Component#template</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -1019,6 +1457,17 @@ instances present in the template's serialization keyed by their label.</p>
     
 
     
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#templateObjects">Component#templateObjects</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
+    
 
     
 
@@ -1077,6 +1526,17 @@ setting to <code>true</code>.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#waitForLocalizerMessages">Component#waitForLocalizerMessages</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -1266,7 +1726,7 @@ exports.Main = Component.specialize( {
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#addBeforeOwnPropertyChangeListener">Montage#addBeforeOwnPropertyChangeListener</a>
+	                <a href="Component.html#addBeforeOwnPropertyChangeListener">Component#addBeforeOwnPropertyChangeListener</a>
 	            </li>
 			</ul>
 		</td>
@@ -1469,7 +1929,7 @@ See <code>addPathChangeListener</code> for details.</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#addBeforePathChangeListener">Montage#addBeforePathChangeListener</a>
+	                <a href="Component.html#addBeforePathChangeListener">Component#addBeforePathChangeListener</a>
 	            </li>
 			</ul>
 		</td>
@@ -1598,6 +2058,17 @@ See <code>addPathChangeListener</code> for details.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#addComposer">Component#addComposer</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -1737,6 +2208,17 @@ sets the element of the composer to the passed in element.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#addComposerForElement">Component#addComposerForElement</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -1916,7 +2398,7 @@ instead, unless <code>beforeChange</code> is truly variable.</p></td>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#addOwnPropertyChangeListener">Montage#addOwnPropertyChangeListener</a>
+	                <a href="Component.html#addOwnPropertyChangeListener">Component#addOwnPropertyChangeListener</a>
 	            </li>
 			</ul>
 		</td>
@@ -2156,7 +2638,7 @@ this flag remains desireable only if <code>beforeChange</code> is indeed variabl
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#addPathChangeListener">Montage#addPathChangeListener</a>
+	                <a href="Component.html#addPathChangeListener">Component#addPathChangeListener</a>
 	            </li>
 			</ul>
 		</td>
@@ -2353,7 +2835,7 @@ that should receive change messages.</p></td>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#addRangeAtPathChangeListener">Montage#addRangeAtPathChangeListener</a>
+	                <a href="Component.html#addRangeAtPathChangeListener">Component#addRangeAtPathChangeListener</a>
 	            </li>
 			</ul>
 		</td>
@@ -2500,7 +2982,7 @@ this method will try and call &quot;bobShouldDoSomething&quot;</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#callDelegateMethod">Montage#callDelegateMethod</a>
+	                <a href="Component.html#callDelegateMethod">Component#callDelegateMethod</a>
 	            </li>
 			</ul>
 		</td>
@@ -2631,7 +3113,7 @@ binding.</p></td>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#cancelBinding">Montage#cancelBinding</a>
+	                <a href="Component.html#cancelBinding">Component#cancelBinding</a>
 	            </li>
 			</ul>
 		</td>
@@ -2708,7 +3190,7 @@ binding.</p></td>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#cancelBindings">Montage#cancelBindings</a>
+	                <a href="Component.html#cancelBindings">Component#cancelBindings</a>
 	            </li>
 			</ul>
 		</td>
@@ -2781,6 +3263,17 @@ is responsible for calling unload on each composer before removing it.</p>
     
 
     
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#clearAllComposers">Component#clearAllComposers</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
+    
 
     
 
@@ -2846,6 +3339,17 @@ is responsible for calling unload on each composer before removing it.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#createActionEvent">Component#createActionEvent</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -3017,7 +3521,7 @@ converters that were designed for data flowing the “wrong” way.  The
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#defineBinding">Montage#defineBinding</a>
+	                <a href="Component.html#defineBinding">Component#defineBinding</a>
 	            </li>
 			</ul>
 		</td>
@@ -3185,7 +3689,7 @@ properties intended to be shared by all of the established bindings.</p></td>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#defineBindings">Montage#defineBindings</a>
+	                <a href="Component.html#defineBindings">Component#defineBindings</a>
 	            </li>
 			</ul>
 		</td>
@@ -3210,87 +3714,6 @@ properties intended to be shared by all of the established bindings.</p></td>
 	    <td class="details-content tag-see">
 	        <ul>
 	            <li><a href="Montage.html#defineBinding">Montage#defineBinding</a></li>
-	        </ul>
-	    </td>
-	</tr>
-    
-
-    
-</table>
-
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<dt>
-    
-    <h4 class="name" id="didDraw">
-        didDraw<span class="signature">()</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/component.js#L2101">source</a></span>
-        
-    </h4>
-    
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description markdown-body">
-        <p>This method is part of the draw cycle and it provides the component an
-opportunity to query the DOM for any necessary calculations after
-drawing.
-If the execution of this method sets needsDraw to true on other
-components, those components will be added to the current draw cycle.</p>
-<p>Components should not change the DOM during this phase of the draw cycle
-as it could force an unwanted reflow from the browser.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-
-
-<table class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-	<tr>
-	    <th class="details-header tag-see">See:</th>
-	    <td class="details-content tag-see">
-	        <ul>
-	            <li><a href="http://montagejs.org/docs/Component-draw-cycle.html">http://montagejs.org/docs/Component-draw-cycle.html</a></li>
 	        </ul>
 	    </td>
 	</tr>
@@ -3420,7 +3843,7 @@ See <code>dispatchOwnPropertyChange</code>.</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#dispatchBeforeOwnPropertyChange">Montage#dispatchBeforeOwnPropertyChange</a>
+	                <a href="Component.html#dispatchBeforeOwnPropertyChange">Component#dispatchBeforeOwnPropertyChange</a>
 	            </li>
 			</ul>
 		</td>
@@ -3604,206 +4027,11 @@ where <code>beforeChange</code> is a named variable.</p></td>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#dispatchOwnPropertyChange">Montage#dispatchOwnPropertyChange</a>
+	                <a href="Component.html#dispatchOwnPropertyChange">Component#dispatchOwnPropertyChange</a>
 	            </li>
 			</ul>
 		</td>
 	</tr>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</table>
-
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<dt>
-    
-    <h4 class="name" id="draw">
-        draw<span class="signature">()</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/component.js#L2064">source</a></span>
-        
-    </h4>
-    
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description markdown-body">
-        <p>This method is part of the draw cycle and is the prescribed location for
-components to update its DOM structure or modify its styles.</p>
-<p>Components should not read the DOM during this phase of the draw cycle
-as it could force an unwanted reflow from the browser.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-
-
-<table class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-	<tr>
-	    <th class="details-header tag-see">See:</th>
-	    <td class="details-content tag-see">
-	        <ul>
-	            <li><a href="http://montagejs.org/docs/Component-draw-cycle.html">http://montagejs.org/docs/Component-draw-cycle.html</a></li>
-	        </ul>
-	    </td>
-	</tr>
-    
-
-    
-</table>
-
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<dt>
-    
-    <h4 class="name" id="enterDocument">
-        enterDocument<span class="signature">(firstTime)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/component.js#L2574">source</a></span>
-        
-    </h4>
-    
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description markdown-body">
-        <p>This function is called when the component element is added to the
-document's DOM tree.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>firstTime</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p><code>true</code> if it's the first time the component
-                 enters the document.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-
-    
-
-
-
-<table class="details">
-    
-
-    
-
     
 
     
@@ -3925,7 +4153,7 @@ document's DOM tree.</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#equals">Montage#equals</a>
+	                <a href="Component.html#equals">Component#equals</a>
 	            </li>
 			</ul>
 		</td>
@@ -4016,6 +4244,17 @@ document's DOM tree.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#exitDocument">Component#exitDocument</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -4137,6 +4376,17 @@ content.</p></td>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#extractDomArgument">Component#extractDomArgument</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -4270,7 +4520,7 @@ content.</p></td>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#getBinding">Montage#getBinding</a>
+	                <a href="Component.html#getBinding">Component#getBinding</a>
 	            </li>
 			</ul>
 		</td>
@@ -4374,7 +4624,7 @@ for information on the descriptor type.</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#getBindings">Montage#getBindings</a>
+	                <a href="Component.html#getBindings">Component#getBindings</a>
 	            </li>
 			</ul>
 		</td>
@@ -4532,7 +4782,7 @@ the change listener on <code>addOwnPropertyChangeListener</code> or
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#getOwnPropertyChangeDescriptor">Montage#getOwnPropertyChangeDescriptor</a>
+	                <a href="Component.html#getOwnPropertyChangeDescriptor">Component#getOwnPropertyChangeDescriptor</a>
 	            </li>
 			</ul>
 		</td>
@@ -4682,7 +4932,7 @@ The evaluator does not establish any change listeners.</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#getPath">Montage#getPath</a>
+	                <a href="Component.html#getPath">Component#getPath</a>
 	            </li>
 			</ul>
 		</td>
@@ -4863,7 +5113,7 @@ or an object with a method that will receive the change notifications</p></td>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#getPathChangeDescriptor">Montage#getPathChangeDescriptor</a>
+	                <a href="Component.html#getPathChangeDescriptor">Component#getPathChangeDescriptor</a>
 	            </li>
 			</ul>
 		</td>
@@ -4956,7 +5206,7 @@ associated with this instance.</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#getPathChangeDescriptors">Montage#getPathChangeDescriptors</a>
+	                <a href="Component.html#getPathChangeDescriptors">Component#getPathChangeDescriptors</a>
 	            </li>
 			</ul>
 		</td>
@@ -5107,7 +5357,7 @@ change listeners does not destroy this record.</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#hasOwnPropertyChangeDescriptor">Montage#hasOwnPropertyChangeDescriptor</a>
+	                <a href="Component.html#hasOwnPropertyChangeDescriptor">Component#hasOwnPropertyChangeDescriptor</a>
 	            </li>
 			</ul>
 		</td>
@@ -5235,7 +5485,7 @@ getter and setter.</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#makePropertyObservable">Montage#makePropertyObservable</a>
+	                <a href="Component.html#makePropertyObservable">Component#makePropertyObservable</a>
 	            </li>
 			</ul>
 		</td>
@@ -5387,7 +5637,7 @@ event listeners that must be collected when the value changes.</p></td>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#observePath">Montage#observePath</a>
+	                <a href="Component.html#observePath">Component#observePath</a>
 	            </li>
 			</ul>
 		</td>
@@ -5480,6 +5730,17 @@ events before they are dispatched.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#prepareForActivationEvents">Component#prepareForActivationEvents</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -5629,7 +5890,7 @@ Call with the same arguments used to set up the observer.</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#removeBeforeOwnPropertyChangeListener">Montage#removeBeforeOwnPropertyChangeListener</a>
+	                <a href="Component.html#removeBeforeOwnPropertyChangeListener">Component#removeBeforeOwnPropertyChangeListener</a>
 	            </li>
 			</ul>
 		</td>
@@ -5840,7 +6101,7 @@ original. See <code>addPathChangeListener</code> for descriptions of their meani
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#removeBeforePathChangeListener">Montage#removeBeforePathChangeListener</a>
+	                <a href="Component.html#removeBeforePathChangeListener">Component#removeBeforePathChangeListener</a>
 	            </li>
 			</ul>
 		</td>
@@ -5972,6 +6233,17 @@ of calling the composers unload method before removing it from the list.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#removeComposer">Component#removeComposer</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -6143,7 +6415,7 @@ the meanings of the parameters, see <code>addOwnPropertyChangeListener</code>.</
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#removeOwnPropertyChangeListener">Montage#removeOwnPropertyChangeListener</a>
+	                <a href="Component.html#removeOwnPropertyChangeListener">Component#removeOwnPropertyChangeListener</a>
 	            </li>
 			</ul>
 		</td>
@@ -6352,7 +6624,7 @@ See <code>addPathChangeListener</code> for descriptions of their meaning.</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#removePathChangeListener">Montage#removePathChangeListener</a>
+	                <a href="Component.html#removePathChangeListener">Component#removePathChangeListener</a>
 	            </li>
 			</ul>
 		</td>
@@ -6483,6 +6755,17 @@ iff one has not already been scheduled.</p>
 
     
 
+    
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#scheduleComposer">Component#scheduleComposer</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
     
 
     
@@ -6624,7 +6907,7 @@ silently fail if the target object does not exist.</p>
 	    <td class="details-content inherited-from">
 			<ul class="dummy">
 				<li>
-	                <a href="Montage.html#setPath">Montage#setPath</a>
+	                <a href="Component.html#setPath">Component#setPath</a>
 	            </li>
 			</ul>
 		</td>
@@ -6778,6 +7061,17 @@ component to surrender the specified pointer</p></td>
     
 
     
+	<tr>
+        <th class="details-header inherited-from">Inherited From:</th>
+	    <td class="details-content inherited-from">
+			<ul class="dummy">
+				<li>
+	                <a href="Component.html#surrenderPointer">Component#surrenderPointer</a>
+	            </li>
+			</ul>
+		</td>
+	</tr>
+    
 
     
 
@@ -6823,17 +7117,18 @@ component to surrender the specified pointer</p></td>
     
 </dd>
 
-        
+        </dl>
+    
+
+    
+
+    
+        <h3 class="subsection-title">Events</h3>
+
+        <dl>
             
 <dt>
-    
-    <h4 class="name" id="willDraw">
-        willDraw<span class="signature">()</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/ui/component.js#L2083">source</a></span>
-        
-    </h4>
-    
+    <h4 class="name" id="event:dismiss">dismiss</h4>
 
     
 </dt>
@@ -6841,19 +7136,60 @@ component to surrender the specified pointer</p></td>
 
     
     <div class="description markdown-body">
-        <p>This method is part of the draw cycle and it provides the component an
-opportunity to query the DOM for any necessary calculations before
-drawing.
-If the execution of this method sets needsDraw to true on other
-components, those components will be added to the current draw cycle.</p>
-<p>Components should not change the DOM during this phase of the draw cycle
-as it could force an unwanted reflow from the browser.</p>
+        <p>Dispatched when the user dismiss the overlay by clicking outside of it.</p>
     </div>
     
 
     
 
     
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>event</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Event</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
 
     
 
@@ -6881,34 +7217,15 @@ as it could force an unwanted reflow from the browser.</p>
     
 
     
-	<tr>
-	    <th class="details-header tag-see">See:</th>
-	    <td class="details-content tag-see">
-	        <ul>
-	            <li><a href="http://montagejs.org/docs/Component-draw-cycle.html">http://montagejs.org/docs/Component-draw-cycle.html</a></li>
-	        </ul>
-	    </td>
-	</tr>
-    
 
     
 </table>
 
 
     
-
-    
-
-    
-
-    
 </dd>
 
         </dl>
-    
-
-    
-
     
 
     <p class="generated-from">Generated from <a href="https://github.com/montagejs/montage/tree/v0.14.4">v0.14.4</a></p>

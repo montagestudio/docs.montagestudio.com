@@ -1,7 +1,7 @@
 ---
 
 layout: api
-title: "PropertyValidationSemantics - MontageJS API"
+title: "PromiseController - MontageJS API"
 
 ---
 
@@ -18,18 +18,18 @@ title: "PropertyValidationSemantics - MontageJS API"
 <header>
     <h2>
         
-        PropertyValidationSemantics
+        PromiseController
         
         
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/core/meta/validation-semantics.js#L16">source</a></span>
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/core/promise-controller.js#L5">source</a></span>
         
     </h2>
+    
+        <div class="class-description"><p>Provides bindable properties for the state of a promise</p></div>
     
 </header>
 
 <article>
-    
-        <p>Specializes Semantics </p>
     
     <div class="container-overview">
     
@@ -44,198 +44,36 @@ title: "PropertyValidationSemantics - MontageJS API"
 <dd>
 
     
-
-    
-
-    
-
-    
-
-    
-
-
-
-<table class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</table>
-
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Properties</h3>
-
-        <dl>
-            
-<dt>
-    <h4 class="name" id="blueprint">
-        blueprint<span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/core/meta/validation-semantics.js#L48">source</a></span>
-        
-    </h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Component description attached to this validation rule.</p>
-    </div>
-    
-
-    
-
-
-
-<table class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</table>
-
-
-    
-</dd>
-
-
-        </dl>
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        <dl>
-            
-<dt>
-    
-    <h4 class="name" id="compile">
-        compile<span class="signature">(selector)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/core/meta/validation-semantics.js#L61">source</a></span>
-        
-    </h4>
-    
-
-    
-</dt>
-<dd>
-
-    
     <div class="description markdown-body">
-        <p>Compile the syntax tree into a function that can be used for evaluating
-this selector.</p>
+        <p>A promise does not have bindable properties. This controller tracks the
+state of a promise with bindable properties so you can create a substitution
+that binds the viewed component with the state of the promise.</p>
+<ul>
+<li>&quot;pending&quot; with &quot;progress&quot;<pre><code>when in the pending state, bind the substituted component to the
+progress value, which is null when indeterminate or a 0-1 value
+when determinate. Most promises are indeterminate due to the
+complexities of composing progress information into meaningful
+data.</code></pre>
+</li>
+<li>&quot;fulfilled&quot; with &quot;value&quot;<pre><code>when in the fulfilled state, bind the substituted component to the
+value.</code></pre>
+</li>
+<li>&quot;rejected&quot; with &quot;error&quot;<pre><code>when in the rejected state, bind the substituted component to the
+given error, if you can surface that error to the user.</code></pre>
+</li>
+<li>&quot;state&quot; (one of &quot;pending&quot;, &quot;fulfilled&quot;, or &quot;rejected&quot;)<pre><code>suitable for substitutions that will always render an indeterminate
+progress in the &quot;pending&quot; state.</code></pre>
+</li>
+<li>&quot;progressState&quot; (one of &quot;determinate&quot;, &quot;indeterminate&quot;, &quot;fuilfilled&quot;, &quot;rejected&quot;)<pre><code>suitable for substitutions that provide alternative view for
+determinate and indeterminate progress.</code></pre>
+</li>
+</ul>
     </div>
     
 
     
 
     
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>selector</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Selector</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>syntax</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
 
     
 
@@ -273,105 +111,12 @@ this selector.</p>
     
 
     
-        
-            <h5>
-                Returns:
-                
-            </h5>
-            
-                <div class="param-desc">
-                    <p>function</p>
-                </div>
-            
-        
-    
 
     
 </dd>
 
-        
-            
-<dt>
     
-    <h4 class="name" id="initWithBlueprint">
-        initWithBlueprint<span class="signature">(blueprint)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.4/core/meta/validation-semantics.js#L34">source</a></span>
-        
-    </h4>
-    
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description markdown-body">
-        <p>Create a new semantic evaluator with the blueprint.</p>
     </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>blueprint</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Blueprint.html">Blueprint</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-
-    
-
-
-
-<table class="details">
-    
 
     
 
@@ -383,40 +128,6 @@ this selector.</p>
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-</table>
-
-
-    
-
-    
-
-    
-        
-            <h5>
-                Returns:
-                
-            </h5>
-            
-                <div class="param-desc">
-                    <p>itself</p>
-                </div>
-            
-        
-    
-
-    
-</dd>
-
-        </dl>
     
 
     
