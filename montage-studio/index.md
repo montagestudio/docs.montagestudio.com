@@ -16,5 +16,5 @@ For troubleshooting help or other help topics not covered in the documentation, 
 
 ##Contact Us
 
-Got feedback or found a bug? [Email us](mailto:feedback@montagestudio.com).
+Got feedback or found a bug? [Contact Us](http://montagestudio.com/company/contact-us/).
 
