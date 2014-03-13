@@ -31,6 +31,8 @@ Then the site gets automatically rebuilt once you save a file. __Note__: Because
 
 ## Building and deploying
 
+> TODO: Update README _build script since the home example and apps are not part of this repo anymore. Only the API.
+
 First install the build dependencies:
 
 ```bash
