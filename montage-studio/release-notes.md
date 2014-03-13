@@ -43,7 +43,7 @@ This alpha version of Montage Studio includes the following features:
 
 ## Known Issues / Limitations
 
-Montage Studio is alpha software. Please report bugs at [mailto:feedback@montagestudio.com](mailto:feedback@montagestudio.com) for performance and stability issues, data loss, missing or unimplemented features, behavioral or aesthetic issues, and feature and enhancement requests. Provide as much context as possible, including the browser and version you use, detailed steps to reproduce, and a link to your GitHub repository if possible.
+Montage Studio is alpha software. Please report bugs at [Contact Us](http://montagestudio.com/company/contact-us/) for performance and stability issues, data loss, missing or unimplemented features, behavioral or aesthetic issues, and feature and enhancement requests. Provide as much context as possible, including the browser and version you use, detailed steps to reproduce, and a link to your GitHub repository if possible.
 
 The following problems are known:
 
