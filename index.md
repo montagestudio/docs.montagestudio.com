@@ -12,6 +12,7 @@ Start building rich front-end Web applications with Montage using the following 
 ## [MontageJS Documentation](montagejs/)
 
 * [Quick Start](montagejs/montagejs-setup.html)
+* [Tutorials](montagejs/tutorial-reddit-client-with-montagejs.html)
 * [Demos](montagejs/montagejs-examples.html)
 * [Concepts](montagejs/draw-cycle.html)
 * [Themes](montagejs/themes.html)
@@ -22,3 +23,4 @@ Start building rich front-end Web applications with Montage using the following 
 
 * [Overview](montage-studio/ide-at-a-glance.html)
 * [Quick Start](montage-studio/tutorial-simple-to-do.html)
+* [Tutorials](montage-studio/tutorial-simple-to-do.html)
