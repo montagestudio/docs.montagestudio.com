@@ -20,7 +20,7 @@ Montage Studio is a development environment that helps streamline the developmen
 ## Enhancements
 
 * Added sample project: Montage Studio now automatically forks and opens a sample project the first time a user logs in
-* ??? Specify a destination when creating a new component/module
+* Specify a destination when creating a new component/module
 * Improved auto-focus input field in prompt dialog box
 * Added New Folder and Delete to the project explorer context menu
 * Improved package manager ui
