@@ -54,7 +54,7 @@ To add the title to the template:
 1. Add a Title node as a child element of the owner node.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig03.jpg" alt="Adding a Title node" style="width: 225px;">
+        <img src="/images/montage-studio/tutorials/simple-to-do/fig03.jpg" alt="Adding a Title node" style="width: 250px;">
         <figcaption><strong>Figure 3.</strong> Add a Title node.</figcaption>
     </figure>
 
@@ -76,7 +76,7 @@ To add a list view:
 1. Add a List node as a sibling of the Title (h1) node.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig05.jpg" alt="Adding a List node" style="width: 225px;">
+        <img src="/images/montage-studio/tutorials/simple-to-do/fig05.jpg" alt="Adding a List node" style="width: 250px;">
         <figcaption><strong>Figure 5.</strong> Add a List node to the DOM explorer.</figcaption>
     </figure>
 
@@ -102,7 +102,7 @@ To add a task button:
 1. Add a Button node as a sibling between the Title (h1) and List (ul) nodes.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig07.jpg" alt="Adding a Button node" style="width: 225px;">
+        <img src="/images/montage-studio/tutorials/simple-to-do/fig07.jpg" alt="Adding a Button node" style="width: 250px;">
         <figcaption><strong>Figure 7.</strong> Add a Button node as a sibling of the Title (h1) and List (ul) nodes.</figcaption>
     </figure>
 
@@ -130,7 +130,7 @@ To add a task button:
 6. To take a peek at what you've build so far, click the Run button at the top of the project explorer.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig09.jpg" alt="Click Run to preview" style="width: 225px;">
+        <img src="/images/montage-studio/tutorials/simple-to-do/fig09.jpg" alt="Click Run to preview" style="width: 250px;">
         <figcaption><strong>Figure 9.</strong> Click the Run button to preview your application.</figcaption>
     </figure>
 
@@ -205,7 +205,7 @@ Next, you need to add the new Task component as a child to the List node in the 
 2. Drag the Task component from the project group in the library on the li node in the DOM explorer.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig13.png" alt="Adding the Task component" style="width: 400px;">
+        <img src="/images/montage-studio/tutorials/simple-to-do/fig13.jpg" alt="Adding the Task component" style="width: 400px;">
         <figcaption><strong>Figure 13.</strong> Drag the Task component on the li node (left) to replace the placeholder li node with the new task list node (right).</figcaption>
     </figure>
 
@@ -239,7 +239,7 @@ To add and wire up a task badge follow these steps:
 1. Add a Badge widget as a sibling between the button and ul nodes in the DOM explorer.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig15.jpg" alt="Adding a badge element" style="width: 225px;">
+        <img src="/images/montage-studio/tutorials/simple-to-do/fig15.jpg" alt="Adding a badge element" style="width: 250px;">
         <figcaption><strong>Figure 15.</strong> Add a badge between the button and ul nodes.</figcaption>
     </figure>
     
