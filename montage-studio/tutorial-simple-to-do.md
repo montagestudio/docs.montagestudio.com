@@ -279,7 +279,7 @@ There's one more thing you need to do when you've finished your application: pre
 
 ## Prepare for Deployment
 
-As mentioned above, building MontageJS applications is divided into a development phase and a production phase. When your application is finished, you need to get it ready for deployment. In Montage Studio, you ahve two options; you can:
+As mentioned above, building MontageJS applications is divided into a development phase and a production phase. When your application is finished, you need to get it ready for deployment. In Montage Studio, you have two options; you can:
 
 * Publish a build of your application to GitHub (Project > Build > Publish to Github Pages). This has the benefit that your application will be hosted by GitHub (although it can take a bit for GitHub to finish publishing the pages).
 * Download a production-ready build of your application to your system (Project > Build > Download). You can then copy the downloaded application folder to a web server of your choice for deployment. The index.html file included in this folder is the entry point to your application: double-click the file to open the application in your default browser.
