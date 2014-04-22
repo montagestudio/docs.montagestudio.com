@@ -255,7 +255,25 @@ Click Run again and take the application for a spin: Click New Task to add any n
 
 ## Add Some Style
 
-Montage Studio does not provide a visual approach to building graphical user interfaces. Instead of laying out views, you assemble user interface components that represent distinct functional areas of an application. To position elements or change the look and feel of the application, you need to modify the individual components' CSS files. For example, to have a task item appear dimmed when completed, you need to create a binding on the task.reel owner and modify the Task component's CSS file.
+As should be clear by now, Montage Studio does not provide a visual approach to building graphical user interfaces. Instead of laying out views, you assemble user interface components that represent distinct functional areas of an application. To change the look and feel of the application, you have two options: depending on what you want to accomplish, you can apply global styles or you can use styles on the component level. For example, to center the application horizontally, you would modify the global style sheet:
+
+1. In the project epxlorer, expand the assets and style folders and select style.css:
+
+2. Add the following statements to the style sheet:
+
+    ```
+    .Main {
+        padding: 1em;
+        text-align: center;
+    }
+    
+    .Task {
+        padding: .5em;
+        text-align: center;
+    }
+    ```
+
+To have a task item appear dimmed when completed, you need to create a binding on the task.reel owner and modify the component's CSS file.
 
 1. Switch to the task.reel tab.
 
@@ -267,13 +285,13 @@ Montage Studio does not provide a visual approach to building graphical user int
 
     Next, you will edit the component's CSS file.
     
-5. In the project explorer, expand the task.reel directory, select task.css, and enter the following rule: **.Task.completed {opacity: 0.2;}**.
+5. In the project explorer, expand the task.reel directory, select task.css, and enter the following: **.Task.completed {opacity: 0.2;}**.
 
 6. Save your changes and click Run.
 
     At this point, any item you cross off your list will appear dimmed.
 
-Feel free to experiment further, adding classes to a component's template and CSS statements to its CSS file, for example. 
+Feel free to experiment further, adding classes to a component's template and CSS statements to its CSS file, for example, or try to add a button that removes completed tasks from the list.
 
 There's one more thing you need to do when you've finished your application: prepare it for deployment.
 

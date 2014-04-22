@@ -38,7 +38,7 @@ Every component's HTML file is a complete and valid HTML document. The head sect
 </script>
 ```
 
-For more details on the serialization format refer to [MontageJS Serialization Format](http://montagejs.org/docs/Montage-serialization-format). For now, note the following:
+For more details on the serialization format refer to [MontageJS Serialization Format](http://montagejs.org/docs/serialization-format.html). For now, note the following:
 
 * The script type is set to `text/montage-serialization`.
 * The serialization format is JSON, with some enforced semantics.
