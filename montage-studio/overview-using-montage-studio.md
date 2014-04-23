@@ -27,7 +27,7 @@ The workspace window is divided into three areas&#8212;the menu bar at the top, 
 * The editor area reconfigures its content depending on the context (e.g., editing a component, a source file, or the package.json file, which holds various metadata relevant to the project).
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig01.jpg" alt="Single-window envrionment" style="width: 550px;">
+    <img src="/images/montage-studio/ide-overview/fig01.png" alt="Single-window envrionment" style="width: 550px;">
     <figcaption>Montage Studio</figcaption>
 </figure>
 
@@ -71,7 +71,7 @@ A _project_ is the source for your application; it comprises a collection of fil
 * **readme.md**, which summarizes the structure of the project and provides some hints on unit testing your application. (This readme file will be included in the production-ready build of your final application, so be sure to replace its contents with information about your application before deploying it or passing it on to a client.)
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig03.jpg" alt="Project explorer" style="width: 550px;">
+    <img src="/images/montage-studio/ide-overview/fig03.jpg" alt="Project explorer" style="width: 175px;">
     <figcaption>The project explorer</figcaption>
 </figure>
 
@@ -146,8 +146,8 @@ The library is divided into three groups:
 * The digit groups exposes the touch-optimized components of the Digit widget set.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig06.jpg" alt="The library" style="width: 550px;">
-    <figcaption>The library of configurable objects</figcaption>
+    <img src="/images/montage-studio/ide-overview/fig06.jpg" alt="The library" style="width: 175px;">
+    <figcaption>The library (icon view)</figcaption>
 </figure>
 
 You can minimize the groups by clicking the triangle icon in the top left of a group's title bar and switch between list and icon views using the list/icon button to the right of the Search box.
@@ -203,7 +203,7 @@ Presently, Montage Studio does not save changes to source and project files auto
 Every time you choose Project > Save All, Montage Studio commits the changes you made since your last save to the `_mb_master` branch of your project's GitHub repository. The Git status counter on the menu bar tracks how far ahead of the master branch your project is. Every time you save your project, Montage Studio commits your changes, and each commit increments the number by 1.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig13.jpg" alt="The text editor" style="width: 225px;">
+    <img src="/images/montage-studio/ide-overview/fig13.jpg" alt="The Git status counter" style="width: 225px;">
     <figcaption>The Git status counter</figcaption>
 </figure>
 
@@ -214,7 +214,7 @@ You can revert a change using the Undo, Redo, and Delete commands in the Edit me
 At any point in development, you can check your progress by clicking the Run button at the top of the project explorer. This opens the application in live view mode in a new browser window.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig14.jpg" alt="The text editor" style="width: 225px;">
+    <img src="/images/montage-studio/ide-overview/fig14.jpg" alt="The Run button" style="width: 175px;">
     <figcaption>The Run button</figcaption>
 </figure>
 
