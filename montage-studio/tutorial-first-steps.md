@@ -38,9 +38,9 @@ To start using Montage Studio:
         <figcaption><strong>Figure 2.</strong> GitHub prompting for authorization</figcaption>
     </figure>
     
-    After logging into your Montage Studio account with GitHub, you land on the Montage Studio project page. Think of it as your home or starter page, which enables you to create new projects or access existing ones, or browse resources to help you get started with Montage Studio. Resources include an overview of the development environment, a quick start tutorial, and a real-world sample application that you can fork and explore.
+    After logging into your Montage Studio account with GitHub, you land on the Montage Studio welcome page where you can create new MontageJS projects, access existing ones, or browse resources to help you get started with Montage Studio.
     
-    To create a new project, click New, enter a name and (optional) description, and click Create.
+    To create a new project, click New Project, enter a name and (optional) description, and click Create.
 
 ## Next Steps
 
@@ -48,6 +48,7 @@ To get started with Montage Studio:
 
 * Get an overview of the [development environment][2].
 * Step through the [Quick Start][3] tutorial.
+* Learn to use [Montage Studio][4]
 
 Questions? Check out the [FAQ][6].
 
@@ -72,6 +73,6 @@ There's a forum category called Prerelease where you can discuss Montage Studio.
 [1]: https://work.montagestudio.com       "work.montagestudio.com"
 [2]: http://docs.montagestudio.com/montage-studio/ide-at-a-glance.html       "IDE Overview"
 [3]: http://docs.montagestudio.com/montage-studio/tutorial-simple-to-do.html       "Building a Simple To-Do Application"
-[4]: tutorial-first-steps-sample-project.html       "MontageJS demo application"
+[4]: overview-using-montage-studio.html       "Montage Studio"
 [5]: http://forum.montagestudio.com/       "Forum"
 [6]: faq.html       "FAQ"
