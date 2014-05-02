@@ -33,7 +33,7 @@ The Montage Studio development environment integrates component and code editing
 
 ### Component Editor
 
-The component editor enables you to assemble components and describe their relationships in a drag and drop environment. The assembled components usually represent the functional areas of an application and are stored in your project's ui directory.
+The component editor enables you to assemble components and describe their relationships in a drag-and-drop environment. The assembled components usually represent the functional areas of an application and are stored in your project's ui directory.
 
 <figure>
     <img src="/images/montage-studio/ide-at-a-glance/fig01a.jpg" alt="Component editor" style="width: 550px;">
@@ -58,7 +58,7 @@ The flow editor is a special editing environment that enables you to create a fl
     <figcaption>Flow editor</figcaption>
 </figure>
 
-### Scene View Editor
+### Scene View Editor (under development)
 
 With Montage Studio you can integrate WebGL content into complex applications, and the scene view editor makes manipulating the individual elements of a 3D scene just as easy as manipulating conventional HTML elements in the DOM. Similar to the flow editor, it is acccessible only from within the component editor, through the SceneView component.
 
@@ -87,12 +87,12 @@ Live view mode gives you an interactive preview of your application in developme
 
 ## Use Git Source Control and Collaboration Features
 
-Montage Studio supports the Git source control system. After you log in to<a href="http://work.montagestudio.com" target="_blank">Montage Studio</a> with your Github account, you see the Montage Studio welcome page, which displays a list of your current repositories; when you create a new project,  Montage Studio automatically sets up a new repository on GitHub and clones it as a workspace container that is dedicated to that particular project. While you work, your saved changes are written to workspace and then pushed to that project's GitHub repository, to a shadow branch that can be merged at any time. 
+Montage Studio supports the Git source control system. After you log in to <a href="http://work.montagestudio.com" target="_blank">Montage Studio</a> with your Github account, you see the Montage Studio welcome page, which displays a list of your current repositories; when you create a new project, Montage Studio automatically sets up a new repository on GitHub and clones it as a workspace container that is dedicated to that particular project. While you work, your saved changes are written to the workspace and then pushed to that project's GitHub repository, to a shadow branch that can be merged at any time. 
 
 # Next Steps
 
 To get started with Montage Studio refer to the following resources:
 
-* For an overview of the development environment and features: [Using Montage Studio](overview-using-montage-studio.html)
-* To learn how to build a simple application: [Quick Start tutorial](tutorial-simple-to-do.html)
-* Questions? Check out the [FAQ](faq.html)
+* For an overview of the development environment and features: [Using Montage Studio](overview-using-montage-studio.html).
+* To learn how to build a simple application: [Quick Start tutorial](tutorial-simple-to-do.html).
+* Questions? Check out the [FAQ](faq.html).

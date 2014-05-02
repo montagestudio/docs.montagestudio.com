@@ -50,8 +50,6 @@ Component | Description
 <a href="https://github.com/montagejs/digit/tree/master/ui/text.reel" target="_blank">Text</a> | Provides functionality for adding styled text.
 <a href="https://github.com/montagejs/digit/tree/master/ui/title.reel" target="_blank">Title</a> | Provides functionality for adding a styled Title element. 
 <a href="https://github.com/montagejs/digit/tree/master/ui/toggle-switch.reel" target="_blank">ToggleSwitch</a> | Provides toggle functionality.
-VideoControl | (planned)
-Video | (planned)
 
 ## Updating Digit
 Digit is part of the default application template. The theme is still under development. To ensure you are using the latest version of digit, follow these steps:

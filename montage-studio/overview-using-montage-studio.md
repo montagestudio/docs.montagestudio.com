@@ -10,7 +10,7 @@ this-page: overview-using-montage-studio
 
 # Using Montage Studio
 
->**Note**: We are in the process of finalizing this document based on the latest version of the Montage Studio beta. Sorry about the inconvenience.
+>**Note:** We are in the process of finalizing this document based on the latest version of the Montage Studio beta. Sorry about the inconvenience.
 
 Montage Studio makes it easier for you to assemble complex and powerful single-page web applications using the MontageJS framework. This guide introduces you to the key features of Montage Studio. For a hands-on introduction to using Montage Studio, see the [Quick Start](tutorial-simple-to-do.html) tutorial, which shows you how to assemble a simple to-do application.
       
@@ -22,14 +22,14 @@ Montage Studio integrates user interface assembly, code editing, asset managemen
 
 The workspace window is divided into three areas&#8212;the menu bar at the top, the project explorer on the left, and an editor area.
 
-* The menu bar provides quick access to common menus and commands.
-* The project explorer provides access to the files and folders that make up your project.
-* The editor area reconfigures its content depending on the context (e.g., editing a component, a source file, or the package.json file, which holds various metadata relevant to the project).
-
 <figure>
     <img src="/images/montage-studio/ide-overview/fig01.png" alt="Single-window envrionment" style="width: 550px;">
     <figcaption>Montage Studio</figcaption>
 </figure>
+
+* The menu bar provides quick access to common menus and commands.
+* The project explorer provides access to the files and folders that make up your project.
+* The editor area reconfigures its content depending on the context (e.g., editing a component, a source file, or the package.json file, which holds various metadata relevant to the project).
 
 ## Edit Components, Code, and More
 
@@ -45,7 +45,7 @@ You can also use the following custom editing environments:
 
 * **Flow editor:**  To create flow patterns that move specified content along a Bézier path. The flow editor is accessible only from within the component editor, and only if you use a Flow component in your project.
 
-* **Scene view editor:** (Under development) To manipulate a 3D scene. Like the flow editor, it is acccessible only from within the component editor when your application uses the Scene View component.
+* **Scene view editor (under development):** To manipulate a 3D scene. Like the flow editor, it is acccessible only from within the component editor, when your application uses the Scene View component.
 
 To start using Montage Studio, you must be logged in to your GitHub user account. To start a new project, click New on the Montage Studio welcome page.
 
@@ -119,8 +119,8 @@ Before closing a project, be sure to save your changes; Montage Studio currently
 
 Montage Studio gives you two options to leave a project: close it or log out. 
 
-* To close a project, click the Montage Studio icon in the upper left on the menu bar. This returns you to the project page, where you can start a new project or select an existing one from the list of projects. 
-* To exit Montage Studio, choose _Your Name_  > Log Out on the right of the menu bar. This returns you to the Montage Studio sign-in page.
+* To close a project, select Project > Close Project from the menu bar or click the Montage Studio icon in the upper left on the menu bar. This returns you to the project page, where you can start a new project or select an existing one. 
+* To exit Montage Studio, choose _Your Name_  > Log Out on the right of the menu bar from wihtin a project or click Log Out on the Welcome page. This returns you to the Montage Studio sign-in page.
     
 # Assemble a User Interface
 
@@ -128,21 +128,19 @@ Montage Studio does not provide a visual approach to building graphical user int
 
 A user interface component consists of three files that control the component's structure (HTML), appearance (CSS), and behavior (JavaScript). When you craft your application in Montage Studio, you modify the HTML documents or templates (in MontageJS speak) of the components in the UI directory of your project. More specifically, you assemble a component tree of user interface elements in the DOM explorer, and then declare how you want these DOM elements to behave by specifying UI-related information (such as properties or bindings) using the objets in the template explorer.
 
-
 <figure>
     <img src="/images/montage-studio/ide-overview/fig05.jpg" alt="Component editor" style="width: 550px;">
     <figcaption>The component editor</figcaption>
 </figure>
 
-
 ## Add Items from the Library
 
-The component editor has three main areas: the library (on the right), the DOM explorer (in the middle), and the template explorer (on the left). The library shows the configurable objects that you can use in the current project. The DOM explorer and the template explorer are where you drag the objects you want to use in the application.
+The component editor has three main areas: the library (on the right), the DOM explorer (in the middle), and the template explorer (on the left). The library lists the dependencies that you can use in the current project. The DOM explorer and the template explorer are where you drag the dependencies' configruable objects you want to use.
 
 The library is divided into three groups:
 
 * The group at the top (named after the current project) lists the components in the ui directory of your project (for example, main.reel).
-* The montage group provides the controllers and components that are part of the MontageJS framework / provide the glue to help the elements behave the way you want.
+* The montage group provides the controllers that are part of the MontageJS framework.
 * The digit groups exposes the touch-optimized components of the Digit widget set.
 
 <figure>
@@ -160,14 +158,14 @@ Coming soon.
 
 ## Find Files Quickly
 
-Montage Studio supports fuzzy search: Press Cmd+E to locate a file or asset whose filenames contain a specified string of letters. From the search results list, select the file you want to open.
+Montage Studio supports fuzzy search: Press Cmd+E or use the Go To menu to locate a file or asset whose filename contains a specified string of letters. From the search results list, select the file you want to open.
 
 ## Look Up Documentation for a Library Item
 
 Montage Studio Help is still under development. For complete reference information about prebuilt components, refer to the API reference of the MontageJS framework and the Digit ui set in the docs:
 
-* MontageJS API
-* Digit API
+* <a href="http://docs.montagestudio.com/api/AbstractButton.html" target="_blank">MontageJS API</a>
+* <a href="http://docs.montagestudio.com/montagejs/theme-digit-components.html" target="_blank">Digit API</a>
 
 # Use Images and Animations
 
@@ -185,7 +183,7 @@ For a short video that demonstrates how you can use Montage Studio for work with
 
 # Write code
 
-Montage Studio has a bare bones text editor, which supports syntax coloring, undo and redo, and (partial) code completion. Error highlighting, find and replace, code folding, and other advanced text editing features are under development. If you depend on these features for writing your code, you can drag a component's individual HTML, CSS, or JavaScript files to your preferred text editor; when finished editing, drag the files back to the respective component (.reel directory).
+Montage Studio has a bare bones text editor, which supports syntax coloring, undo and redo, and (partial) code completion. Error highlighting, find and replace, code folding, and other advanced text editing features are under development. If you depend on these features for writing your code, you can drag a component's individual HTML, CSS, or JavaScript file to your preferred text editor; when finished editing, drag the edited file back to the respective component (.reel directory).
 
 The built-in text editor complements your development workflow by letting you add your own code, write custom components, refactor existing components, or define the appearance of your application _after_ you assemble the views and model of your MontageJS application using the component editor.
 
@@ -228,7 +226,6 @@ With live view mode, you can:
 * Show different states of the same application in multiple windows to test how a change might affect each view.
 * Share your progress or an idea with clients and peers in real time to discuss or review.
 
-
 To run the application in another browser (locally or on another computer or device), open the live view URL in that browser. Live view applications are served over an http (or https) connection. Opening a live view URL in a browser other than the one you develop in triggers the Montage Studio server to serve a page with an Enter Access Code text box and to generate an access code. The access code appears in the info bar (below the menu bar) in Montage Studio. To proceed with live view, enter the access code and press Return. Likewise, when sharing your live view URL with others, you also need to give them the Montage Studio&#8211;generated access code so they can experience your application.
 
 <!-- figure>
@@ -238,4 +235,8 @@ To run the application in another browser (locally or on another computer or dev
 
 # Prepare for Deployment
 
-Coming soon
+Building MontageJS applications is divided into a development phase and a production phase. When your application is finished, you need to get it ready for deployment. In Montage Studio, you have two options; you can:
+
+* Publish a build of your application to GitHub (Project > Mop > Publish to Github Pages). This has the benefit that your application will be hosted by GitHub (although it can take a bit for GitHub to finish publishing the pages).
+
+* Download a production-ready build of your application to your system (Project > Mop > Download). You can then copy the downloaded application folder to a web server of your choice for deployment. The index.html file included in this folder is the entry point to your application: double-click the file to open the application in your default browser.
