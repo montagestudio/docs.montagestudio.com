@@ -93,6 +93,14 @@
      background-size: 8px;    
 }
 
+.sidenav .sidenav-mainLink {
+    font-size: 18px;
+}
+
+.sidenav hr {
+    margin: 1em 0 2em 0;
+}
+
 .sidenav ul {
     margin: 0;
     padding: 0;
