@@ -33,7 +33,7 @@ The workspace window is divided into three areas&#8212;the menu bar at the top, 
 
 ## Edit Components, Code, and More
 
-When you develop applications in Montage Studio, you use the component editor, text editor, and package manager. Editors are associated with resource types, and as you select resources in the project explorer, the resource is opened in the appropriate editor, in a tab, in the editor area. For example, when you select a user interface component (.reel directory) in the project explorer, Montage Studio opens it in the component editor; select a component's HTML, CSS, or JavaScript file, and Montage Studio opens the file in the built-in text editor; select package.json, and Montage Studio opens the file in the package manager.
+When you develop applications in Montage Studio, you use the component editor, text editor, and package manager. Editors are associated with resource types; as you select resources in the project explorer, the resource is opened in the appropriate editor, in a tab, in the editor area. For example, when you select a user interface component (.reel directory) in the project explorer, Montage Studio opens it in the component editor; select a component's HTML, CSS, or JavaScript file, and Montage Studio opens the file in the built-in text editor; select package.json, and Montage Studio opens the file in the package manager.
 
 When building an application in Montage Studio, you will use the following editors:
 
