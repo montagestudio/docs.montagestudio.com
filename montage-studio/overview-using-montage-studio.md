@@ -218,8 +218,6 @@ At any point in development, you can check your progress by clicking the Run but
 
 When in live view mode, you cannot only view but also interact with a build of your application in development. As you modify your application in Montage Studio, the live view rendering of the application updates in real time: every character you type, every component you modify, every element you replace is rendered instantly after saving the change, without manual reload, for all open live view windows. The live view URL can be opened in a different browser, computer, or device. This is particularly useful for cross-browser and cross-device testing as well as for soliciting feedback from peers, team members, or clients, who can see and interact with what you've been working on&#8212;no need to install additional software or go through any complicated setup.
 
->**Note:** Live view presently only works in conjunction with the component and flow editors. Changes you make to your templates or style sheets in the text editor, for example, are not picked up in real time.
-
 With live view mode, you can:
 
 * Try out different designs, features, or behaviors before committing to a change.
