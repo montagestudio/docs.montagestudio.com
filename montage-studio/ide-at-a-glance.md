@@ -1,22 +1,30 @@
 ---
 
 layout: montage-studio
-title: Montage Studio At a Glance - Montage Studio Documentation
+title: Montage Studio at a Glance - Montage Studio Documentation
 
 this-page: ide-at-a-glance
 next-page: overview-using-montage-studio
 
 ---
 
-# Montage Studio At a Glance
+# Montage Studio at a Glance
 
 <a href="http://work.montagestudio.com" target="_blank">Montage Studio</a> is a new development environment that uses the open source <a href="http://montagejs.org" target="_blank">MontageJS framework</a> to help you build complex and responsive single-page applications in the cloud. It is designed to bring drag-and-drop ease to assembling MontageJS applications and help manage your development workflow, from creating and managing a project to previewing, testing, and preparing an application for production.
 
->**Note**: Montage Studio is beta software. Our team of engineers is updating the code base on a daily basis, so some screenshots may not accurately reflect what is in the current build.
+>**Note**: Montage Studio is beta software. Our team of engineers updates the code base on a daily basis, so some screenshots may not accurately reflect what is in the current build.
 
 ## Leverage the Power of the MontageJS Framework
 
-MontageJS is an open source client-side framework for building scalable, easy-to-maintain web applications. It was built from the ground up to help solve common challenges of building complex applications and features a flexible component model that promotes code reuse, a managed draw cycle that helps minimize browser reflow, reactive data binding to keep rich UIs in sync with data models, and implicit event delegation to help improve performance. Although you can build MontageJS applications using the command line and a text editor, Montage Studio simplifies the process by automating the set-up and build processes, reducing the amount of code you have to write, and providing a drag-and-drop evironment for assembling user interface components. Incidentally, Montage Studio is built using MontageJS.
+MontageJS is an open source client-side framework for building scalable, easy-to-maintain web applications. It was built from the ground up to help solve common challenges of building complex applications and features: 
+
+* a declarative programming model that can handle complex UI tasks with just a few lines of code, 
+* a modular approach to organizing code and components that simplifies rich client development, 
+* a managed draw cycle that helps minimize expensive layout reflows, 
+* reactive data binding to keep rich UIs in sync with data models, 
+* and implicit event delegation to help improve performance. 
+
+Although you can build MontageJS applications using the command line and a text editor, Montage Studio simplifies the process by automating the set-up and build processes, reducing the amount of code you have to write, and providing a drag-and-drop evironment for assembling user interface components. Incidentally, Montage Studio is built using MontageJS.
 
 ## Work in a Streamlined, Integrated Environment
 
@@ -33,7 +41,7 @@ The Montage Studio development environment integrates component and code editing
 
 ### Component Editor
 
-The component editor enables you to assemble components and describe their relationships in a drag-and-drop environment. The assembled components usually represent the functional areas of an application and are stored in your project's ui directory.
+The component editor enables you to assemble user interface components and describe their relationships in a drag-and-drop environment. The assembled components represent a particular portion of your user interface and are stored in your project's ui directory.
 
 <figure>
     <img src="/images/montage-studio/ide-at-a-glance/fig01a.jpg" alt="Component editor" style="width: 550px;">
@@ -42,7 +50,7 @@ The component editor enables you to assemble components and describe their relat
 
 ### Text Editor
 
-The built-in text editor complements your development workflow by letting you modify a component's HTML, CSS, or JavaScript files without leaving the Montage Studio environment. You can add your own code, write custom components, refactor existing components, define the appearance of your application, or simply edit your application's readme file. 
+The built-in text editor provides a convenient way to modify a component's HTML, CSS, or JavaScript files without leaving the Montage Studio environment. As a complement to your development workflow, you can use it to add your own code, write custom components, refactor existing components, define the look of your application, or simply edit your application's readme file. 
 
 <figure>
     <img src="/images/montage-studio/ide-at-a-glance/fig01b.jpg" alt="Text editor" style="width: 550px;">
@@ -51,7 +59,7 @@ The built-in text editor complements your development workflow by letting you mo
 
 ### Flow Editor
 
-The flow editor is a special editing environment that enables you to create a flow pattern that moves specified content along a Bézier path (see, for example, the film strip feature in the Popcorn sample application). You can access the flow editor through the properties of the Flow component from within the component editor.
+The flow editor enables you to create flow patterns that move specified content along Bézier paths (see, for example, the film strip feature in the Popcorn sample application). You can access this editing environment through the properties of the Flow component from within the component editor.
 
 <figure>
     <img src="/images/montage-studio/ide-at-a-glance/fig01c.jpg" alt="Flow editor" style="width: 550px;">
@@ -60,7 +68,7 @@ The flow editor is a special editing environment that enables you to create a fl
 
 ### Scene View Editor (under development)
 
-With Montage Studio you can integrate WebGL content into complex applications, and the scene view editor makes manipulating the individual elements of a 3D scene just as easy as manipulating conventional HTML elements in the DOM. Similar to the flow editor, it is acccessible only from within the component editor, through the SceneView component.
+With Montage Studio you can integrate WebGL content into complex applications, and the scene view editor makes manipulating the individual elements of a 3D scene just as easy as manipulating conventional HTML elements in the DOM. Similar to the flow editor, this editing environment is acccessible only from within the component editor, through the SceneView component.
 
 <figure>
     <img src="/images/montage-studio/ide-at-a-glance/fig01d.jpg" alt="Scene view editor" style="width: 550px;">
@@ -87,7 +95,7 @@ Live view mode gives you an interactive preview of your application in developme
 
 ## Use Git Source Control and Collaboration Features
 
-Montage Studio supports the Git source control system. After you log in to <a href="http://work.montagestudio.com" target="_blank">Montage Studio</a> with your Github account, you see the Montage Studio welcome page, which displays a list of your current repositories; when you create a new project, Montage Studio automatically sets up a new repository on GitHub and clones it as a workspace container that is dedicated to that particular project. While you work, your saved changes are written to the workspace and then pushed to that project's GitHub repository, to a shadow branch that can be merged at any time. 
+Montage Studio supports the Git source control system. After you log in to <a href="http://work.montagestudio.com" target="_blank">Montage Studio</a> with your GitHub account, you see the Montage Studio welcome page, which displays a list of your current repos; when you create a new project, Montage Studio automatically sets up a new repository on GitHub and clones it as a workspace container that is dedicated to that particular project. While you work, your saved changes are written to the workspace and then pushed to that project's repo, to a shadow branch that can be merged at any time. 
 
 # Next Steps
 

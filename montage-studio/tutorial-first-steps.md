@@ -58,11 +58,11 @@ Thank you for helping us test Montage Studio. We'd love to hear your thoughts an
 
 To create a forum account:
 
-1. Click Log In in the top navigation bar.
+1. Click Sign In in the top right.
 
-2. Click With GitHub in the Log In dialog box.
+2. Click With GitHub in the Sign In dialog box.
 
-    GitHub will prompt you for authorization, much like it did when you created your Montage Studio account.
+    GitHub will prompt you for authorization.
     
     After you grant authorization, you will be asked to verify your username and e-mail address.
     
