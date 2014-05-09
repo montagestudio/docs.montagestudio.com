@@ -16,7 +16,14 @@ Montage Studio makes it easier for you to assemble complex and powerful single-p
       
 # Develop Applications
 
-Montage Studio integrates user interface assembly, code editing, asset management, and dependency management within a single workspace window. This window is your primary interface for developing and managing your project.
+Montage Studio integrates user interface assembly, code editing, asset management, and dependency management within a single workspace window.
+
+To start using Montage Studio, you must be logged in to your GitHub user account. To start a new project, click New on the Montage Studio welcome page.
+
+<!-- figure>
+    <img src="/images/montage-studio/ide-overview/fig02.jpg" alt="Montage Studio welcome page" style="width: 550px;">
+    <figcaption>Montage Studio welcome page</figcaption>
+</figure -->
 
 ## Work in the Browser
 
@@ -33,26 +40,21 @@ The workspace window is divided into three areas&#8212;the menu bar at the top, 
 
 ## Edit Components, Code, and More
 
-When you develop applications in Montage Studio, you use the component editor, text editor, and package manager. Editors are associated with resource types; as you select resources in the project explorer, the resource is opened in the appropriate editor, in a tab, in the editor area. For example, when you select a user interface component (.reel directory) in the project explorer, Montage Studio opens it in the component editor; select a component's HTML, CSS, or JavaScript file, and Montage Studio opens the file in the built-in text editor; select package.json, and Montage Studio opens the file in the package manager.
-
 When building an application in Montage Studio, you will use the following editors:
 
-* **Component editor:** To quickly assemble user interface components and describe their relationships.
+* **Component editor:** To assemble user interface components and describe the relationships between them.
 * **Text editor:** To add your own code to a component's source files or edit your application's readme file.
 * **Package manager:** To update the metadata that identifies your project and specifies your project's dependencies.
 
-You can also use the following custom editing environments: 
+Editors are associated with resource types; as you select resources in the project explorer, the resource is opened in the appropriate editor, in a tab, in the editor area. For example, when you select a user interface component (.reel directory) in the project explorer, Montage Studio opens it in the component editor; select a component's HTML, CSS, or JavaScript file, and Montage Studio opens the file in the built-in text editor; select package.json, and Montage Studio opens the file in the package manager.
 
-* **Flow editor:**  To create flow patterns that move specified content along a Bézier path. The flow editor is accessible only from within the component editor, and only if you use a Flow component in your project.
+If your application includes flow-like animations or a 3D scene, you will also work in the following custom editing environments: 
 
-* **Scene view editor (under development):** To manipulate a 3D scene. Like the flow editor, it is acccessible only from within the component editor, when your application uses the Scene View component.
+* **Flow editor:**  To create flow patterns that move specified content along a Bézier path.
+* **Scene view editor (under development):** To manipulate a 3D scene.
 
-To start using Montage Studio, you must be logged in to your GitHub user account. To start a new project, click New on the Montage Studio welcome page.
+These editors are only accessible from within the component editor, when your application uses the Flow or Scene View component.
 
-<!-- figure>
-    <img src="/images/montage-studio/ide-overview/fig02.jpg" alt="Montage Studio welcome page" style="width: 550px;">
-    <figcaption>Montage Studio welcome page</figcaption>
-</figure -->
           
 # Maintain Your Project
 
@@ -62,20 +64,22 @@ When you create a project, Montage Studio initializes a Git source code reposito
 
 A _project_ is the source for your application; it comprises a collection of files and directories needed to assemble, preview, and test your application and includes:
 
-* **assets**, a folder for organizing global style sheets, images, and other assets.
-* **node_modules**, a directory that contains the dependencies to which the project is linked as you build your application.
-* **test** and **run-tests.html**, for creating and running Jasmine-based unit tests that exercise features of your application. (The dependencies required to run unit tests are included in the node_modules directory.)
-* **ui**, a directory that contains the user interface components of your application.
-* **index.html**, the entry-point document for your application, which instantiates the Main user interface component and all its child components (in short: your application), when loaded in the browser.
-* **package.json**, which holds meta data that describes the application and the dependencies included in the node_modules directory.
-* **readme.md**, which summarizes the structure of the project and provides some hints on unit testing your application. (This readme file will be included in the production-ready build of your final application, so be sure to replace its contents with information about your application before deploying it or passing it on to a client.)
+* **assets/** — A directory for organizing global style sheets, images, and other assets.
+* **code/** — A folder for the core modules of the application logic.
+* **node_modules/** — A directory that contains the dependencies to which the project is linked as you build your application.
+* **test/** — A folder reserved for tests for the application; this folder includes all.js, a module that points to the test runner to all jasmine specs. To use this module you first need to get (`npm install`) the dependencies required to run unit tests.
+* **ui/** — A directory that contains the user interface components of your application; by default, this directory contains one component: main.reel (the Main user interface component).
+* **index.html** — The entry-point document for your application; when loaded in the browser, this document instantiates the Main user interface component and all its child components (in short: your application).
+* **package.json** — A file with meta data that describes the application and the dependencies included in the node_modules directory.
+* **readme.md** — The default readme file, which summarizes the structure of the project and provides some hints on unit testing your application. (This readme file will be included in the production-ready build of your final application, so be sure to replace its contents with information about your application before deploying it or passing it on to a client.)
+* **run-tests.html** — A page for creating and running Jasmine-based unit tests that exercise features of your application. (The dependencies required to run unit tests are included in the node_modules directory.)
 
 <figure>
     <img src="/images/montage-studio/ide-overview/fig03.jpg" alt="Project explorer" style="width: 175px;">
     <figcaption>The project explorer</figcaption>
 </figure>
 
-When working in Montage Studio, your focus will be on the contents of the ui directory, which is the default directory for the user interface components that make up your application.
+When assembling your application in Montage Studio, you will be working mostly with the contents in the ui directory, which is the default directory for the user interface components that make up your application.
 
 You can expand the default project directory as necessary; for example, depending on the application, you may want to add the following folders to keep your project organized:
 
@@ -115,18 +119,18 @@ To update an existing dependency, select it in the Package Dependencies group to
 
 ## Close or Reopen a Project
 
-Before closing a project, be sure to save your changes; Montage Studio currently does not save changes automatically.
+Before closing a project, be sure to save your changes (Cmd+S or File > Save All); Montage Studio currently does not save changes automatically.
 
 Montage Studio gives you two options to leave a project: close it or log out. 
 
-* To close a project, select Project > Close Project from the menu bar or click the Montage Studio icon in the upper left on the menu bar. This returns you to the project page, where you can start a new project or select an existing one. 
-* To exit Montage Studio, choose _Your Name_  > Log Out on the right of the menu bar from wihtin a project or click Log Out on the Welcome page. This returns you to the Montage Studio sign-in page.
+* To close a project, select Project > Close Project from the menu bar or click the Montage Studio icon in the upper left on the menu bar. This returns you to the welcome page, where you can start a new project or select an existing one. 
+* To exit Montage Studio, choose _Your Name_  > Log Out on the right of the menu bar from wihtin a project or click Log Out on the welcome page. This returns you to the Montage Studio sign-in page.
     
 # Assemble a User Interface
 
-Montage Studio does not provide a visual approach to building graphical user interfaces. Instead of laying out views (for example, by dropping prebuilt user interface elements on a "canvas"), you assemble user interface components that represent distinct functional areas of an application such as navigation, data display, data entry, and so on. These components are stored in the ui directory of your project and identified with a .reel extension. 
+Montage Studio does not provide a visual approach to building graphical user interfaces. Instead of laying out views (for example, by dropping prebuilt user interface elements on a "canvas"), you assemble user interface components. Each of these components represents a distinct functional area of an application such as navigation, data display, data entry, and so on. These components are stored in the ui directory of your project and identified with a .reel extension. 
 
-A user interface component consists of three files that control the component's structure (HTML), appearance (CSS), and behavior (JavaScript). When you craft your application in Montage Studio, you modify the HTML documents or templates (in MontageJS speak) of the components in the UI directory of your project. More specifically, you assemble a component tree of user interface elements in the DOM explorer, and then declare how you want these DOM elements to behave by specifying UI-related information (such as properties or bindings) using the objets in the template explorer.
+A user interface component (or view) consists of three files that control the component's structure (HTML), appearance (CSS), and behavior (JavaScript). When you craft your application in Montage Studio, you modify the HTML documents or templates (in MontageJS speak) of the components in the UI directory of your project. More specifically, you assemble a component tree of user interface elements in the DOM explorer, and then declare how you want these DOM elements to behave by specifying UI-related information (such as properties or bindings) using the objets in the template explorer.
 
 <figure>
     <img src="/images/montage-studio/ide-overview/fig05.jpg" alt="Component editor" style="width: 550px;">
@@ -158,7 +162,7 @@ Coming soon.
 
 ## Find Files Quickly
 
-Montage Studio supports fuzzy search: Press Cmd+E or use the Go To menu to locate a file or asset whose filename contains a specified string of letters. From the search results list, select the file you want to open.
+Montage Studio supports fuzzy search: Press Cmd+E or use the Go menu to locate a file or asset whose filename contains a specified string of letters. From the search results list, select the file you want to open.
 
 ## Look Up Documentation for a Library Item
 
@@ -183,7 +187,7 @@ For a short video that demonstrates how you can use Montage Studio for work with
 
 # Write code
 
-Montage Studio has a bare bones text editor, which supports syntax coloring, undo and redo, and (partial) code completion. Error highlighting, find and replace, code folding, and other advanced text editing features are under development. If you depend on these features for writing your code, you can drag a component's individual HTML, CSS, or JavaScript file to your preferred text editor; when finished editing, drag the edited file back to the respective component (.reel directory).
+Montage Studio uses CodeMirror to provide basic text editor functionality, including syntax coloring, undo and redo, and (partial) code completion. Error highlighting, find and replace, code folding, and other advanced text editing features are under development. If you depend on these features for writing your code, you can drag a component's individual HTML, CSS, or JavaScript file to your preferred text editor; when finished editing, drag the edited file back to the respective component (.reel directory).
 
 The built-in text editor complements your development workflow by letting you add your own code, write custom components, refactor existing components, or define the appearance of your application _after_ you assemble the views and model of your MontageJS application using the component editor.
 
@@ -216,7 +220,7 @@ At any point in development, you can check your progress by clicking the Run but
     <figcaption>The Run button</figcaption>
 </figure>
 
-When in live view mode, you cannot only view but also interact with a build of your application in development. As you modify your application in Montage Studio, the live view rendering of the application updates in real time: every character you type, every component you modify, every element you replace is rendered instantly after saving the change, without manual reload, for all open live view windows. The live view URL can be opened in a different browser, computer, or device. This is particularly useful for cross-browser and cross-device testing as well as for soliciting feedback from peers, team members, or clients, who can see and interact with what you've been working on&#8212;no need to install additional software or go through any complicated setup.
+When in live view mode, you cannot only view but also interact with a build of your application in development. As you modify your application in Montage Studio, the live view rendering of the application updates in real time: every character you type, every component you modify, every element you replace is rendered instantly, without manual reload, for all open live view windows. The live view URL can be opened in a different browser, computer, or device. This is particularly useful for cross-browser and cross-device testing as well as for soliciting feedback from peers, team members, or clients, who can see and interact with what you've been working on&#8212;no need to install additional software or go through any complicated setup.
 
 With live view mode, you can:
 
@@ -235,6 +239,6 @@ To run the application in another browser (locally or on another computer or dev
 
 Building MontageJS applications is divided into a development phase and a production phase. When your application is finished, you need to get it ready for deployment. In Montage Studio, you have two options; you can:
 
-* Publish a build of your application to GitHub (Project > Mop > Publish to Github Pages). This has the benefit that your application will be hosted by GitHub (although it can take a bit for GitHub to finish publishing the pages).
+* Publish a build of your application to GitHub (Project > Build > Publish to Github Pages). This has the benefit that your application will be hosted by GitHub (although it can take a bit for GitHub to finish publishing the pages).
 
-* Download a production-ready build of your application to your system (Project > Mop > Download). You can then copy the downloaded application folder to a web server of your choice for deployment. The index.html file included in this folder is the entry point to your application: double-click the file to open the application in your default browser.
+* Download a production-ready build of your application to your system (Project > Build > Download). You can then copy the downloaded application folder to a web server of your choice for deployment. The index.html file included in this folder is the entry point document to your application: double-click the file to open the application in your default browser.
