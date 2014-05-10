@@ -21,7 +21,7 @@ The following components are pre-built MontageJS components.
 * [Set text with a binding](http://montagejs.github.io/mfiddle/#!/6343006)
 
 #### Page Controls
-* [Simple repetition](http://montagejs.github.io/mfiddle/#!/5904339)
+* [Simple repetition](http://montagejs.github.io/mfiddle/#!/07a089a44c73a908cb40)
 * [Simple substitution](http://montagejs.github.io/mfiddle/#!/5906283)
 
 #### Converters
@@ -32,13 +32,13 @@ The following components are pre-built MontageJS components.
 * [Translate composer](http://montagejs.github.io/mfiddle/#!/7854041)
 
 #### Pattern
-* [Sorting a Repetition](http://montagejs.github.io/mfiddle/#!/7651480)
+* [Sorting a Repetition](http://montagejs.github.io/mfiddle/#!/aeffafd1efbdd80530d4)
 
 #### Controllers
-* [Tree Controller](http://montagejs.github.io/mfiddle/#!/9011775)
+* [Tree Controller](http://montagejs.github.io/mfiddle/#!/2e012d82ddd3d040cf74)
 
 ## UI Components (Digit)
-The following components are part of the touch-optimized Digit widget set, which is part of the default MontageJS installation. 
+The following components are part of the touch-optimized Digit widget set, which is part of the default MontageJS installation.
 
 #### Button
 * [Button with an explicit identifier](http://montagejs.github.io/mfiddle/#!/5906286) (used to link to a handler method)
@@ -65,7 +65,7 @@ The following components are part of the touch-optimized Digit widget set, which
 #### Select
 * [A simple select](http://montagejs.github.io/mfiddle/#!/5904481)
 * [A select powered by a range controller](http://montagejs.github.io/mfiddle/#!/5904482)
-* [A select synchronized with a repetition](http://montagejs.github.io/mfiddle/#!/9142152)
+* [A select synchronized with a repetition](http://montagejs.github.io/mfiddle/#!/179e3a459daf280dabe1)
 
 #### Checkbox
 * [A simple checkbox](http://montagejs.github.io/mfiddle/#!/5904488)
@@ -77,7 +77,7 @@ The following components are part of the touch-optimized Digit widget set, which
 * [An image](http://montagejs.github.io/mfiddle/#!/5904495)
 
 #### List
-* [A list of categories](http://montagejs.github.io/mfiddle/#!/5904497)
+* [A list of categories](http://montagejs.github.io/mfiddle/#!/85e4c0b3986c31e0a2e3)
 
 
 ## Draw Cycle
