@@ -63,7 +63,7 @@ Release Date: May 6, 2014
 
 * Streams CSS changes live from the text editor to connected previews
 * Adds in-app system status reporting from status.montagestudio.com
-* Adds list of available editors for a file in a new "Open with" context menu
+* Adds list of available editors for a file in a new Open with context menu
 * Changes default GitHub authorization to public only; adds option to promote to private access
 * Adds warning dialog box when closing the browser tab with unsaved changes
 * Adds undo support to the package manager
