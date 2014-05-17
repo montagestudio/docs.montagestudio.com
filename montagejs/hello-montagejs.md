@@ -48,7 +48,7 @@ You should see a blank page with a version reference in the upper left corner of
 
 ## MontageJS Basics
 
-MontageJS application development is divided into a development (creating the application) phase and a production (optimizing the application) phase. In development, you assemble an application out of encapsulated components. These components are stored in the ui directory of your project and identified by a .reel suffix (see Figure 2).
+MontageJS application development is divided into a development (assembling the application) phase and a production (optimizing the application for deployment) phase. In development, you assemble an application out of encapsulated components. These components are stored in the ui directory of your project and identified by a .reel suffix (see Figure 2).
 
 <figure>
 	<img class="img--66" src="/images/docs/hello-montagejs/fig02.jpg" alt="Default application starter template." style="width: 380px;">

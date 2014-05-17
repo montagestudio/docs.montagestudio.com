@@ -11,13 +11,13 @@ next-page: substitution
 
 # Using the Repetition Component
 
-The Repetition component is used to produce a repeating group of elements based on an array of values. All elements nested inside of the Repetition element will repeat in each iteration. The content inside of a repetition is managed by a controller. You can set the Repetition component's `content` property manually with a standard array for a simple repetition. You can also expand the component's capabilities by assigning a RangeController component to its `contentController` property.
+The Repetition component is used to produce a repeating group of elements based on an array of values. All elements nested inside of the Repetition element will repeat in each iteration. The content inside of a repetition is managed by a controller. You can set the Repetition component's `content` property manually, with a standard array for a simple repetition, or you can expand the component's capabilities by assigning a RangeController component to its `contentController` property.
 
-You can use the Repetition component as a building block to repeat any number of user interface components. (The MontageJS List component, for example, uses the Repetition component to support selection management.) All elements nested inside of the Repetition element will repeat in each iteration of the repetition. You can use the bindable `iteration.object` template property to point to the current list item.
+You can use the Repetition component as a building block to repeat any number of user interface components. (The MontageJS List component, for example, uses the Repetition component to support selection management.) Use the bindable `iteration.object` template property to point to the current list item.
 
 ## A Simple Repetition
 
-The following example shows a simple Repetition (`items`) that produces three text items. Each iteration is associated with a corresponding item in a source collection, which is populated through the Repetition component's `content` property.
+The following example shows a simple Repetition (`items`) that produces three text items. Each iteration is associated with a corresponding item in a source collection that is populated through the Repetition component's `content` property.
 
 ```html
 <div data-montage-id="content" class="Content">
@@ -82,9 +82,11 @@ exports.Content = Component.specialize({
 });
 ```
 
-### Preview:
+The output looks like this:
+
 <iframe src="http://montagejs.github.io/mfiddle/preview/#!/7882151" style="border: 0; width: 100%; height: 110px"></iframe>
-View in Mfiddle: [http://montagejs.github.io/mfiddle/#!/7882151](http://montagejs.github.io/mfiddle/#!/7882151)
+
+View in [Mfiddle](http://montagejs.github.io/mfiddle/#!/7882151).
 
 ## Using a RangeController with a Repetition
 
@@ -180,19 +182,21 @@ exports.Owner = Component.specialize({
 });
 ```
 
-### Preview:
+The output looks like this:
+
 <iframe src="http://montagejs.github.io/mfiddle/preview/#!/7883458" style="border: 0; width: 100%; height: 200px"></iframe>
-View in Mfiddle: [http://montagejs.github.io/mfiddle/#!/7883458](http://montagejs.github.io/mfiddle/#!/7883458)
+
+View in [Mfiddle](http://montagejs.github.io/mfiddle/#!/7883458).
 
 ## Sorting and Filtering the Items in a Repetition
 
-To sort and filter items in a repetition you can use use FRB expressions on the RangeController.
+To sort and filter items in a repetition you can use FRB expressions on the RangeController.
 
 * Adding or removing items from the source collection automatically updates the returned items.
 * When the value of the `filterPath` is `false`, the item will not be included in the repetition.
 * Using `sortPath` returns the items in sequential order, sorted by the value of the `property` when the path is a single property.
 
-You can also use complex expressions inside of sort and filter operations. For example, when the repetition's content has an index property that is a sequence of integers, you can filter out the odd numbers like this: `!(index%2)`.
+You can also use complex expressions inside of sort and filter operations. For example, when the Repetition component's content has an index property that is a sequence of integers, you can filter out the odd numbers like this: `!(index%2)`.
 
 ```html
 <div data-montage-id="component">
@@ -305,9 +309,10 @@ exports.Owner = Component.specialize({
 });
 ```
 
-### Preview:
+The output looks like this:
+
 <iframe src="http://montagejs.github.io/mfiddle/preview/#!/7884201" style="border: 0; width: 100%; height: 150px"></iframe>
-View in Mfiddle: [http://montagejs.github.io/mfiddle/#!/7884201](http://montagejs.github.io/mfiddle/#!/7884201)
+View in [Mfiddle](http://montagejs.github.io/mfiddle/#!/7884201).
 
 ## Allowing Users to Select Repetition Items
 
@@ -426,6 +431,7 @@ exports.Owner = Component.specialize({
 });
 ```
 
-### Preview:
+The output looks like this:
+
 <iframe src="http://montagejs.github.io/mfiddle/preview/#!/7884716" style="border: 0; width: 100%; height: 260px"></iframe>
-View in Mfiddle: [http://montagejs.github.io/mfiddle/#!/7884716](http://montagejs.github.io/mfiddle/#!/7884716)
+View in [Mfiddle](http://montagejs.github.io/mfiddle/#!/7884716).

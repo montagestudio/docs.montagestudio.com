@@ -10,10 +10,10 @@ this-page: montagejs-examples
 
 # MontageJS Examples
 
-Follow the links on this page to explore pre-defined demos and source code of MontageJS ui components and features in [Mfiddle](http://montagejs.github.com/mfiddle/).
+Follow the links on this page to explore demos and source code of MontageJS ui components and features in [Mfiddle](http://montagejs.github.com/mfiddle/).
 
 ## MontageJS Components
-The following components are pre-built MontageJS components.
+The following examples use prebuilt MontageJS components.
 
 #### Text
 * [Hello World](http://montagejs.github.io/mfiddle/#!/5904314)
@@ -38,12 +38,12 @@ The following components are pre-built MontageJS components.
 * [Tree Controller](http://montagejs.github.io/mfiddle/#!/2e012d82ddd3d040cf74)
 
 ## UI Components (Digit)
-The following components are part of the touch-optimized Digit widget set, which is part of the default MontageJS installation.
+The following examples use components that are part of the touch-optimized Digit UI set.
 
 #### Button
 * [Button with an explicit identifier](http://montagejs.github.io/mfiddle/#!/5906286) (used to link to a handler method)
 * [Button with a default identifier](http://montagejs.github.io/mfiddle/#!/5906289) (serialization label is the default identifier)
-* [Submit button without a specific handler](http://montagejs.github.io/mfiddle/#!/5906291) (the `handleAction()` method will be called on when the "action" event is dispatched)
+* [Submit button without a specific handler](http://montagejs.github.io/mfiddle/#!/5906291) (the `handleAction()` method will be called when the "action" event is dispatched)
 
 #### TextField
 * [A simple text field](http://montagejs.github.io/mfiddle/#!/5906293)
@@ -56,7 +56,7 @@ The following components are part of the touch-optimized Digit widget set, which
 
 #### Slider
 * [A simple slider](http://montagejs.github.io/mfiddle/#!/5904461)
-* [Two-way binding](http://montagejs.github.io/mfiddle/#!/5904468) between a slider and a text field
+* [Two-way binding](http://montagejs.github.io/mfiddle/#!/5904468) (between a slider and a text field)
 
 #### NumberField
 * [A simple number field](http://montagejs.github.io/mfiddle/#!/5904473)

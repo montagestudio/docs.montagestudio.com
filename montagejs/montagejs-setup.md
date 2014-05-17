@@ -40,7 +40,7 @@ The minit command line tool provides a convenient way to kickstart your MontageJ
     $ sudo npm install -gq minit@latest
     ```
 
-    > **Note**: Minit does not need `sudo` access; npm uses `sudo` to make command line utilities such as minit available system wide. Also, when run as root, npm will downgrade permissions before running any build scripts that package authors specified. For more details see the npm <a href="https://npmjs.org/doc/README.html" target="_blank">readme</a>.
+    > **Note:** Minit does not need `sudo` access; npm uses `sudo` to make command line utilities such as minit available system wide. Also, when run as root, npm will downgrade permissions before running any build scripts that package authors specified. For more details see the npm <a href="https://npmjs.org/doc/README.html" target="_blank">readme</a>.
 
 * **Windows:** Open the Command Prompt and type:
 
@@ -58,7 +58,7 @@ $ minit create:app -n app-name
 
 This generates the _app-name_ directory—which includes the MontageJS code dependencies—in your current directory.
 
->**Note**: For a brief overview of the files and folders included in a default MontageJS project, see the readme file in the "app-name" project directory.
+>**Note:** For a brief overview of the files and folders included in a default MontageJS project, see the readme file in the "app-name" project directory.
 
 
 ## Step 3: Verify Your Setup

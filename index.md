@@ -7,9 +7,9 @@ this-page: index
 
 ---
 
-Start building rich front-end Web applications with Montage using the following collection of resources. These guides will introduce you to Montage development, familiarize you with key high-level concepts, and help acquaint you with Montage Studio.
+Learn to build and deploy web applications using MontageJS and Montage Studio. This documentation site is organized into two sections: Guides that familiarize you with the MontageJS client-side framework and guides that describe how to assemble MontageJS applications using the cloud-based Montage Studio development environment.
 
-## [MontageJS Documentation](montagejs/)
+## [MontageJS Framework](montagejs/)
 
 * [Quick Start](montagejs/montagejs-setup.html)
 * [Tutorials](montagejs/tutorial-reddit-client-with-montagejs.html)
@@ -19,8 +19,10 @@ Start building rich front-end Web applications with Montage using the following 
 * [UI Containers](montagejs/repetition.html)
 * [FAQ](montagejs/faq.html)
 
-## [Montage Studio Documentation](montage-studio)
+## [Montage Studio](montage-studio/)
 
 * [Overview](montage-studio/ide-at-a-glance.html)
 * [Quick Start](montage-studio/tutorial-simple-to-do.html)
 * [FAQ](montage-studio/faq.html)
+
+We will continue to add more content over time; if you have a question you'd like to see addressed post it to our forum at [forum.montagestudio.com](http://forum.montagestudio.com/) or join us at #montage on [IRC](http://webchat.freenode.net/?channels=montage).
