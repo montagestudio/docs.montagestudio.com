@@ -12,7 +12,7 @@ this-page: overview-using-montage-studio
 
 >**Note:** We are in the process of finalizing this document based on the latest version of the Montage Studio beta. Sorry about the inconvenience.
 
-Montage Studio makes it easier for you to assemble complex and powerful single-page web applications using the MontageJS framework. This guide introduces you to the key features of Montage Studio. For a hands-on introduction to using Montage Studio, see the [Quick Start](tutorial-simple-to-do.html) tutorial, which shows you how to assemble a simple to-do application.
+Montage Studio makes it easier for you to assemble complex and powerful single-page web applications (SPAs) using the MontageJS framework. This guide provides a high-level introduction of the key features of Montage Studio and how they can be used to build professional-quality SPAs. For a hands-on introduction to using Montage Studio, see the [Quick Start](tutorial-simple-to-do.html) tutorial, which shows you how to assemble a simple to-do application.
       
 # Develop Applications
 
@@ -94,11 +94,14 @@ When you create a new project, Montage Studio adds the following dependencies to
 
 * **montage**, the MontageJS framework.
 * **digit**, a mobile-optimized user interface widget set.
-* **montage-testing**, which is required for unit testing. 
 
 Montage and digit provide most, if not all, of the components and functionality you need to assemble complex single-page web applications. If necessary, you can add dependencies and prebuilt components from the npm repository, or include custom libraries that you can place, for example, in the assets folder of your project (or a scripts folder).
 
-To add dependencies, or update the existing dependencies and project information, you need to edit the package.json file. This file contains the metadata that identifies your project and is used to handle your project's dependencies. When you select it in the project explorer, Montage Studio opens the file in the package manager. Using the package manager, you can:
+To add dependencies, or update the existing dependencies and project information, you need to edit the package.json file. This file contains the metadata that identifies your project and is used to handle your project's dependencies. When you select it in the project explorer, Montage Studio opens the file in the package manager.
+
+>**Note:** You can also right-click package.json and choose Open with > Text Editor to edit the file in plain text.
+
+Using the package manager, you can:
 
 * Provide details on your application such as name, version number, license and author information, and a brief description.
 * Add packages from the npm repository.
@@ -162,7 +165,7 @@ Coming soon.
 
 ## Find Files Quickly
 
-Montage Studio supports fuzzy search: Press Cmd+E or use the Go menu to locate a file or asset whose filename contains a specified string of letters. From the search results list, select the file you want to open.
+Montage Studio supports fuzzy search: Press Cmd+E or use the Go menu to locate a file or asset whose filename contains a specified string of letters. From the search results list, select the file you want. Montage Studio opens it in the editor associated with the resource type.
 
 ## Look Up Documentation for a Library Item
 
@@ -200,9 +203,9 @@ To use code completion, press Ctrl+spacebar; the text editor provides a popup li
 
 # Save and Revert Changes
 
-Presently, Montage Studio does not save changes to source and project files automatically, so be sure to save (Project > Save All) regularly as you assemble your application and before you log out of Montage Studio.
+Presently, Montage Studio does not save changes to source and project files automatically, so be sure to save (File > Save All) regularly as you assemble your application and before you close a project or log out of Montage Studio.
 
-Every time you choose Project > Save All, Montage Studio commits the changes you made since your last save to the `_mb_master` branch of your project's GitHub repository. The Git status counter on the menu bar tracks how far ahead of the master branch your project is. Every time you save your project, Montage Studio commits your changes, and each commit increments the number by 1.
+Every time you choose File > Save All, Montage Studio commits the changes you made since your last save to the `_mb_master` branch of your project's GitHub repository. The Git status counter on the menu bar tracks how far ahead of the master branch your project currently is. Every time you save your project, Montage Studio writes your changes to a dedicated workspace and then pushes your changes to GitHub. Each commit increments the status count number by 1. To view your project on GitHub, choose Proejct > GitHub Repository.
 
 <figure>
     <img src="/images/montage-studio/ide-overview/fig13.jpg" alt="The Git status counter" style="width: 225px;">
@@ -220,7 +223,9 @@ At any point in development, you can check your progress by clicking the Run but
     <figcaption>The Run button</figcaption>
 </figure>
 
-When in live view mode, you cannot only view but also interact with a build of your application in development. As you modify your application in Montage Studio, the live view rendering of the application updates in real time: every character you type, every component you modify, every element you replace is rendered instantly, without manual reload, for all open live view windows. The live view URL can be opened in a different browser, computer, or device. This is particularly useful for cross-browser and cross-device testing as well as for soliciting feedback from peers, team members, or clients, who can see and interact with what you've been working on&#8212;no need to install additional software or go through any complicated setup.
+When in live view mode, you cannot only view but also interact with a build of your application in development. 
+
+As you modify your application in Montage Studio, the live view rendering of the application updates in real time: every character you type, every component you modify, every element you replace is rendered instantly, without manual reload, for all open live view windows. The live view URL can be opened in a different browser, computer, or device. This is particularly useful for cross-browser and cross-device testing as well as for soliciting feedback from peers, team members, or clients, who can see and interact with what you've been working on&#8212;no need to install additional software or go through any complicated setup.
 
 With live view mode, you can:
 
@@ -228,7 +233,9 @@ With live view mode, you can:
 * Show different states of the same application in multiple windows to test how a change might affect each view.
 * Share your progress or an idea with clients and peers in real time to discuss or review.
 
-To run the application in another browser (locally or on another computer or device), open the live view URL in that browser. Live view applications are served over an http (or https) connection. Opening a live view URL in a browser other than the one you develop in triggers the Montage Studio server to serve a page with an Enter Access Code text box and to generate an access code. The access code appears in the info bar (below the menu bar) in Montage Studio. To proceed with live view, enter the access code and press Return. Likewise, when sharing your live view URL with others, you also need to give them the Montage Studio&#8211;generated access code so they can experience your application.
+To run the application in another browser (locally or on another computer or device), open the live view URL in that browser. Live view applications are served over an http (or https) connection. 
+
+Opening a live view URL in a browser other than the one you develop in triggers the Montage Studio server to present a page with an Enter Access Code text box and to generate an access code. The access code appears in the info bar (below the menu bar) in Montage Studio. To proceed with live view, enter the access code and press Return. Likewise, when sharing your live view URL with others, you also need to give them the Montage Studio&#8211;generated access code so they can experience your application.
 
 <!-- figure>
     <img src="/images/montage-studio/ide-overview/fig15.jpg" alt="Access code for sharing" style="width: 225px;">
@@ -237,7 +244,7 @@ To run the application in another browser (locally or on another computer or dev
 
 # Prepare for Deployment
 
-Building MontageJS applications is divided into a development phase and a production phase. When your application is finished, you need to get it ready for deployment. In Montage Studio, you have two options; you can:
+Building MontageJS applications is divided into a development (assembling the application) phase and a production (optimizing the application for deployment) phase. When your application is finished, you need to get it ready for deployment. In Montage Studio, you have two options; you can:
 
 * Publish a build of your application to GitHub (Project > Build > Publish to Github Pages). This has the benefit that your application will be hosted by GitHub (although it can take a bit for GitHub to finish publishing the pages).
 
