@@ -33,13 +33,15 @@ Separating the structure, presentation, and behavior of user interface component
     
     To control the appearance and positioning of an individual component, you have to edit that component’s HTML and CSS files:
     
-        * Add CSS class names to the markup of your component’s HTML file.
-        * Add the CSS statements to the component’s CSS file.
-    
-    <figure>
-        <img src="/images/montage-studio/styling-overview/fig01.png" alt="Add the CSS statements to the component’s CSS file" style="width: 400px;">
-        <figcaption><strong>Figure 1.</strong> Add the CSS statements to the component’s CSS file.</figcaption>
-    </figure>
+    <ul>
+        <li>Add CSS class names to the markup of your component’s HTML file.</li>
+        <li>Add the CSS statements to the component’s CSS file.
+            <figure style="margin-top:1em">
+                <img src="/images/montage-studio/styling-overview/fig01.png" alt="Add the CSS statements to the component’s CSS file">
+                <figcaption><strong>Figure 1.</strong> Add the CSS statements to the component’s CSS file.</figcaption>
+            </figure>
+        </li>
+    </ul>
     
     As a rule, only add styles to a component’s CSS file that are part of that component. This ensures that the styles of a component are loaded only when needed. Feel free to use our [naming conventions](http://docs.montagestudio.com/montagejs/naming-conventions.html#toc_3) on what to call the classes.
     
@@ -50,7 +52,7 @@ Separating the structure, presentation, and behavior of user interface component
     Global style sheets are linked from the `head` element in the index.html document of your project.
     
     <figure>
-        <img src="/images/montage-studio/styling-overview/fig02.jpg" alt="Global style sheets are linked in the index.html document" style="width: 400px;">
+        <img src="/images/montage-studio/styling-overview/fig02.jpg" alt="Global style sheets are linked in the index.html document">
         <figcaption><strong>Figure 2.</strong> Global style sheets are linked in the index.html document.</figcaption>
     </figure>
         
@@ -67,7 +69,7 @@ Be sure to run the application source in live view mode when you are using the b
 To launch live view, click the Run button and move the resulting tab to a new window so you can see the preview while editing the resources in Montage Studio. (For more details on live view mode see the section [Preview and Share](http://docs.montagestudio.com/montage-studio/overview-using-montage-studio.html#toc_18)).
 
 <figure>
-    <img src="/images/montage-studio/styling-overview/fig03.jpg" alt="Click Run to launch live view mode" style="width: 125px;">
+    <img src="/images/montage-studio/styling-overview/fig03.jpg" alt="Click Run to launch live view mode" style="max-width: 194px;">
     <figcaption><strong>Figure 3.</strong> Click Run to launch live view mode.</figcaption>
 </figure>
 
@@ -76,7 +78,7 @@ To launch live view, click the Run button and move the resulting tab to a new wi
 To use a third-party editor: Drag the CSS (or HTML) file you want to work on to your desktop and then open it in your preferred editor. When finished editing the file, save your changes and drag the file back to the component; Montage Studio will upload the file and replace the online version with your edited version.
 
 <figure>
-    <img src="/images/montage-studio/styling-overview/fig04.png" alt="Drag edited files to their respective components" style="width: 400px;">
+    <img src="/images/montage-studio/styling-overview/fig04.png" alt="Drag edited files to their respective components" style="max-width: 500px;">
     <figcaption><strong>Figure 4.</strong> Drag edited files to their respective components.</figcaption>
 </figure>
 
@@ -96,7 +98,7 @@ The MontageJS framework currently does not provide traditional layout components
 By default, every new MontageJS project includes the [Digit package](http://docs.montagestudio.com/montagejs/theme-digit-components.html) as a dependency. Digit is a touch-friendly UI set optimized for use with tablets and mobile devices.
 
 <figure>
-    <img src="/images/montage-studio/styling-overview/fig05.png" alt="Some Digit UI set components" style="width: 250px;">
+    <img src="/images/montage-studio/styling-overview/fig05.png" alt="Some Digit UI set components" style="max-width: 275px;">
     <figcaption><strong>Figure 5.</strong> Some Digit UI set components.</figcaption>
 </figure>
 
@@ -129,7 +131,7 @@ Skins are presets that allow you to change the look of your application without 
 Every new MontageJS project you create uses the light skin. If you want to use a different skin, you need to change the `data-montage-skin` property in the outer `<div>` of the Main component’s template (main.html).
 
 <figure>
-    <img src="/images/montage-studio/styling-overview/fig06.png" alt="Change the `data-montage-skin` property to use a different skin" style="width: 400px;">
+    <img src="/images/montage-studio/styling-overview/fig06.png" alt="Change the `data-montage-skin` property to use a different skin">
     <figcaption><strong>Figure 6.</strong> Change the data-montage-skin property to use a different skin.</figcaption>
 </figure>
 
@@ -222,7 +224,7 @@ The Digit UI set uses `em`-based units with the `font-size` property to control 
 * To change the size of a single component, change the `font-size` property in the component’s CSS file.
 
     <figure>
-        <img src="/images/montage-studio/styling-overview/fig07.jpg" alt="Modify a component's size by changing the `font-size` property" style="width: 400px;">
+        <img src="/images/montage-studio/styling-overview/fig07.jpg" alt="Modify a component's size by changing the `font-size` property">
         <figcaption><strong>Figure 7.</strong> Modify a component's size by changing the font-size property.</figcaption>
     </figure>
     
@@ -235,8 +237,8 @@ Alternatively, you can also use the `font-size` property inside a media query; f
 ```css
 @media (min-width: 800px) {
     .html {
-                font-size: 20px;
-             }
+        font-size: 20px;
+    }
 }
 ```
 
@@ -254,35 +256,35 @@ In general, all components can be colorized with the `color` property.
 
 ```css
 .MyButton.digit-Button {
-        color: red;
+    color: red;
 }
 ```
 
 <figure>
-    <img src="/images/montage-studio/styling-overview/ill04.png" alt="Add a color property to the root element to change the default color" style="width: 100px;">
+    <img src="/images/montage-studio/styling-overview/ill04.png" alt="Add a color property to the root element to change the default color" style="width: 95px;">
 </figure>
 
 This approach also works for components that use a background color&#8212;like the handle of the Slider component&#8212;because the background color is set to use `currentColor`, which is mapped to `color`.
 
 ```css
 .MySlider.digit-Slider {
-        color: dodgerblue;
+    color: dodgerblue;
 }
 ```
 
 <figure>
-    <img src="/images/montage-studio/styling-overview/ill05.png" alt="Add a color property to the root element to change the default color" style="width: 125px;">
+    <img src="/images/montage-studio/styling-overview/ill05.png" alt="Add a color property to the root element to change the default color" style="width: 167.5px;">
 </figure>
 
 Colors are inherited; so you can colorize child components by using the `color` property on a parent; or the entire application by using the root `html` selector.
 ```css
 html {
-        color: dodgerblue;
+    color: dodgerblue;
 }
 ```
 
 <figure>
-    <img src="/images/montage-studio/styling-overview/ill06.gif" alt="Colorize child components by using the `color` property on a parent" style="width: 400px;">
+    <img src="/images/montage-studio/styling-overview/ill06.gif" alt="Colorize child components by using the `color` property on a parent">
 </figure>
 
 ### Changing the Color of the Wireframe, Light, and Dark Skins
@@ -291,17 +293,18 @@ To change the color of the the other Digit skins, you first have to identify the
 
 ```css
 .MyButton.digit-Button {
-text-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.4);
-border-color: hsl(140, 100%, 34%);
-background-image: linear-gradient( hsl(140, 100%, 54%), hsl(140, 100%, 44%) );
-box-shadow: inset 0 1px 1px hsla(0, 100%, 100%, 0.77),
-inset 0 -1px 1px hsla(0, 0%, 0%, 0.04),
-0 1px 0 hsla(0, 0%, 100%, 0.6);
+    text-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.4);
+    border-color: hsl(140, 100%, 34%);
+    background-image: linear-gradient( hsl(140, 100%, 54%), 
+                                       hsl(140, 100%, 44%) );
+    box-shadow: inset 0 1px 1px hsla(0, 100%, 100%, 0.77),
+                inset 0 -1px 1px hsla(0, 0%, 0%, 0.04),
+                0 1px 0 hsla(0, 0%, 100%, 0.6);
 }
 ```
 
 <figure>
-    <img src="/images/montage-studio/styling-overview/ill07.png" alt="Identify the properties you have to override" style="width: 100px;">
+    <img src="/images/montage-studio/styling-overview/ill07.png" alt="Identify the properties you have to override" style="width: 93px;">
 </figure>
 
 >**Note:** Depending on the browsers you want to support, you may have to add vendor prefixes for the gradients.
@@ -319,19 +322,19 @@ For example, if you wanted to create a custom button, follow these steps:
 1. Click Add Component at the bottom of the project explorer (or choose File > New > Component).
 
     <figure>
-        <img src="/images/montage-studio/styling-overview/ill08.png" alt="Click Add Component." style="width: 125px;">
+        <img src="/images/montage-studio/styling-overview/ill08.png" alt="Click Add Component.">
     </figure>
 
 2. Enter a name in the Create Component dialog box (for example, **button**) and click Create.
 
     <figure>
-        <img src="/images/montage-studio/styling-overview/ill09.png" alt="Enter a name for the component." style="width: 125px;">
+        <img src="/images/montage-studio/styling-overview/ill09.png" alt="Enter a name for the component.">
     </figure>
     
     Montage Studio adds the new component to the UI directory of your project.
     
     <figure>
-        <img src="/images/montage-studio/styling-overview/ill10.png" alt="Enter a name for the component." style="width: 225px;">
+        <img src="/images/montage-studio/styling-overview/ill10.png" alt="Enter a name for the component.">
     </figure>
     
 3. Copy the HTML and JS code of the <a href="https://github.com/montagejs/digit/tree/master/ui/button.reel" target="_blank">Digit button</a> component into your custom component to ensure it functions as designed.
@@ -341,7 +344,7 @@ For example, if you wanted to create a custom button, follow these steps:
 5. To use your new custom Button, just drag it from the library to the DOM explorer.
  
      <figure>
-        <img src="/images/montage-studio/styling-overview/ill11.png" alt="Enter a name for the component." style="width: 225px;">
+        <img src="/images/montage-studio/styling-overview/ill11.png" alt="Enter a name for the component.">
     </figure>
  
 >**Note:** Be sure to strip the `digit-` prefix from the markup, so there is no conflict when using the corresponding Digit component in the same application.
