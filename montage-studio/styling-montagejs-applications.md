@@ -35,13 +35,13 @@ Separating the structure, presentation, and behavior of user interface component
     
     <ul>
         <li>Add CSS class names to the markup of your component’s HTML file.</li>
-        <li>Add the CSS statements to the component’s CSS file.
-            <figure style="margin-top:1em">
-                <img src="/images/montage-studio/styling-overview/fig01.png" alt="Add the CSS statements to the component’s CSS file">
-                <figcaption><strong>Figure 1.</strong> Add the CSS statements to the component’s CSS file.</figcaption>
-            </figure>
-        </li>
+        <li>Add the CSS statements to the component’s CSS file.</li>
     </ul>
+    
+    <figure style="margin-top:1em">
+        <img src="/images/montage-studio/styling-overview/fig01.png" alt="Add the CSS statements to the component’s CSS file">
+        <figcaption><strong>Figure 1.</strong> Add the CSS statements to the component’s CSS file.</figcaption>
+    </figure>
     
     As a rule, only add styles to a component’s CSS file that are part of that component. This ensures that the styles of a component are loaded only when needed. Feel free to use our [naming conventions](http://docs.montagestudio.com/montagejs/naming-conventions.html#toc_3) on what to call the classes.
     
