@@ -331,7 +331,7 @@ For example, if you wanted to create a custom button, follow these steps:
     Montage Studio adds the new component to the UI directory of your project.
     
     <figure>
-        <img src="/images/montage-studio/styling-overview/ill10.png" alt="Enter a name for the component." style="width: 125px;">
+        <img src="/images/montage-studio/styling-overview/ill10.png" alt="Enter a name for the component." style="width: 225px;">
     </figure>
     
 3. Copy the HTML and JS code of the <a href="https://github.com/montagejs/digit/tree/master/ui/button.reel" target="_blank">Digit button</a> component into your custom component to ensure it functions as designed.
@@ -341,7 +341,7 @@ For example, if you wanted to create a custom button, follow these steps:
 5. To use your new custom Button, just drag it from the library to the DOM explorer.
  
      <figure>
-        <img src="/images/montage-studio/styling-overview/ill11.png" alt="Enter a name for the component." style="width: 125px;">
+        <img src="/images/montage-studio/styling-overview/ill11.png" alt="Enter a name for the component." style="width: 225px;">
     </figure>
  
 >**Note:** Be sure to strip the `digit-` prefix from the markup, so there is no conflict when using the corresponding Digit component in the same application.
