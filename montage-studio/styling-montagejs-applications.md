@@ -21,7 +21,7 @@ The first step to understanding how to style MontageJS applications is to unders
 
 MontageJS applications are assembled out of multiple user interface components. These components are stored in the UI directory of your project and identified by a .reel extension. Each component in this directory presents a particular portion or view of your application and consists of three files that control the component’s structure (HTML), presentation (CSS), and behavior (JavaScript). At the top of the view hierarchy is main.reel, the main user interface component, which is provided with every new MontageJS project; think of it as the container that uses all the other components in this directory for the presentation.
 
-Separating the structure, presentation, and behavior of user interface components into different files makes it easy for a designer to step in and control the look of your application. While developers work on the functionality of the app, assembling components into functional areas, CSS ninjas can work on the look and feel of the app. The process is:
+Separating the structure, presentation, and behavior of user interface components into different files makes it easy for a designer to step in and control the look of your application. While developers work on the functionality of the app, assembling components into functional areas, designers can work on the look and feel of the app. The process is:
 
 1. Identify the components in the project’s UI directory.
 
@@ -311,13 +311,13 @@ To change the color of the the other Digit skins, you first have to identify the
 
 # Creating a Custom UI Set
 
-Overriding Digit is great for minor changes. However, if you wanted to create a UI component that differs vastly in appearance from the components provided, your best bet is to create your own UI set. In outline, you would:
+Overriding Digit is great for minor changes. However, if you wanted to create a UI component that differs vastly in appearance from the components provided, it would be easier to create your own UI set. In outline, you would:
 
 1. Add a custom component to your application source.
-2. Copy the structure (HTML) and behavior (JavaScript) from the original Digit component to your custom component's HTML and JS files. (Refer to the <a href="https://github.com/montagejs/digit/tree/master/ui" target="_blank">Digit repo</a> on GitHub.).
+2. Copy the structure (HTML) and behavior (JavaScript) from the original Digit component to your custom component's HTML and JS files. (Refer to the <a href="https://github.com/montagejs/digit/tree/master/ui" target="_blank">Digit repo</a> on GitHub.)
 3. Style the component as desired.
 
-For example, if you wanted to create a custom button, follow these steps:
+For example, if you wanted to create a custom button, you would follow these steps:
 
 1. Click Add Component at the bottom of the project explorer (or choose File > New > Component).
 
@@ -341,10 +341,10 @@ For example, if you wanted to create a custom button, follow these steps:
     
 4. Add your own CSS statements.
  
-5. To use your new custom Button, just drag it from the library to the DOM explorer.
+5. To use your new custom button, just drag it from the library to the DOM explorer.
  
      <figure>
         <img src="/images/montage-studio/styling-overview/ill11.png" alt="Enter a name for the component.">
     </figure>
  
->**Note:** Be sure to strip the `digit-` prefix from the markup, so there is no conflict when using the corresponding Digit component in the same application.
+>**Note:** Be sure to strip the `digit-` prefix from the markup, so there is no conflict when using a corresponding Digit component in the same application.
