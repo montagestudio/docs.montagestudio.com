@@ -33,8 +33,8 @@ Separating the structure, presentation, and behavior of user interface component
     
     To control the appearance and positioning of an individual component, you have to edit that component’s HTML and CSS files:
     
-    * Add CSS class names to the markup of your component’s HTML file.
-    * Add the CSS statements to the component’s CSS file.
+        * Add CSS class names to the markup of your component’s HTML file.
+        * Add the CSS statements to the component’s CSS file.
     
     <figure>
         <img src="/images/montage-studio/styling-overview/fig01.png" alt="Add the CSS statements to the component’s CSS file" style="width: 400px;">
