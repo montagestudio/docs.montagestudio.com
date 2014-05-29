@@ -53,7 +53,7 @@ More specifically, the following conventions apply:
 
 * **Variations:** If a component offers variations, a double-dash is used; for example: `digit-Button--primary`, `digit-Slider--vertical`.
 
-* **States:** If a component uses different states, a double-dash is used; for example: `digit-Slider--dragging`, `matte-Button--pressed`.
+* **States:** If a component uses different states, an `is-` prefix is used; for example: `is-hidden`, `is-active`. It's advised to not style them globally because each component could handle a state differently. Limit it on a per component level: `.Component.is-hidden { display: none; }`.
 
 ### Rationale
 These CSS naming conventions are similar to the [BEM](http://bem.info/method/) methodology with some minor syntax changes:
