@@ -58,7 +58,7 @@ These editors are only accessible from within the component editor, when your ap
           
 # Maintain Your Project
 
-When you create a project, Montage Studio initializes a Git source code repository with your new project, installs the essential files and dependencies that are required in development, and then exposes these resources in the project explorer. 
+When you create a project, Montage Studio initializes a Git source code repository with your new project, installs the essential files and dependencies that are required in development, and then exposes these resources in the project explorer.
 
 ## Understand the Project Structure
 
@@ -74,12 +74,12 @@ A _project_ is the source for your application; it comprises a collection of fil
 * **readme.md** — The default readme file, which summarizes the structure of the project and provides some hints on unit testing your application. (This readme file will be included in the production-ready build of your final application, so be sure to replace its contents with information about your application before deploying it or passing it on to a client.)
 * **run-tests.html** — A page for creating and running Jasmine-based unit tests that exercise features of your application. (The dependencies required to run unit tests are included in the node_modules directory.)
 
+When assembling your application in Montage Studio, you will be working mostly with the contents in the ui directory, which is the default directory for the user interface components that make up your application.
+
 <figure>
     <img src="/images/montage-studio/ide-overview/fig03.jpg" alt="Project explorer" style="width: 175px;">
     <figcaption>The project explorer</figcaption>
 </figure>
-
-When assembling your application in Montage Studio, you will be working mostly with the contents in the ui directory, which is the default directory for the user interface components that make up your application.
 
 You can expand the default project directory as necessary; for example, depending on the application, you may want to add the following folders to keep your project organized:
 
@@ -92,10 +92,10 @@ To add folders, right-click in the project explorer and select New Folder.
 
 When you create a new project, Montage Studio adds the following dependencies to the nodes_modules directory:
 
-* **montage**, the MontageJS framework.
 * **digit**, a mobile-optimized user interface widget set.
+* **montage**, the MontageJS framework.
 
-Montage and digit provide most, if not all, of the components and functionality you need to assemble complex single-page web applications. If necessary, you can add dependencies and prebuilt components from the npm repository, or include custom libraries that you can place, for example, in the assets folder of your project (or a scripts folder).
+Both dependencies provide most, if not all, of the components and functionality you need to assemble complex single-page web applications. If necessary, you can add dependencies and prebuilt components from the npm repository, or include custom libraries that you can place, for example, in the assets folder of your project (or a scripts folder).
 
 To add dependencies, or update the existing dependencies and project information, you need to edit the package.json file. This file contains the metadata that identifies your project and is used to handle your project's dependencies. When you select it in the project explorer, Montage Studio opens the file in the package manager.
 
@@ -127,13 +127,13 @@ Before closing a project, be sure to save your changes (Cmd+S or File > Save All
 Montage Studio gives you two options to leave a project: close it or log out. 
 
 * To close a project, select Project > Close Project from the menu bar or click the Montage Studio icon in the upper left on the menu bar. This returns you to the welcome page, where you can start a new project or select an existing one. 
-* To exit Montage Studio, choose _Your Name_  > Log Out on the right of the menu bar from wihtin a project or click Log Out on the welcome page. This returns you to the Montage Studio sign-in page.
+* To exit Montage Studio, choose _Your Name_  > Log Out on the right of the menu bar from within a project or click Log Out on the welcome page. This returns you to the Montage Studio sign-in page.
     
 # Assemble a User Interface
 
-Montage Studio does not provide a visual approach to building graphical user interfaces. Instead of laying out views (for example, by dropping prebuilt user interface elements on a "canvas"), you assemble user interface components. Each of these components represents a distinct functional area of an application such as navigation, data display, data entry, and so on. These components are stored in the ui directory of your project and identified with a .reel extension. 
+Montage Studio does not provide a visual approach to building graphical user interfaces. Instead of laying out views (for example, by dropping prebuilt user interface elements on a "canvas"), you assemble user interface components. Each of these components represents a distinct functional area of an application such as navigation, data display, data entry, and so on. These components are stored in the UI directory of your project and identified with a .reel extension. 
 
-A user interface component (or view) consists of three files that control the component's structure (HTML), appearance (CSS), and behavior (JavaScript). When you craft your application in Montage Studio, you modify the HTML documents or templates (in MontageJS speak) of the components in the UI directory of your project. More specifically, you assemble a component tree of user interface elements in the DOM explorer, and then declare how you want these DOM elements to behave by specifying UI-related information (such as properties or bindings) using the objets in the template explorer.
+A user interface component (or view) consists of three files that control the component's structure (HTML), presentation (CSS), and behavior (JavaScript). When you craft your application in Montage Studio, you modify the HTML documents or templates (in MontageJS speak) of the components in the UI directory of your project. More specifically, you assemble a component tree of user interface elements in the DOM explorer, and then declare how you want these DOM elements to behave by specifying UI-related information (such as properties or bindings) using the objets in the template explorer.
 
 <figure>
     <img src="/images/montage-studio/ide-overview/fig05.jpg" alt="Component editor" style="width: 550px;">
@@ -142,13 +142,13 @@ A user interface component (or view) consists of three files that control the co
 
 ## Add Items from the Library
 
-The component editor has three main areas: the library (on the right), the DOM explorer (in the middle), and the template explorer (on the left). The library lists the dependencies that you can use in the current project. The DOM explorer and the template explorer are where you drag the dependencies' configruable objects you want to use.
+The component editor has three main areas: the library (on the right), the DOM explorer (in the middle), and the template explorer (on the left). The library lists the dependencies that you can use in the current project. The DOM explorer and the template explorer are where you drag the dependencies' configurable objects you want to use.
 
-The library is divided into three groups:
+The library is divided into three groups (from top to bottom):
 
-* The group at the top (named after the current project) lists the components in the ui directory of your project (for example, main.reel).
-* The montage group provides the controllers that are part of the MontageJS framework.
-* The digit groups exposes the touch-optimized components of the Digit widget set.
+* The group at the top (named after the current project) lists the components in the UI directory of your project (for example, main.reel).
+* Montage provides the controllers that are part of the MontageJS framework.
+* Digit exposes the touch-optimized components of the Digit widget set.
 
 <figure>
     <img src="/images/montage-studio/ide-overview/fig06.jpg" alt="The library" style="width: 175px;">
@@ -160,7 +160,11 @@ You can minimize the groups by clicking the triangle icon in the top left of a g
 
 ## Style the Application
 
-Coming soon.
+Like most web applications, MontageJS applications use CSS for visual styling.
+
+To control the appearance and positioning of an individual component, you have to edit that component’s HTML and CSS files. Styles you want to set on a global level are stored in a separate file in the assets/style/ directory. By default, every new MontageJS project includes style.css for your global styles. However, you can add any number of additional global style sheets.
+
+For details on how to structure and apply styles, see [Styling MontageJS Applications](styling-montagejs-applications.html)
 
 
 ## Find Files Quickly

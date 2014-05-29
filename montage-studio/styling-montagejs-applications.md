@@ -27,9 +27,9 @@ Separating the structure, presentation, and behavior of user interface component
 
     Most likely, the items in this directory will not be listed in any particular hierarchical order; each component, however, corresponds to a functional area or view of your application. Determine how the components should be laid out based on your initial sketch, design comp, or prototype—for example, navigation, main content, footer, and so on.
     
-2. Style the individual components.
+2. Style individual components.
 
-    All of the components in the UI directory of your project start off with an almost blank style sheet, waiting for you to bring it to life by adding your meticulously crafted rules. The only content we pass along is the class name of the component’s root element (for example, in the case of a component named foo-bar.reel, the class name would be `FooBar`).
+    All of the components in the UI directory of your project start off with an almost blank style sheet. The only content we pass along is the class name of the component’s root element (for example, in the case of a component named foo-bar.reel, the class name would be `FooBar`).
     
     To control the appearance and positioning of an individual component, you have to edit that component’s HTML and CSS files:
     
