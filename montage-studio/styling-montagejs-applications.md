@@ -88,7 +88,7 @@ To see how the application looks at this point, click the Run button.
 
 The MontageJS framework currently does not provide traditional layout components to help position your user interface components. Nor do you have to use a special language (like MXML, for example) to lay out user interface components. Instead of using a containing element, you use CSS to lay out and align the user interface elements of your application. 
 
->**Note:** We are experimenting with some <a href="https://github.com/simurai/digit-layouts" target="_blank">starter layouts on GitHub</a>. If you're in an experimental mood, feel free to check them out.
+>**Note:** We are experimenting with some <a href="https://github.com/simurai/digit-layout" target="_blank">starter layouts on GitHub</a>. If you're in an experimental mood (or simply would like to see how we break down a basic layout), feel free to check them out.
 
 If your application targets modern browsers, you can use the flexbox layout module. Flexbox makes creating layouts for different screen sizes a lot easier and allows for greater flexibility when positioning child elements. To get started with flexbox, refer to the following resources:
 
