@@ -23,7 +23,7 @@ Montage Studio is a development environment that helps streamline the developmen
 ### UI/UX
 * Adds keyboard shortcuts for switching tabs (Control + Option + Left or Right)
 * Adds shortcut (Control + W) to close current opened file
-* Enable drag-and-drop tab reordering
+* Enables drag-and-drop tab reordering
 * Expands folder on click as opposed to clicks on the disclosure triangle
 * Adds tooltips to property names in the property inspector
 * Adds Show licenses item to Help menu
@@ -35,7 +35,7 @@ Montage Studio is a development environment that helps streamline the developmen
 ### Commit / Package Management
 * Renames work branch to montagestudio/{owner}/{branch}
 * Adds feature to merge draft work into the actual branch
-* Pushes previously uncomitted changes into recovery commit on launch
+* Pushes previously uncommitted changes into recovery commit on launch
 * Improves default commit messages and batching behavior
 * Discovers Library items from inside dependencies
 
