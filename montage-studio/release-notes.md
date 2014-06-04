@@ -76,7 +76,7 @@ The following problems are known:
 
 # Version: beta
 
-Release Date: June 4, 2014
+Release Date: May 24, 2014
 
 ## Enhancements
 
