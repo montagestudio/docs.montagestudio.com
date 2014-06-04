@@ -13,7 +13,74 @@ Product: Montage Studio
 
 Version: beta
 
-Release Date: May 12, 2014
+Release Date: June 4, 2014
+
+Montage Studio is a development environment that helps streamline the development of MontageJS applications.
+
+
+## Enhancements
+
+### UI/UX
+* Adds keyboard shortcuts for switching tabs (Control + Option + Left or Right)
+* Adds shortcut (Control + W) to close current opened file
+* Enable drag-and-drop tab reordering
+* Expands folder on click as opposed to clicks on the disclosure triangle
+* Adds tooltips to property names in the property inspector
+* Adds Show licenses item to Help menu
+- Adds 3D wireframe view and other perspectives to the flow editor
+* Improves appearance of the package manager
+* Increases contrast and legibility of user interface text
+* Improves appearance in Safari
+
+### Commit / Package Management
+* Renames work branch to montagestudio/{owner}/{branch}
+* Adds feature to merge draft work into the actual branch
+* Pushes previously uncomitted changes into recovery commit on launch
+* Improves default commit messages and batching behavior
+* Discovers Library items from inside dependencies
+
+### Other
+* Removes default content of repetition and list library items
+* Opens the live view window in a new process where possible
+* Uses a unique hash for live view URLs to allow for international user and project names
+
+## Fixes
+
+* Updates cached project list when creating a new project
+* Allows whitespace ahead of markup in plain text drop into template
+* Ensures a package's LibraryGroup is present when adding a new dependency
+* Enables save menuItem only when project is dirty
+* Ensures correct opening of files with space in file name
+* Fixes error when pressing Esc to close dialog boxes
+* Fixes build and download when build product already existed
+
+## Known Issues / Limitations
+
+Montage Studio is beta software. Please report bugs at [feedback@montagestudio.com](mailto:feedback@montagestudio.com) for performance and stability issues, data loss, missing or unimplemented features, behavioral or aesthetic issues, and feature and enhancement requests. Provide as much context as possible, including the browser and version you use, detailed steps to reproduce, and a link to your GitHub repository if possible.
+
+The following problems are known:
+
+* Preview access codes: Cannot be revoked
+* Project explorer: Cannot move files with drag and drop
+* Project explorer: Drag-and-drop file management: Problems with large files
+* DOM explorer: Cannot edit text nodes
+* Live preview/editing:
+
+    * Only available for projects using montage 0.14.3 and later (operations might fail otherwise)
+    * Undo does not work
+    * Adding an element or a component after a node with `data­-param=”*”` fails
+    * Components that haven't been loaded yet by the preview will not get the changes
+    * Adding an element or a component to a childless component doesn't work
+    * Changes to a component or element inside a Condition element that is not visible in the preview will not show
+    * Changes to a component or element of a Substitution element that is not visible in the preview will not show
+
+# Version: beta
+
+Product: Montage Studio
+
+Version: beta
+
+Release Date: June 4, 2014
 
 Montage Studio is a development environment that helps streamline the development of MontageJS applications.
 
@@ -37,8 +104,6 @@ Montage Studio is a development environment that helps streamline the developmen
 
 ## Known Issues / Limitations
 
-Montage Studio is beta software. Please report bugs at [mailto:feedback@montagestudio.com](mailto:feedback@montagestudio.com) for performance and stability issues, data loss, missing or unimplemented features, behavioral or aesthetic issues, and feature and enhancement requests. Provide as much context as possible, including the browser and version you use, detailed steps to reproduce, and a link to your GitHub repository if possible.
-
 The following problems are known:
 
 * Preview access codes: Cannot be revoked
@@ -55,7 +120,7 @@ The following problems are known:
     * Changes to a component or element inside a Condition element that is not visible in the preview will not show
     * Changes to a component or element of a Substitution element that is not visible in the preview will not show
 
-# Release Notes
+# Version: beta
 
 Release Date: May 6, 2014
 
@@ -248,5 +313,5 @@ The following problems are known:
     * Changes to a component or element of a Substitution element that is not visible in the preview will not show
 
 
-Last updated April 14, 2014
+Last updated June 4, 2014
 

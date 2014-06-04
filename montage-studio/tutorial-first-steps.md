@@ -16,7 +16,7 @@ This document will help you get up and running with Montage Studio. It explains 
 
 ## <a name="login"></a>Logging In for the First Time
 
->**Note:** Montage Studio currently works only in Google Chrome. We are working on adding support for other browsers.
+>**Note:** Montage Studio is optimized for Google Chrome. We are working on optimizing support for other browsers. If you are using Montage Studio in Safari or Firefox, we welcome your [feedback](mailto:feedback@montagestudio.com).
 
 To start using Montage Studio:
 

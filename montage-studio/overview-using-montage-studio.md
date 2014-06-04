@@ -12,6 +12,8 @@ this-page: overview-using-montage-studio
 
 >**Note:** We are in the process of finalizing this document based on the latest version of the Montage Studio beta. Sorry about the inconvenience.
 
+>Also, Montage Studio is optimized for Google Chrome. We are working on optimizing support for other browsers. If you are using Montage Studio in Safari or Firefox, we welcome your [feedback](mailto:feedback@montagestudio.com).
+
 Montage Studio makes it easier for you to assemble complex and powerful single-page web applications (SPAs) using the MontageJS framework. This guide provides a high-level introduction of the key features of Montage Studio and how they can be used to build professional-quality SPAs. For a hands-on introduction to using Montage Studio, see the [Quick Start](tutorial-simple-to-do.html) tutorial, which shows you how to assemble a simple to-do application.
       
 # Develop Applications

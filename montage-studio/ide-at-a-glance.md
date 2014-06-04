@@ -14,6 +14,8 @@ next-page: overview-using-montage-studio
 
 >**Note**: Montage Studio is beta software. Our team of engineers updates the code base on a daily basis, so some screenshots may not accurately reflect what is in the current build.
 
+>Also, Montage Studio is optimized for Google Chrome. We are working on optimizing support for other browsers. If you are using Montage Studio in Safari or Firefox, we welcome your [feedback](mailto:feedback@montagestudio.com).
+
 ## Leverage the Power of the MontageJS Framework
 
 MontageJS is an open source client-side framework for building scalable, easy-to-maintain web applications. It was built from the ground up to help solve common challenges of building complex applications and features: 
