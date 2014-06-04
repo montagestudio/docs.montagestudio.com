@@ -76,13 +76,7 @@ The following problems are known:
 
 # Version: beta
 
-Product: Montage Studio
-
-Version: beta
-
 Release Date: June 4, 2014
-
-Montage Studio is a development environment that helps streamline the development of MontageJS applications.
 
 ## Enhancements
 
