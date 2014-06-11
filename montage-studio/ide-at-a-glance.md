@@ -46,7 +46,7 @@ The Montage Studio development environment integrates component and code editing
 The component editor enables you to assemble user interface components and describe their relationships in a drag-and-drop environment. The assembled components represent a particular portion of your user interface and are stored in your project's ui directory.
 
 <figure>
-    <img src="/images/montage-studio/ide-at-a-glance/fig01a.jpg" alt="Component editor" style="width: 550px;">
+    <img src="/images/montage-studio/ide-at-a-glance/fig01a.png" alt="Component editor" style="width: 550px;">
     <figcaption>Component editor</figcaption>
 </figure>
 
@@ -55,7 +55,7 @@ The component editor enables you to assemble user interface components and descr
 The built-in text editor provides a convenient way to modify a component's HTML, CSS, or JavaScript files without leaving the Montage Studio environment. As a complement to your development workflow, you can use it to add your own code, write custom components, refactor existing components, define the look of your application, or simply edit your application's readme file. 
 
 <figure>
-    <img src="/images/montage-studio/ide-at-a-glance/fig01b.jpg" alt="Text editor" style="width: 550px;">
+    <img src="/images/montage-studio/ide-at-a-glance/fig01b.png" alt="Text editor" style="width: 550px;">
     <figcaption>Text editor</figcaption>
 </figure>
 
@@ -64,7 +64,7 @@ The built-in text editor provides a convenient way to modify a component's HTML,
 The flow editor enables you to create flow patterns that move specified content along Bézier paths (see, for example, the film strip feature in the Popcorn sample application). You can access this editing environment through the properties of the Flow component from within the component editor.
 
 <figure>
-    <img src="/images/montage-studio/ide-at-a-glance/fig01c.jpg" alt="Flow editor" style="width: 550px;">
+    <img src="/images/montage-studio/ide-at-a-glance/fig01c.png" alt="Flow editor" style="width: 550px;">
     <figcaption>Flow editor</figcaption>
 </figure>
 
@@ -82,7 +82,7 @@ With Montage Studio you can integrate WebGL content into complex applications, a
 The package manager provides a visual environment in which to edit the meta data in your project's package.json file. It also makes it easy to update a project's existing dependencies or add packages from the npm repository. 
 
 <figure>
-    <img src="/images/montage-studio/ide-at-a-glance/fig01e.jpg" alt="Dependency editor" style="width: 550px;">
+    <img src="/images/montage-studio/ide-at-a-glance/fig01e.png" alt="Package manager" style="width: 550px;">
     <figcaption>Package manager</figcaption>
 </figure>
 

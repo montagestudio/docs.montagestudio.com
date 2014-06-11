@@ -29,18 +29,18 @@ To start using Montage Studio:
         <figcaption><strong>Figure 1.</strong> The Montage Studio login screen</figcaption>
     </figure>
 
-    If you are not already logged into an active GitHub session, you will be redirected to the GitHub website and prompted to log in.
+    Unless you are already logged into an active GitHub session, you will be redirected to the GitHub website and prompted to log in.
     
-    If this is your first time using Montage Studio, GitHub will also ask you to give the application permission to access your GitHub account. To continue, click Authorize application.
+    Next, GitHub will ask you to give the application permission to access your GitHub account. To continue, click Authorize application.
     
     <figure>
         <img src="/images/montage-studio/tutorials/first-steps/fig02.png" alt="GitHub prompting for authorization" style="width: 451px;">
         <figcaption><strong>Figure 2.</strong> GitHub prompting for authorization</figcaption>
     </figure>
     
-    After logging into your Montage Studio account with GitHub, you land on the Montage Studio welcome page where you can create new MontageJS projects, access existing ones, or browse resources to help you get started.
+    After signing in, you land on the Montage Studio welcome page.
     
-3. To create a new project, click New Project, enter a name and (optional) description, and click Create.
+3. Follow the Get Started resources to familiarize yourself with Montage Studio.
 
 ## Next Steps
 
