@@ -36,7 +36,7 @@ Montage Studio unleashes the full power of MontageJS to help ease the developmen
 **Does Montage Studio support collaborative coding?**
 MontageJS promotes collaboration with its clearly defined separation of concerns. Montage Studio makes it seamless to follow MontageJS best practices. Additionally Montage Studio uses Github as its persistent storage; all of your work is always available on Github, ready for you to use in a typical git-empowered workflow. Note, however, that Montage Studio currently does not support real-time collaboration.
 
-**Can I use Montate Studio with any web browser?**
+**Can I use Montage Studio with any web browser?**
 Montage Studio currently works best in the latest version of Google Chrome on OS X, Windows, and Linux.
 
 ## <a name="gs"></a>Getting Started
