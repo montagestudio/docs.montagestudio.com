@@ -7,7 +7,7 @@ this-page: themes
 next-page: theme-digit-components
 ---
 
-# Overview: Themes
+# Overview: UI Sets
 
 The Montage framework includes three widget sets or themes for user interface components: Digit, Matte, and Native.
 
