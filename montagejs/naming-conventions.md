@@ -39,7 +39,7 @@ More specifically, the following conventions apply:
 * **Components:** All CSS classes are name-spaced with _package_ + _dash_ (for example, `montage-`, `digit-`, `matte-` and so on) and followed by the _Component_ name, which is capitalized; for example, a Button component would be `digit-Button`:
 
     ```html
-    <button data-montage-id="button" class="digit-Button">
+    <button class="digit-Button">
     ```
 
     If a component name consists of more than one word, each new word also starts with an uppercase letter, a convention commonly referred to as _upper CamelCase_ ("CamelCaps") formatting; for example, `montage-InputRange`.
