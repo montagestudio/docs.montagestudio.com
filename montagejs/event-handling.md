@@ -27,7 +27,7 @@ You use the standard `addEventListener()` method to register an event handler on
 
 * `eventType ` A string representing the event type.
 * `listener` An object that implements the Montage event listener interface, or a function to call directly.
-* `useCapture` A boolean that, if true, causes all events of the specified type to be dispatched to the registered listener before being dispatched to any other event target beneath it in the DOM tree. By default, this is property is `false`.
+* `useCapture` boolean; if true, causes all events of the specified type to be dispatched to the registered listener before being dispatched down to children targets' listeners. Default is `false`, i.e. uses **bubble** to propagate upward, opposit of **capture**.
 
 ### Montage Event Listener Interface
 The Montage event listener interface extends the [DOM Level 3 EventListener interface](http://dev.w3.org/2006/webapi/DOM-Level-3-Events/html/DOM3-Events.html#interface-EventListener) specification implemented by all modern web browsers. In the standard interface you specify an object as a “listener” object for an event type. The listener object defines an `handleEvent()` method that is invoked by the browser whenever the specified event occurs:
