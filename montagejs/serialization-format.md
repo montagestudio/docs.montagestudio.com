@@ -135,11 +135,11 @@ You can assign initial values to an object's properties in a declaration by addi
 ### Referencing DOM Elements
 You can reference DOM elements from a MontageJS declaration using a special JSON object representation. This is commonly used to assign an HTML element to a component's `element` property, or anytime you need a reference to a DOM element.
 
-To reference an element by ID, use the following JSON syntax, where _elementID_ is the ID of an element in the document that contains the serialization:
+To reference an element by ID, use the following JSON syntax, where `elementID` is the ID of an element in the same document:
 
 `{"#": "elementID"}`
 
-For example, the following block declares a Button component whose `element` property is assigned the <div> with the ID of `loginButton`:
+For example, the following template declares a `Button` component whose `element` property is assigned the `<div>` with ID of `loginButton`:
 
 ```html
 // index.html
@@ -164,7 +164,7 @@ For example, the following block declares a Button component whose `element` pro
 ### Referencing Other Objects
 Often you need to reference one serialized MontageJS object from another object in the same serialization. For instance, the serialization might declare a MontageJS button that you want to reference from the controller (or owner) object in the serialization.
 
-To reference an element by ID, use the following JSON syntax. In this example, _objectLabel_ is the label assigned to the serialized object.
+To reference an element by ID, use the following JSON syntax. In this example, `objectLabel` is the label assigned to the serialized object.
 
 `{"@": "objectLabel"}`
 
