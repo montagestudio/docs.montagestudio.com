@@ -107,7 +107,7 @@ loginBtn.addEventListener("mousedown", listenerObj);
 ```
 
 ### Event handler precedence
-The event manager will always invoke the most specific event handler. For instance, in the following example the listener object defines two event handlers, one that includes the target’s identifier string (`handleLoginBtnMousedown()`) and one that doesn’t (`handleMousedown()`). Montage will always invoke `handleLoginBtnMousedown()` as its purpose is more specific than the other.
+The event manager will always invoke the most specific event handler. For instance, in the following example the listener object defines two event handlers, one that includes the target’s identifier string (`handleLoginMousedown()`) and one that doesn’t (`handleMousedown()`). Montage will always invoke `handleLoginMousedown()` as its purpose is more specific than the other.
 
 ```js
 // Event handler precedence
@@ -116,7 +116,7 @@ listenerObj.handleMousedown = function(event) {
      // This won't get called.
      alert("Got 'mousedown' event.");
 }
-listenerObj.handleLoginbtnMousedown = function (event) {
+listenerObj.handleLoginMousedown = function (event) {
      alert("Got 'mousedown' event on event.target"); 
 }
 var loginBtn = document.querySelector("#loginBtn");
