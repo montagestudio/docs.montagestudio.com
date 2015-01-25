@@ -227,22 +227,32 @@ Next, create the main HTML document that declares the Button and Main components
 ## Data Bindings in Declarations
 You can define event listener and data bindings between components within a serialization. To better understand the binding serialization syntax, look at the underlying JavaScript method used for creating data bindings, `Object.defineBinding()`. This method takes three parameters:
 
-* The target object defining the binding.
-* The name of the target object's property that is being bound.
-* A descriptor object that specifies target path the direction and the source path.
+* The target object defining the binding
+* The name of the target object's property that is being bound
+* A descriptor object that specifies target path the direction and the source path
 
-```js
-Object.defineBinding(sourceObject, "propertyName", {
-    "<-": "property.key.path"
-});
-```
-
-You specify a component's bindings in a serialization with a "bindings" JSON object that, in turn, defines one or more JSON objects.
+You specify a component's bindings in a serialization with a `bindings` JSON object that, in turn, defines one or more JSON objects.
 
 ```json
 "bindings": {
    "propertyName": {"<-": "@targetObject.key.path.of.property"}
 }
+```
+
+Above can also be defined in JavaScript:
+
+```js
+this.defineBinding("propertyName", {
+    "<-": "targetObject.key.path.of.property"
+});
+
+// or
+
+this.defineBindings({
+    "propertyName": {
+        "<-": "targetObject.key.path.of.property"
+    }
+});
 ```
 
 The following simple example adds data bindings to a serialization. It consists of two Slider components. The first slider's value is bound to the second slider's value. By default, data bindings are bi-directional, so changes to either bound property are pushed to the corresponding property. The arrow property "<-" or "<->" indicates if the the direction of the binding is one or two way.
