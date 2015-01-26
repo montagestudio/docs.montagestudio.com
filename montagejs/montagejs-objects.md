@@ -11,9 +11,9 @@ next-page: data-binding
 
 # MontageJS Objects
 
-MontageJS provides a thin veneer over the JavaScript object model: Types are represented by constructor functions. Constructor functions have a `prototype`. The `prototype` has a `constructor`. `instanceof` and `new` work as you would expect.
+MontageJS provides a thin wrapper over the JavaScript object model. Types are represented by `constructor` functions. Constructor functions have a `prototype`. The `prototype` has a `constructor`. `instanceof` and `new` work as you would expect.
 
-For a succinct comparison, the following examples A and B are equivalent:
+For example, following A and B examples are equivalent:
 
 ### Example A: JavaScript (ECMAScript 5)
 
@@ -39,8 +39,7 @@ Object.defineProperty(Penguin.prototype, "habitat", {
     }
 });
 
-Penguin.staticMethod = function () {
-};
+Penguin.staticMethod = function () {};
 ```
 
 ### Example B: MontageJS
@@ -67,8 +66,7 @@ var Penguin = Bird.specialize({
     }
 }, {
     staticMethod: {
-        value: function () {
-        }
+        value: function () {}
     }
 });
 ```
