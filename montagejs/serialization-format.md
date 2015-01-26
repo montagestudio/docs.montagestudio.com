@@ -347,8 +347,8 @@ The following is the HTML document and component serialization. The "loginBtn" o
 </html>
 ```
 
-## JSON Formatting Rules
-MontageJS uses the browser's native JSON parsing APIs to parse the serialization block. For the browser to parse the JSON object successfully, the JSON syntax must be well-formed. If the JSON serialization contains a formatting error, MontageJS throws an error and does not attempt to deserialize the JSON object. Two common formatting concerns are:
+## Serialization Format
+Serialization must be written in valid JSON format, as MontageJS uses the browser's native JSON parsing APIs to parse the serialization block. If there are formatting errors, MontageJS throws an error and does not attempt to deserialize the JSON object. Two common formatting concerns are:
 
 * Trailing commas. A trailing comma after the last property in a JSON object or array generates runtime errors. In the following example the comma that trails the `readyState` property would generate a JSON parsing error:
 
@@ -362,4 +362,4 @@ MontageJS uses the browser's native JSON parsing APIs to parse the serialization
 
 * Matching brackets. Obviously, each open bracket must have a matching close bracket.
 
-MontageJS reports any formatting errors in the console when you run the application.
+MontageJS reports any formatting errors in the console when you run the application. For details on valid JSON formatting, please see http://www.json.org/.
