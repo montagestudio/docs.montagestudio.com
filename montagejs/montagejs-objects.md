@@ -56,6 +56,7 @@ var Penguin = Bird.specialize({
             return this.super();
         }
     },
+    _habitat: {value: null},
     habitat: {
         get: function () {
             return this._habitat;
