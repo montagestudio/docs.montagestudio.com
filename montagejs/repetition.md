@@ -9,15 +9,15 @@ next-page: substitution
 
 ---
 
-# Using the Repetition Component
+# Using the `Repetition` Component
 
-The Repetition component is used to produce a repeating group of elements based on an array of values. All elements nested inside of the Repetition element will repeat in each iteration. The content inside of a repetition is managed by a controller. You can set the Repetition component's `content` property manually, with a standard array for a simple repetition, or you can expand the component's capabilities by assigning a RangeController component to its `contentController` property.
+The `Repetition` component is used to produce a repeating group of elements based on an array of values. All elements nested inside of the `Repetition` element will repeat in each iteration. The content inside of a repetition is managed by a controller. You can set `Repetition`'s `content` property manually, with a standard array for a simple repetition, or you can expand the component's capabilities by assigning a `RangeController` component to its `contentController` property.
 
-You can use the Repetition component as a building block to repeat any number of user interface components. (The MontageJS List component, for example, uses the Repetition component to support selection management.) Use the bindable `iteration.object` template property to point to the current list item.
+You can use `Repetition` as a building block to repeat any number of user interface components. (The MontageJS List component, for example, uses `Repetition` to support selection management.) Use the bindable `iteration.object` template property to point to the current list item.
 
-## A Simple Repetition
+## A Simple `Repetition`
 
-The following example shows a simple Repetition (`items`) that produces three text items. Each iteration is associated with a corresponding item in a source collection that is populated through the Repetition component's `content` property.
+The following example shows a simple `Repetition` (`items`) that produces three text items. Each iteration is associated with a corresponding item in a source collection that is populated through `Repetition`'s `content` property.
 
 ```html
 <div data-montage-id="content" class="Content">
@@ -28,6 +28,7 @@ The following example shows a simple Repetition (`items`) that produces three te
 ```
 
 ```json
+{
     "owner": {
         "properties": {
             "element": { "#": "content" }
@@ -52,6 +53,7 @@ The following example shows a simple Repetition (`items`) that produces three te
             "classList.has('highlight')": { "<-": "@items:iteration.object.important" }
         }
     }
+}
 ```
 
 ```css
@@ -88,12 +90,12 @@ The output looks like this:
 
 View in [Mfiddle](http://montagejs.github.io/mfiddle/#!/7882151).
 
-## Using a RangeController with a Repetition
+## Using a `RangeController` with `Repetition`
 
 In this example:
 
-* The Repetition component's `contentController` property is set to be a `RangeController` for managing some content.
-* The `Text` component is a child of the Repetition and derives its `value` property from its `iteration.object` template property.
+* `Repetition`'s `contentController` property is set to be a `RangeController` for managing some content.
+* The `Text` component is a child of `Repetition` and derives its `value` property from its `iteration.object` template property.
 * Clicking the Change Content button replaces the managed content with new random content.
 
 ```html
@@ -106,42 +108,44 @@ In this example:
 ```
 
 ```json
-"owner": {
-    "properties": {
-        "element": {"#": "component"}
-    }
-},
-"repetition": {
-    "prototype": "montage/ui/repetition.reel",
-    "properties": {
-        "element": {"#": "repetition"},
-        "contentController": {"@": "rangeController"}
-    }
-},
-"rangeController": {
-    "prototype": "montage/core/range-controller"
-},
-"value": {
-    "prototype": "montage/ui/text.reel",
-    "properties": {
-        "element": {"#": "value"}
-    },
-    "bindings": {
-        "value": {"<-": "@repetition:iteration.object.quote"}
-    }
-},
-"changeButton": {
-    "prototype": "digit/ui/button.reel",
-    "properties": {
-        "element": {"#": "button"},
-        "label": "Change Content"
-    },
-    "listeners": [
-        {
-            "type": "action",
-            "listener": {"@": "owner"}
+{
+    "owner": {
+        "properties": {
+            "element": {"#": "component"}
         }
-    ]
+    },
+    "repetition": {
+        "prototype": "montage/ui/repetition.reel",
+        "properties": {
+            "element": {"#": "repetition"},
+            "contentController": {"@": "rangeController"}
+        }
+    },
+    "rangeController": {
+        "prototype": "montage/core/range-controller"
+    },
+    "value": {
+        "prototype": "montage/ui/text.reel",
+        "properties": {
+            "element": {"#": "value"}
+        },
+        "bindings": {
+            "value": {"<-": "@repetition:iteration.object.quote"}
+        }
+    },
+    "changeButton": {
+        "prototype": "digit/ui/button.reel",
+        "properties": {
+            "element": {"#": "button"},
+            "label": "Change Content"
+        },
+        "listeners": [
+            {
+                "type": "action",
+                "listener": {"@": "owner"}
+            }
+        ]
+    }
 }
 ```
 
@@ -188,15 +192,15 @@ The output looks like this:
 
 View in [Mfiddle](http://montagejs.github.io/mfiddle/#!/7883458).
 
-## Sorting and Filtering the Items in a Repetition
+## Sorting and Filtering the Items in `Repetition`
 
-To sort and filter items in a repetition you can use FRB expressions on the RangeController.
+To sort and filter items in a repetition you can use FRB expressions on the `RangeController`.
 
 * Adding or removing items from the source collection automatically updates the returned items.
 * When the value of the `filterPath` is `false`, the item will not be included in the repetition.
 * Using `sortPath` returns the items in sequential order, sorted by the value of the `property` when the path is a single property.
 
-You can also use complex expressions inside of sort and filter operations. For example, when the Repetition component's content has an index property that is a sequence of integers, you can filter out the odd numbers like this: `!(index%2)`.
+You can also use complex expressions inside of sort and filter operations. For example, when `Repetition`'s content has an index property that is a sequence of integers, you can filter out the odd numbers like this: `!(index%2)`.
 
 ```html
 <div data-montage-id="component">
@@ -210,58 +214,60 @@ You can also use complex expressions inside of sort and filter operations. For e
 ```
 
 ```json
-"owner": {
-    "properties": {
-        "element": {"#": "component"}
-    }
-},
-"repetition": {
-    "prototype": "montage/ui/repetition.reel",
-    "properties": {
-        "element": {"#": "repetition"},
-        "contentController": {"@": "rangeController"}
-    }
-},
-"rangeController": {
-    "prototype": "montage/core/range-controller"
-},
-
-"quote": {
-    "prototype": "montage/ui/text.reel",
-    "properties": {
-        "element": {"#": "quote"}
-    },
-    "bindings": {
-        "value": {"<-": "@repetition:iteration.object.quote"}
-    }
-},
-
-"filterButton": {
-    "prototype": "digit/ui/button.reel",
-    "properties": {
-        "element": {"#": "filterButton"},
-        "label": "Filter"
-    },
-    "listeners": [
-        {
-            "type": "action",
-            "listener": {"@": "owner"}
+{
+    "owner": {
+        "properties": {
+            "element": {"#": "component"}
         }
-    ]
-},
-
-"sortButton": {
-    "prototype": "digit/ui/button.reel",
-    "properties": {
-        "element": {"#": "sortButton"},
-        "label": "Sort"
     },
-    "listeners": [
-        {
-            "type": "action",
-            "listener": {"@": "owner"}
+    "repetition": {
+        "prototype": "montage/ui/repetition.reel",
+        "properties": {
+            "element": {"#": "repetition"},
+            "contentController": {"@": "rangeController"}
         }
-    ]
+    },
+    "rangeController": {
+        "prototype": "montage/core/range-controller"
+    },
+    
+    "quote": {
+        "prototype": "montage/ui/text.reel",
+        "properties": {
+            "element": {"#": "quote"}
+        },
+        "bindings": {
+            "value": {"<-": "@repetition:iteration.object.quote"}
+        }
+    },
+    
+    "filterButton": {
+        "prototype": "digit/ui/button.reel",
+        "properties": {
+            "element": {"#": "filterButton"},
+            "label": "Filter"
+        },
+        "listeners": [
+            {
+                "type": "action",
+                "listener": {"@": "owner"}
+            }
+        ]
+    },
+    
+    "sortButton": {
+        "prototype": "digit/ui/button.reel",
+        "properties": {
+            "element": {"#": "sortButton"},
+            "label": "Sort"
+        },
+        "listeners": [
+            {
+                "type": "action",
+                "listener": {"@": "owner"}
+            }
+        ]
+    }
 }
 ```
 
@@ -296,6 +302,7 @@ exports.Owner = Component.specialize({
     handleFilterButtonAction: {
         value: function () {
             var rangeController = this.templateObjects.rangeController;
+            // toggle filterPath to either filter by "important" key or not filter
             rangeController.filterPath = rangeController.filterPath ? "" : "important";
         }
     },
@@ -303,6 +310,7 @@ exports.Owner = Component.specialize({
     handleSortButtonAction: {
         value: function () {
             var rangeController = this.templateObjects.rangeController;
+            // toggle sortPath to either filter by "quote" key or not filter
             rangeController.sortPath = rangeController.sortPath ? "" : "quote" ;
         }
     }
@@ -314,11 +322,22 @@ The output looks like this:
 <iframe src="http://montagejs.github.io/mfiddle/preview/#!/7884201" style="border: 0; width: 100%; height: 150px"></iframe>
 View in [Mfiddle](http://montagejs.github.io/mfiddle/#!/7884201).
 
-## Allowing Users to Select Repetition Items
+`RangeController` uses FRB to [filter](http://documentup.com/montagejs/frb/#tutorial/filter) and [sort](http://documentup.com/montagejs/frb/#tutorial/sorted) under the hood. You can do the same to filter and sort in a binding, e.g.:
+
+```json
+{
+    "bindings": {
+        "filteredEvens": {"<-": "numbers.filter{!(%2)}"},
+        "sorted": {"<-": "numbers.sorted{}"}
+    }
+}
+```
+
+## Allowing Users to Select `Repetition` Items
 
 To allow users to select an item in a repetition:
 
-* Set the Repetition component's `isSelectionEnabled` property to `true`.
+* Set the `Repetition` component's `isSelectionEnabled` property to `true`.
 * The `selected` CSS rule is automatically applied to the selected item.
 
 Note that users could select multiple items.
@@ -334,52 +353,54 @@ Note that users could select multiple items.
 ```
 
 ```json
-"owner": {
-    "properties": {
-        "element": {"#": "component"}
-    }
-},
-"repetition": {
-    "prototype": "montage/ui/repetition.reel",
-    "properties": {
-        "element": {"#": "repetition"},
-        "isSelectionEnabled": true,
-        "contentController": {"@": "rangeController"}
-    }
-},
-"rangeController": {
-    "prototype": "montage/core/range-controller",
-    "properties": {
-        "selection": []
-    }
-},
-
-"value": {
-    "prototype": "montage/ui/text.reel",
-    "properties": {
-        "element": {"#": "value"}
+{
+    "owner": {
+        "properties": {
+            "element": {"#": "component"}
+        }
     },
-    "bindings": {
-        "value": {"<-": "@repetition:iteration.object.quote"}
+    "repetition": {
+        "prototype": "montage/ui/repetition.reel",
+        "properties": {
+            "element": {"#": "repetition"},
+            "isSelectionEnabled": true,
+            "contentController": {"@": "rangeController"}
+        }
+    },
+    "rangeController": {
+        "prototype": "montage/core/range-controller",
+        "properties": {
+            "selection": []
+        }
+    },
+    
+    "value": {
+        "prototype": "montage/ui/text.reel",
+        "properties": {
+            "element": {"#": "value"}
+        },
+        "bindings": {
+            "value": {"<-": "@repetition:iteration.object.quote"}
+        }
+    },
+    
+    "select": {
+        "prototype": "digit/ui/select.reel",
+        "properties": {
+            "element": {"#": "select"},
+            "contentController": {"@": "rangeController"},
+            "labelPropertyName": "quote"
+        }
+    },
+    "log": {
+       "prototype": "montage/ui/text.reel",
+       "properties": {
+           "element": {"#": "log"}
+       },
+       "bindings": {
+           "value": {"<-": "@owner.message"}
+       }
     }
-},
-
-"select": {
-    "prototype": "digit/ui/select.reel",
-    "properties": {
-        "element": {"#": "select"},
-        "contentController": {"@": "rangeController"},
-        "labelPropertyName": "quote"
-    }
-},
-"log": {
-   "prototype": "montage/ui/text.reel",
-   "properties": {
-       "element": {"#": "log"}
-   },
-   "bindings": {
-       "value": {"<-": "@owner.message"}
-   }
 }
 ```
 
