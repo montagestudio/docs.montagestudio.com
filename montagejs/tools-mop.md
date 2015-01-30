@@ -9,9 +9,6 @@ this-page: tools-mop
 ---
 
 # Using mop
-
->**Note:** We are currently in the process of updating our docs. This document may not be complete or fully up-to-date yet. We apologize for any inconvenience.
-
 <a href="https://github.com/montagejs/mop#montage-optimizer" target="_blank">Mop</a>  is the MontageJS application optimizer&#8212;a simple command line tool that reliably transforms an application in development into an application ready for deployment. Mop also minifies JavaScript, HTML, and CSS to help minimize the loadtime of your application. Mop supports asynchronous preloading, so an application can get its first draw out as quickly as possible.
 
 ## How mop Works
