@@ -11,9 +11,6 @@ next-page: montagejs-objects
 
 
 # MontageJS Declaration
-
->**Note:** We are currently in the process of updating our docs. This document may not be complete or fully up-to-date yet. We apologize for any inconvenience.
-
 This document explains the serialization format MontageJS uses to serialize, and later deserialize, a declaration.
 
 A declaration describes the objects, components, properties, component data bindings, and DOM relationships involved in a MontageJS application. MontageJS uses JavaScript Object Notation (JSON) as the serialization format. At runtime, MontageJS parses the JSON structure and deserializes its contents into JavaScript, which is then evaluated and executed in the browser.
