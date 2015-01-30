@@ -9,9 +9,6 @@ next-page: serialization-format
 ---
 
 # MontageJS Components
-
->**Note:** We are currently in the process of updating our docs. This document may not be complete or fully up-to-date yet. We apologize for any inconvenience.
-
 MontageJS applications consist of a model layer that handles the data and a view layer that reads from the models. Components make up the view portion of a MontageJS application. As a rule, these components are stored in the ui directory of your MontageJS application (which has the benefit that you can use any MontageJS package and easily locate the user interface components it provides).
 
 MontageJS components are encapsulated; the structure (HTML), appearance (CSS), and behavior (JavaScript) that power a user interface component are all located in the same directory, identified with a `.reel` suffix. For example, a `FooBar` component is located in the `ui` directory of your MontageJS application at `montageapp/ui/foo-bar.reel`. The `.reel` directory contains `foo-bar.css`, `foo-bar.html`, and `foo-bar.js`. Because components are self-contained, it's easy to work on, rename, or even remove an individual component without having to find bits and pieces of it scattered across directories.
