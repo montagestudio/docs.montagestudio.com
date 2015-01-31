@@ -90,7 +90,7 @@
      width: 8px;
      height: 8px;
      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABJElEQVQ4EY1SwWrCQBB1jSHQkxe/wv5ET+3FDxD8iuBBgiUJgfRQsZCL3+BXaD+iR496kRw8WLo1SfteYGEJg8nAZGbn7Xsz2V0VhmESRdFrT7A4jn2UV3AlwHWpr5RaQuBd2gDxdVVVU2Bawlnr8wOROboNmTcN9S1qL/BLE+O6FpAAu4ZJ9mVZTlC72XXmnQSCIBg5jrPBfhf+Q6KxVgGSPc/bgTCGfxVF8Yj42UmgSdZaPyVJcsjz/BkCPJvewCg1o0RO0/TMfVmWaRz8FLd3EgXukU2jPxhyXzwD13VnAOt/5timsyHbURTA3X/gAfltZAqJv0CAIoxtJk7QRrJxe4IHdP21wXs5Xuc3cXuCI9bXro4rfKOAPQHXnQ3vYIGJb/8a4nf/5LC60AAAAABJRU5ErkJggg==) no-repeat center;
-     background-size: 8px;    
+     background-size: 8px;
 }
 
 .sidenav .sidenav-mainLink {
@@ -250,8 +250,12 @@
 
 /* Inline */
 
-code {
-    color: hsl(0, 0%, 50%);
+:not(pre) > code {
+    color: hsl(0, 0%, 35%);
+    background-color: rgba(0,0,0,0.04);
+    border-radius: 3px;
+    font-size: 0.85em;
+    padding: .15em;
 }
 
 /* Block: highlight = GitHub MD, prettyprint = JSDoc  */
@@ -348,7 +352,7 @@ code[data-lang]:after {
 }
 
 @media all and (max-width: 700px) {
-    
+
     .sidenav {
         float: none;
         width: 100%;
@@ -370,28 +374,28 @@ code[data-lang]:after {
         background: hsl(0,0%,100%);
         -webkit-tap-highlight-color: transparent;
     }
-    
+
     .sidenav summary:active {
         background-color: hsl(0, 0%, 90%);
     }
-    
+
     section.withSidenav {
         padding: 10px;
     }
-    
+
     .withSidenav .main {
         width: 100%;
     }
-    
+
     .withSidenav .content {
         padding: 1px 20px 20px 20px;
     }
-    
+
     .sidenav {
         display: none;
     }
-    
-    
+
+
     .sidenav-toggleLabel {
         cursor: pointer;
         width: 100%;
@@ -409,29 +413,29 @@ code[data-lang]:after {
         background: #fff url(../images/toggle-icons.svg) no-repeat right top;
         background-size: 48px auto;
     }
-    
+
     .sidenav-toggleLabel:active {
         background-color: hsl(0, 0%, 90%);
     }
-    
+
     .sidenav-toggle:checked + .sidenav-toggleLabel {
         color: hsl(0,0%,66%);
         background-position: right -48px;
     }
-    
+
     .sidenav-toggle:checked + .sidenav-toggleLabel:before { content: "Close"; }
-    
-    
+
+
     .sidenav-toggle:checked ~ .sidenav {
         display: block;
     }
-    
+
     .sidenav-toggleLabel {
         display: block;
         margin-bottom: 10px;
     }
-    
+
     .sidenav-toggleLabel:before { content: "Sub Menu"; }
-    
+
 }
 
