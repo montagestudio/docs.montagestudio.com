@@ -3,25 +3,18 @@ layout: default
 docs: true
 ---
 
-    <section id="docs" class="docs withSidenav">
-        
-        <div class="wrapper">
-            
-            {% include sidenav-toggle.html %}
-            {% include sidenav-docs.html %}
-            
-            <div class="main">
-            
-                <a href="https://github.com/montagestudio/docs.montagestudio.com/tree/master/{{page.path}}" class="edit">Source</a>
-                
-                <article class="content">
-                    {{content}}
-                </article>
+<section id="docs" class="docs withSidenav">
+    <div class="wrapper">
+        {% include sidenav-toggle.html %}
+        {% include sidenav-docs.html %}
 
+        <div class="main">
+            <a href="https://github.com/montagestudio/docs.montagestudio.com/tree/master/{{page.path}}"
+               class="edit">Improve this Doc</a>
 
-            </div>
-            
+            <article class="content">
+                {{content}}
+            </article>
         </div>
-        
-    </section>
-    
+    </div>
+</section>
