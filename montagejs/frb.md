@@ -1,13 +1,20 @@
 ---
 layout: docs
-title: FAQ for the FRB Transition
+title: FAQ - FRB Transition
+
+this-page: frb
+
 ---
 
-# FAQ for the FRB Transition
+FAQ - FRB Transition
+===
 
-## How do I observe a path from my object for changes after they've happened?
+For more details on FRB, please see its [docs](documentup.com/montagejs/frb/).
+
+**How do I observe a `path` from my object for changes *after* they've happened?**
 
 Before
+
 ```javascript
 myObject.addPropertyChangeListener("path", handler)
 ```
@@ -15,12 +22,15 @@ myObject.addPropertyChangeListener("path", handler)
 When the path changes ```myObject.handleChange(notification)``` will be called
 
 After
+
 ```javascript
 aMontageObject.addPathChangeListener("path", handler, opt_methodName)
-```
-or
-```javascript
-Montage.addPathChangeListener.call(myObject, "path", handler, opt_methodName)
+
+// or
+
+Montage.addPathChangeListener.call(
+    myObject, "path", handler, opt_methodName
+)
 ```
 
 `aMontageObject` is an object that has `Montage` in its prototype chain: `Montage.isPrototypeOf(aMontageObject) === true` holds.
@@ -31,25 +41,30 @@ When the value at the path changes (not the content of the value), the first fun
 * `handler.handlePathChange`
 * `handler`
 
-## How do I observe a path from my object for changes before they happen?
+**How do I observe a `path` from my object for changes *before* they happen?**
 
 Before
+
 ```javascript
 myObject.addPropertyChangeListener("path", handler, true)
 ```
 
 After
+
 ```javascript
 aMontageObject.addPathChangeListener("path", handler, "handleMethodName", true)
-```
-or
-```javascript
-Montage.addPathChangeListener.call(myObject, "path", handler, "handleMethodName", true)
+
+// or
+
+Montage.addPathChangeListener.call(
+    myObject, "path", handler, "handleMethodName", true
+)
 ```
 
-## How do I bind a property of my object to a property of another object such that they are always the same?
+**How do I bind a property of my object to a property of another object so they are always the same?**
 
 Before
+
 ```javascript
 Object.defineBinding(myObject, "myProperty", {
     boundObject: anotherObject,
@@ -58,18 +73,26 @@ Object.defineBinding(myObject, "myProperty", {
 ```
 
 After
+
 ```javascript
-aMontageObject.defineBinding("myProperty", {"<->": "foo.bar", source: anotherObject});
-```
-or
-```javascript
+aMontageObject.defineBinding("myProperty", {
+    "<->": "foo.bar",
+    source: anotherObject
+});
+
+// or
+
 var Bindings = require("montage/core/bindings").Bindings;
-Bindings.defineBinding(myObject, "myProperty", {"<->": "foo.bar", source: anotherObject});
+Bindings.defineBinding(myObject, "myProperty", {
+    "<->": "foo.bar",
+    source: anotherObject
+});
 ```
 
-## How do I bind a property of my object to a property of another object such that changes to myProperty do not affect the otherObject's property?
+**How do I bind a property of my object to a property of another object such that changes to myProperty do not affect the otherObject's property?**
 
 Before
+
 ```javascript
 Object.defineBinding(myObject, "myProperty", {
     boundObject: anotherObject,
@@ -79,53 +102,77 @@ Object.defineBinding(myObject, "myProperty", {
 ```
 
 After
+
 ```javascript
-aMontageObject.defineBinding("myProperty", {"<-": "foo.bar", source: anotherObject});
-```
-or
-```javascript
+aMontageObject.defineBinding("myProperty", {
+    "<-": "foo.bar",
+    source: anotherObject
+});
+
+// or
+
 var Bindings = require("montage/core/bindings").Bindings;
-Bindings.defineBinding(myObject, "myProperty", {"<-": "foo.bar", source: anotherObject});
+Bindings.defineBinding(myObject, "myProperty", {
+    "<-": "foo.bar",
+    source: anotherObject
+});
 ```
 
-## How do I watch changes to an array at the end of a property path so I know what's added and removed?
+**How do I watch changes to an array at the end of a property path so I know what's added and removed?**
 
 ```javascript
-aMontageObject.addRangeAtPathChangeListener("array", handler, "handleArrayRangeChange");
-```
-or
-```javascript
-Montage.addRangeAtPathChangeListener(myObject, "array", handler, "handleArrayRangeChange");
+aMontageObject.addRangeAtPathChangeListener(
+    "array", handler, "handleArrayRangeChange"
+);
+
+// or
+
+Montage.addRangeAtPathChangeListener(
+    myObject, "array", handler, "handleArrayRangeChange"
+);
 ```
 
 Calls `handler.handleArrayRangeChange` with `plus`, `minus`, and `index`.
 
-## How do I change a private value and dispatch the change on an affected public property?
+**How do I change a private value and dispatch the change on an affected public property?**
+
 Before
+
 ```javascript
-myObject.dispatchPropertyChange("affectedProperty", "anotherAffectProperty", function () {
-    myObject._underlyingProperty = newValue;
-});
+myObject.dispatchPropertyChange(
+    "affectedProperty",
+    "anotherAffectProperty",
+    function () {myObject._underlyingProperty = newValue}
+);
 ```
 
 After
+
 ```javascript
-myObject.dispatchBeforeOwnPropertyChange("affectedProperty", myObject.affectedProperty);
-myObject.dispatchBeforeOwnPropertyChange("anotherAffectedPropert", myObject.anotherAffectedProperty);
+myObject.dispatchBeforeOwnPropertyChange(
+    "affectedProperty", myObject.affectedProperty
+);
+
+myObject.dispatchBeforeOwnPropertyChange(
+    "anotherAffectedProperty", myObject.anotherAffectedProperty
+);
+
 myObject._underlyingProperty = newValue;
-myObject.dispatchOwnPropertyChange("affectedProperty", myObject.affectedProperty);
-myObject.dispatchOwnPropertyChange("anotherAffectedProperty", myObject.anotherAffectedProperty);
+
+myObject.dispatchOwnPropertyChange(
+    "affectedProperty", myObject.affectedProperty
+);
+
+myObject.dispatchOwnPropertyChange(
+    "anotherAffectedProperty", myObject.anotherAffectedProperty
+);
 ```
 
-## How do I make a checkbox automatically uncheck if it becomes disabled
+**How do I make a checkbox automatically uncheck if it becomes disabled**
 
-```
-checked <- checked && enabled
-```
+Bind `checked` flag 1-way via `<-` to flags `checked && enabled`, which will cause the checkbox to retain its state when it is enabled, but unchecks when it becomes disabled.
 
-This will cause the checkbox to retain its state when it is enabled, but unchecks when it becomes disabled.
-
-## How do I make a "select all" or "select none" checkboxes
+**How do I make a "select all" or "select none" checkboxes**
 
 The checkbox needs to be useful both for observing whether all the checkboxes are currently checked, none of them are checked, and also for forcing them all to become checked or unchecked.
 
@@ -136,7 +183,7 @@ checkboxes.every{!checked} <-> noneChecked
 
 FRB supports binding to "every" and "some" blocks.
 
-### But what if the checkboxes can be disabled?
+**But what if the checkboxes can be disabled?**
 
 ```
 checkbox.checked <- checked && enabled

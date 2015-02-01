@@ -3,9 +3,12 @@
 layout: docs
 title: Naming Conventions
 
+this-page: naming-conventions
+
 ---
 
-# Naming Conventions
+Naming Conventions
+===
 
 This document summarizes MontageJS-specific naming conventions and recommendations for modules, components, and CSS classes. Please refer to these conventions when creating MontageJS packages or contributing to the MontageJS framework.
 
@@ -15,7 +18,7 @@ This document summarizes MontageJS-specific naming conventions and recommendatio
 All module and package names are written in lowercase letters or numbers and delimited by dashes (for example, `child-package`).
 
 ## Components (.reel directories)
-User interface components are stored in the ui directory of your MontageJS project and identified by a .reel extension. 
+User interface components are stored in the ui directory of your MontageJS project and identified by a .reel extension.
 
 The following naming conventions apply for `.reel` directories:
 
@@ -43,7 +46,7 @@ More specifically, the following conventions apply:
     ```
 
     If a component name consists of more than one word, each new word also starts with an uppercase letter, a convention commonly referred to as _upper CamelCase_ ("CamelCaps") formatting; for example, `montage-InputRange`.
-    
+
 * **Composite components:** For components with children follow these conventions:
     * If a component has a child element, the child's name is written in lowercase (to signal the distinction between parent and child) and follows the component’s name separated by a dash; for example, `digit-Slider-thumb`.
     * If a child element consists of concatenated words, its name is written in lower camelCase; for example, `digit-Slider-thumbWithSpikyEars`.
