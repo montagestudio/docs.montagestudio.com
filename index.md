@@ -17,6 +17,7 @@ Learn to build and deploy web applications using MontageJS and Montage Studio. T
 * [Concepts](montagejs/draw-cycle.html)
 * [UI Sets](montagejs/themes.html)
 * [UI Containers](montagejs/repetition.html)
+* [API](api)
 * [FAQ](montagejs/faq.html)
 
 ## [Montage Studio](montage-studio/)
