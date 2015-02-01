@@ -12,29 +12,33 @@ title: 404 - MontageJS
                 <h1 class="title-404">404</h1>
             </aside>
             <div class="col col-1-2">
-                <p>Ooops... looks like the page you were looking for was either moved or removed from our site.</p>
-                <p>Please return to our <a href="http://montagejs.org/index.html">home page</a> or use the links above to find the information you want.</p>
-                <p>You can also <a href="/community/contact-us/">contact us</a> with further questions.</p>
+                <p>Oops... looks like the page you were looking for was either moved or removed from our site.</p>
+                <p>Please return to our
+                    <a href="http://montagestudio.com">home page</a>
+                   or use the links above to find the information you want.</p>
+                <p>You can also
+                    <a href="http://montagestudio.com/company/contact-us/">contact us</a>
+                   with further questions.</p>
             </div>
         </div>
     </div>
 </section>
 
 <script type="text/javascript">
-    
+
     var path = window.location.pathname;
-    
+
     // sets the title so we know which URLs are broken
     document.title = "404 - " + path;
-    
+
     // Old API Docs
     var oldApiDocMatcher = /\/apis\/([^.]*).html/
     var oldApiDocMatch = path.match(oldApiDocMatcher);
-    
+
     if (oldApiDocMatch) {
         window.location = "/api/" + oldApiDocMatch[1] + ".html";
     }
-    
+
     // Redirect List
     var redirects = {
         '/docs/Component-draw-cycle.html': '/docs/draw-cycle.html',
@@ -58,9 +62,9 @@ title: 404 - MontageJS
         '/mfiddle': 'http://montagejs.github.io/mfiddle/',
         '/mfiddle/': 'http://montagejs.github.io/mfiddle/'
     };
-    
+
     if (redirects.hasOwnProperty(path)) {
         window.location = redirects[path];
     }
-        
+
 </script>
