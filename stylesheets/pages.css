@@ -132,21 +132,6 @@
 
 /* Content ----------------------------------------- */
 
-.content :target {
-    position: relative;
-    display: block;
-    padding-top: 80px;
-}
-
-.content :target:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    margin-left: 50%;
-    height: 60px;
-    border-left: 2px solid #eee;
-}
-
 .content img {
     max-width: 100%;
 }
