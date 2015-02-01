@@ -6,7 +6,7 @@
 
 @import "normalize.css";
 @import "pages.css";
-@import "solarized.css";
+@import "solarized.css"; /* pygments syntax highlighting */
 @import url("//cloud.typography.com/6210892/625004/css/fonts.css");
 @import url("//montagestudio.com/assets/styles/header-footer.css");
 
@@ -15,7 +15,7 @@
 body {
     margin: 0;
     color: hsl(0,0%,25%);
-    font: 13px/1.231 'Gotham A', 'Gotham B', sans-serif;
+    font-family: 'Gotham A', 'Gotham B', sans-serif;
     background-color: hsl(50,10%,96%);
 }
 
@@ -44,6 +44,12 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-overflow-scrolling: touch;
 }
 
+pre, code {
+    font-family: "Menlo", "Consolas", monospace;
+}
+
+pre {font-size: 0.95em;}
+
 /* Sections ----------------------------------------- */
 
 section {
@@ -57,8 +63,7 @@ section {
     position: relative;
     max-width: 960px;
     margin: 0 auto;
-    font-size: 16px;
-    line-height: 1.5em;
+    line-height: 1.2em;
 }
 
 .title {
