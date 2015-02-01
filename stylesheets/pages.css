@@ -63,11 +63,6 @@
     color: hsl(0,0%,30%);
 }
 
-.sidenav a:visited {
-    color: hsl(0,0%,60%);
-    border-color: hsl(0,0%,85%);
-}
-
 .sidenav a:hover {
     color: hsl(0, 0%, 20%);
     background-color: hsl(210,75%,92%);
@@ -150,18 +145,6 @@
     margin-left: 50%;
     height: 60px;
     border-left: 2px solid #eee;
-}
-
-.content a:visited {
-    color: hsl(220, 50%, 70%);
-}
-
-.content a:visited:hover {
-    color: hsl(220, 50%, 80%);
-}
-
-.content a:visited:hover {
-    color: hsl(220, 50%, 60%);
 }
 
 .content img {
