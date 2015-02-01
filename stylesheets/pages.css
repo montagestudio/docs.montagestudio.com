@@ -225,27 +225,6 @@
     border-width: 1px 0 0 1px;
 }
 
-
-
-
-
-/* Paging ----------------------------------------- */
-
-.paging {
-    padding-top: 2em;
-    text-align: center;
-}
-
-.paging--prev:before {
-    content: "←";
-    margin-right: 4px;
-}
-.paging--next:after {
-    content: "→";
-    margin-left: 4px;
-}
-
-
 /* Code ----------------------------------------- */
 
 /* Inline */
