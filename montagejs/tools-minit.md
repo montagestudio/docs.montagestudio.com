@@ -29,15 +29,15 @@ Run the following commands from within your project directory:
     $ minit create:component -n component-name
     ```
 
-    This generates a new UI component *component-name.reel* in the `ui` directory of the current application directory. It contains default HTML, CSS, and JS files for your component.
+    This generates a new UI component `component-name.reel` in the `ui` directory of the current application directory. It contains default HTML, CSS, and JS files for your component.
 
-* To set up a local on-demand server for previewing the current project in the browser:
+* To spin up a local server for previewing the current project in the browser:
 
     ```sh
     $ minit serve &
     ```
 
-    >**Note:** The ampersand `&` flag ensures that you don't have to open a second Terminal window while working on your project.
+    The ampersand `&` flag ensures that you don't have to open a second Terminal window while working on your project. To close the server, run `minit` again then hit `Ctrl C`.
 
 * To update to the latest version of `minit`:
 
