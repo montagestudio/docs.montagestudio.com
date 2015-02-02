@@ -1,25 +1,24 @@
-This is the repo for the [docs.montagestudio.com](http://docs.montagestudio.com) site.
+MontageJS & Montage Studio Docs
+===
+
 
 ## Contributing
-If you find any bugs or want to contribute, feel free to create an issue or send a pull request.
 
-## Jekyll
-The site uses Jekyll for templates and includes. You can find more infos on [jekyllrb.com](http://jekyllrb.com/).
+For contribution to non-API MontageJS docs & Montage Studio docs, please submit a PR against a `.md` file in this repo.
 
-### Install
-First you need Ruby >= 2.0.0 and RubyGems, see [details](http://jekyllrb.com/docs/installation/). Once installed run:
+For contribution to MontageJS API docs, please submit a PR against [MontageJS repo](https://github.com/montagejs/montage) using [JSDoc](http://usejsdoc.org/).
 
-    gem install jekyll
 
-Then `cd` into your montagejs.org directory and run:
+## Setting up Local Jekyll Environment
 
-    jekyll serve
+The docs site uses [Jekyll](http://jekyllrb.com/) and is automatically built/deployed via [GitHub Pages](https://help.github.com/articles/using-jekyll-with-pages/).
 
-Now you should see the site at `http://localhost:4000`. You can close the server with `Ctrl c`.
+First you need [Ruby](https://www.ruby-lang.org) >= 2.0.0, RubyGems (comes with Ruby >= 1.9) and [Bundler](bundler.io). Once installed, clone this repo then run `bundle install` in repo directory. This will get you a local environment in sync with [GitHub Pages' dependencies](https://pages.github.com/versions/).
 
-Changes will be automatically watched and rebuilt.
+Now run `bundle exec jekyll serve`, then browse to `http://localhost:4000`. Changed files will be automatically watched and rebuilt. You can close the server with `Ctrl c`.
 
-## Building and deploying
+
+## Building MontageJS API Docs
 
 > TODO: Update README _build script since the home example and apps are not part of this repo anymore. Only the API.
 
@@ -52,6 +51,7 @@ $ _build/build.js all
 ```
 
 The resulting files go into a directory, e.g. `api`, then Jekyll compiles any file with [YAML front matter](http://jekyllrb.com/docs/frontmatter/), or puts any file without YAML front matter verbatim in `_site`.
+
 
 ### API docs
 
