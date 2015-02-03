@@ -9,6 +9,9 @@ this-page: gestures-composers
 Gestures & Composers
 ===
 
+* TOC
+{:toc}
+
 Montage provides a [`Composer` API](https://github.com/montagejs/montage/tree/master/composer) for supporting commonly used gestures. Typically `DOM` events are device specific such as click or touch events. The `Composer` API abstracts these into higher order events such as press, so that you can focus on handling a specific action rather than the multiple ways that action could be carried out. Montage currently supports below actions:
 
 - press / long press
@@ -19,16 +22,16 @@ Montage provides a [`Composer` API](https://github.com/montagejs/montage/tree/ma
 ## `PressComposer`
 The Press Composer handles both press and long press gestures. These abstract mouse clicks and touch events into a common event. The events that are handled include:
 
-### `pressStart`
+**`pressStart`**
 This is the event that is dispatched when the `mousedown` or `touchstart` events are fired.
 
-### `press`
+**`press`**
 After the `pressStart` event is fired, the `press` event will fire when releasing the mouse button (`mouseup` event) or lifting your finger (`touchend` event). This will also fire when a `longPress` event is fired, so can be cancelled with a `pressCancel` event.
 
-### `longPress`
+**`longPress`**
 A `press` gesture becomes a `longPress` gesture when it is active for longer than the specified `longPressTimeout` duration. To avoid a `press` event firing after a `longPress` event, it should be cancelled in the `longPressHandler` by calling the `cancelPress()` method.
 
-### `pressCancel`
+**`pressCancel`**
 This is fired when the `press` event is cancelled. This can either be because it was manually cancelled by the developer by calling `cancelPress()`, another element claims the event pointer, or is automatically cancelled due to:
 
 - Browser firing the touch cancel event

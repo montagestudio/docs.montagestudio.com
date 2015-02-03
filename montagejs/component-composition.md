@@ -10,6 +10,10 @@ this-page: component-composition
 Component Composition
 ===
 
+* TOC
+{:toc}
+
+
 The way to create and compose the UI for your application using MontageJS is primarily by expressing composition in the markup of your templates.
 
 ## `Repetition`

@@ -8,7 +8,12 @@ redirect_from: "/docs/Exploring-components.html"
 
 ---
 
-# MontageJS Components
+MontageJS Components
+===
+
+* TOC
+{:toc}
+
 MontageJS applications consist of a model layer that handles the data and a view layer that reads from the models. Components make up the view portion of a MontageJS application. As a rule, these components are stored in the ui directory of your MontageJS application (which has the benefit that you can use any MontageJS package and easily locate the user interface components it provides).
 
 MontageJS components are encapsulated; the structure (HTML), appearance (CSS), and behavior (JavaScript) that power a user interface component are all located in the same directory, identified with a `.reel` suffix. For example, a `FooBar` component is located in the `ui` directory of your MontageJS application at `montageapp/ui/foo-bar.reel`. The `.reel` directory contains `foo-bar.css`, `foo-bar.html`, and `foo-bar.js`. Because components are self-contained, it's easy to work on, rename, or even remove an individual component without having to find bits and pieces of it scattered across directories.
@@ -23,7 +28,7 @@ Let's take a closer look at some key features of the HTML, CSS, and JS files inc
 ### HTML
 The HTML template is a complete and valid HTML document. The head section includes the component's CSS file and a script block, which contains all serialized MontageJS objects in the document.
 
-```html
+~~~html
 <link rel="stylesheet" type="text/css" href="foo-bar.css">
 <script type="text/montage-serialization">
 {
@@ -34,7 +39,7 @@ The HTML template is a complete and valid HTML document. The head section includ
     }
 }
 </script>
-```
+~~~
 
 For more details on the serialization format refer to [MontageJS Serialization Format](http://montagejs.org/docs/serialization-format.html). For now, note the following:
 
