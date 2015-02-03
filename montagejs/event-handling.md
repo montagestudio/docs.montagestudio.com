@@ -3,9 +3,9 @@
 layout: docs
 title: MontageJS Event Handling
 
-prev-page: data-binding
 this-page: event-handling
-next-page: draw-cycle
+
+redirect_from: "/docs/Event-handling.html"
 
 ---
 
@@ -51,12 +51,12 @@ The following pseudo-code shows how the event manager determines what method to 
 methodToInvoke = "";
 identifier = eventTarget.identifier;
 if (event.phase == "bubble" ) {
-   methodToInvoke = "handle" + 
+   methodToInvoke = "handle" +
                      (identifier ? identifier.toCapitalized() : "") +
                      eventType.toCapitalized();
 } else {
-   methodtoInvoke = "capture" + 
-                    (identifier ? identifier.toCapitalized() : "") + 
+   methodtoInvoke = "capture" +
+                    (identifier ? identifier.toCapitalized() : "") +
                      eventType.toCapitalized();
 }
 ```
@@ -79,7 +79,7 @@ loginBtn.addEventListener("mousedown", listenerObj);
 To listen for the same event during its capture phase, you pass `true` as the third parameter to `addEventListener()`, and change the name of the event handler from `handleMousedown()` to `captureMousedown()`.
 
 ```js
-// Listening for capture events on same element 
+// Listening for capture events on same element
 var listenerObj = {};
 listenerObj.captureMousedown = function(event) {
      alert("Got 'mousedown' event during bubble phase.");
@@ -114,7 +114,7 @@ listenerObj.handleMousedown = function(event) {
      alert("Got 'mousedown' event.");
 }
 listenerObj.handleLoginMousedown = function (event) {
-     alert("Got 'mousedown' event on event.target"); 
+     alert("Got 'mousedown' event on event.target");
 }
 var loginBtn = document.querySelector("#loginBtn");
 loginBtn.identifier = "login";

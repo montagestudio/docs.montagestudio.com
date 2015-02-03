@@ -4,7 +4,10 @@ layout: docs
 title: Set Up MontageJS Development - Getting Started Part 1
 
 this-page: montagejs-setup
-next-page: hello-montagejs
+
+redirect_from:
+    - /docs/getting-started.html
+    - /docs/Quick-Start.html
 
 ---
 

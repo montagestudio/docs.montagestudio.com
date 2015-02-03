@@ -3,9 +3,9 @@
 layout: docs
 title: MontageJS Declaration
 
-prev-page: exploring-components
 this-page: serialization-format
-next-page: montagejs-objects
+
+redirect_from: /docs/Montage-serialization-format.html
 
 ---
 

@@ -3,8 +3,9 @@
 layout: docs
 title: Native - MontageJS Theme
 
-prev-page: theme-matte-components
 this-page: theme-native-components
+
+redirect_from: /docs/native-components.html
 
 ---
 
@@ -50,13 +51,13 @@ The Native set is not included in the default project template. To use the Nativ
     ```
     cd yourprojectfolder
     ```
-    
+
 2. At the prompt enter:
 
     ```
     $ npm install native@latest --save
     ```
-    
+
     The `--save` flag ensures that the native package is automatically added as a dependency to the package.json file of your application code.
 
 ## Using the Native Theme

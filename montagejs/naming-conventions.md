@@ -5,6 +5,8 @@ title: Naming Conventions
 
 this-page: naming-conventions
 
+redirect_from: /docs/Naming-Conventions.html
+
 ---
 
 Naming Conventions

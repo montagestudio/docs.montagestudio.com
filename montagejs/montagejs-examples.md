@@ -5,6 +5,11 @@ title: MontageJS Examples
 
 this-page: montagejs-examples
 
+redirect_from:
+    - /docs/examples.html
+    - /docs/kitchen-sink/
+    - /docs/kitchen-sink.html
+
 ---
 
 

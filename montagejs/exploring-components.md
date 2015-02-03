@@ -2,9 +2,9 @@
 layout: docs
 title: MontageJS Components
 
-prev-page: montagejs-examples
 this-page: exploring-components
-next-page: serialization-format
+
+redirect_from: "/docs/Exploring-components.html"
 
 ---
 
@@ -69,7 +69,7 @@ Note also that the class name is a CamelCase version of the `.reel` directory na
 ### JS
 A component typically inherits from the base class of all Montage components, [`Component`](https://github.com/montagejs/montage/blob/master/ui/component.js), via the `.specialize()` method. Its first argument provides a way to define the properties (methods and values) that will be available on the instances of the new component type being created. The second argument provides a way to define properties of the type itself, they are accessible directly on the type (e.g., `Component.method()`).
 
-> **Deprecation warning:** `Montage.create(Component, {})` is deprecated, use `Component.specialize({})` instead.
+> **Deprecation warning:** `Montage.create(Component, {})` is deprecated as of [`v0.13.0`](https://github.com/montagejs/montage/blob/master/CHANGES.md#v0130), use `Component.specialize({})` instead.
 
 ```javascript
 exports.FooBar = Component.specialize(/** @lends FooBar# */ {

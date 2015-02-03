@@ -3,8 +3,9 @@
 layout: docs
 title: MontageJS Draw Cycle
 
-prev-page: event-handling
 this-page: draw-cycle
+
+redirect_from: "/docs/Component-draw-cycle.html"
 
 ---
 

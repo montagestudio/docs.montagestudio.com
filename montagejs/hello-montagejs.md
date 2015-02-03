@@ -3,8 +3,9 @@
 layout: docs
 title: Hello MontageJS - Getting Started Part 2
 
-prev-page: montagejs-setup
 this-page: hello-montagejs
+
+redirect_from: "/docs/Hello-Montage.html"
 
 ---
 
@@ -30,7 +31,7 @@ Be sure you have set up MontageJS development as instructed in [Getting Started 
 >**Note:** If you have already created a new project and are using minit to serve your project, you can skip this section and continue with "MontageJS Basics."
 
 1. Open a Terminal window or Command Prompt and type:
-    
+
     ```
     $ minit create:app -n temp-converter
     ```
@@ -41,7 +42,7 @@ Be sure you have set up MontageJS development as instructed in [Getting Started 
     $ cd temp-converter
     $ minit serve &
     ```
-    
+
 3. Point your browser to http://localhost:8083/.
 
 You should see a blank page with a version reference in the upper left corner of the page.
@@ -57,9 +58,9 @@ MontageJS application development is divided into a development (assembling the 
 
 When you assemble a MontageJS application, you modify the HTML documents (AKA templates in MontageJS speak) of the components in the ui directory. To change the look and feel of components, you modify the CSS files.
 
-Figure 3 identifies the components that make up the view layer of the application that you are about to build. Main.reel is the main user interface component of the application. Think of it as the MontageJS equivalent of a website's index page or the principal screen of your single-page application: it can contain any number of subcomponents for the presentation and behavior of an application. The Converter component encapsulates the functionality of the application. The sole purpose of the Version component is to inform you of the MontageJS version you are using (it can be easily removed from the application). 
+Figure 3 identifies the components that make up the view layer of the application that you are about to build. Main.reel is the main user interface component of the application. Think of it as the MontageJS equivalent of a website's index page or the principal screen of your single-page application: it can contain any number of subcomponents for the presentation and behavior of an application. The Converter component encapsulates the functionality of the application. The sole purpose of the Version component is to inform you of the MontageJS version you are using (it can be easily removed from the application).
 
->**Note:** Although you could conceivably build an entire application using only the Main component, we recommend you assemble MontageJS applications out of individual components (just like you build a website out of individual pages)—to make the most of what MontageJS has to offer, including a modular architecture and encapsulated and reusable components. 
+>**Note:** Although you could conceivably build an entire application using only the Main component, we recommend you assemble MontageJS applications out of individual components (just like you build a website out of individual pages)—to make the most of what MontageJS has to offer, including a modular architecture and encapsulated and reusable components.
 
 <figure>
 	<img src="/images/docs/hello-montagejs/fig03.jpg" alt="The components of the application." style="width: 493px;">
@@ -79,7 +80,7 @@ Follow these steps to add a new component to your project:
     ```
 
     This places a new component, converter.reel, in the ui directory of your project. To incorporate this component in your application, you need to declare it in the Main component.
-   
+
 2. In your project folder, open ui/main.reel/main.html.
 
 3. Between the `<body>` tags, before `<div data-montage-id="montageVersion"></div>`, add the following markup:
@@ -90,7 +91,7 @@ Follow these steps to add a new component to your project:
     ```
 
     The `data-montage-id` <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#custom-data-attribute" target="_blank">custom data attribute</a> is used to identify elements in the markup whose behavior you want to control. The objects that control these elements are located within the script block in the `head` area of the HTML document.
-    
+
 4. Within the `<script>` tags, after the owner object (and before the montageVersion object), add the following snippet (note the trailing comma; you need it to separate objects from each other or your application will not load):
 
     ```json
@@ -101,9 +102,9 @@ Follow these steps to add a new component to your project:
         }
     },
     ```
-    
+
     This declares an instance of the Converter component (`"prototype": "ui/converter.reel"`) with an object label of `tempConverter`. Its `element` property corresponds to the associated HTML element, which you added in the previous step (`<div data-montage-id="tempConverter"></div>`).
-    
+
 5. Save the changes and refresh your browser.
 
 If all went well, you should see the title of the application and the Montage version number (see Figure 4). Since you have not specified any content in the Converter component yet, it remains invisible. (If you only get a blank page, verify that the objects between the `<script>` tags are separated by commas.)
@@ -184,21 +185,21 @@ First, update the markup of the HTML elements you want to control with a `data-m
                 "element": {"#": "converter"}
             }
         },
-        
+
         "celsiusNumberfield": {
             "prototype": "digit/ui/number-field.reel",
             "properties": {
                 "element": {"#": "celsius"}
              }
         },
-        
+
         "fahrenheitNumberfield": {
             "prototype": "digit/ui/number-field.reel",
             "properties": {
                 "element": {"#": "fahrenheit"}
             }
         },
-        
+
         "thermometer": {
             "prototype": "digit/ui/slider.reel",
             "properties": {
@@ -212,7 +213,7 @@ First, update the markup of the HTML elements you want to control with a `data-m
     Things to note:
     * The labels `celsiusNumberfield`, `fahrenheitNumberfield`, and `thermometer` identify the serialized objects that control the behavior of the corresponding HTML elements.
     * `prototype` identifies the directory that contains the code of that object's prototype (here you are using components from the mobile-optimized Digit widget set that is part of the default MontageJS project).
-    * `properties` lists the values assigned to the properties of the current object. 
+    * `properties` lists the values assigned to the properties of the current object.
     * The `element` property maps to the DOM elements you want to control, identified with the `data-montage-id` of `celsius`, `fahrenheit`, and `thermometer`.
     * The `axis` property replaces the horizontal slider with a vertical one.
 
@@ -229,7 +230,7 @@ Next, you will bind together the properties of the input fields and slider.
 
 ## Add Bindings
 
-MontageJS uses functional reactive bindings (FRB), which you declare in the objects you want to bind together. 
+MontageJS uses functional reactive bindings (FRB), which you declare in the objects you want to bind together.
 
 1. To help speed things up, replace the contents between the existing `<script>` tags with the following:
 
@@ -240,7 +241,7 @@ MontageJS uses functional reactive bindings (FRB), which you declare in the obje
                 "element": {"#": "converter"}
             }
         },
-        
+
         "celsiusNumberfield": {
             "prototype": "digit/ui/number-field.reel",
             "properties": {
@@ -250,7 +251,7 @@ MontageJS uses functional reactive bindings (FRB), which you declare in the obje
                 "value": {"<->": "(+@fahrenheitNumberfield.value - 32) / 1.8"}
             }
         },
-        
+
         "fahrenheitNumberfield": {
             "prototype": "digit/ui/number-field.reel",
             "properties": {
@@ -258,7 +259,7 @@ MontageJS uses functional reactive bindings (FRB), which you declare in the obje
                 "value": "32"
             }
         },
-        
+
         "thermometer": {
             "prototype": "digit/ui/slider.reel",
             "properties": {
@@ -282,7 +283,7 @@ Now, when you modify any control, the others adjust accordingly. Give it a try. 
 
 ## Make It Pretty
 
-At this point, the application works as planned but doesn't look as designed (see Figure 1). This can be easily changed by adding some CSS rules. 
+At this point, the application works as planned but doesn't look as designed (see Figure 1). This can be easily changed by adding some CSS rules.
 
 ### Style the Converter Component
 
@@ -309,7 +310,7 @@ First, you need to specify CSS class names in the markup of your component.
     Things to note:
     * Added class names to control the layout and appearance of the input fields (`Numbers`), labels (`Label`), slider (`Slider`), and slider knob (`Slider-handle`).
     * Set minimum (`-13`) and maximum (`122`) values allowed in the Fahrenheit field (the slider has two-way bindings with the Fahrenheit field, hence this setting is bound to the Fahrenheit field).
-    
+
    Next you need to add the CSS rules to the component's style sheet.
 
 2. Open ui/converter.reel/converter.css in your MontageJS project.
@@ -325,38 +326,38 @@ First, you need to specify CSS class names in the markup of your component.
         background-color: hsl(0,0%,98%);
         box-shadow: inset 0px 1px 2px 1px hsla(0,0%,100%,1), 0px 2px 5px hsla(0,0%,0%,.1);
     }
-    
+
     .Converter:after {
         content: "";
         display: block;
         clear: both;
     }
-    
+
     .Numbers {
         float: left;
         border: none;
         margin: 0;
         padding: 0;
     }
-    
+
     .Label {
         margin: 15px 0;
         line-height: 40px;
         font-size: 1.2em;
     }
-    
+
     .Label .digit-NumberField-input {
         width: 70px;
         vertical-align: middle;
     }
-    
+
     .Slider {
         float: right;
         margin: 0;
         padding: 8px 4px;
         border-radius: 100px;
         border: none;
-        box-shadow: inset 0px 1px 3px hsla(0,0%,0%,.3), 
+        box-shadow: inset 0px 1px 3px hsla(0,0%,0%,.3),
                     0 2px 0 hsla(0,0%,100%,1);
         background: -webkit-linear-gradient(bottom,
                     hsl(200,100%,50%),
@@ -371,11 +372,11 @@ First, you need to specify CSS class names in the markup of your component.
                     hsl(0,100%,80%) 70%,
                     hsl(0,100%,50%) );
     }
-    
+
     .Slider-handle.digit-Slider.montage-Slider--vertical {
         height: 120px;
     }
-    
+
     .Slider-handle.digit-Slider {
         background-color: transparent;
         border-color: transparent;
@@ -405,7 +406,7 @@ Next, add some CSS rules to control the appearance of the Main component.
         <footer data-montage-id="montageVersion"></footer>
     </div>
     ```
-    
+
     Things to note:
     * The `<h1>` element has been updated with the  `data-montage-id` attribute of `title`.
     * The string "Temperature Converter" has been removed from the markup; the value of the `<h1>` element is now declared by the title object in the serialization (see the following step).
@@ -432,24 +433,24 @@ Next, add some CSS rules to control the appearance of the Main component.
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-    
+
     body {
         margin: 0;
         font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
         color: hsl(0,0%,60%);
         background-color: hsl(0,0%,95%);
     }
-    
+
     .Main {
         padding: 3em 1em;
         text-align: center;
     }
-    
+
     .Title {
         font-size: 1.3em;
     }
     ```
-    
+
 4. Save the changes and refresh your browser.
 
 If all went well, your application should resemble the one shown in Figure 8: a functional and pretty temperature converter.
@@ -474,17 +475,17 @@ Mop is not part of the default MontageJS starter project; you have to install it
     ```
     $ sudo npm install -g mop
     ```
-    
+
     This installs mop globally so you can use it in the current and all future projects.
-    
+
     >**Note:** npm uses `sudo` to make command line utilities such as mop available system wide.
-    
+
 2. Switch (`cd`) to the temp-converter project directory.
-    
+
 3. At the prompt enter `mop` and press Return.
 
     Mop analyzes the code dependencies, identifies the modules the application uses, and then adds a builds directory to your project directory that contains a minified version of your application.
- 
+
 4. Open the builds directory, double-click the symlink, and then double-click index.html.
 
     This opens the temperature converter application in the browser—without minit doubling as your on-demand web server (note the file URL in the browser's address bar).

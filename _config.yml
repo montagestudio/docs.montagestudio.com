@@ -1,5 +1,19 @@
 markdown: redcarpet
 redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+    extensions: [
+        "no_intra_emphasis",
+        "autolink",
+        "tables",
+        "with_toc_data",
+        "smart",
+        "strikethrough",
+        "underline"
+    ]
 
 exclude: [_build]
+
+gems:
+    # https://github.com/jekyll/jekyll-redirect-from
+    # case insensitive
+    - jekyll-redirect-from
+    - jekyll-sitemap

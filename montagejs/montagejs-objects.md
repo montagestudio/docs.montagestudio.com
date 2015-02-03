@@ -3,9 +3,9 @@
 layout: docs
 title: MontageJS Objects
 
-prev-page: serialization-format
 this-page: montagejs-objects
-next-page: data-binding
+
+redirect_from: /docs/montage-objects.html
 
 ---
 

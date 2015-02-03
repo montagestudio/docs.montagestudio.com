@@ -3,9 +3,9 @@
 layout: docs
 title: MontageJS Data Binding
 
-prev-page: montagejs-objects
 this-page: data-binding
-next-page: event-handling
+
+redirect_from: "/docs/Data-binding.html"
 
 ---
 
