@@ -36,7 +36,7 @@ function sourceLink(path, line, label) {
 }
 
 function headCommitish(path) {
-    return '<a href="' + githubUrlPrefix + '/tree/' + env.opts.commitish + '">' + env.opts.commitish.slice(0, 7) + '</a>';
+    return '<a href="' + githubUrlPrefix + '/tree/' + env.opts.commitish + '">' + env.opts.commitish + '</a>';
 }
 
 function hashToLink(doclet, hash) {
