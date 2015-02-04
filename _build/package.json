@@ -1,12 +1,11 @@
 {
-  "name": "montagejs.org-build",
+  "name": "docs.montagestudio.com",
   "version":"2.0.0",
   "private": true,
   "dependencies": {
-    "shelljs": "~0.1.4",
-    "q": "~0.9.6",
-    "npm": "~1.3.11",
-    "jsdoc": "3.2.0-dev",
+    "shelljs": "~0.3",
+    "q": "~1.1",
+    "jsdoc": "~3.2.0",
     "optimist": "~0.6.0"
   }
 }
