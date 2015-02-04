@@ -1,35 +1,3 @@
-/*html*/
-/*{*/
-    /*overflow: auto;*/
-    /*background-color: #fff;*/
-/*}*/
-
-/*body*/
-/*{*/
-	/*font: 14px "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;*/
-	/*line-height: 130%;*/
-	/*color: #000;*/
-	/*background-color: #fff;*/
-/*}*/
-
-/*a {*/
-    /*color: #444;*/
-/*}*/
-
-/*a:visited {*/
-    /*color: #444;*/
-/*}*/
-
-/*a:active {*/
-    /*color: #444;*/
-/*}*/
-
-/*header*/
-/*{*/
-	/*display: block;*/
-	/*padding: 6px 4px;*/
-/*}*/
-
 .class-description {
     font-style: italic;
 	font-size: 130%;
@@ -42,13 +10,6 @@
     float: left;
     width: 100%;
 }
-
-/*section {
-	display: block;
-	padding: 12px 24px;
-    border-bottom: 1px solid #ccc;
-    margin-right: 240px;
-}*/
 
 .variation {
     display: none;
@@ -68,14 +29,6 @@
 	font-weight: lighter;
 }
 
-
-/*footer {
-    display: block;
-    padding: 6px;
-    margin-top: 12px;
-    font-style: italic;
-    font-size: 90%;
-}*/
 
 h1
 {
@@ -149,9 +102,6 @@ h6
     color: #aaa;
 }
 
-.name, .signature {
-}
-
 .details { margin-top: 14px; }
 .details dt { width:100px; float:left; border-left: 2px solid #DDD; padding-left: 10px;  padding-top: 6px; }
 .details dd { margin-left: 50px; }
@@ -171,30 +121,6 @@ h6
 	margin: 0;
 }
 
-/*.prettyprint*/
-/*{*/
-	/*border: 1px solid #ddd;*/
-	/*width: 80%;*/
-    /*overflow: auto;*/
-/*}*/
-
-/*.prettyprint.source {*/
-    /*width: inherit;*/
-/*}*/
-
-/*.prettyprint code*/
-/*{*/
-	/*font-family: Consolas, 'Lucida Console', Monaco, monospace;*/
-	/*font-size: 100%;*/
-	/*line-height: 18px;*/
-	/*display: block;*/
-	/*padding: 4px 12px;*/
-	/*margin: 0;*/
-	/*background-color: #fff;*/
-	/*color: #000;*/
-	/*border-left: 3px #ddd solid;*/
-/*}*/
-
 .params, .props
 {
 	border-spacing: 0;
@@ -204,7 +130,6 @@ h6
 
 .params .name, .props .name, .name code {
 	color: #A35A00;
-	font-size: 100%;
 }
 
 .params td, .params th, .props td, .props th
