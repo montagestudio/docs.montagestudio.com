@@ -9,15 +9,19 @@ redirect_from: "/docs/Event-handling.html"
 
 ---
 
-# Event Handling
+Event Handling
+===
+
 Montage includes a custom event manager that transparently wraps the browser’s native event handling mechanism. This enables several features in Montage, including simpler event handling code, property change observing, and results in better performing web applications.
 
 ## About Event Delegation
+
 Montage uses _event delegation_ to manage event handling and dispatching. With event delegation, instead of installing event listeners on every element that may dispatch an event, a single event listener is installed on a parent element that listens for and responds to events that target its children. This is made possible by the standard event “flow” defined by the [DOM Level 3 Event Specification](http://www.w3.org/TR/DOM-Level-3-Events/#event-flow).
 
 Event delegation provides several benefits. For instance, application performance is improved since the number of event listeners is reduced. In a Montage application there is only one “native” event listener, which acts as the primary event responder and dispatcher of all events. It also enables Montage applications to observe changes to property values and arrays.
 
 ## Creating Event Handlers
+
 You use the standard `addEventListener()` method to register an event handler on a target object. In Montage, the `target` object can be any JavaScript object, not just a DOM element.
 
 `target.addEventListener(eventType, listener[, useCapture]);`
@@ -39,32 +43,18 @@ var loginBtn = document.querySelector("#loginBtn");
 loginBtn.addEventListener("mousedown", listenerObj);
 ```
 
-Montage extends this interface to make it more useful for developers. Instead of calling the same `handleEvent()` method on the listener object, Montage infers the name of the specific event handler to call from three pieces of information:
+Montage extends this interface to make it more useful for developers. Instead of calling the same `handleEvent()` method on the listener object, Montage infers the name of the specific event handler method to call from below information:
 
-* The event’s phase (bubble or capture)
-* The event name
-* Optionally, a string identifier property on the target element or object
+* The event’s phase, prefixed by `handle` for bubble, `capture` for capture
+* The event name, e.g. `action`
+* The Monrage component's name
+* Optionally, a string `identifier` property on the target element or object, which overrides component's name
 
-The following pseudo-code shows how the event manager determines what method to call on the listener object:
-
-```js
-methodToInvoke = "";
-identifier = eventTarget.identifier;
-if (event.phase == "bubble" ) {
-   methodToInvoke = "handle" +
-                     (identifier ? identifier.toCapitalized() : "") +
-                     eventType.toCapitalized();
-} else {
-   methodtoInvoke = "capture" +
-                    (identifier ? identifier.toCapitalized() : "") +
-                     eventType.toCapitalized();
-}
-```
-
-The easiest way to understand how this works is to look at some examples.
+E.g. to handle a click event during bubble phase for a component named `FooComponent` without an `identifier` property on `FooComponent`, Montage will invoke the `handleFooComponentClick()` method on the listener object. If we define `identifier` as `bar`, Montage will invoke `handleBarClick()`. Note the method name will be automatically lowerCamelCased.
 
 ### Examples
-The following code is almost identical to the previous example (without Montage), except that the handler method is named `handleMousedown()` instead of `handleEvent()`. This method will be invoked automatically by the event manager when the `mousedown` event occurs on `loginBtn`, but only during the event’s bubble phase.
+
+The following code is almost identical to the previous example without Montage, except that the handler method is named `handleMousedown()` instead of `handleEvent()`. This method will be invoked automatically by the event manager when the `mousedown` event occurs on `loginBtn`, but only during the event’s bubble phase.
 
 ```js
 // Listening for mousedown event during bubble phase
