@@ -1,18 +1,21 @@
 ---
-
 layout: docs
 title: Digit - MontageJS Theme
 
-prev-page: themes
 this-page: theme-digit-components
-next-page: theme-matte-components
-
 ---
 
+Digit Theme
+===
 
-# Digit Theme
+* TOC
+{:toc}
 
-Digit is a touch-optimized component set for use with tablets and mobile phones. You can choose from three themes: flat, light, and dark.
+Digit is a touch-optimized component set for use with tablets and mobile phones. You can choose from below by setting `data-montage-skin="light"`:
+
+- `wireframe`
+- `light`
+- `dark`
 
 ## Overview
 The following list provides an overview of the existing Digit components.
@@ -33,8 +36,8 @@ The following list provides an overview of the existing Digit components.
 ## Available Components
 The following list summarizes the UI components that are currently part of the Digit widget set:
 
-Component | Description 
------------- | ------------- 
+Component | Description
+------------ | -------------
 <a href="https://github.com/montagejs/digit/tree/master/ui/badge.reel" target="_blank">Badge</a> |  Provides badge metadata functionality.
 <a href="https://github.com/montagejs/digit/tree/master/ui/button.reel" target="_blank">Button</a> | Provides button functionality.
 <a href="https://github.com/montagejs/digit/tree/master/ui/checkbox.reel" target="_blank">Checkbox</a> | Provides checkbox (multichoice) functionality.
@@ -44,26 +47,26 @@ Component | Description
 <a href="https://github.com/montagejs/digit/tree/master/ui/number-field.reel" target="_blank">NumberField</a> | Provides functionality for entering a number in a text field. This typically includes a spinner control attached to the text field.
 <a href="https://github.com/montagejs/digit/tree/master/ui/radio-button.reel" target="_blank">RadioButton</a> | Provides radio button (single option) functionality.
 <a href="https://github.com/montagejs/digit/tree/master/ui/select.reel" target="_blank">Select</a> | Provides drop-down list functionality.
-<a href="https://github.com/montagejs/digit/tree/master/ui/slider.reel" target="_blank">Slider</a> | Provides slider functionality. 
+<a href="https://github.com/montagejs/digit/tree/master/ui/slider.reel" target="_blank">Slider</a> | Provides slider functionality.
 <a href="https://github.com/montagejs/digit/tree/master/ui/text-area.reel" target="_blank">TextArea</a> | Provides functionality for an expandable multiline text field.
 <a href="https://github.com/montagejs/digit/tree/master/ui/text-field.reel" target="_blank">TextField</a> | Provides functionality for a single-line text field.
 <a href="https://github.com/montagejs/digit/tree/master/ui/text.reel" target="_blank">Text</a> | Provides functionality for adding styled text.
-<a href="https://github.com/montagejs/digit/tree/master/ui/title.reel" target="_blank">Title</a> | Provides functionality for adding a styled Title element. 
+<a href="https://github.com/montagejs/digit/tree/master/ui/title.reel" target="_blank">Title</a> | Provides functionality for adding a styled Title element.
 <a href="https://github.com/montagejs/digit/tree/master/ui/toggle-switch.reel" target="_blank">ToggleSwitch</a> | Provides toggle functionality.
 
 ## Updating Digit
 Digit is part of the default application template. The theme is still under development. To ensure you are using the latest version of digit, follow these steps:
 
-1. Use your command line tool to switch to your project directory.
+Use your command line tool to switch to your project directory.
 
-    ```
-    cd yourprojectfolder
-    ```
-    
-2. At the prompt, enter:
+```sh
+cd yourprojectfolder
+```
 
-    ```
-    npm install digit@latest --save
-    ```
-    
-    The `--save` flag ensures that the digit package is automatically added as a dependency to the package.json file of your application code.
+At the prompt, enter:
+
+```sh
+npm install digit@latest --save
+```
+
+The `--save` flag ensures that the digit package is automatically added as a dependency to the package.json file of your application code.
