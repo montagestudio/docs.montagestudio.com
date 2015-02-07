@@ -1,10 +1,7 @@
 ---
-
 layout: landing
 title: Home - Montage Studio Documentation
-
 this-page: index
-
 ---
 
 Learn to build and deploy web applications using MontageJS and Montage Studio. This documentation site is organized into two sections: Guides that familiarize you with the MontageJS client-side framework and guides that describe how to assemble MontageJS applications using the cloud-based Montage Studio development environment.
@@ -17,7 +14,7 @@ Learn to build and deploy web applications using MontageJS and Montage Studio. T
 * [Concepts](montagejs/draw-cycle.html)
 * [UI Sets](montagejs/themes.html)
 * [UI Containers](montagejs/repetition.html)
-* [API](api)
+* [API Reference](api)
 * [FAQ](montagejs/faq.html)
 
 ## [Montage Studio](montage-studio/)
