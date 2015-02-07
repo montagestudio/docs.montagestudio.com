@@ -11,86 +11,86 @@ title: "TrimConverter - MontageJS API"
 
 <div class="main">
     <article class="content">
-    	
+
 
 
 
 <header>
     <h2>
-        
+
         TrimConverter
-        
-        
+
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/converter/trim-converter.js#L25">source</a></span>
-        
+
     </h2>
-    
+
         <div class="class-description"><p>Trims a string of white space.</p></div>
-    
+
 </header>
 
 <article>
-    
+
     <div class="container-overview">
-    
 
-    
-        
+
+
+
 <dt>
-    
 
-    
+
+
 </dt>
 <dd>
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Example</h5>
-        
+
         <p class="code-caption">Removes leading and trailing white space from a string.</p>
-    
+
     <pre class="prettyprint"><code>var Converter= require("./converter").Converter,
 TrimConverter = require("./converter").TrimConverter;
 var str = "      Hello World     ";
@@ -98,285 +98,285 @@ var trimConverter = new TrimConverter();
 console.log("After trim: " + trimConverter.convert(str));
 // After trim: Hello World</code></pre>
 
-    
+
 </dd>
 
-    
+
     </div>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
-            
+
 <dt>
-    
+
     <h4 class="name" id="convert">
         convert<span class="signature">(v)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/converter/trim-converter.js#L53">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/converter/trim-converter.js#L53">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Trims the provided string and returns the new string.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>v</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The string to trim.</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
-        
+
+
+
+
             <h5>
                 Returns:
-                
+
             </h5>
-            
+
                 <div class="param-desc">
                     <p>this._convert(v)</p>
                 </div>
-            
-        
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="revert">
         revert<span class="signature">(v)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/converter/trim-converter.js#L63">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/converter/trim-converter.js#L63">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Reverts the conversion.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>v</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The string to revert.</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
-        
+
+
+
+
             <h5>
                 Returns:
-                
+
             </h5>
-            
+
                 <div class="param-desc">
                     <p>this._convert(v)</p>
                 </div>
-            
-        
-    
 
-    
+
+
+
+
 </dd>
 
         </dl>
-    
 
-    
 
-    
+
+
+
 
     <p class="generated-from">Generated from <a href="https://github.com/montagejs/montage/tree/v0.14.14">v0.14.14</a></p>
 </article>
@@ -386,7 +386,7 @@ console.log("After trim: " + trimConverter.convert(str));
 
 
     </article>
-    {% include comments.html %}
+
 </div>
 
 <script>

@@ -11,445 +11,445 @@ title: "External: Function - MontageJS API"
 
 <div class="main">
     <article class="content">
-    	
+
 
 
 
 <header>
     <h2>
-        
+
         Function
-        
-        
+
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/extras/function.js#L3">source</a></span>
-        
+
     </h2>
-    
+
 </header>
 
 <article>
-    
+
     <div class="container-overview">
-    
 
-    
-        
 
-        
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-        
-    
+
+
     </div>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
-            
+
 <dt>
-    
+
     <h4 class="name" id="by">
         by<span class="signature">(relation, compare)</span><span class="type-signature"> &rarr; {Function}</span> <span class="type-signature">&lt;constructor> </span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/extras/function.js#L43">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/extras/function.js#L43">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>A utility for creating a comparator function for a particular aspect of a
 figurative class of objects.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>relation</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Function</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>A function that accepts a value and returns a
 corresponding value to use as a representative when sorting that object.</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>compare</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Function</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>an alternate comparator for comparing the
 represented values.  The default is <code>Object.compare</code>, which
 does a deep, type-sensitive, polymorphic comparison.</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
-        
+
+
+
+
             <h5>
                 Returns:
-                
+
                     <span class="return-type">
 <span class="param-type">Function</span>
 
 </span>
-                
+
             </h5>
-            
+
                 <div class="param-desc">
                     <p>a comparator that has been annotated with
 <code>by</code> and <code>compare</code> properties so
 <code>Array#sorted</code> can perform a transform that reduces the need to
 call <code>by</code> on each sorted object to just once.</p>
                 </div>
-            
-        
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="identity">
         identity<span class="signature">(any)</span><span class="type-signature"> &rarr; {Any}</span> <span class="type-signature">&lt;constructor> </span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/extras/function.js#L13">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/extras/function.js#L13">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>A utility to reduce unnecessary allocations of <code>function (x) {return x}</code> in
  its many colorful but ultimately wasteful parameter name variations.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>any</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Any</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>value</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
-        
+
+
+
+
             <h5>
                 Returns:
-                
+
                     <span class="return-type">
 <span class="param-type">Any</span>
 
 </span>
-                
+
             </h5>
-            
+
                 <div class="param-desc">
                     <p>that value</p>
                 </div>
-            
-        
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="noop">
         noop<span class="signature">()</span><span class="type-signature"></span> <span class="type-signature">&lt;constructor> </span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/extras/function.js#L29">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/extras/function.js#L29">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>A utility to reduce unnecessary allocations of <code>function () {}</code>
 in its many colorful variations.  It does nothing and thus makes a suitable
 default in some circumstances.</p>
     </div>
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
         </dl>
-    
 
-    
 
-    
+
+
+
 
     <p class="generated-from">Generated from <a href="https://github.com/montagejs/montage/tree/v0.14.14">v0.14.14</a></p>
 </article>
@@ -459,7 +459,7 @@ default in some circumstances.</p>
 
 
     </article>
-    {% include comments.html %}
+
 </div>
 
 <script>

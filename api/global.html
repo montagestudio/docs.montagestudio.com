@@ -11,729 +11,729 @@ title: "Global - MontageJS API"
 
 <div class="main">
     <article class="content">
-    	
+
 
 
 
 <header>
     <h2>
-        
-        
-        
-        
+
+
+
+
     </h2>
-    
+
 </header>
 
 <article>
-    
+
     <div class="container-overview">
-    
 
-    
-        
 
-        
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-        
-    
+
+
     </div>
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
         <h3 class="subsection-title">Properties</h3>
 
         <dl>
-            
+
 <dt>
     <h4 class="name" id="determinate">
         determinate<span class="type-signature"> :boolean</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/promise-controller.js#L92">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Whether <code>promise</code> is in a determinate progress sate, meaning that it has
 provided a <code>progress</code> ratio with its most recent progress event.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="error">
         error<span class="type-signature"> :Error</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/promise-controller.js#L108">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>The error from the promise, if it was rejected.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="fulfilled">
         fulfilled<span class="type-signature"> :boolean</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/promise-controller.js#L79">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Whether <code>promise</code> is in a fulfilled state, with a <code>value</code>.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="ok">
         ok<span class="type-signature"></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/request.js#L98">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Makes an XHR request and only resolves the promise if the response status
 is 2xx, otherwise it is rejected. The rejected Error object has a <code>response</code>
 property containing the response.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="pending">
         pending<span class="type-signature"> :boolean</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/promise-controller.js#L73">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Whether <code>promise</code> is in a pending state, in progress.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="progress">
         progress<span class="type-signature"></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/promise-controller.js#L97">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>The last known progress value emitted by the promise.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="progressState">
         progressState<span class="type-signature"> :string</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/promise-controller.js#L67">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>One of &quot;determinate&quot;, &quot;indeterminate&quot;, &quot;fulfilled&quot;, &quot;rejected&quot;.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="promise">
         promise<span class="type-signature"> :Promise</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/promise-controller.js#L55">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>The promise whose state is interesting.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="rejected">
         rejected<span class="type-signature"> :boolean</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/promise-controller.js#L85">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Whether <code>promise</code> is in a rejected state, with a <code>error</code>.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="state">
         state<span class="type-signature"> :string</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/promise-controller.js#L61">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>One of &quot;pending&quot;, &quot;fulfilled&quot;, &quot;rejected&quot;.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="">
         <span class="type-signature"></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/request.js#L21">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Makes an XHR request.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
         <h5>Example</h5>
-        
+
     <pre class="prettyprint"><code>request("http://example.com")</code></pre>
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="value">
         value<span class="type-signature"></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/promise-controller.js#L102">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>The fulfillment value of the promise, if any.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
         </dl>
-    
 
-    
 
-    
+
+
+
         <h3 class="subsection-title">Type Definitions</h3>
 
         <dl>
-                
+
 <dt>
-    
+
     <h4 class="name" id="delegateWillMergeObjectWithLabel">
         delegateWillMergeObjectWithLabel<span class="signature">(label, newLabel)</span><span class="type-signature"> &rarr; {string|<a href="global.html#">undefined</a>}</span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/serialization/serialization.js#L219">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/serialization/serialization.js#L219">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>This delegate method is called when merging an object from serialization2
 into serialization1. It allows the delegate to change how the object is
@@ -750,125 +750,125 @@ merged.
 By returning a label that does not exist in both serializations the
 object will be merged into serialization2 with this new label instead.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>label</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The object label.</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>newLabel</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The new label generated by the collision
                 resolver in case of collision.</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
-        
+
+
+
+
             <h5>
                 Returns:
-                
+
                     <span class="return-type">
 <span class="param-type">string</span>
 |
@@ -876,23 +876,23 @@ object will be merged into serialization2 with this new label instead.</p>
 <span class="param-type"><a href="global.html#">undefined</a></span>
 
 </span>
-                
+
             </h5>
-            
+
                 <div class="param-desc">
                     <p>the new label for this object.</p>
                 </div>
-            
-        
-    
 
-    
+
+
+
+
 </dd>
 
             </dl>
-    
 
-    
+
+
 
     <p class="generated-from">Generated from <a href="https://github.com/montagejs/montage/tree/v0.14.14">v0.14.14</a></p>
 </article>
@@ -902,7 +902,7 @@ object will be merged into serialization2 with this new label instead.</p>
 
 
     </article>
-    {% include comments.html %}
+
 </div>
 
 <script>

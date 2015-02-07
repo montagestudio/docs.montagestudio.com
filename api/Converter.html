@@ -11,40 +11,40 @@ title: "Converter - MontageJS API"
 
 <div class="main">
     <article class="content">
-    	
+
 
 
 
 <header>
     <h2>
-        
+
         Converter
-        
-        
+
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/converter/converter.js#L60">source</a></span>
-        
+
     </h2>
-    
+
         <div class="class-description"><p>An abstract type for converters, objects that can convert and
 optionally revert values between domains, like strings and numbers.</p></div>
-    
+
 </header>
 
 <article>
-    
+
     <div class="container-overview">
-    
 
-    
-        
+
+
+
 <dt>
-    
 
-    
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Converts and optionally reverts values between two domains. The converter
 interface consists of two methods:</p>
@@ -53,279 +53,279 @@ interface consists of two methods:</p>
 <li><code>revert(output)</code>: optional, converts output back to input</li>
 </ul>
     </div>
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
-    
+
     </div>
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
         <h3 class="subsection-title">Properties</h3>
 
         <dl>
-            
+
 <dt>
     <h4 class="name" id="allowPartialConversion">
         allowPartialConversion<span class="type-signature"> :boolean</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/converter/converter.js#L78">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Specifies whether the converter allows partial conversion.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
 	<tr>
 	    <th class="details-header tag-default">Default Value:</th>
 	    <td class="details-content tag-default"><ul class="dummy"><li>true</li></ul></td>
 	</tr>
-	
 
-    
 
-    
 
-    
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
         </dl>
-    
 
-    
+
+
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
-            
+
 <dt>
-    
+
     <h4 class="name" id="convert">
         convert<span class="signature">()</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/converter/converter.js#L87">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/converter/converter.js#L87">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Converts values from the input domain into the output range.</p>
     </div>
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
 	<tr>
 	    <th class="details-header tag-default">Default Value:</th>
 	    <td class="details-content tag-default"><ul class="dummy"><li>null</li></ul></td>
 	</tr>
-	
 
-    
 
-    
 
-    
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="revert">
         revert<span class="signature">()</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/converter/converter.js#L99">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/converter/converter.js#L99">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Optionally, reverts values from the output range, back into the input
 range. This may not be possible with high fidelity depending on the
 relationship between these domains.</p>
     </div>
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
 	<tr>
 	    <th class="details-header tag-default">Default Value:</th>
 	    <td class="details-content tag-default"><ul class="dummy"><li>null</li></ul></td>
 	</tr>
-	
 
-    
 
-    
 
-    
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
         </dl>
-    
 
-    
 
-    
+
+
+
 
     <p class="generated-from">Generated from <a href="https://github.com/montagejs/montage/tree/v0.14.14">v0.14.14</a></p>
 </article>
@@ -335,7 +335,7 @@ relationship between these domains.</p>
 
 
     </article>
-    {% include comments.html %}
+
 </div>
 
 <script>

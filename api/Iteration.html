@@ -11,37 +11,37 @@ title: "Iteration - MontageJS API"
 
 <div class="main">
     <article class="content">
-    	
+
 
 
 
 <header>
     <h2>
-        
+
         Iteration
-        
-        
+
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/ui/repetition.reel/repetition.js#L23">source</a></span>
-        
+
     </h2>
-    
+
 </header>
 
 <article>
-    
+
     <div class="container-overview">
-    
 
-    
-        
+
+
+
 <dt>
-    
 
-    
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>A reusable view-model for each iteration of a repetition.  Each iteration
 corresponds to a value from the <a href="Repetition.html#contentController">Repetition#contentController</a>.
@@ -49,295 +49,295 @@ When an iteration is drawn, it is tied to the corresponding controller-model
 that carries which object the iteration is coupled to, and whether it is
 selected.</p>
     </div>
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
-    
+
     </div>
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
         <h3 class="subsection-title">Properties</h3>
 
         <dl>
-            
 
-        
-            
+
+
+
 <dt>
     <h4 class="name" id="active">
         active<span class="type-signature"> :boolean</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/ui/repetition.reel/repetition.js#L102">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Whether this iteration should be highlighted.  It might be highlighted
 because the user is touching it, or because it is under some other user
 cursor as in an autocomplete popdown where the arrow keys manipulate the
 active iteration.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="index">
         index<span class="type-signature"> :number</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/ui/repetition.reel/repetition.js#L86">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>The position of this iteration within the content controller, and within
 the document immediately after the repetition has drawn.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="isDirty">
         isDirty<span class="type-signature"></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/ui/repetition.reel/repetition.js#L120">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Set when the contents of the iteration no longer match their template.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="object">
         object<span class="type-signature"> :Object</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/ui/repetition.reel/repetition.js#L55">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>The corresponding content for this iteration.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="selected">
         selected<span class="type-signature"> :boolean</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/ui/repetition.reel/repetition.js#L65">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Whether the content for this iteration is selected.  This property is
 bound bidirectionally to whether every element on the document for the
@@ -345,49 +345,49 @@ corresponding drawn iteration has the <code>selected</code> CSS class (synchroni
 on draw), and whether the <a href="Iteration.html#object">object</a> is in the
 <code>contentController.selection</code> collection.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
         </dl>
-    
 
-    
 
-    
 
-    
+
+
+
+
 
     <p class="generated-from">Generated from <a href="https://github.com/montagejs/montage/tree/v0.14.14">v0.14.14</a></p>
 </article>
@@ -397,7 +397,7 @@ on draw), and whether the <a href="Iteration.html#object">object</a> is in the
 
 
     </article>
-    {% include comments.html %}
+
 </div>
 
 <script>

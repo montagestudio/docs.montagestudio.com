@@ -11,39 +11,39 @@ title: "Application - MontageJS API"
 
 <div class="main">
     <article class="content">
-    	
+
 
 
 
 <header>
     <h2>
-        
+
         Application
-        
-        
+
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L21">source</a></span>
-        
+
     </h2>
-    
+
 </header>
 
 <article>
-    
+
         <p>Specializes <a href="Target.html">Target</a> </p>
-    
+
     <div class="container-overview">
-    
 
-    
-        
+
+
+
 <dt>
-    
 
-    
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>The application is a singleton, it initially loads and oversees the running
 program.
@@ -53,80 +53,80 @@ The behavior of the application can be modified by implementing a delegate
 It is also possible to subclass the application by specifying an
 <code>applicationPrototype&quot;</code> in <code>the package.json</code>.</p>
     </div>
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
-    
+
     </div>
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
         <h3 class="subsection-title">Properties</h3>
 
         <dl>
-            
+
 <dt>
     <h4 class="name" id="acceptsActiveTarget">
         acceptsActiveTarget<span class="type-signature"> :boolean</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L32">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Whether or not this target can accept user focus and become the
 activeTarget This matches up with the <code>document.activeElement</code> property
@@ -135,18 +135,18 @@ logically occurring at the point of user focus should be dispatched at
 the activeTarget</p>
 <p>By default a target does not accept this responsibility.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
+
+
+
 	<tr>
         <th class="details-header inherited-from">Inherited From:</th>
 	    <td class="details-content inherited-from">
@@ -157,106 +157,106 @@ the activeTarget</p>
 			</ul>
 		</td>
 	</tr>
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
 	<tr>
 	    <th class="details-header tag-default">Default Value:</th>
 	    <td class="details-content tag-default"><ul class="dummy"><li>false</li></ul></td>
 	</tr>
-	
 
-    
 
-    
 
-    
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="attachedWindows">
         attachedWindows<span class="type-signature"> :Array.&lt;<a href="MontageWindow.html">MontageWindow</a>></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L162">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>An array of the child windows attached to the application.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
 	<tr>
 	    <th class="details-header tag-default">Default Value:</th>
 	    <td class="details-content tag-default"><ul class="dummy"><li>{Array} []</li></ul></td>
 	</tr>
-	
 
-    
 
-    
 
-    
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="delegate">
         delegate<span class="type-signature"> :Object</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L211">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>The application's delegate object, it can implement a
 <code>willFinishLoading</code> method that will be called right after the
@@ -264,187 +264,187 @@ index.html is loaded.
 The application delegate is also the next event target after the
 application.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
 	<tr>
 	    <th class="details-header tag-default">Default Value:</th>
 	    <td class="details-content tag-default"><ul class="dummy"><li>null</li></ul></td>
 	</tr>
-	
 
-    
 
-    
 
-    
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="eventManager">
         eventManager<span class="type-signature"> :<a href="EventManager.html">EventManager</a></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L39">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Provides a reference to the Montage event manager used in the
 application.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="focusWindow">
         focusWindow<span class="type-signature"> :<a href="MontageWindow.html">MontageWindow</a></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L183">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Return the top most window of any of the Montage Windows.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
 	<tr>
 	    <th class="details-header tag-default">Default Value:</th>
 	    <td class="details-content tag-default"><ul class="dummy"><li>document.defaultView</li></ul></td>
 	</tr>
-	
 
-    
 
-    
 
-    
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="isActiveTarget">
         isActiveTarget<span class="type-signature"> :boolean</span> <span class="type-signature">&lt;readonly> </span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L46">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Whether or not this is the activeTarget</p>
 <p>This is a getter and is not bindable. Bind to
 <code>defaultEventManager.activeTarget == this</code>.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
+
+
+
 	<tr>
         <th class="details-header inherited-from">Inherited From:</th>
 	    <td class="details-content inherited-from">
@@ -455,453 +455,453 @@ application.</p>
 			</ul>
 		</td>
 	</tr>
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="mainApplication">
         mainApplication<span class="type-signature"> :<a href="Application.html">Application</a></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L57">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Provides a reference to the main application.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
 	<tr>
 	    <th class="details-header tag-default">Default Value:</th>
 	    <td class="details-content tag-default"><ul class="dummy"><li>this</li></ul></td>
 	</tr>
-	
 
-    
 
-    
 
-    
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="parentApplication">
         parentApplication<span class="type-signature"> :<a href="Application.html">Application</a></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L48">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Provides a reference to the parent application.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
 	<tr>
 	    <th class="details-header tag-default">Default Value:</th>
 	    <td class="details-content tag-default"><ul class="dummy"><li>null</li></ul></td>
 	</tr>
-	
 
-    
 
-    
 
-    
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="window">
         window<span class="type-signature"> :<a href="MontageWindow.html">MontageWindow</a></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L139">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Provides a reference to the MontageWindow associated with the
 application.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="windows">
         windows<span class="type-signature"> :Array.&lt;<a href="MontageWindow.html">MontageWindow</a>></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L109">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Provides a reference to all the windows opened by the main application
 or any of its descendents, including the main window itself.
 The list is kept sorted, the sort order is determined by the
 <code>Application.windowsSortOrder</code> property</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="windowsSortOrder">
         windowsSortOrder<span class="type-signature"> :string</span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L82">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Determines the sort order for the Application.windows array.
 Possible values are: z-order, reverse-z-order, open-order,
 reverse-open-order</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
 	<tr>
 	    <th class="details-header tag-default">Default Value:</th>
 	    <td class="details-content tag-default"><ul class="dummy"><li>"reverse-z-order"</li></ul></td>
 	</tr>
-	
 
-    
 
-    
 
-    
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
         </dl>
-    
 
-    
+
+
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
-            
+
 <dt>
-    
+
     <h4 class="name" id="addEventListener">
         addEventListener<span class="signature">(type, listener, useCapture)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L139">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L139">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Adds an event listener to the object.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>type</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The event type to listen for.</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>listener</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">object</span>
 |
 
 <span class="param-type">function</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The listener object or function.</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>useCapture</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">boolean</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>Specifies whether to listen for the event during the bubble or capture phases.</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
+
+
+
 	<tr>
         <th class="details-header inherited-from">Inherited From:</th>
 	    <td class="details-content inherited-from">
@@ -912,307 +912,307 @@ reverse-open-order</p>
 			</ul>
 		</td>
 	</tr>
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="attachWindow">
         attachWindow<span class="signature">(window)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L338">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L338">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Attach a window to a parent application.
 When a window open, it is automatically attached to the Application used
 to create the window.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>window</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type"><a href="MontageWindow.html">MontageWindow</a></span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>to detach.</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="detachWindow">
         detachWindow<span class="signature">(window)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L370">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L370">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Detach the window from its parent application.
 If no montageWindow is specified, the current application's windows will
 be detached.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>window</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type"><a href="MontageWindow.html">MontageWindow</a></span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>to detach.</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="didBecomeActiveTarget">
         didBecomeActiveTarget<span class="signature">()</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L65">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L65">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Called after to this target became the activeTarget</p>
     </div>
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
+
+
+
 	<tr>
         <th class="details-header inherited-from">Inherited From:</th>
 	    <td class="details-content inherited-from">
@@ -1223,123 +1223,123 @@ be detached.</p>
 			</ul>
 		</td>
 	</tr>
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="dispatchEvent">
         dispatchEvent<span class="signature">(event)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L98">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L98">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Dispatches the specified event with this target
 as the event's proximal target</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>event</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Event</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The event object to dispatch</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
+
+
+
 	<tr>
         <th class="details-header inherited-from">Inherited From:</th>
 	    <td class="details-content inherited-from">
@@ -1350,192 +1350,192 @@ as the event's proximal target</p>
 			</ul>
 		</td>
 	</tr>
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="dispatchEventNamed">
         dispatchEventNamed<span class="signature">(type, canBubble, cancelable, detail)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L122">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L122">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Creates and dispatches an event with the specified properties with this
 target as the event's proximal target</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>type</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The type of the event to dispatch</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>canBubble</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">boolean</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>Whether or not the event can bubble</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>cancelable</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">boolean</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>Whether or not the event can be cancelled</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>detail</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Object</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The optional detail object of the event</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
+
+
+
 	<tr>
         <th class="details-header inherited-from">Inherited From:</th>
 	    <td class="details-content inherited-from">
@@ -1546,470 +1546,470 @@ target as the event's proximal target</p>
 			</ul>
 		</td>
 	</tr>
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="eventManagerForWindow">
         eventManagerForWindow<span class="signature">(aWindow)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L172">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L172">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Returns the event manager for the specified window object.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>aWindow</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Window</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The browser window whose event manager object should be returned.</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
-        
+
+
+
+
             <h5>
                 Returns:
-                
+
             </h5>
-            
+
                 <div class="param-desc">
                     <p>aWindow.defaultEventMananger</p>
                 </div>
-            
-        
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="openWindow">
         openWindow<span class="signature">(component,, name,, parameters,)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L238">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/application.js#L238">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Opens a component in a new browser window, and registers the window with
 the Montage event manager.</p>
 <p>The component URL must be in the same domain as the calling script. Can
 be relative to the main application</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>component,</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>the path to the reel component to open in the
 new window.</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>name,</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>the component main class name.</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>parameters,</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Object</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>the new window parameters (accept same
 parameters than window.open).</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Example</h5>
-        
+
     <pre class="prettyprint"><code>var app = document.application;
 app.openWindow("docs/help.reel", "Help", "{width:300, height:500}");</code></pre>
 
-    
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="removeEventListener">
         removeEventListener<span class="signature">(type, listener, useCapture)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L154">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L154">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Removes an event listener from the object.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>type</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The event type.</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>listener</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">object</span>
 |
 
 <span class="param-type">function</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The listener object or function.</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>useCapture</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">boolean</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The phase of the event listener.</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
+
+
+
 	<tr>
         <th class="details-header inherited-from">Inherited From:</th>
 	    <td class="details-content inherited-from">
@@ -2020,123 +2020,123 @@ app.openWindow("docs/help.reel", "Help", "{width:300, height:500}");</code></pre
 			</ul>
 		</td>
 	</tr>
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="surrendersActiveTarget">
         surrendersActiveTarget<span class="signature">(newTarget)</span><span class="type-signature"> &rarr; {boolean}</span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L76">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L76">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Ask this target to surrender its activeTarget status.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>newTarget</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type"><a href="Target.html">Target</a></span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>the Target that is about to become the
 <code>activeTarget</code></p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
+
+
+
 	<tr>
         <th class="details-header inherited-from">Inherited From:</th>
 	    <td class="details-content inherited-from">
@@ -2147,139 +2147,139 @@ app.openWindow("docs/help.reel", "Help", "{width:300, height:500}");</code></pre
 			</ul>
 		</td>
 	</tr>
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
-        
+
+
+
+
             <h5>
                 Returns:
-                
+
                     <span class="return-type">
 <span class="param-type">boolean</span>
 
 </span>
-                
+
             </h5>
-            
+
                 <div class="param-desc">
                     <p>Whether or not to surrender activeTarget status</p>
                 </div>
-            
-        
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="willBecomeActiveTarget">
         willBecomeActiveTarget<span class="signature">(oldTarget)</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L57">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/target.js#L57">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Called prior to this target becoming the activeTarget</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>oldTarget</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type"><a href="Target.html">Target</a></span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>the current activeTarget</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
+
+
+
 	<tr>
         <th class="details-header inherited-from">Inherited From:</th>
 	    <td class="details-content inherited-from">
@@ -2290,41 +2290,41 @@ app.openWindow("docs/help.reel", "Help", "{width:300, height:500}");</code></pre
 			</ul>
 		</td>
 	</tr>
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 </dd>
 
         </dl>
-    
 
-    
 
-    
+
+
+
 
     <p class="generated-from">Generated from <a href="https://github.com/montagejs/montage/tree/v0.14.14">v0.14.14</a></p>
 </article>
@@ -2334,7 +2334,7 @@ app.openWindow("docs/help.reel", "Help", "{width:300, height:500}");</code></pre
 
 
     </article>
-    {% include comments.html %}
+
 </div>
 
 <script>

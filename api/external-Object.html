@@ -11,579 +11,579 @@ title: "External: Object - MontageJS API"
 
 <div class="main">
     <article class="content">
-    	
+
 
 
 
 <header>
     <h2>
-        
+
         Object
-        
-        
+
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/shim/object.js#L3">source</a></span>
-        
+
     </h2>
-    
+
 </header>
 
 <article>
-    
+
     <div class="container-overview">
-    
 
-    
-        
 
-        
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-        
-    
+
+
     </div>
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
         <h3 class="subsection-title">Properties</h3>
 
         <dl>
-            
+
 <dt>
     <h4 class="name" id="extendedPropertyAttributes">
         extendedPropertyAttributes<span class="type-signature"></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/core.js#L257">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
-        
-            
+
+
 <dt>
     <h4 class="name" id="uuid">
         uuid<span class="type-signature"></span> <span class="type-signature"></span>
-        
+
             <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/core.js#L1048">source</a></span>
-        
+
     </h4>
 
-    
+
 </dt>
 <dd>
-    
+
     <div class="description">
         <p>Contains an object's unique ID.</p>
     </div>
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
 	<tr>
 	    <th class="details-header tag-default">Default Value:</th>
 	    <td class="details-content tag-default"><ul class="dummy"><li>null</li></ul></td>
 	</tr>
-	
 
-    
 
-    
 
-    
+
+
+
+
 </table>
 
 
-    
+
 </dd>
 
 
         </dl>
-    
 
-    
+
+
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
-            
+
 <dt>
-    
+
     <h4 class="name" id="create">
         create<span class="signature">(prototype, descriptor)</span><span class="type-signature"></span> <span class="type-signature">&lt;constructor> </span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/shim/object.js#L5">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/shim/object.js#L5">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Creates a new object that inherits prototypically directly from a given
 prototype, optionally defining some properties.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>prototype</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Object</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>the prototype to inherit, or
 <code>null</code> for no prototype, which makes &quot;<strong>proto</strong>&quot; the only
 special property name.</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>descriptor</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Object</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>a property descriptor</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
-        
+
+
+
+
             <h5>
                 Returns:
-                
+
             </h5>
-            
+
                 <div class="param-desc">
                     <p>a new object inheriting from the given prototype and having
 the given property descriptor.</p>
                 </div>
-            
-        
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="getPropertyDescriptor">
         getPropertyDescriptor<span class="signature">(anObject, propertyName)</span><span class="type-signature"> &rarr; {Object}</span> <span class="type-signature">&lt;constructor> </span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/extras/object.js#L15">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/extras/object.js#L15">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Returns the descriptor object for an object's property.</p>
     </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
         <h5>Parameters:</h5>
-        
+
 
 <table class="params">
     <thead>
 	<tr>
-		
+
 		<th>Name</th>
-		
+
 
 		<th>Type</th>
 
-		
 
-		
+
+
 
 		<th class="last">Description</th>
 	</tr>
 	</thead>
 
 	<tbody>
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>anObject</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">Object</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The object containing the property.</p></td>
         </tr>
 
-	
+
 
         <tr>
-            
+
                 <td class="name"><code>propertyName</code></td>
-            
+
 
             <td class="type">
-            
-                
+
+
 <span class="param-type">string</span>
 
 
-            
+
             </td>
 
-            
 
-            
+
+
 
             <td class="description last"><p>The name of the property.</p></td>
         </tr>
 
-	
+
 	</tbody>
 </table>
 
-    
 
-    
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
-        
+
+
+
+
             <h5>
                 Returns:
-                
+
                     <span class="return-type">
 <span class="param-type">Object</span>
 
 </span>
-                
+
             </h5>
-            
+
                 <div class="param-desc">
                     <p>The object's property descriptor.</p>
                 </div>
-            
-        
-    
 
-    
+
+
+
+
 </dd>
 
-        
-            
+
+
 <dt>
-    
+
     <h4 class="name" id="clear">
         clear<span class="signature">()</span><span class="type-signature"></span> <span class="type-signature"></span>
-        
-            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/extras/object.js#L67">source</a></span>
-        
-    </h4>
-    
 
-    
+            <span class="source"><a href="https://github.com/montagejs/montage/blob/v0.14.14/core/extras/object.js#L67">source</a></span>
+
+    </h4>
+
+
+
 </dt>
 <dd>
 
-    
+
     <div class="description markdown-body">
         <p>Removes all properties owned by this object making the object suitable for
 reuse.</p>
     </div>
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 
 
 
 <table class="details">
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 </table>
 
 
-    
 
-    
 
-    
-        
+
+
+
+
             <h5>
                 Returns:
-                
+
             </h5>
-            
+
                 <div class="param-desc">
                     <p>this</p>
                 </div>
-            
-        
-    
 
-    
+
+
+
+
 </dd>
 
         </dl>
-    
 
-    
 
-    
+
+
+
 
     <p class="generated-from">Generated from <a href="https://github.com/montagejs/montage/tree/v0.14.14">v0.14.14</a></p>
 </article>
@@ -593,7 +593,7 @@ reuse.</p>
 
 
     </article>
-    {% include comments.html %}
+
 </div>
 
 <script>
