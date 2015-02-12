@@ -5,11 +5,8 @@ kramdown:
 
 exclude: [_build]
 
-# below waiting on domain rework
-
-#gems:
-#    - jekyll-redirect-from
-#    - jekyll-sitemap
-
-# https://github.com/jekyll/jekyll-redirect-from
-# case insensitive
+gems:
+    # https://github.com/jekyll/jekyll-redirect-from
+    # case insensitive
+    - jekyll-redirect-from
+    - jekyll-sitemap
