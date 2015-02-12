@@ -1,22 +1,27 @@
 ---
-
 layout: docs
 title: MontageJS Bootstrapping
 
 this-page: bootstrapping
-
 ---
+
 
 MontageJS Bootstrapping
 ===
+
+* TOC
+{:toc}
 
 > Note: "mopped" refers to [`mop`, the Monrage Optimizer](https://github.com/montagejs/mop)
 
 MontageJS calls `exports.initMontage` after setting up some variables, which in turn calls `getPlatform`, which returns an object with platform-specific functions (currently the browser and node.js are supported).
 
+
 ## Browser
 
+
 ### Development mode, i.e. non-optimized & un-mopped
+
 
 #### platform.bootstrap
 
@@ -37,11 +42,12 @@ The global `bootstrap` function keeps track of the 3 files and once all three ha
 
 `callbackIfReady` checks that both the `DOM` and the modules are loaded, and if so calls the callback given to this function.
 
+
 #### Callback
 
 First we set up the config object to load the Montage package. This involves setting up the loader that lets the us load `.reel` files directly (e.g. `require("montage/ui/text.reel")`), and compilers that attach Montage metadata to the exports of any loaded module (`SerializationCompiler`) and export the HTML of loaded HTML files as `content` (`TemplateCompiler`).
 
-<a id="un-mopped-load-montage" href="#mopped-callback">If mopped, bundles are loaded at this point.</a>
+If mopped, bundles are loaded at this point.
 
 We then use `Require` to load the Montage package. Once this promise has completed we have the require function for Montage, `montageRequire`. We use this to load the Q (Promise) package so that we have complete information about the Promise package. We then insert the already loaded promise module into it, so that it isn't requested again. We set up the linter, to give us informative errors when there's a syntax error in a loaded file.
 
@@ -61,22 +67,24 @@ Finally, we check if a `data-module` attribute was given and if so load this mod
 
 The bootstrapping is complete. The serialization has created components for the user to interact with, or the loaded module is doing its thing.
 
+
 ### Production mode, i.e. optimized & mopped
 
 When Mopped the bootstrapping bundle defines a global `BUNDLE` array, which contains a list of bundle filenames to load.
+
 
 #### `platform.bootstrap`
 
 As the normal bootstrap, except the 3 bootstrapping modules needed will be available in the bootstrapping bundle, and so no script tags are injected.
 
-#### Callback <a id="mopped-callback"></a>
+
+#### Callback
 
 Before loading the Montage package the `BUNDLE` variable is checked. If it exists then a script tag is injected for each of the filenames in the array. Each bundle calls a global `bundleLoaded` function with its name. A `preloaded` promise is added to the config object that is resolved once all of the bundles have loaded. Mr waits on this promise before proceeding, which means that the Montage package is not loaded until all the bundles have loaded.
 
 This is where the differences in un-mopped and mopped bootstrapping end.
 
-<a href="#un-mopped-load-montage">Return to regular bootstrapping</a>
 
 ## Node.js
 
-TBD
+Montage currently does not support Node.js.
