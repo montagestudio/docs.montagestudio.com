@@ -14,7 +14,7 @@ next-page: theme-native-components
 
 Matte is a basic, neutral-looking theme for HTML5 controls and inputs. You can use it as a wireframe for prototypes or starting point for creating your own custom theme.
 
-![Matte](../images/themes/matte.png)
+![Matte](..{{site.baseurl}}/images/themes/matte.png)
 
 ## Available Components
 The following list summarizes the UI components that are currently part of the Matte widget set:
@@ -24,7 +24,7 @@ Component | Description
 <a href="https://github.com/montagejs/matte/tree/master/ui/anchor.reel" target="_blank">Anchor</a> | Provides hyperlink functionality.
 <a href="https://github.com/montagejs/matte/tree/master/ui/autocomplete" target="_blank">Autocomplete</a> | Provides suggestions while you type into a field.
 <a href="https://github.com/montagejs/matte/tree/master/ui/button.reel" target="_blank">Button</a> | Provides button functionality.
-<a href="https://github.com/montagejs/matte/tree/master/ui/component-group.reel" target="_blank">ComponentGroup</a> | 
+<a href="https://github.com/montagejs/matte/tree/master/ui/component-group.reel" target="_blank">ComponentGroup</a> |
 <a href="https://github.com/montagejs/matte/tree/master/ui/dynamic-element.reel" target="_blank">DynamicElement</a> | Lets you append a string of markup to a page.
 <a href="https://github.com/montagejs/matte/tree/master/ui/image.reel" target="_blank">Image</a> | Provides functionality for displaying an image.
 <a href="https://github.com/montagejs/matte/tree/master/ui/input-checkbox.reel" target="_blank">InputCheckbox</a> | Provides checkbox functionality.
@@ -60,11 +60,11 @@ Matte is not included in the default application template. To use Matte in your 
     ```
     cd yourprojectfolder
     ```
-    
+
 2. At the prompt, enter:
 
     ```
     npm install matte@latest --save
     ```
-    
+
     The `--save` flag ensures that the matte package is automatically added as a dependency to the package.json file of your application code.

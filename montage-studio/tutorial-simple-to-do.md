@@ -20,11 +20,11 @@ This tutorial assumes that you have read the <a href="ide-at-a-glance.html" targ
 Your goal is to assemble a simple application that enables users to create a list of things to do, mark tasks as completed, and keep track of the number of tasks that remain to be done. The application has five elements: a title, a button to add new tasks, text fields to enter tasks, check boxes to mark tasks as completed, and a counter (or badge) that keeps track of the remaining tasks in the list.
 
 <figure>
-    <img src="/images/montage-studio/tutorials/simple-to-do/fig01.png" alt="The final to-do application for this tutorial" style="width: 400px;">
+    <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig01.png" alt="The final to-do application for this tutorial" style="width: 400px;">
     <figcaption><strong>Figure 1.</strong> Your task: To assemble a simple to-do application.</figcaption>
 </figure>
 
-Conceptually, the application breaks down into a list view (with a task item child view) and a controller for managing the underlying content. 
+Conceptually, the application breaks down into a list view (with a task item child view) and a controller for managing the underlying content.
 
 ## Getting Started
 
@@ -35,7 +35,7 @@ To get started, go to <a href="https://work.montagestudio.com" target="_blank">w
 MontageJS is an open source client-side framework, used within Montage Studio to build rich, single-page appllications. Building MontageJS applications is divided into a development (creating the application) phase and a production (optimizing the application) phase. In development, you assemble an application out of encapsulated components. These components are stored in the ui directory of your project and identified by a .reel suffix.
 
 <figure>
-    <img src="/images/montage-studio/tutorials/simple-to-do/fig02.jpg" alt="The components that make up the final application" style="width: 225px;">
+    <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig02.jpg" alt="The components that make up the final application" style="width: 225px;">
     <figcaption><strong>Figure 2.</strong> The components that make up the final application.</figcaption>
 </figure>
 
@@ -54,7 +54,7 @@ To add the title to the template:
 1. Add a Title node as a child element of the owner node.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig03.jpg" alt="Adding a Title node" style="width: 250px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig03.jpg" alt="Adding a Title node" style="width: 250px;">
         <figcaption><strong>Figure 3.</strong> Add a Title node.</figcaption>
     </figure>
 
@@ -63,10 +63,10 @@ To add the title to the template:
 2. In the properties inspector, in the Value text field, replace Title with Things To Do.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig04.jpg" alt="Adding a Title value" style="width: 550px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig04.jpg" alt="Adding a Title value" style="width: 550px;">
         <figcaption><strong>Figure 4.</strong> Add a Title node to the DOM explorer and then change its default text value.</figcaption>
     </figure>
-    
+
     Next, to present the task items of the application, you need a list view.
 
 ### Add a List View and Controller
@@ -76,7 +76,7 @@ To add a list view:
 1. Add a List node as a sibling of the Title (h1) node.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig05.jpg" alt="Adding a List node" style="width: 250px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig05.jpg" alt="Adding a List node" style="width: 250px;">
         <figcaption><strong>Figure 5.</strong> Add a List node to the DOM explorer.</figcaption>
     </figure>
 
@@ -91,7 +91,7 @@ To add a list view:
 3. Select the List component in the template explorer to reveal its properties, then drag the RangeController proxy icon to the List contentController field in the properties inspector. (To set the value, you can also type **@rangeController** in the field.)
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig06.jpg" alt="Setting the List object to receive content" style="width: 550px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig06.jpg" alt="Setting the List object to receive content" style="width: 550px;">
         <figcaption><strong>Figure 6.</strong> Set the List to receive its content from the RangeController.</figcaption>
     </figure>
 
@@ -102,7 +102,7 @@ To add a task button:
 1. Add a Button node as a sibling between the Title (h1) and List (ul) nodes.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig07.jpg" alt="Adding a Button node" style="width: 250px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig07.jpg" alt="Adding a Button node" style="width: 250px;">
         <figcaption><strong>Figure 7.</strong> Add a Button node as a sibling of the Title (h1) and List (ul) nodes.</figcaption>
     </figure>
 
@@ -111,7 +111,7 @@ To add a task button:
     Next, you need to wire up the button so it does what it's supposed to do when clicked: add inputs to the list. To do this you need to set the RangeController to observe the new task button for “action.” This can be accomplished through a simple drag-and-drop operation.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/diagram01.png" alt="Wiring up a button" style="width: 451px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/diagram01.png" alt="Wiring up a button" style="width: 451px;">
     </figure>
 
 3. On the Button card, drag the Add Listener (+) button to the RangeController card.
@@ -119,25 +119,25 @@ To add a task button:
     This opens the Button's Listener dialog box, with the event type (action) and listener (rangeController) conveniently filled in. (Alternatively, you can also click Add Listener [+] and then drag the RangeController proxy icon to the Listener field in the dialog box.)
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig08.jpg" alt="Wiring up the button" style="width: 550px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig08.jpg" alt="Wiring up the button" style="width: 550px;">
         <figcaption><strong>Figure 8.</strong> Drag the Add Listener (+) button to the RangeController to wire up the button.</figcaption>
     </figure>
-    
+
 4. Enter **addContent** in the optional Method Name field and click Define Listener. (When you specify a method name, MontageJS injects an actionEventListener with the target action configured for you.)
 
-5. Save your changes (press Cmd+S or select Project > Save All from the menu bar). 
+5. Save your changes (press Cmd+S or select Project > Save All from the menu bar).
 
 6. To take a peek at what you've build so far, click the Run button at the top of the project explorer.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig09.jpg" alt="Click Run to preview" style="width: 250px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig09.jpg" alt="Click Run to preview" style="width: 250px;">
         <figcaption><strong>Figure 9.</strong> Click the Run button to preview your application.</figcaption>
     </figure>
 
     Montage Studio will serve your application in a new tab in the browser. If you followed the instructions, you should see the title of the application and the New Task button. At this point, you can add any number of item placeholders to the list view by clicking New Task.
-    
+
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig10.png" alt="Application preview" style="width: 225px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig10.png" alt="Application preview" style="width: 225px;">
         <figcaption><strong>Figure 10.</strong> The view and model are in place.</figcaption>
     </figure>
 
@@ -153,13 +153,13 @@ To add a new component:
 2. In the Create Component text box, replace "my-component" with **task**, and then click Create.
 
     Montage Studio adds the new component to the UI folder of your project and opens its template in a new tab in the component editor. (Note also that the Task component has been added to the project group at the top of the library.)
-    
+
 3. Add a Checkbox node as a child element of the owner node.
 
     To ensure the component works as intended, you need to bind it to a task's completed state. This is controlled by the owner of the current document.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/diagram02.png" alt="Binding a task to a completed state" style="width: 451px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/diagram02.png" alt="Binding a task to a completed state" style="width: 451px;">
     </figure>
 
 4. In the template explorer, click Add Binding (+) on the Checkbox card.
@@ -169,12 +169,12 @@ To add a new component:
     >**Note**: This version of Montage Studio includes a rudimentary autocomplete feature: selecting a suggested value and pressing Tab advances the cursor to the next input field; pressing Return accepts the current selection and keeps the current field in focus.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig11.jpg" alt="Application preview" style="width: 451px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig11.jpg" alt="Application preview" style="width: 451px;">
         <figcaption><strong>Figure 11.</strong> Establish a two-way binding between the target and its source.</figcaption>
     </figure>
 
 6. Click Define Binding.
-    
+
     Next, you want to add a text field adjacent to the check box.
 
 7. Add a TextField node as a sibling of the Checkbox node.
@@ -184,13 +184,13 @@ To add a new component:
 9. In the Target Path field, enter **value**, click the two-way direction button, and in the Source Path field enter **@owner.task.title**.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/diagram03.png" alt="Defining bindings" style="width: 451px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/diagram03.png" alt="Defining bindings" style="width: 451px;">
     </figure>
-    
+
 10. Click Define Binding and save your changes.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig12.jpg" alt="The completed Task component" style="width: 550px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig12.jpg" alt="The completed Task component" style="width: 550px;">
         <figcaption><strong>Figure 12.</strong> The completed Task component in the component editor.</figcaption>
     </figure>
 
@@ -201,32 +201,32 @@ Next, you need to add the new Task component as a child to the List node in the 
 1. Click the main.reel tab.
 
     You want to replace the placeholder li node with the task list item you just created.
-    
+
 2. Drag the Task component from the project group in the library on the li node in the DOM explorer.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig13.jpg" alt="Adding the Task component" style="width: 400px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig13.jpg" alt="Adding the Task component" style="width: 400px;">
         <figcaption><strong>Figure 13.</strong> Drag the Task component on the li node (left) to replace the placeholder li node with the new task list node (right).</figcaption>
     </figure>
 
     >**Note**: You can also drag the task component to the template explorer and then drag the Task's proxy icon to the li node.
 
     This adds a task1 card to the template explorer as a child of the list card.
-       
+
     Next, you need to set up a binding so that the children of your task list can be found. You know the binding drill by now…
 
 3. Click Add Binding (+) in the task1 card.
 
-4. In the Bindings dialog box, enter **task** in the Target Path field; keep the one-way direction default setting. 
+4. In the Bindings dialog box, enter **task** in the Target Path field; keep the one-way direction default setting.
 
     You want to bind the task object to the list object, so enter **@list:iteration.object** in the Source Path field.
 
-5. Click Define Binding and save your changes. 
-    
+5. Click Define Binding and save your changes.
+
 Click Run again to preview your changes and you will see the same title and New Task button as before; but now you can add any number of inputs by clicking New Task.
 
 <figure>
-    <img src="/images/montage-studio/tutorials/simple-to-do/fig14.png" alt="The New Task button" style="width: 225px;">
+    <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig14.png" alt="The New Task button" style="width: 225px;">
     <figcaption><strong>Figure 14.</strong> Click New Task to add undefined list items.</figcaption>
     </figure>
 
@@ -239,10 +239,10 @@ To add and wire up a task badge follow these steps:
 1. Add a Badge widget as a sibling between the button and ul nodes in the DOM explorer.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/simple-to-do/fig15.jpg" alt="Adding a badge element" style="width: 250px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/simple-to-do/fig15.jpg" alt="Adding a badge element" style="width: 250px;">
         <figcaption><strong>Figure 15.</strong> Add a badge between the button and ul nodes.</figcaption>
     </figure>
-    
+
 2. In the template explorer, click Add Bindings (+) on the badge card.
 
 3. In the Target Path field, enter **value**; keep the one-way direction setting; and in the Source Path field enter **@rangeController.organizedContent.filter{!completed}.length**.
@@ -266,7 +266,7 @@ As should be clear by now, Montage Studio does not provide a visual approach to 
         padding: 1em;
         text-align: center;
     }
-    
+
     .Task {
         padding: .5em;
         text-align: center;
@@ -284,7 +284,7 @@ To have a task item appear dimmed when completed, you need to create a binding o
 4. Click Define Binding and save your changes.
 
     Next, you will edit the component's CSS file.
-    
+
 5. In the project explorer, expand the task.reel directory, select task.css, and enter the following: **.Task.completed {opacity: 0.2;}**.
 
 6. Save your changes and click Run.

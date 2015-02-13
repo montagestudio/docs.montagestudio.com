@@ -18,29 +18,29 @@ To get started:
 2. Click Fork in the upper right-hand corner, and then select your personal GitHub account.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/tutorial-first-steps-sample-project/fig01.png" alt="Forking the popcorn project on GitHub" style="width: 451px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/tutorial-first-steps-sample-project/fig01.png" alt="Forking the popcorn project on GitHub" style="width: 451px;">
         <figcaption><strong>Figure 1.</strong> Forking the todo-mvc project on GitHub</figcaption>
     </figure>
-    
+
     GitHub will replicate the contents of the repository.
 
 3. Return to [work.montagestudio.com][2].
 
     You should see popcorn in your list of existing projects.
-    
+
 4. Click the popcorn project to open it in Montage Studio.
 
 5. After the project has loaded, click the ui/main.reel directory in the Package explorer.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/tutorial-first-steps-sample-project/fig02.png" alt="Editing the todo-mvc app in Montage Studio" style="width: 451px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/tutorial-first-steps-sample-project/fig02.png" alt="Editing the todo-mvc app in Montage Studio" style="width: 451px;">
         <figcaption><strong>Figure 2.</strong> Editing the todo-mvc app in Montage Studio</figcaption>
     </figure>
 
 6. Start exploring.
 
     Tweak the bindings, add new components, modify the JavaScript source code, and perform any other changes that you want. When you save your changes, Montage Studio will automatically propagate them back to the GitHub repository.
-    
+
 ## Next Steps
 
 To learn how to use Montage Studio:
@@ -61,9 +61,9 @@ To create a forum account:
 2. Click With GitHub in the Log In dialog box.
 
     GitHub will prompt you for authorization, much like it did when you created your Montage Studio account.
-    
+
     After you grant authorization, the forum will ask you to verify your username and e-mail address.
-    
+
 3. Click Create Account to continue.
 
 There's a forum category called "Prerelease" that we've created specifically to facilitate discussion about Montage Studio.

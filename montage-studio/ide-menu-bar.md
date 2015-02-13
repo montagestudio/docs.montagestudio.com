@@ -16,7 +16,7 @@ The menu bar at the top provides quick access to common menus for creating and s
 >**Important:** Be sure to save often and save your changes before you log out of Montage Studio. Montage Studio currently will not save your changes automatically.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig02.jpg" alt="The menu bar" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig02.jpg" alt="The menu bar" style="width: 550px;">
     <figcaption>The menu bar</figcaption>
 </figure>
 

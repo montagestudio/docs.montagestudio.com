@@ -14,7 +14,7 @@ next-page: ide-text-editor
 This is where you perform your core development tasks. The Component editor consists of five areas: Template explorer, Stage, DOM explorer, Properties inspector (hidden by default), and Library.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig04.jpg" alt="coming soon" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig04.jpg" alt="coming soon" style="width: 550px;">
     <figcaption>The Component Editor</figcaption>
 </figure>
 
@@ -22,20 +22,20 @@ The Component editor supports browser-style tabs, so you can open and work on mu
 
 ## Library
 
- The Library is a tabbed container that holds all the items at your disposal to assemble an application. 
- 
- The Library tab provides access to the components, controllers, and converters (aka prototypes in MontageJS speak) that can be used in the current project. It is divided into three collapsible groups: 
- 
+ The Library is a tabbed container that holds all the items at your disposal to assemble an application.
+
+ The Library tab provides access to the components, controllers, and converters (aka prototypes in MontageJS speak) that can be used in the current project. It is divided into three collapsible groups:
+
  * **Project** (the top group, which is identified by the name of the current project) lists the components in the UI folder of your project.
  * **Montage** shows the converters and controllers that are part of the core MontageJS framework.
- * **Digit** exposes the touch-optimized components of the Digit widget set. 
- 
+ * **Digit** exposes the touch-optimized components of the Digit widget set.
+
  You can minimize the groups by clicking the triangle icon in the top left of a group's title bar.
- 
+
  The Search box at the top enables you to quickly find a component, and the icon to the right lets you switch between List and Grid views of the contents of the Library tab.
- 
+
  The Assets tab provides access to the binaries and other content stored in the Assets folder of your project. (Note: This feature is still a work in progress and not fully functional yet.)
- 
+
 ## DOM Explorer
 
 This is where you add the user interface components you want to use in your application. The DOM explorer presents a lower-level DOM tree view of the current template. This tree follows the same structure as the DOM tree of the elements with which the components are associated in the template (for example, a button component is associated with a button HTML element).
@@ -46,7 +46,7 @@ When building your user interface, you drag prebuilt components from the Library
 
 ## Template Explorer
 
-The Template explorer is populated by the objects used in the component's HTML document (or template in MontageJS speak). This is where you define data bindings and event listeners. 
+The Template explorer is populated by the objects used in the component's HTML document (or template in MontageJS speak). This is where you define data bindings and event listeners.
 
 The more complex the user interface component you are working on, the longer the list of objects that populate this area. You can use the Search box at the top to quickly locate objects, or click the Bindings and Listeners icons to the left of the Search box to hide binding and listener details and thus simplify the scrollable view.
 

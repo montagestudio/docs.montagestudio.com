@@ -15,7 +15,7 @@ this-page: overview-using-montage-studio
 >Also, Montage Studio is optimized for Google Chrome. We are working on optimizing support for other browsers. If you are using Montage Studio in Safari or Firefox, we welcome your [feedback](mailto:feedback@montagestudio.com).
 
 Montage Studio makes it easier for you to assemble complex and powerful single-page web applications (SPAs) using the MontageJS framework. This guide provides a high-level introduction of the key features of Montage Studio and how they can be used to build professional-quality SPAs. For a hands-on introduction to using Montage Studio, see the [Quick Start](tutorial-simple-to-do.html) tutorial, which shows you how to assemble a simple to-do application.
-      
+
 # Develop Applications
 
 Montage Studio integrates user interface assembly, code editing, asset management, and dependency management within a single workspace window.
@@ -23,7 +23,7 @@ Montage Studio integrates user interface assembly, code editing, asset managemen
 To start using Montage Studio, you must be logged in to your GitHub user account. To start a new project, click New on the Montage Studio welcome page.
 
 <!-- figure>
-    <img src="/images/montage-studio/ide-overview/fig02.jpg" alt="Montage Studio welcome page" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig02.jpg" alt="Montage Studio welcome page" style="width: 550px;">
     <figcaption>Montage Studio welcome page</figcaption>
 </figure -->
 
@@ -32,7 +32,7 @@ To start using Montage Studio, you must be logged in to your GitHub user account
 The workspace window is divided into three areas&#8212;the menu bar at the top, the project explorer on the left, and an editor area.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig01.png" alt="Single-window envrionment" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig01.png" alt="Single-window envrionment" style="width: 550px;">
     <figcaption>Montage Studio</figcaption>
 </figure>
 
@@ -50,14 +50,14 @@ When building an application in Montage Studio, you will use the following edito
 
 Editors are associated with resource types; as you select resources in the project explorer, the resource is opened in the appropriate editor, in a tab, in the editor area. For example, when you select a user interface component (.reel directory) in the project explorer, Montage Studio opens it in the component editor; select a component's HTML, CSS, or JavaScript file, and Montage Studio opens the file in the built-in text editor; select package.json, and Montage Studio opens the file in the package manager.
 
-If your application includes flow-like animations or a 3D scene, you will also work in the following custom editing environments: 
+If your application includes flow-like animations or a 3D scene, you will also work in the following custom editing environments:
 
 * **Flow editor:**  To create flow patterns that move specified content along a Bézier path.
 * **Scene view editor (under development):** To manipulate a 3D scene.
 
 These editors are only accessible from within the component editor, when your application uses the Flow or Scene View component.
 
-          
+
 # Maintain Your Project
 
 When you create a project, Montage Studio initializes a Git source code repository with your new project, installs the essential files and dependencies that are required in development, and then exposes these resources in the project explorer.
@@ -79,7 +79,7 @@ A _project_ is the source for your application; it comprises a collection of fil
 When assembling your application in Montage Studio, you will be working mostly with the contents in the ui directory, which is the default directory for the user interface components that make up your application.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig03.jpg" alt="Project explorer" style="width: 175px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig03.jpg" alt="Project explorer" style="width: 175px;">
     <figcaption>The project explorer</figcaption>
 </figure>
 
@@ -111,11 +111,11 @@ Using the package manager, you can:
 * Search the npm repository for ready-to-use components or dependencies you may want to add to your project.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig04.jpg" alt="Package manager" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig04.jpg" alt="Package manager" style="width: 550px;">
     <figcaption>The package manager</figcaption>
 </figure>
 
-When adding dependencies, you have two options: 
+When adding dependencies, you have two options:
 
 * To add a particular package, click the Package Dependencies + button, enter the required name and version or Git URL, and then click Add.
 * To find a module by name, use the Search Packages box to find the module you want, and then click Install to add it to your dependencies.
@@ -126,19 +126,19 @@ To update an existing dependency, select it in the Package Dependencies group to
 
 Before closing a project, be sure to save your changes (Cmd+S or File > Save All); Montage Studio currently does not save changes automatically.
 
-Montage Studio gives you two options to leave a project: close it or log out. 
+Montage Studio gives you two options to leave a project: close it or log out.
 
-* To close a project, select Project > Close Project from the menu bar or click the Montage Studio icon in the upper left on the menu bar. This returns you to the welcome page, where you can start a new project or select an existing one. 
+* To close a project, select Project > Close Project from the menu bar or click the Montage Studio icon in the upper left on the menu bar. This returns you to the welcome page, where you can start a new project or select an existing one.
 * To exit Montage Studio, choose _Your Name_  > Log Out on the right of the menu bar from within a project or click Log Out on the welcome page. This returns you to the Montage Studio sign-in page.
-    
+
 # Assemble a User Interface
 
-Montage Studio does not provide a visual approach to building graphical user interfaces. Instead of laying out views (for example, by dropping prebuilt user interface elements on a "canvas"), you assemble user interface components. Each of these components represents a distinct functional area of an application such as navigation, data display, data entry, and so on. These components are stored in the UI directory of your project and identified with a .reel extension. 
+Montage Studio does not provide a visual approach to building graphical user interfaces. Instead of laying out views (for example, by dropping prebuilt user interface elements on a "canvas"), you assemble user interface components. Each of these components represents a distinct functional area of an application such as navigation, data display, data entry, and so on. These components are stored in the UI directory of your project and identified with a .reel extension.
 
 A user interface component (or view) consists of three files that control the component's structure (HTML), presentation (CSS), and behavior (JavaScript). When you craft your application in Montage Studio, you modify the HTML documents or templates (in MontageJS speak) of the components in the UI directory of your project. More specifically, you assemble a component tree of user interface elements in the DOM explorer, and then declare how you want these DOM elements to behave by specifying UI-related information (such as properties or bindings) using the objets in the template explorer.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig05.jpg" alt="Component editor" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig05.jpg" alt="Component editor" style="width: 550px;">
     <figcaption>The component editor</figcaption>
 </figure>
 
@@ -153,7 +153,7 @@ The library is divided into three groups (from top to bottom):
 * Digit exposes the touch-optimized components of the Digit widget set.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig06.jpg" alt="The library" style="width: 175px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig06.jpg" alt="The library" style="width: 175px;">
     <figcaption>The library (icon view)</figcaption>
 </figure>
 
@@ -201,7 +201,7 @@ Montage Studio uses CodeMirror to provide basic text editor functionality, inclu
 The built-in text editor complements your development workflow by letting you add your own code, write custom components, refactor existing components, or define the appearance of your application _after_ you assemble the views and model of your MontageJS application using the component editor.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig12.jpg" alt="The text editor" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig12.jpg" alt="The text editor" style="width: 550px;">
     <figcaption>The text editor</figcaption>
 </figure>
 
@@ -214,7 +214,7 @@ Presently, Montage Studio does not save changes to source and project files auto
 Every time you choose File > Save All, Montage Studio commits the changes you made since your last save to the `_mb_master` branch of your project's GitHub repository. The Git status counter on the menu bar tracks how far ahead of the master branch your project currently is. Every time you save your project, Montage Studio writes your changes to a dedicated workspace and then pushes your changes to GitHub. Each commit increments the status count number by 1. To view your project on GitHub, choose Proejct > GitHub Repository.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig13.jpg" alt="The Git status counter" style="width: 225px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig13.jpg" alt="The Git status counter" style="width: 225px;">
     <figcaption>The Git status counter</figcaption>
 </figure>
 
@@ -225,11 +225,11 @@ You can revert a change using the Undo, Redo, and Delete commands in the Edit me
 At any point in development, you can check your progress by clicking the Run button at the top of the project explorer. This opens the application in live view mode in a new browser window.
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig14.jpg" alt="The Run button" style="width: 175px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig14.jpg" alt="The Run button" style="width: 175px;">
     <figcaption>The Run button</figcaption>
 </figure>
 
-When in live view mode, you cannot only view but also interact with a build of your application in development. 
+When in live view mode, you cannot only view but also interact with a build of your application in development.
 
 As you modify your application in Montage Studio, the live view rendering of the application updates in real time: every character you type, every component you modify, every element you replace is rendered instantly, without manual reload, for all open live view windows. The live view URL can be opened in a different browser, computer, or device. This is particularly useful for cross-browser and cross-device testing as well as for soliciting feedback from peers, team members, or clients, who can see and interact with what you've been working on&#8212;no need to install additional software or go through any complicated setup.
 
@@ -239,12 +239,12 @@ With live view mode, you can:
 * Show different states of the same application in multiple windows to test how a change might affect each view.
 * Share your progress or an idea with clients and peers in real time to discuss or review.
 
-To run the application in another browser (locally or on another computer or device), open the live view URL in that browser. Live view applications are served over an http (or https) connection. 
+To run the application in another browser (locally or on another computer or device), open the live view URL in that browser. Live view applications are served over an http (or https) connection.
 
 Opening a live view URL in a browser other than the one you develop in triggers the Montage Studio server to present a page with an Enter Access Code text box and to generate an access code. The access code appears in the info bar (below the menu bar) in Montage Studio. To proceed with live view, enter the access code and press Return. Likewise, when sharing your live view URL with others, you also need to give them the Montage Studio&#8211;generated access code so they can experience your application.
 
 <!-- figure>
-    <img src="/images/montage-studio/ide-overview/fig15.jpg" alt="Access code for sharing" style="width: 225px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig15.jpg" alt="Access code for sharing" style="width: 225px;">
     <figcaption>Access code example for sharing the application in development</figcaption>
 </figure -->
 

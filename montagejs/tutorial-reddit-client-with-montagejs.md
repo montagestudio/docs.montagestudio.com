@@ -16,7 +16,7 @@ In MontageJS applications, a repeating group of elements  can be displayed with 
 This tutorial shows you how to build a simple reddit client using the Repetition component. The application consists of two lists (see Figure 1):  a list of stories (on the left) and a list of popular subreddits (on the right). When you click a subreddit, the application uses the reddit API to obtain the top stories from the selected category. Stories are displayed with title, submitter, and current score details.
 
 <figure>
-	<img src="/images/docs/tutorials/reddit-client/fig01.png" alt="The final application.">
+	<img src="{{site.baseurl}}/images/docs/tutorials/reddit-client/fig01.png" alt="The final application.">
 	<figcaption><strong>Figure 1.</strong> A simple reddit client built on MontageJS.</figcaption>
 </figure>
 
@@ -43,7 +43,7 @@ Conceptually, the reddit client application consists of two user interface compo
 The list of subreddits is, strictly speaking, a group of repeating elements that is declared in your component's HTML file (AKA template). To display this list, you need to edit your template's markup and declaration:
 
 1. To your template's markup, add the following two elements:
-    * An unordered list element. 
+    * An unordered list element.
     * A single list item.
 
     ```html
@@ -86,7 +86,7 @@ At this point, the application displays a bulleted list of five items with the s
 
 Next, modify the `item` object so that each list item element displays the actual value of the underlying array item. The Repetition component has a special property called `objectAtCurrentIteration` that is used to access the value from the array. To make each item in the list display its number, bind the value of the `item` object to the `rep`'s `objectAtCurrentIteration` property.
 
->**Note:** MontageJS uses <a href="https://github.com/montagejs/frb/blob/master/README.md" target="_blank">functional reactive bindings</a> (FRB) to help keep user interface and model data in sync. FRB is a declarative language for binding properties and querying collections, to keep them in sync incrementally. 
+>**Note:** MontageJS uses <a href="https://github.com/montagejs/frb/blob/master/README.md" target="_blank">functional reactive bindings</a> (FRB) to help keep user interface and model data in sync. FRB is a declarative language for binding properties and querying collections, to keep them in sync incrementally.
 
 ```json
 "item": {
@@ -130,7 +130,7 @@ exports.Owner = Component.specialize({
 
 Next, you need to update the `bindings` properties in your template's declaration:
 
-* Replace the static value of the `rep` object's `content` property with a binding that pulls in the owner's `subs` property. 
+* Replace the static value of the `rep` object's `content` property with a binding that pulls in the owner's `subs` property.
 * Edit the `item` object's `value` binding so that it attaches to the `display_name` property of the current iteration object.
 
 ```json
@@ -198,7 +198,7 @@ Next, add a text header that uses bindings to show the name of the selected item
     ```html
     <div data-montage-id="component">
         <h1 data-montage-id="currentsub"></h1>
-        
+
         <ul data-montage-id="items">
             <li data-montage-id="item"></li>
         </ul>
@@ -219,14 +219,14 @@ Next, add a text header that uses bindings to show the name of the selected item
     }
     ```
 
-Note the use of `0` and `??` in the object's `value` bindings expression. 
+Note the use of `0` and `??` in the object's `value` bindings expression.
 
 * The Repetition component is designed to support scenarios in which users can select multiple items at once (even though this example only uses single selection). To handle these use cases, the selection property returns an array.  `0` tells the binding system to use the first item in the array, which is the selected object. (Unlike JavaScript, the FRB syntax doesn't require brackets when accessing an array index. FRB )
 
     >**Note:** Using an array index to access the first item will only work when the data structure is an array. You could use the FRB `one()` function instead to access the first item in a generic way.
 
 * The `??` operator is used to determine whether to use the value before or after the operator, based on whether the value on the left is defined. If defined, the value before the `??` operator will be used. If null or undefined, the value after the operator will be used.
-    
+
 In this example, if no selection has been made yet, the `??` operator causes the `h1` element to prompt users when no list item is selected. Once a selection has been made, the `h1` element will display the value of the selected item.
 
 <a href="http://montagejs.github.io/mfiddle/#!/7746328" target="_blank">View source on MFiddle</a>
@@ -246,22 +246,22 @@ To pass data from the reddit server into the application, follow these steps:
 
     ```javascript
     var Component = require("montage/ui/component").Component;
-    
+
     exports.Owner = Component.specialize({
         templateDidLoad: {
             value: function() {
                 var script = document.createElement("script");
                 script.src = "http://www.reddit.com/reddits.json?jsonp=subfn";
-    
+
                 var component = this;
                 window["subfn"] = function(jsonData) {
                     component.subs = jsonData.data.children;
                 };
-                
+
                 document.head.appendChild(script);
             }
         },
-        
+
         subs: { value: [] }
     });
     ```
@@ -345,7 +345,7 @@ At this point, the application displays a list of actual subreddits.
 
 ### Sorting a List
 
-To make things a little more interesting, try sorting the list of subreddits so that they are listed in descending order by the number of subscribers. 
+To make things a little more interesting, try sorting the list of subreddits so that they are listed in descending order by the number of subscribers.
 
 The data returned by the reddit API includes a `subscriber` property for each subreddit that can be used as a sorting key. FRB provides a convenient `sorted` method that allows you to order the sequence using a specific property:
 
@@ -368,21 +368,21 @@ The `-` operator, which appears in front of the property name in the binding exp
 
 # Displaying the Top Stories
 
-Now that the navigation is finished, it's time to add support for displaying the actual posts from selected subreddits. 
+Now that the navigation is finished, it's time to add support for displaying the actual posts from selected subreddits.
 To obtain and display the reddit posts you use the same approach you used for the subreddit list: grab some JSON data from the reddit API and put it into a repetition.
 
-1. Start by adding the necessary markup to your component's template. 
+1. Start by adding the necessary markup to your component's template.
 
     For this example, the application will display the reddit stories in a table with two columns: the first column displays a post's current score; the second column shows the title and author.
 
     ```html
     <div data-montage-id="component">
         <h1 data-montage-id="currentsub"></h1>
-        
+
         <ul data-montage-id="items">
             <li data-montage-id="item"></li>
         </ul>
-        
+
         <table data-montage-id="stories">
             <tr>
                 <td data-montage-id="score"></td>
@@ -396,7 +396,7 @@ To obtain and display the reddit posts you use the same approach you used for th
     ```
     * The `table` element is where the application attaches the repetition that contains the stories.
     * The `tr` element, including its contents, will repeat for each iteration in the repetition.
-    * The `score` and `author` elements inside of the table are both attached to Text components. 
+    * The `score` and `author` elements inside of the table are both attached to Text components.
     * The `title` element, which is inside an `a` tag, is handled by an Anchor component.
 
 2. Update the template's declaration with four new objects: `stories`, `title`, `author`, and `score`.
@@ -441,8 +441,8 @@ To obtain and display the reddit posts you use the same approach you used for th
     }
     ```
 
-    The application needs to repopulate the list of stories every time a different subreddit is selected. The best way to accomplish that is by adding a change listener, a mechansim that automatically calls a function every time the value of a specified property is updated. 
-    
+    The application needs to repopulate the list of stories every time a different subreddit is selected. The best way to accomplish that is by adding a change listener, a mechansim that automatically calls a function every time the value of a specified property is updated.
+
 3. In the component's JS file, at the beginning of the `templateDidLoad` function, add a line that configures a change listener for the navigation selection:
 
     ```javascript
@@ -458,17 +458,17 @@ To obtain and display the reddit posts you use the same approach you used for th
             if (selected) {
                 var script = document.createElement("script");
                 script.src = "http://www.reddit.com/" + selected.url + ".json?sort=top&t=month&jsonp=storyfn";
-    
+
                 var component = this;
                 window["storyfn"] = function(jsonData) {
                     component.stories = jsonData.data.children;
                 };
-            
+
                 document.head.appendChild(script);
             }
         }
     },
-        
+
     stories: { value: [] }
     ```
 
@@ -487,14 +487,14 @@ First, add some `class` attributes to your markup. A few minor structural change
 ```html
 <div data-montage-id="component">
     <h1 data-montage-id="currentsub"></h1>
-    
+
     <div class="navigation">
         <div class="header">Navigation</div>
         <ul data-montage-id="items">
             <li data-montage-id="item"></li>
         </ul>
     </div>
-    
+
     <table data-montage-id="stories">
         <tbody><tr>
             <td>
@@ -522,4 +522,4 @@ For more information about the reddit client and developing applications with Mo
 * <a href="https://github.com/segphault/mjs-reddit-viewer" target="_blank">Source code of the reddit client application</a>
 * [MontageJS Documentation](http://montagejs.org/docs/)
 * <a href="http://seg.phault.net/montage/cookbook/" target="_blank">MontageJS Cookbook</a>
-* [Getting Started with MontageJS](http://montagejs.org/docs/montagejs-setup.html) steps you through the process of setting up your MontageJS development environment. 
+* [Getting Started with MontageJS](http://montagejs.org/docs/montagejs-setup.html) steps you through the process of setting up your MontageJS development environment.

@@ -15,7 +15,7 @@ The Flow editor is a special editing environment that enables you to create a fl
 >More coming Soon
 
 <figure>
-    <img src="/images/montage-studio/ide-overview/fig06.jpg" alt="The Flow editor" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-overview/fig06.jpg" alt="The Flow editor" style="width: 550px;">
     <figcaption>The Flow editor</figcaption>
 </figure>
 

@@ -31,7 +31,7 @@ The following snippet shows how to set up an overlay:
 
 ```html
 <div data-montage-id="overlayImage">
-    <img src="http://montagejs.org/images/logo-montage.png">
+    <img src="http://montagejs.org{{site.baseurl}}/images/logo-montage.png">
 </div>
 ```
 

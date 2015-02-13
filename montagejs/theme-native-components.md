@@ -14,7 +14,7 @@ redirect_from: /docs/native-components.html
 
 The Native set uses the browser's default styles. Use this set if you want to custom design your user interface components yet still gain access to MontageJS features such as data binding and the MontageJS event handling model.
 
-![Native](../images/themes/native.png)
+![Native](..{{site.baseurl}}/images/themes/native.png)
 
 ## Benefits
 MontageJS native components support the same powerful binding and event listener models as the Digit and Matte themes. They also have the following benefits:

@@ -25,21 +25,21 @@ To start using Montage Studio:
 2. Click Sign in with GitHub.
 
     <figure>
-        <img src="/images/montage-studio/tutorials/first-steps/fig01.jpg" alt="Montage Studio login screen" style="width: 451px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/first-steps/fig01.jpg" alt="Montage Studio login screen" style="width: 451px;">
         <figcaption><strong>Figure 1.</strong> The Montage Studio login screen</figcaption>
     </figure>
 
     Unless you are already logged into an active GitHub session, you will be redirected to the GitHub website and prompted to log in.
-    
+
     Next, GitHub will ask you to give the application permission to access your GitHub account. To continue, click Authorize application.
-    
+
     <figure>
-        <img src="/images/montage-studio/tutorials/first-steps/fig02.png" alt="GitHub prompting for authorization" style="width: 451px;">
+        <img src="{{site.baseurl}}/images/montage-studio/tutorials/first-steps/fig02.png" alt="GitHub prompting for authorization" style="width: 451px;">
         <figcaption><strong>Figure 2.</strong> GitHub prompting for authorization</figcaption>
     </figure>
-    
+
     After signing in, you land on the Montage Studio welcome page.
-    
+
 3. Follow the Get Started resources to familiarize yourself with Montage Studio.
 
 ## Next Steps
@@ -63,9 +63,9 @@ To create a forum account:
 2. Click With GitHub in the Sign In dialog box.
 
     GitHub will prompt you for authorization.
-    
+
     After you grant authorization, you will be asked to verify your username and e-mail address.
-    
+
 3. Click Create Account to continue.
 
 There's a forum category called Prerelease where you can discuss Montage Studio.

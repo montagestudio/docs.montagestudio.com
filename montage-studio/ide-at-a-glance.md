@@ -18,13 +18,13 @@ next-page: overview-using-montage-studio
 
 ## Leverage the Power of the MontageJS Framework
 
-MontageJS is an open source client-side framework for building scalable, easy-to-maintain web applications. It was built from the ground up to help solve common challenges of building complex applications and features: 
+MontageJS is an open source client-side framework for building scalable, easy-to-maintain web applications. It was built from the ground up to help solve common challenges of building complex applications and features:
 
-* a declarative programming model that can handle complex UI tasks with just a few lines of code, 
-* a modular approach to organizing code and components that simplifies rich client development, 
-* a managed draw cycle that helps minimize expensive layout reflows, 
-* reactive data binding to keep rich UIs in sync with data models, 
-* and implicit event delegation to help improve performance. 
+* a declarative programming model that can handle complex UI tasks with just a few lines of code,
+* a modular approach to organizing code and components that simplifies rich client development,
+* a managed draw cycle that helps minimize expensive layout reflows,
+* reactive data binding to keep rich UIs in sync with data models,
+* and implicit event delegation to help improve performance.
 
 Although you can build MontageJS applications using the command line and a text editor, Montage Studio simplifies the process by automating the set-up and build processes, reducing the amount of code you have to write, and providing a drag-and-drop evironment for assembling user interface components. Incidentally, Montage Studio is built using MontageJS.
 
@@ -33,7 +33,7 @@ Although you can build MontageJS applications using the command line and a text 
 The Montage Studio development environment integrates component and code editing, asset management, and dependency management. The workspace is divided into three main areas: menu bar, project explorer, and editor area.
 
 <figure>
-    <img src="/images/montage-studio/ide-at-a-glance/fig01.png" alt="Single-window envrionment" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-at-a-glance/fig01.png" alt="Single-window envrionment" style="width: 550px;">
     <figcaption>Montage Studio</figcaption>
 </figure>
 
@@ -46,16 +46,16 @@ The Montage Studio development environment integrates component and code editing
 The component editor enables you to assemble user interface components and describe their relationships in a drag-and-drop environment. The assembled components represent a particular portion of your user interface and are stored in your project's ui directory.
 
 <figure>
-    <img src="/images/montage-studio/ide-at-a-glance/fig01a.png" alt="Component editor" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-at-a-glance/fig01a.png" alt="Component editor" style="width: 550px;">
     <figcaption>Component editor</figcaption>
 </figure>
 
 ### Text Editor
 
-The built-in text editor provides a convenient way to modify a component's HTML, CSS, or JavaScript files without leaving the Montage Studio environment. As a complement to your development workflow, you can use it to add your own code, write custom components, refactor existing components, define the look of your application, or simply edit your application's readme file. 
+The built-in text editor provides a convenient way to modify a component's HTML, CSS, or JavaScript files without leaving the Montage Studio environment. As a complement to your development workflow, you can use it to add your own code, write custom components, refactor existing components, define the look of your application, or simply edit your application's readme file.
 
 <figure>
-    <img src="/images/montage-studio/ide-at-a-glance/fig01b.png" alt="Text editor" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-at-a-glance/fig01b.png" alt="Text editor" style="width: 550px;">
     <figcaption>Text editor</figcaption>
 </figure>
 
@@ -64,7 +64,7 @@ The built-in text editor provides a convenient way to modify a component's HTML,
 The flow editor enables you to create flow patterns that move specified content along Bézier paths (see, for example, the film strip feature in the Popcorn sample application). You can access this editing environment through the properties of the Flow component from within the component editor.
 
 <figure>
-    <img src="/images/montage-studio/ide-at-a-glance/fig01c.png" alt="Flow editor" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-at-a-glance/fig01c.png" alt="Flow editor" style="width: 550px;">
     <figcaption>Flow editor</figcaption>
 </figure>
 
@@ -73,16 +73,16 @@ The flow editor enables you to create flow patterns that move specified content 
 With Montage Studio you can integrate WebGL content into complex applications, and the scene view editor makes manipulating the individual elements of a 3D scene just as easy as manipulating conventional HTML elements in the DOM. Similar to the flow editor, this editing environment is acccessible only from within the component editor, through the SceneView component.
 
 <figure>
-    <img src="/images/montage-studio/ide-at-a-glance/fig01d.jpg" alt="Scene view editor" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-at-a-glance/fig01d.jpg" alt="Scene view editor" style="width: 550px;">
     <figcaption>Scene view editor</figcaption>
 </figure>
 
 ### Package Manager
 
-The package manager provides a visual environment in which to edit the meta data in your project's package.json file. It also makes it easy to update a project's existing dependencies or add packages from the npm repository. 
+The package manager provides a visual environment in which to edit the meta data in your project's package.json file. It also makes it easy to update a project's existing dependencies or add packages from the npm repository.
 
 <figure>
-    <img src="/images/montage-studio/ide-at-a-glance/fig01e.png" alt="Package manager" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-at-a-glance/fig01e.png" alt="Package manager" style="width: 550px;">
     <figcaption>Package manager</figcaption>
 </figure>
 
@@ -91,13 +91,13 @@ The package manager provides a visual environment in which to edit the meta data
 Live view mode gives you an interactive preview of your application in development. Live view mode runs your application in a separate browser window and updates in real-time when you continue to work on the application. The live view URL can be opened in another browser or even on another computer or device, which is great for cross-browser testing and for sharing your work with your team or clients.
 
 <figure>
-    <img src="/images/montage-studio/ide-at-a-glance/fig01f.jpg" alt="Live view mode" style="width: 550px;">
+    <img src="{{site.baseurl}}/images/montage-studio/ide-at-a-glance/fig01f.jpg" alt="Live view mode" style="width: 550px;">
     <figcaption>Live view</figcaption>
 </figure>
 
 ## Use Git Source Control and Collaboration Features
 
-Montage Studio supports the Git source control system. After you log in to <a href="http://work.montagestudio.com" target="_blank">Montage Studio</a> with your GitHub account, you see the Montage Studio welcome page, which displays a list of your current repos; when you create a new project, Montage Studio automatically sets up a new repository on GitHub and clones it as a workspace container that is dedicated to that particular project. While you work, your saved changes are written to the workspace and then pushed to that project's repo, to a shadow branch that can be merged at any time. 
+Montage Studio supports the Git source control system. After you log in to <a href="http://work.montagestudio.com" target="_blank">Montage Studio</a> with your GitHub account, you see the Montage Studio welcome page, which displays a list of your current repos; when you create a new project, Montage Studio automatically sets up a new repository on GitHub and clones it as a workspace container that is dedicated to that particular project. While you work, your saved changes are written to the workspace and then pushed to that project's repo, to a shadow branch that can be merged at any time.
 
 # Next Steps
 
