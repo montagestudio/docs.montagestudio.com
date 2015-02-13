@@ -3,7 +3,6 @@ layout: docs
 title: FAQ - FRB Transition
 
 this-page: frb
-
 ---
 
 FAQ - FRB Transition

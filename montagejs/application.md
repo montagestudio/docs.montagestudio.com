@@ -19,8 +19,7 @@ Instantiate app with global constants to be used app-wide using [Application.del
 
 Serialization in `index.html`
 
-```json
-{
+    {
         "application": {
             "prototype": "montage/core/application",
             "properties": {
@@ -30,8 +29,7 @@ Serialization in `index.html`
         "customAppDelegate": {
             "prototype": "custom-app-delegate"
         }
-}
-```
+    }
 
 `custom-app-delegate.js`
 

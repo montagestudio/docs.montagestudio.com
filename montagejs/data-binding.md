@@ -4,9 +4,7 @@ layout: docs
 title: MontageJS Data Binding
 
 this-page: data-binding
-
 redirect_from: "/docs/Data-binding.html"
-
 ---
 
 

@@ -1,12 +1,16 @@
+permalink: pretty
+highlighter: pygments
 markdown: kramdown
 kramdown:
     input: GFM
     toc_levels: 2..6
 
-exclude: [_build]
+exclude:
+    - _build
+    - Gemfile*
+    - CNAME
+    - README.md
 
 gems:
-    # https://github.com/jekyll/jekyll-redirect-from
-    # case insensitive
     - jekyll-redirect-from
     - jekyll-sitemap
