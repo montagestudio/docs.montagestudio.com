@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -9,11 +9,18 @@
 
     <link rel="stylesheet" href="{{site.baseurl}}/stylesheets/base.css">
 
+    <!--highlight.js-->
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
     {% if page.api %}
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
     <script src="scripts/search.js"></script>
+
     <link rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link rel="stylesheet" href="styles/jsdoc-default.css">
     {% endif %}
-  </head>
+</head>

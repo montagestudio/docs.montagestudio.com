@@ -1,6 +1,9 @@
 baseurl: /docs.montagestudio.com
 
-highlighter: pygments
+# highlighter: pygments doesn't work w/ kramdown
+# coderay doesn't work w/ gh-pages
+# using highlight.js
+
 markdown: kramdown
 kramdown:
     input: GFM
