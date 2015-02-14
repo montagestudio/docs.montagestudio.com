@@ -1,0 +1,23 @@
+{
+  "name": "docs.montagestudio.com",
+  "version": "1.0.0",
+  "description": "Montage Framework & Montage Studio Docs",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/montagestudio/docs.montagestudio.com.git"
+  },
+  "author": "Montage Studio",
+  "bugs": {
+    "url": "https://github.com/montagestudio/docs.montagestudio.com/issues"
+  },
+  "homepage": "https://github.com/montagestudio/docs.montagestudio.com",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "jsdoc": "^3.3.0-beta1",
+    "montage": "^0.14.14"
+  }
+}

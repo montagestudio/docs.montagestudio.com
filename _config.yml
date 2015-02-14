@@ -10,10 +10,14 @@ kramdown:
     toc_levels: 2..6
 
 exclude:
-    - _build
+    - node_modules
     - Gemfile*
     - CNAME
     - README.md
+    - _build
+    - tmp
+    - JSDoc-conf.json
+    - package.json
 
 gems:
     - jekyll-redirect-from
