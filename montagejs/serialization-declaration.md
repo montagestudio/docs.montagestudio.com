@@ -1,21 +1,28 @@
 ---
-
 layout: docs
-title: MontageJS Declaration
-
-this-page: serialization-format
-
+title: MontageJS Serialization Declaration
+this-page: serialization-declaration
 redirect_from: /docs/Montage-serialization-format.html
-
+redirect_from: /docs/serialization-format.html
 ---
 
 
-# MontageJS Declaration
+MontageJS Declaration
+===
+
+* TOC
+{:toc}
+
+
+> Montage philosophy - **homoiconicity** - A Montage component declaration is data that you can manipulate programmatically.
+
 This document explains the serialization format MontageJS uses to serialize, and later deserialize, a declaration.
 
 A declaration describes the objects, components, properties, component data bindings, and DOM relationships involved in a MontageJS application. MontageJS uses JavaScript Object Notation (JSON) as the serialization format. At runtime, MontageJS parses the JSON structure and deserializes its contents into JavaScript, which is then evaluated and executed in the browser.
 
+
 ## JSON Overview
+
 JSON, a text format designed for serializing structured data, can represent six data types:
 
 * Four primitive types: strings, numbers, Booleans, and null
@@ -39,7 +46,11 @@ For example, the following JSON content defines an object named `anObject` that 
 
 In addition to these standard data types, MontageJS supports a few special types to enable serialization of more complex objects. These types include references to other objects in the same serialization, DOM references, functions, and regular expressions.
 
+Serialization currently does not support JavaScript-style comments. You can add a `"comment": "this is a comment"` key/value pair if desired.
+
+
 ## Declaration Example
+
 The following simple (yet complete) MontageJS application is defined in a single HTML document. This example gives you an idea of what serialization in MontageJS is about and why it's useful.
 
 ```html
@@ -69,33 +80,42 @@ Important things to note:
 * The `properties` object assigns initial values to the component's properties. One of the most important properties of a MontageJS component is its `element` property, which corresponds to the associated HTML body element on which the component operates. In this case, the TextField component's `element` property is set to the `<input>` tag that has the ID `"fName"`. The MontageJS serialization format provides a special JSON object representation to refer to an element. This special object's name is a hash mark ("#") and its value is the ID of the element.
 * MontageJS can load components from a directory that has a .reel extension. The module system redirects `require("x.reel")` to `require("x.reel/x")`.
 
+
 ## Declaration Owner
-A MontageJS serialization can declare an optional object named "owner". The specified owner acts as the controller for the document. For example, the following code creates a new module (main.js) that exports a `Main` prototype object.
+
+A MontageJS serialization can declare an optional object named `owner`. The `owner` acts as the controller for the document. For example, the following code creates a new module in `main.js` that exports a `Main` prototype object:
 
 ```js
 // Module: main.js
-// Exported object name: Main
 var Component = require("montage/ui/component").Component;
-//
+
+// Exported object name: Main
 exports.Main = Component.specialize({
 // Prototype methods and properties
 })
+```
+
+```html
 <script type="text/montage-serialization">
 {
    "owner": {
        "prototype": "main",
-       "properties": {
-           "element": {"#": "main"}
-       }
+       "properties": {"element": {"#": "main"}}
     }
 }
 </script>
 ```
 
+You can also export a custom class name in JavaScript: `exports.Test = ...`, then reference it in serialization in html template: `"prototype": "path/to/file[Test]"`.
+
+
 ## Declaration Formats
+
 The following sections explain object-dependent declarations.
 
+
 ### Serializing a Custom Object
+
 To serialize custom JavaScript objects, including MontageJS components, define a JSON object with a `prototype` property. This property defines the prototype to use to instantiate the object.
 
 For example, the following declaration fragment declares a Button component:
@@ -221,14 +241,18 @@ Next, create the main HTML document that declares the Button and Main components
 </html>
 ```
 
+
 ## Data Bindings in Declarations
+
 You can define event listener and data bindings between components within a serialization. To better understand the binding serialization syntax, look at the underlying JavaScript method used for creating data bindings, `Object.defineBinding()`. This method takes three parameters:
 
-* The target object defining the binding
-* The name of the target object's property that is being bound
-* A descriptor object that specifies target path the direction and the source path
+- The target object defining the binding
+- The name of the target object's property that is being bound
+- A descriptor object that specifies target path the direction and the source path
 
-You specify a component's bindings in a serialization with a `bindings` JSON object that, in turn, defines one or more JSON objects.
+Bindings defined in serialization are deserialized and defined using deserializer's `montage-reviver`. This happens before the binding owner's `constructor` is called. Keep this in mind when you need certain data at certain life cycle phases.
+
+You specify a component's bindings in a serialization with a `bindings` JSON object:
 
 ```json
 "bindings": {
@@ -252,7 +276,9 @@ this.defineBindings({
 });
 ```
 
-The following simple example adds data bindings to a serialization. It consists of two Slider components. The first slider's value is bound to the second slider's value. By default, data bindings are bi-directional, so changes to either bound property are pushed to the corresponding property. The arrow property "<-" or "<->" indicates if the the direction of the binding is one or two way.
+The following simple example adds data bindings to a serialization. It consists of two `Slider` components. The first `Slider`'s value is bound to the second `Slider`'s value. By default, data bindings are bi-directional, so changes to either bound property are pushed to the corresponding property. The arrow property `<-` or `<->` indicates if the the direction of the binding is one or two way.
+
+> Performance tip: prefer one-way bindings unless you absolutely need two-way bindings.
 
 ```html
 <html>
@@ -286,7 +312,9 @@ The following simple example adds data bindings to a serialization. It consists 
 </html>
 ```
 
+
 ## Event Listeners in Declarations
+
 You can assign event listeners to serialized components in a serialization using a `listeners` property.
 
 This can reduce the amount of code required to establish event handling for your components. The serialization in the following example declares two objects: a custom controller object (Controller) and a Button. The controller object acts as the event listener object to respond to "action" events that the Button emits when clicked or touched.
