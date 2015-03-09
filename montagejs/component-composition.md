@@ -109,37 +109,6 @@ The `Substitution` component allows you to branch the component tree based on a 
 </body>
 ```
 
-## `Exposition`
-
-The `Exposition` component allows you to specify components that may be related and need to occupy the same space in the `DOM`.
-
-```html
-<script type="text/montage-serialization">{
-    "preferences": {
-        "prototype": "montage/ui/exposition.reel"
-        "properties": {
-            "element": {"#": "preferences"}
-        },
-        "bindings": {
-            "value": {
-                "<-": "@customer.name"
-            }
-        }
-    },
-    "displayPanel": {...},
-    "networkPanel": {...},
-    "usersPanel": {...}
-}</script>
-
-<body>
-    <div data-montage-id="preferences">
-        <div data-param="display" data-montage-id="displayPanel"></div>
-        <div data-param="network" data-montage-id="networkPanel"></div>
-        <div data-param="users" data-montage-id="usersPanel"></div>
-    </div>
-</body>
-```
-
 ## Implementing a Custom Component
 
 The `CustomComponent` can make use of a _template argument_ to include all the contents of it's _inner template_. A template argument is an element that has the attribute `data-arg`. This marks the element as a placeholder that will replaced by the inner template.
