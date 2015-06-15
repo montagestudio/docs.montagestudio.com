@@ -9,7 +9,7 @@ this-page: frb
 FAQ - FRB Transition
 ===
 
-For more details on FRB, please see its [docs](documentup.com/montagejs/frb/).
+For more details on FRB, please see its [docs](http://documentup.com/montagejs/frb/){:target="_blank"}.
 
 **How do I observe a `path` from my object for changes *after* they've happened?**
 
