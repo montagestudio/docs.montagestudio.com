@@ -12,7 +12,7 @@ MontageJS Bootstrapping
 * TOC
 {:toc}
 
-> Note: "mopped" refers to [`mop`, the Monrage Optimizer](https://github.com/montagejs/mop)
+> Note: "mopped" refers to [`mop`, the Montage Optimizer](https://github.com/montagejs/mop)
 
 MontageJS calls `exports.initMontage` after setting up some variables, which in turn calls `getPlatform`, which returns an object with platform-specific functions (currently the browser and node.js are supported).
 
