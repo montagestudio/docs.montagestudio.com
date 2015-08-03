@@ -119,24 +119,20 @@ If all went well, you should see the title of the application and the Montage ve
 The application you are going to build has four elements—a title, two numeric input fields, and a slider—that need to be declared in your markup. You already declared the title of the application in main.html. Next, you declare the input fields and slider in converter.html.
 
 1. Open ui/converter.reel/converter.html.
-2. Replace the HTML within the `<body>` tags with the following markup:
+2. Replace the HTML within the `<div>` tags with the following markup:
 
     ```html
-    <div data-montage-id="converter" class="Converter">
-        <div>
-            <fieldset>
-                <div>&deg;C
-                   <input type="number"/>
-                </div>
-                <div>&deg;F
-                   <input type="number"/>
-                </div>
-            </fieldset>
+    <fieldset>
+        <div>&deg;C
+           <input type="number"/>
         </div>
-            <fieldset>
-               <input type="range"/>
-            </fieldset>
-    </div>
+        <div>&deg;F
+           <input type="number"/>
+        </div>
+    </fieldset>
+    <fieldset>
+       <input type="range"/>
+    </fieldset>
     ```
 
 3. Save the changes and refresh your browser.
@@ -154,35 +150,31 @@ Next, you will use MontageJS to update the view layer of these HTML elements.
 
 First, update the markup of the HTML elements you want to control with a `data-montage-id` custom attribute.
 
-1. In ui/converter.reel/converter.html, within the `<body>` tags, replace the existing markup with the following update:
+1. In ui/converter.reel/converter.html, within the parent `<div data-montage-id="owner" class="Converter">` element, replace the existing markup with the following update:
 
     ```html
-    <div data-montage-id="converter" class="Converter">
-        <div>
-            <fieldset>
-                <div>&deg;C
-                   <input data-montage-id="celsius"/>
-                </div>
-                <div>&deg;F
-                   <input data-montage-id="fahrenheit"/>
-                </div>
-            </fieldset>
+    <fieldset>
+        <div>&deg;C
+           <input data-montage-id="celsius"/>
         </div>
-            <fieldset>
-               <input data-montage-id="thermometer" type="range" />
-            </fieldset>
-    </div>
+        <div>&deg;F
+           <input data-montage-id="fahrenheit"/>
+        </div>
+    </fieldset>
+    <fieldset>
+       <input data-montage-id="thermometer" type="range" />
+    </fieldset>
     ```
 
     Next, add the components that control the behavior of these HTML elements.
 
-2. Replace the contents within the existing `<script>` tags with the following block:
+2. Within the existing `<script>` tags add the 3 serialized json objects below `"owner"` so that the serialization matches the following block:
 
     ```json
     {
         "owner": {
             "properties": {
-                "element": {"#": "converter"}
+                "element": {"#": "owner"}
             }
         },
 
@@ -238,7 +230,7 @@ MontageJS uses functional reactive bindings (FRB), which you declare in the obje
     {
         "owner": {
             "properties": {
-                "element": {"#": "converter"}
+                "element": {"#": "owner"}
             }
         },
 
@@ -289,10 +281,9 @@ At this point, the application works as planned but doesn't look as designed (se
 
 First, you need to specify CSS class names in the markup of your component.
 
-1. In ui/converter.reel/converter.html, replace the content within the `<body>` tags with the following updated markup:
+1. In ui/converter.reel/converter.html, replace the content within the owner `<div>` element with the following updated markup:
 
     ```html
-    <div data-montage-id="converter" class="Converter">
         <fieldset class="Numbers">
             <div class="Label">&deg;C
                <input data-montage-id="celsius">
@@ -304,7 +295,6 @@ First, you need to specify CSS class names in the markup of your component.
         <fieldset class="Slider">
            <input data-montage-id="thermometer" class="Slider-handle" type="range" min="-13" max="122">
         </fieldset>
-    </div>
     ```
 
     Things to note:
@@ -321,7 +311,7 @@ First, you need to specify CSS class names in the markup of your component.
     .Converter {
         margin: 20px auto;
         padding: 20px;
-        width: 274px;
+        width: 300px;
         border-radius: 10px;
         background-color: hsl(0,0%,98%);
         box-shadow: inset 0px 1px 2px 1px hsla(0,0%,100%,1), 0px 2px 5px hsla(0,0%,0%,.1);
@@ -397,14 +387,12 @@ At this point your application should look like Figure 7.
 
 Next, add some CSS rules to control the appearance of the Main component.
 
-1. Switch to ui/main.reel/main.html and replace the content within the `<body>` tags with the following markup:
+1. Switch to ui/main.reel/main.html and replace the content within parent `<div data-montage-id="main" data-montage-skin="light" class="Main">` element with the following markup:
 
     ```html
-    <div data-montage-id="main" data-montage-skin="light" class="Main">
-        <h1 data-montage-id="title" class="Title"></h1>
-        <div data-montage-id="tempConverter"></div>
-        <footer data-montage-id="montageVersion"></footer>
-    </div>
+    <h1 data-montage-id="title" class="Title"></h1>
+    <div data-montage-id="tempConverter"></div>
+    <footer data-montage-id="montageVersion"></footer>
     ```
 
     Things to note:
