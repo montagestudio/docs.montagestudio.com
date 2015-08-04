@@ -1,15 +1,11 @@
 ---
-
 layout: docs
 title: MontageJS Objects
-
 this-page: montagejs-objects
-
 redirect_from: /docs/montage-objects.html
-
 ---
 
-MontageJS Objects
+Montage Objects
 ===
 
 * TOC
@@ -114,6 +110,8 @@ Montage also supports a small number of modifications to the [ES5 property-descr
 
 - Names that start with `_` - will not be `enumerable`
 - Value is a function (methods)
+
+Please see [`Montage.defineProperty`]({{site.baseurl}}/api/Montage.html#defineProperty) API for more info.
 
 
 ## Extending the JavaScript Object Model

@@ -1,13 +1,13 @@
 ---
 layout: docs
-title: MontageJS Serialization Declaration
+title: Montage Serialization Declaration
 this-page: serialization-declaration
 redirect_from: /docs/Montage-serialization-format.html
 redirect_from: /docs/serialization-format.html
 ---
 
 
-MontageJS Declaration
+Montage Serialization Declaration
 ===
 
 * TOC

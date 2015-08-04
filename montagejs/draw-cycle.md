@@ -1,13 +1,11 @@
 ---
-
 layout: docs
-title: MontageJS Draw Cycle
-
+title: Montage Draw Cycle
 this-page: draw-cycle
-
 redirect_from: "/docs/Component-draw-cycle.html"
 
 ---
+
 
 Draw Cycle
 ===
@@ -88,3 +86,6 @@ The draw cycle is an internal implementation of MontageJS. That means a lot of t
 Following these rules when implementing your component's DOM changes and queries will limit the amount of reflows in the browser which, in turn, will help improve the performance of your application.
 
 For an example implementation of the draw cycle, see [MFiddle](http://montagejs.github.io/mfiddle/#!/5904498).
+
+
+### `classList`
