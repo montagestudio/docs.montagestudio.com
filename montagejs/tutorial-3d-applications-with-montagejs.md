@@ -7,455 +7,414 @@ this-page: tutorial-3d-applications-with-montagejs
 
 ---
 
-# Building 3D Applications with MontageJS
+用MontageJS创建 3D 应用
+======================
+创建浏览器3D应用不是轻而易举的。[WebGL](http://www.khronos.org/webgl/)开发了一套针对浏览器3D图形硬件加速的免费插件，它是一套底层图形处理API，对习惯只使用web功能的前端工程师会有比较高的学习门槛。
 
-Building browser-based 3D applications is no small feat. While <a href="http://www.khronos.org/webgl/" target="_blank">WebGL</a> brings plugin-free hardware-accelerated 3D graphics to the browser, its low-level API&mdash;well-suited for graphics programmers&mdash;sets a high entry bar for conventional front-end web developers.
+为了帮助开发者能够以一种简单的方式在浏览器中创建交互式3D应用，MontageJS框架提供一个叫做SceneView的组件。SceneView是一个基于WebGL的3D组件，让开发者可以像操作DOM中的HTML元素一样的简单方式操作3D场景中的元素。
 
-To help simplify building interactive 3D experiences in the browser, the MontageJS framework provides the SceneView component. SceneView is a WebGL-based 3D component that makes manipulating the individual elements of a 3D scene just as easy as manipulating conventional HTML elements in the DOM.
+为了让你感受一下这个组件能够做什么（不需要太多的编码）， 在一个支持WebGL的浏览器中打开[Beach Planet 示例](http://montagejs.github.io/beachplanetblog/)。Beach Planet是教程中用来演示3D原理的一个简单解谜游戏。这个游戏的玩法是通过点击不同的位置然后显示隐藏的元素,最后找到MontageJS 元素. 在示例中使用到viewpoints，3D transformations动画，和事件处理。
 
-To get a feel for what you can do with this component (and some minimal coding), open the <a href="http://montagejs.github.io/beachplanetblog/" target="_blank">Beach Planet demo</a> in a WebGL-enabled browser. Beach Planet is a simple hidden-object game that demonstrates the principles described in this tutorial. The objective of the game is to find four MontageJS logos by selecting different locations and clicking objects to reveal the hidden logos. The demo uses viewpoints, animated 3D transformations, and event handlers.
+![MontageJS和WebGL做的Beach Plane示例。](http://docs.montagestudio.com/images/docs/tutorials/3d-apps/fig01.jpg)
+*__图 1.__ 找到四个隐藏的元素,真实地体验一下MontageJS的3D组件。*
 
-<figure>
-    <img src="/images/docs/tutorials/3d-apps/fig01.jpg" alt="The Beach Planet MontageJS and WebGL demo." style="width: 451px;">
-    <figcaption><strong>Figure 1.</strong> Uncover four hidden logos—and experience the MontageJS 3D component in action.</figcaption>
-</figure>
+这个教程讲解MontageJS开发交互式3D应用的基本步骤。大体是这样的：
 
-This tutorial introduces the basic principles of building interactive 3D applications on MontageJS. It explains how to:
+* 创建一个MontageJS 3D 项目
+* 导入一个3D场景到MontageJS项目
+* 操作3D场景（使用CSS和绑定）
 
-* Set up MontageJS 3D project
-* Import a 3D scene in a MontageJS project
-* Manipulate a 3D scene (using CSS and bindings)
+#需要的基础知识
 
-# Requirements
+要完成这个教程，你需要熟悉MontageJS开发的基础知识。如果你还不熟悉MontageJS框架，你可能需要从[开始使用](http://docs.montagestudio.com/montagejs/montagejs-setup.html)教程开始学习。
 
-To make the most of this tutorial, you should be familiar with the basics of MontageJS development. If you are new to the MontageJS framework, you might want to step through our [Getting Started](http://montagejs.org/docs/montagejs-setup.html) guide first.
+同时，这个教程包含详细的示例源码来说明如何使用SceneView组件。在阅读教程的过程中，你可以打开GitHub上面的Beach Planet [源码](https://github.com/montagejs/beachplanetblog)查看；所有的例子都有一个指向源码的链接。当然，你也可以把Beach Planet示例导出然后安装到你本地的机器上，在源码的[readme](https://github.com/montagejs/beachplanetblog)文件中可以查看安装指南。
 
-Also, the tutorial includes detailed code examples to demonstrate the principles of how to use the SceneView component. To view the examples in context, refer to the Beach Planet <a href="https://github.com/montagejs/beachplanetblog" target="_blank">source code</a> on GitHub; all examples are accompanied by links to the source files. Alternatively, you can install and explore the Beach Planet demo locally, following the instructions provided in the demo's <a href="https://github.com/montagejs/beachplanetblog" target="_blank">readme</a> file.
+#SceneView组件介绍
+The SceneView component is part of the [mjs-volume](https://github.com/fabrobinet/mjs-volume) module maintained by Fabrice Robinet. The component is designed to help front-end web developers and designers build interactive 3D experiences in the browser using their existing HTML, CSS, and JavaScript skills. Using the component, you can:
 
-# Introducing the SceneView Component
+SceneView组件是[mjs-volume](https://github.com/fabrobinet/mjs-volume)模块的一部分，这个模块由Fabrice Robinet维护。这个组件让前端web开发者能够用现有的HTML, CSS, 和 JavaScript技术开发交互式3D应用。使用它你可以实现这些：
 
-The SceneView component is part of the <a href="https://github.com/fabrobinet/mjs-volume" target="_blank">mjs-volume</a> module maintained by Fabrice Robinet. The component is designed to help front-end web developers and designers build interactive 3D experiences in the browser using their existing HTML, CSS, and JavaScript skills. Using the component, you can: 
+* 集成3D场景到MontageJS web应用中。
+* 用CSS操作3D场景中的元素。
+* 用和CSS同样的方式处理3D场景transitions动画。
 
-* Integrate a 3D scene in a MontageJS web application.
-* Manipulate individual elements of a 3D scene using CSS.
-* Animate elements of a 3D scene using the same method that you would use to perform CSS transitions. 
+当然要完成这些，你的3D模型格式必须是SceneView组件能够识别的。
 
-For all this to be possible, however, your 3D content has to be in a format that the SceneView component recognizes.
+##glTF资源格式介绍
 
-## Introducing the glTF Asset Format
+SceneView组件显示的内容是一种JSON运行时资源格式，叫做[OpenGL Transmission Format](https://www.khronos.org/gltf) (glTF)。是由 Khronos Group consortium—the组织根据popular [COLLADA](http://www.khronos.org/collada/)提出的一种开放、标准的Web 3D模型数字资源格式，glTF可以处理网格数据、动画、纹理和阴影。glTF资源通过下面的文件提供对3D场景的描述。
 
-The SceneView component displays content in a JSON-based runtime asset format called <a href="http://www.khronos.org/gltf" target="_blank">OpenGL Transmission Format</a> (glTF). Proposed by the Khronos Group consortium&mdash;the organization behind the popular <a href="http://www.khronos.org/collada/" target="_blank">COLLADA</a> interchange file format for digital assets&mdash;as an open standard for optimized rendering of 3D content on the Web, glTF can handle mesh data, animations, textures, and shaders. More specifically, a glTF asset provides a compact representation of a 3D scene using the following files:
+* 一个描述节点层次、素材和摄像机的JSON文件。
+* 包含几何图形和动画的二进制文件。
+* 纹理的图片（PG、PNG等等）文件
+* 用于特定舞台的GLSL源码文本文件。
 
-* A JSON file that contains the node hierarchy, materials, and cameras.
-* Binary (BIN) files that contain geometry and animations.
-* Image (JPG, PNG, etc.) files for textures.
-* GLSL text files for GLSL source code for individual stages.
+任何你想在MontageJS 3D应用中使用的3D资源必须转换成glTF格式。
 
-Any 3D assets you want to use in a MontageJS 3D application have to be converted to the glTF format.
+##转换3D资源为glTF
+你可以使用COLLADA组织提供的3D-Asset-to-glTF工具来转换3D资源。
 
-## Converting 3D Assets to glTF
+慨括地讲，转换3D资源为glTF格式分成两个步骤：
 
-To convert 3D assets you can use the 3D-Asset-to-glTF toolchain provided by the COLLADA working group.
+1. 通过3D设计软件把资源导出为COLLADA文件格式（结果是一个DAE文件）。
+2. 使用开源命令行工具[COLLADA-to-glTF](http://www.khronos.org/gltf)把DAE文件转换成glTF模型（结果是一个JSON文件和一系列的二进制文本文件，通过这些文件可以重现3D场景）。
 
-In outline, converting 3D assets to glTF is a two-step process:
+COLLADA-to-glTF转换工具可以成功转换由[SketchUp](http://www.sketchup.com/)和[其它3D设计软件](http://collada.org/mediawiki/index.php/Portal:Products_directory)这些3D模式设计软件导出的COLLADA文件。
 
-1. Export assets from a 3D authoring tool to the COLLADA interchange file format (which results in a DAE file).
-2. Use the open source <a href="http://www.khronos.org/gltf" target="_blank">COLLADA-to-glTF</a> command line tool to convert the DAE file to a glTF model (which results in a JSON file and various associated binary and text files that represent the 3D scene).
+可以打开mjs-volume项目的readme文件中[Converting 3D Assets to glTF](https://github.com/fabrobinet/mjs-volume/blob/master/README.md#converting-3d-assets-to-gltf)部分查看如何使用COLLADA-to-glTF转换工具。
 
-The COLLADA-to-glTF converter works well with COLLADA files exported from <a href="http://www.sketchup.com/" target="_blank">SketchUp</a> and other <a href="http://collada.org/mediawiki/index.php/Portal:Products_directory" target="_blank">mainstream 3D authoring tools</a>.
+想知道更多关于SceneView组件的细节，比如API文档，请访问GitHub上的[mjs-volume](https://github.com/fabrobinet/mjs-volume)项目。
 
-For more information on how to use the COLLADA-to-glTF converter, see the section <a href="https://github.com/fabrobinet/mjs-volume/blob/master/README.md#converting-3d-assets-to-gltf" target="_blank">Converting 3D Assets to glTF</a> in the mjs-volume readme file.
+#配置MontageJS 3D项目
+和使用其它技术开发3D应用一样，使用MontageJS也需要一些准备工作：首先你需要把原始的3D资源转换成SceneView组件能够识别的格式，然后在项目中添加3D资源和mjs-volume包。（SceneView组件在安装MontageJS时候没有安装，需要单独安装）
 
+>__备注:__ 在学习教程过程中你不需要从头创建一个项目。教程中每个例子结束后都有一个指向源码的链接。
+>
 
-For more details on the SceneView component, including API documentation, refer to the <a href="https://github.com/fabrobinet/mjs-volume" target="_blank">mjs-volume</a> repository on GitHub.
+和创建其它MontageJS项目一样，你可以使用minit命令行工具创建3D项目（在[开始使用](http://montagejs.org/docs/montagejs-setup.html)查看具体步骤）；例如：
 
-# Setting Up a MontageJS 3D Project
+	minit create:app -n beachplanet
+	
 
-Building any type of 3D application requires a bit of preparation, and building 3D applications on MontageJS is no different: Not only do you have to convert the original 3D assets so they can be used by the SceneView component, you also have to set up a project and then add both the prepared assets and the mjs-volume package to your project. (The SceneView component currently is not part of the default dependencies installed when you create a new MontageJS project.)
+然后把mjs-volume包和转换好的3D资源加入到项目中。
 
->**Note:** You don't have to set up a project from scratch to follow along with this tutorial. You should be able to follow along by looking at the examples discussed in this tutorial and by referring to the source code linked off at the end of each example. 
+##添加SceneView组件
+用minit命令行创建一个项目后是不包含SceneView组件。你需要手动添加到你的MontageJS项目中：
 
-To set up a MontageJS 3D project, you begin as you normally would, using the minit command line tool (for details see the <a href="http://montagejs.org/docs/montagejs-setup.html" target="_blank">Setup guide</a>); for example:
+1. 打开项目根目录里面的package.json文件。
+2. 在dependencies节点中添加mjs-volume包：
 
-```text
-minit create:app -n beachplanet
-```
+		...
+		"dependencies": {
+		    ...,
+		    "mjs-volume" : "git://github.com/fabrobinet/mjs-volume.git"
+		},
+		...
+3. 在命令行窗口切换到项目当前目录，运行以下命令：
 
-Then you add the mjs-volume package and the converted 3D assets to your project.
+		npm install
+		
+4. 按回车键执行命令后，mjs-volume包就成功添加到项目。
 
-## Adding the SceneView Component
+##添加3D资源
+把包含JSON、二进制和GLSL文件的3D资源文件夹复制到项目的assets文件夹。（例如，如果要在你的项目中使用Beach Planet示例的资源，首先从GitHub[下载](https://github.com/montagejs/beachplanetblog/archive/master.zip)，解压Beach Planet源码，然后把assets文件夹里面的3d文件夹复制到你项目的assets文件夹中。）
 
-The SceneView component is not (yet) part of the dependencies installed when you create a new project using the minit command line tool. To use the component, you have to add it to your MontageJS project:
+##创建3D场景组件
+和其它项目一样，首先在项目的ui目录中创建组件，然后在项目的Main组件模板中声明引用它.
 
-1. In your (beachplanet) project directory, open the package.json file.
+>__备注:__ Main是MontageJS应用的主用户界面组件。和一个网站的首页或者单页面应用的入口一样：它可以包含任意数量的子组件来绘制页面和实现应用的功能。
 
-2. Add the mjs-volume package to the list of dependencies:
+现在为止你已经成功创建MontageJS 3D项目，可以开始编写应用代码。
 
-    ```json
-    ...
-    "dependencies": {
-        ...,
-        "mjs-volume" : "git://github.com/fabrobinet/mjs-volume.git"
-    },
-    ...
-    ``` 
-3. At the command prompt, switch (cd) to your project directory, and type:
-
-    ```text
-    npm install
-    ```
-    
-4. Press return to add the module.
-
-## Adding 3D Assets to a Project
-
-To add the converted 3D assets to your project, simply move the folder that contains the JSON, binary, and GLSL text files to the assets folder of your project. (For example, if you wanted to experiment with the assets of the Beach Planet demo in development, <a href="https://github.com/montagejs/beachplanetblog/archive/master.zip">download</a> and unzip the full Beach Planet source code from GitHub, and copy the 3d folder in the assets directory to the assets directory of your project.)
-
-## Creating a Component for the 3D Scene
-
-To follow best practice, you also want to create a new component for the 3D scene in the ui directory of your project, and then declare this component in the Main interface of your project. 
-
->**Note:** Main is the main user interface component of a MontageJS application. Think of it as the MontageJS equivalent of a website's index page or the principal screen of your single-page application: it can contain any number of subcomponents for the presentation and behavior of an application.
-
-At this point your MontageJS 3D project is set up and you are ready to code.
-
-# Importing a 3D Scene
-
-A 3D scene consists of a node hierarchy and includes meshes to be rendered, geometry, lights, shaders, and so on. When building a 3D application with MontageJS, you need two components:
-
-* The Scene runtime component, which is responsible for loading the JSON-based glTF asset.
-* The SceneView user interface component, which is responsible for displaying the content in the browser.
-
-To display a 3D scene, you assign an instance of the Scene component to the SceneView component in your component's template.
-
-```json
-...
-"scene": {
-    "prototype": "mjs-volume/runtime/scene",
-    "properties": {
-        "path": "models/beachplanet/beachplanet.json"
-    }
-},
-"sceneView": {
-    "prototype": "mjs-volume/ui/scene-view.reel",
-    "properties": {
-        "element": { "#": "sceneView" },
-        "scene": { "@": "scene" }
-    }
-},
-...
-```
-
-```html
-<div data-montage-id="sceneView"></div>
-```
-
-For this demo:
-
-* `scene` declares an instance of the scene.js runtime component from the mjs-volume/runtime directory. Its `path` property is set to the path of the glTF asset (here: beachplanet.json).
-* `sceneView` declares an instance of the SceneView user interface component (scene-view.reel) of the mjs-volume module. Its `scene` property refers to the `scene` instance in the declaration (which is where it gets its data from). Its `element` propertery controls the HTML element with the `data-montage-id` custom attribute of `sceneView` (which is the "container" if you will that holds the scene for browser display).
-
-That's all that is required to load a 3D scene. At this point, the 3D scene when rendered in a browser shows is a little planet with an ocean, a beach, some foliage, a few animals, and a small shack. You can use a mouse or familiar gestures to rotate and zoom in and out of the scene.
-
-<figure>
-    <img src="/images/docs/tutorials/3d-apps/fig02.jpg" alt="A basic 3D scene in the browser." style="width: 451px;">
-    <figcaption><strong>Figure 2.</strong> Importing a basic 3D scene.</figcaption>
-</figure>
-
->**Note:** By default, the SceneView component does not have any height, which is why you will see some additional classes in the markup of the linked component's source code. The SceneView component will automatically interpret certain CSS properties applied to its associated HTML element and adjust accordingly. You can use that feature to adjust the dimensions and background color of the SceneView.
-
-View the full <a href="https://github.com/montagejs/beachplanetblog/tree/master/ui/planet.reel" target="_blank">source code</a> on GitHub.
-
-#Manipulating a 3D Scene
-
-Once you have a 3D scene in your project, you can manipulate it in a variety of ways. For example, you may want to animate individual elements, handle user interactions, and give users the option to switch between view points. Using the glTF runtime assets and the mjs-volume runtime components, you can easily achieve all of the above using CSS rules and the MontageJS binding system. To accomplish this, you first expose the node of the element you want to manipulate and then apply the desired effect.
-
-## Exposing a 3D Node
-
-In the beachplanet.json file, individual elements of a 3D scene are described in objects called _nodes_. Each node has an ID value that uniquely identifies it within the scene. To manipulate an individual element of a 3D scene in a MontageJS application, you need to expose the associated node from the glTF file.
-
-For example, to manipulate the duck wader element (`buoy`) in the Beach Planet demo, you need to declare an instance of the node.js runtime component (which is part of the mjs-volume package) and associate its `id` property with the element's glTF node (here: `node_31`):
-
-```json
-"scene": {
-    "prototype": "mjs-volume/runtime/scene",
-    "properties": {
-        "path": "models/beachplanet/beachplanet.json"
-    }
-},
-
-"buoy": {
-    "prototype": "mjs-volume/runtime/node",
-    "properties": {
-        "id": "node_31",
-        "scene": { "@": "scene" }
-    }
-}
-
-```
-
-As this example demonstrates, designing 3D assets does require some advance planning. In your asset authoring tool, you have to assign (preferably easy-to-remember) entity names to the 3D elements that you want to expose in a MontageJS application. The name is preserved when the 3D scene is exported to a COLLADA (DAE) file and then converted to a glTF model. To find a node ID, do a simple text search for the name inside of the glTF JSON file (here: models/beachplanet/beachplanet.json).
+#导入3D场景
+
+一个3D场景由节点层次构成并包括需要绘制的网格，几何图形，光线，阴影等等。在构建MontageJS 3D 应用时，你需要用到两个组件：
+
+* Scene组件，通过这个组件来加载JSON-based glTF资源。
+* SceneView界面组件，通过这个组件把场景内容显示在浏览器上。
+
+在SceneView组件中引用一个Scene组件，就可以显示3D场景。
+
+	...
+	"scene": {
+	    "prototype": "mjs-volume/runtime/scene",
+	    "properties": {
+	        "path": "models/beachplanet/beachplanet.json"
+	    }
+	},
+	"sceneView": {
+	    "prototype": "mjs-volume/ui/scene-view.reel",
+	    "properties": {
+	        "element": { "#": "sceneView" },
+	        "scene": { "@": "scene" }
+	    }
+	},
+	...
+	
+&nbsp;
+
+	<div data-montage-id="sceneView"></div>
+	
+这个示例中：
+
+* `scene`声明一个scene组件对象，组件的定义是在mjs-volume/runtime/scene.js文件中。 对象的`path`属性设置为glTF资源的路径（beachplanet.json）。
+* `sceneView`声明一个SceneView界面组件对象，组件的定义是在mjs-volume模块的scene-view.reel文件夹中。对象的`scene`属性设置为`scene`对象（用来下载场景数据）。`element`属性通过`data-montage-id`关联到HTML元素`sceneView`（浏览器会把场景内容显示在这个"容器"里面）。
+
+3D场景已经能够加载并且显示在浏览器中。包括海洋、沙滩、树木、小黄鸭和一个房子。你可以用鼠标或者手势来旋转，放大，缩小场景。
+
+![用浏览器显示一个简单3D场景](http://docs.montagestudio.com/images/docs/tutorials/3d-apps/fig02.jpg)
+*__图 2.__ 导入一个简单3D场景*
+
+>__备注:__ SceneView组件默认是没有尺寸设置，我们需要在组件的JS文件中处理。SceneView组件会自动设置THML元素的CSS属性和尺寸信息。我们可以在JS文件中改变SceneView的大小或者背景颜色。
+在GitHub查看[完整源码](https://github.com/montagejs/beachplanetblog/tree/master/ui/planet.reel) 。
+
+#操作3D场景
+
+在项目中引入并且显示3D场景后，你可以有几种方式操作场景中的元素。例如让一些元素动画响应用户动作，让用户可以切换视角等。通过在glTF资源和mjs-volume组件上应用CSS规则和MontageJS绑定模块，你可以很容易实现以上功能。实现的第一个步骤是在应用中引用3D场景中元素。
+
+##引用3D元素节点
+在beachplanet.json文件中，每一个3D场景元素对象称作为一个节点。在一个场景中每个节点有一个唯一标识符ID。把glTF文件中需要操作的节点引入到应用。
+
+例如，要操作Beach Planet示例中的小黄鸭元素(`buoy`)，你需要定义一个新对象然后设置它的id属性为glTF对应节点的id（这个例子中是：`node_31`）,对象的类型是mjs-volume模块中node。
+
+	"scene": {
+	    "prototype": "mjs-volume/runtime/scene",
+	    "properties": {
+	        "path": "models/beachplanet/beachplanet.json"
+	    }
+	},
+
+	"buoy": {
+	    "prototype": "mjs-volume/runtime/node",
+	    "properties": {
+	        "id": "node_31",
+	        "scene": { "@": "scene" }
+	    }
+	}
+	
+如上面例子所示，我们需要知道glTF中节点的ID值，所以在设计3D模型的时候就需要为节点设置一个容易记住的名字。在设计工具中为节点定义的名字会在转换成COLLADA(DAE)文件然后转换为glTF格式后保留。如果要知道一个节点的ID值，打开glTF JSON文本文件，然后搜索节点名就可以找到（这个例子中是beachplanet/beachplanet.json）。
 
 Note that you can expose any individual material's properties in a 3D scene to MontageJS in much the same way that you expose a node, using the material.js runtime component.
+你也可以在应用中引入3D场景中的其它元素，比如材质。和引入节点一样，只是使用 material.js组件。
 
-## Manipulating a 3D Node with CSS
+##用CSS操作3D节点
+在组件的模板中引入节点后，你可以通过对它应用CSS规则来操作它。
 
-After declaring the element you want to manipulate in the component's template, you can apply CSS classes that manipulate it in various ways. 
+`node`组件支持`visibility`属性和3D transforms。`material`组件支持`opacity`属性。
 
-The node.js runtime component currently supports the `visibility` property and 3D transforms. The material.js runtime component supports the `opacity` property. 
+>__备注:__ 其它的功能，比如改变节点的纹理和透明度，会在以后的版本支持（你可以在[mjs-volume](https://github.com/fabrobinet/mjs-volume)查看最新功能）。
+上面的两种组件同时也支持使用CSS动画。还有`active`和`hover`选择器，所以组件可以响应点击和滑过事件。可以像其它组件一样为节点设置一个CSS类名，但是只能够使用MontageJS绑定方式。
 
->**Note:** Additional functionality, including the ability to replace node textures and adjust node opacity, are planned for a future release (keep an eye on the commits for <a href="https://github.com/fabrobinet/mjs-volume" target="_blank">mjs-volume</a> for the latest improvements).
+![动画Beach Planet MontageJS and WebGL例子中的小黄鸭](http://docs.montagestudio.com/images/docs/tutorials/3d-apps/fig03.jpg)
+*__图 2.__ 小黄鸭获取焦点后放大。*
 
-Both runtime components support the use of CSS transitions to animate property changes. The `active` and `hover` selectors are also supported, so you can easily apply click and rollover effects. A CSS class for a node can be defined like any other class in the component's CSS file, but it has to be applied through the MontageJS binding system.
+在Buoy组件（buoy.reel）中设置以下的CSS规则后，当鼠标滑过小黄鸭（buoy）时就会放大：
 
-<figure>
-    <img src="/images/docs/tutorials/3d-apps/fig03.jpg" alt="Animating the duck in the Beach Planet MontageJS and WebGL demo." style="width: 451px;">
-    <figcaption><strong>Figure 3.</strong> The duck wader grows in size when in focus.</figcaption>
-</figure>
+* 在组件的CSS文件中定义`animate`CSS类，当鼠标滑过的时执行`scale3d`变化。
 
-For this demo, the effect of seeing the duck wader (buoy) element grow in size when users leave their cursors over it is achieved using the following rules and declaration in the Buoy component (buoy.reel):
+		.animate:hover {
+		    transform: scale3d(3, 3, 3);
+		    cursor: pointer;
+		}
+		.animate {
+		    transition-property: transform;
+		    transition-duration: 5s;
+		    -montage-transform-z-origin: 0%;
+		}
+		
+	scale3d变化会增加元素的大小。`transition`属性控制动画的效果和时长；在这个例子中5秒内小黄鸭的大小变为全尺寸。当鼠标滑出之后，小黄鸭的尺寸变回原来大小。
+	
+* 在组件模板中，节点（`buoy`）通过`classList.has`绑定CSS类。
 
-* The component's CSS file contains a CSS class called `animate` with a hover selector that performs a `scale3d` transformation.
+		"scene": {
+		    "prototype": "mjs-volume/runtime/scene",
+		    "properties": {
+		        "path": "models/beachplanet/beachplanet.json"
+		    }
+		},
+		"sceneView": {
+		    "prototype": "mjs-volume/ui/scene-view.reel",
+		    "properties": {
+		        "element": { "#": "sceneView" },
+		        "scene": { "@": "scene" }
+		    }
+		},
+		"buoy": {
+		    "prototype": "mjs-volume/runtime/node",
+		    "properties": {
+		        "id": "node_31",
+		        "scene": { "@": "scene" }
+		    },
+		    "bindings": {
+		        "classList.has('animate')": { "<-": "true" }
+		    }
+		}
+		
+在GitHub查看完整 [源码](https://github.com/montagejs/beachplanetblog/tree/master/ui/buoy.reel)
 
-    ```css
-    .animate:hover {
-        transform: scale3d(3, 3, 3);
-        cursor: pointer;
-    }
-    .animate {
-        transition-property: transform;
-        transition-duration: 5s;
-        -montage-transform-z-origin: 0%;
-    }
-    ```
+##添加事件监听器
 
-    The `scale3d` transform increases the size of the object. The `transition` property is used to animate the change in appearance and its duration; in this example it takes five seconds for the wader to reach its full size. The animation is reversed when you move the cursor off of the element.
+在真实的交互式3D应用中，需要响应用户动作事件。响应事件的方法是在节点对象上添加事件监听器，然后实现事件处理方法。
 
-* The component's template uses the `classList.has` binding on the node (here `buoy`) to apply the CSS class.
+在一个3D节点上添加事件处理和在一个MontageJS按钮组件上添加事件处理的方式是一样。下面的代码实现当点击小屋节点之后弹出一个对话框。
 
-    ```json
-    "scene": {
-        "prototype": "mjs-volume/runtime/scene",
-        "properties": {
-            "path": "models/beachplanet/beachplanet.json"
-        }
-    },
-    "sceneView": {
-        "prototype": "mjs-volume/ui/scene-view.reel",
-        "properties": {
-            "element": { "#": "sceneView" },
-            "scene": { "@": "scene" }
-        }
-    },
-    "buoy": {
-        "prototype": "mjs-volume/runtime/node",
-        "properties": {
-            "id": "node_31",
-            "scene": { "@": "scene" }
-        },
-        "bindings": {
-            "classList.has('animate')": { "<-": "true" }
-        }
-    }
-    ```
-    
-View the full <a href="https://github.com/montagejs/beachplanetblog/tree/master/ui/buoy.reel" target="_blank">source code</a> on GitHub.
+	...
+	"door": {
+	    "prototype": "mjs-volume/runtime/node",
+	    "properties": {
+	        "id": "node_6",
+	        "scene": { "@": "scene" }
+	    },
+	    "listeners": [{
+	        "type": "action",
+	        "listener": { "@": "owner" }
+	    }]
+	},
+	...
+	
+&nbsp;
 
-## Adding a Listener to Handle Events
+	var Component = require("montage/ui/component").Component;
 
-To build a truly interactive 3D experience, an application needs to be able to respond when users interact with an element in a scene. To trap an event, you can attach an event listener to a node and then implement a corresponding handler method.
+	exports.Door = Component.specialize({
+	  handleDoorAction: {
+	    value: function(event) {
+	        alert("The user clicked the door!");
+	    }
+	  }
+	});
+	
+这里我们使用`action`监听点击事件，你也可以替换为监听滑动事件`hover`。
 
-Adding an event listener to handle, for example, clicks on a 3D node is just as easy as handling an event for a MontageJS button control. The following code causes the application to display an alert whenever a user clicks the door of the shack in the Beach Planet demo.
 
-```json
-...
-"door": {
-    "prototype": "mjs-volume/runtime/node",
-    "properties": {
-        "id": "node_6",
-        "scene": { "@": "scene" }
-    },
-    "listeners": [{
-        "type": "action",
-        "listener": { "@": "owner" }
-    }]
-},
-...
-```
+##使用绑定操作3D节点
+完成上面的例子后，你还可以让场景响应点击（触屏）事件。在小黄鸭放大例子中，绑定3D节点动画CSS类的值是固定值true。你可以用MontageJS绑定模块动态绑定，这样就可以实现是否需要应用动画CSS类。
 
-```javascript
-var Component = require("montage/ui/component").Component;
 
-exports.Door = Component.specialize({
-  handleDoorAction: {
-    value: function(event) {
-        alert("The user clicked the door!");
-    }
-  }
-});
-```
+下面的代码展示如何实现当小房子门被点击之后打开或者关闭。
 
-Note that the `action` listener type works for clicks, but you could optionally use the `hover` type instead.
+	"door": {
+	    "prototype": "mjs-volume/runtime/node",
+	    "properties": {
+	        "id": "node_6",
+	        "scene": { "@": "scene" }
+	    },
+	    "bindings": {
+	        "classList.has('animate')": { "<-": "true" },
+	        "classList.has('open')": { "<-": "@owner.doorOpen" }
+	    },
+	    "listeners": [{
+	        "type": "action",
+	        "listener": { "@": "owner" }
+	    }]
+	}
+	
+在组件的JS文件事件处理函数中每次对`doorOpen`属性进行取反操作，这样的效果是保证门被点击之后`doorOpen`属性值在true和false之间来回切换。
 
-## Manipulating a 3D Node through Bindings
+	Component = require("montage/ui/component").Component;
 
-Building on the previous example, you may want to make the scene respond to a user's click (or tab) event. In the duck wader example, the binding that applies the CSS class to the 3D node is static, that is, the value is always `true`. But the real power of the MontageJS binding system comes into play when you use it to control whether the CSS class is applied.
+	exports.Door = Component.specialize({
 
-The following snippet demonstrates how to make the door of the shack open and close when it is clicked. In the component's template, a `classList.has` expression is bound to a `doorOpen` property on the component that contains a Boolean value.
+	  doorOpen: { value: false },
 
-```json
-"door": {
-    "prototype": "mjs-volume/runtime/node",
-    "properties": {
-        "id": "node_6",
-        "scene": { "@": "scene" }
-    },
-    "bindings": {
-        "classList.has('animate')": { "<-": "true" },
-        "classList.has('open')": { "<-": "@owner.doorOpen" }
-    },
-    "listeners": [{
-        "type": "action",
-        "listener": { "@": "owner" }
-    }]
-}
-```
+	  handleDoorAction: {
+	    value: function(event) {
+	      this.doorOpen = ~this.doorOpen;
+	    }
+	  },
+	  . . .
+	});
+	
+在组件的CSS文件中，门打开的CSS类使用`rotateZ`属性控制门的角度，实现打开状态。 `animate`CSS类实现一动画的方式打开，关闭。
 
-In the component's JS file, the event handler for the door inverts the value of the `doorOpen` property, ensuring that it will change between `true` and `false` every time the door is clicked.
+	.open {
+	  transform: rotateZ(-130deg);
+	}
+	.animate {
+	  transition-property: transform;
+	  transition-duration: 5s;
+	  transform-origin: 0% 0%;
+	}
+	
 
-```javascript
-Component = require("montage/ui/component").Component;
+注意动画相关CSS类是单独定义的，这样在门打开或者关闭的过程中都会被应用。
 
-exports.Door = Component.specialize({
+![动画 Beach Planet MontageJS and WebGL 示例中的门。](http://docs.montagestudio.com/images/docs/tutorials/3d-apps/fig04.jpg)
+*__图 4.__ 用绑定方式控制门节点的CSS类。*
 
-  doorOpen: { value: false },
-  
-  handleDoorAction: {
-    value: function(event) {
-      this.doorOpen = ~this.doorOpen;
-    }
-  },
-  . . .
-});
-```
+在这个例子中还涉及到`transform-origin`属性，这个属性控制旋转过程中门的左边缘保持不动。如果没有设置它,门就会围绕中心旋转而不是门栓。在使用transformsCSS时，一般都需要按照需求设置相应的`transform-origin`属性。
 
-In the component's CSS file, the `open` CSS class uses the `rotateZ` property to adjust the angle of the door, causing it to appear open. The `animate` CSS class uses a CSS transition to ensure that the transformation is animated.
+在GitHub查看完整[源码](https://github.com/montagejs/beachplanetblog/tree/master/ui/door.reel)
 
-```css
-.open {
-  transform: rotateZ(-130deg);
-}
-.animate {
-  transition-property: transform;
-  transition-duration: 5s;
-  transform-origin: 0% 0%;
-}
-```
+##改变视角
 
-Note that the transition behavior is defined in a separate CSS class that is applied at all times rather than toggled; this ensures that the transition animation will work when the door is both opening and closing.
+在一个复杂3D场景中，需要能够控制用户视角。SceneView组件可以很容易地做到在一个3D场景中在不同视角之间切换。一个视角就是一个摄像头节点。你可以像绑定其它场景元素一样的方式绑定视角。
 
-<figure>
-    <img src="/images/docs/tutorials/3d-apps/fig04.jpg" alt="Animating the door in the Beach Planet MontageJS and WebGL demo." style="width: 451px;">
-    <figcaption><strong>Figure 4.</strong> Use bindings to control whether CSS is applied on a node.</figcaption>
-</figure>
+在下面的例子中，sceneView对象有一个`viewPoint`属性，属性的值绑定到`planetVP`节点：
 
-Another feature that comes into play in this example is the `transform-origin` property. This property ensures that the left edge of the door will remain fixed in its position. If the origin was not set, the door would rotate from the center instead of swinging as though on a hinge. In many cases where transforms are used, setting an origin will ensure that the transformation behaves as expected.
+	 "sceneView": {
+	    "prototype": "mjs-volume/ui/scene-view.reel",
+	    "properties": {
+	        "allowsViewPointControl" : false,
+	        "element": { "#": "sceneView" },
+	        "scene": { "@": "scene" },
+	        "viewPoint": { "@" : "planetVP" }
+	    }
+	},
+	"planetVP": {
+	    "prototype": "mjs-volume/runtime/node",
+	    "properties": {
+	        "id": "node-Camera_cabin",
+	        "scene": { "@": "scene" }
+	    }
+	}
+	
+`allowsViewPointControl`属性控制是否允许用户通过拖拽改变视角。这个功能在应用需要在一个场景中通过拖拽显示更多内容时非常有用。你也可以用绑定的方式设置`viewPoint`属性，这样就可以通过编程改变视角。
 
-View the full <a href="https://github.com/montagejs/beachplanetblog/tree/master/ui/door.reel" target="_blank">source code</a> on GitHub.
 
-## Switching View Points
+Beach Planet示例也提供一个菜单来帮助用户快速选择视角：行星，海鸥，小黄鸭，小屋，和海豚。下面的示例代码展示如何在Beach Planet场景中切换两个不同的视角。`viewPoint`属性绑定摄像头到当前选中的菜单选项。
 
-When presenting complex 3D scenes, you may want to control the user's perspective. The SceneView component makes it easy to switch between different view points within a 3D scene. A view point is a node that holds a camera. View points can be accessed in the binding definition just like any other scene node.
+	"planetVP": {
+	    "prototype": "mjs-volume/runtime/node",
+	    "properties": {
+	        "id": "node-Camera_cabin",
+	        "scene": { "@": "scene" }
+	    }
+	},
+	"cabinVP": {
+	    "prototype": "mjs-volume/runtime/node",
+	    "properties": {
+	        "id": "node-Camera_cabin",
+	        "scene": { "@": "scene" }
+	    }
+	},
+	"seaGullVP": {
+	    "prototype": "mjs-volume/runtime/node",
+	    "properties": {
+	        "id": "node-Camera_SeaGull",
+	        "scene": { "@": "scene" }
+	    }
+	},
+	"sceneView": {
+	    "prototype": "mjs-volume/ui/scene-view.reel",
+	    "properties": {
+	        "allowsViewPointControl" : false,
+	        "element": { "#": "sceneView" },
+	        "scene": { "@": "scene" },
+	        "viewPoint": { "@" : "planetVP" }
+	    }
+	},
+	"nav": {
+	    "prototype": "montage/ui/repetition.reel",
+	    "properties": {
+	        "element": { "#": "nav" },
+	        "content": [
+	            { "label": "Planet", "value": { "@": "planetVP" } },
+	            { "label": "Cabin", "value": { "@": "cabinVP" } },
+	            { "label": "Seagull", "value": { "@": "seaGullVP" } }
+	        ]
+	    }
+	}
+	
+在GitHub查看示例的完整 [源码](https://github.com/montagejs/beachplanetblog/tree/master/ui/menu.reel)
 
-In the following example, the `sceneView` object has a `viewPoint` property that references the `planetVP` node:
+![切换Planet MontageJS 和 WebGL视角的例子](http://docs.montagestudio.com/images/docs/tutorials/3d-apps/fig05.jpg)
+	*__图 5.__ 通过viewPoint属性控制用户视角。*
+	
+现在你已经知道`SceneView`组件的基本使用方法，试试在自己的项目里实现可交互的3D功能吧。从从[3D Warehouse](http://sketchup.google.com/3dwarehouse/)可以下载到glTF格式的3D资源。`SceneView`组件虽然已经可以帮助你实现类似于Beach Planet效果项目。但我们并不满足，更多的功能正在开发中。
 
-```json
- "sceneView": {
-    "prototype": "mjs-volume/ui/scene-view.reel",
-    "properties": {
-        "allowsViewPointControl" : false,
-        "element": { "#": "sceneView" },
-        "scene": { "@": "scene" },
-        "viewPoint": { "@" : "planetVP" }
-    }
-},
-"planetVP": {
-    "prototype": "mjs-volume/runtime/node",
-    "properties": {
-        "id": "node-Camera_cabin",
-        "scene": { "@": "scene" }
-    }
-}
-```
+#Next Steps
+#下一步
 
-The `allowsViewPointControl` property is used to control whether the user can drag to adjust the view. This feature is useful in cases where the application needs more control over what the user sees in the scene. A binding can be used with the `viewPoint` property to control the view programmatically.
+继续研究Beach Planet示例 [源码](https://github.com/montagejs/beachplanetblog/tree/master/ui/beachplanet.reel)。
 
-The Beach Planet demo also provides a menu that helps users quickly choose the main Beach Planet detail views: planet, seagull, buoy (duck wader), cabin, and dolphins. The following snippet demonstrates how to choose between two different view points that are embedded in the Beach Planet scene. The `viewPoint` property is bound to the camera associated with the selected item in the menu.
+获取MontageJS 3D 组件最新开发版本，在GitHub上关注或者加星[mjs-volume](https://github.com/fabrobinet/mjs-volume) 项目。
 
-```json
-"planetVP": {
-    "prototype": "mjs-volume/runtime/node",
-    "properties": {
-        "id": "node-Camera_cabin",
-        "scene": { "@": "scene" }
-    }
-},
-"cabinVP": {
-    "prototype": "mjs-volume/runtime/node",
-    "properties": {
-        "id": "node-Camera_cabin",
-        "scene": { "@": "scene" }
-    }
-},
-"seaGullVP": {
-    "prototype": "mjs-volume/runtime/node",
-    "properties": {
-        "id": "node-Camera_SeaGull",
-        "scene": { "@": "scene" }
-    }
-},
-"sceneView": {
-    "prototype": "mjs-volume/ui/scene-view.reel",
-    "properties": {
-        "allowsViewPointControl" : false,
-        "element": { "#": "sceneView" },
-        "scene": { "@": "scene" },
-        "viewPoint": { "@" : "planetVP" }
-    }
-},
-"nav": {
-    "prototype": "montage/ui/repetition.reel",
-    "properties": {
-        "element": { "#": "nav" },
-        "content": [
-            { "label": "Planet", "value": { "@": "planetVP" } },
-            { "label": "Cabin", "value": { "@": "cabinVP" } },
-            { "label": "Seagull", "value": { "@": "seaGullVP" } }
-        ]
-    }
-}
-```
+我们非常欢迎你有意见（或者代码）帮助优化组件。你可以加入我们的[MontageJS邮件列表](https://groups.google.com/forum/?fromgroups#!forum/montagejs)或者从Twitter[@MontageJS](https://twitter.com/montagejs)上联系我们。
 
-View the full <a href="https://github.com/montagejs/beachplanetblog/tree/master/ui/menu.reel" target="_blank">source code</a> for this example on GitHub.
+下面的资源帮助你了解更多关于MontageJS应用开发的知识：
 
-<figure>
-    <img src="/images/docs/tutorials/3d-apps/fig05.jpg" alt="Switching view points in the Beach Planet MontageJS and WebGL demo." style="width: 451px;">
-    <figcaption><strong>Figure 5.</strong> Control the user's perspective with the viewPoint property.</figcaption>
-</figure>
-
-Now that you know the basic principles of using the SceneView component, you can experiment with integrating interactive 3D experiences in your own web content (or grab some 3D models in the glTF format from <a href="http://sketchup.google.com/3dwarehouse/" target="_blank">3D Warehouse</a>). The component already offers enough features to build compelling experiences as the Beach Planet demo shows, but we have even more planned for the future.
-
-# Next Steps
-
-Explore the complete <a href="https://github.com/montagejs/beachplanetblog/tree/master/ui/beachplanet.reel" target="_blank">source code</a> for the Beach Planet demo on GitHub.
-
-To keep up with the latest developments of the MontageJS 3D components, follow or star the <a href="https://github.com/fabrobinet/mjs-volume" target="_target">mjs-volume</a> repository on GitHub.
-
-If you have ideas (or code) for improving the components, we'd love to hear from you. Get in touch by joining the <a href="https://groups.google.com/forum/?fromgroups#!forum/montagejs" target=_"blank">MontageJS mailing list</a> or contacting <a href="https://twitter.com/montagejs" target=_"blank">@MontageJS</a> on Twitter.
-
-For more information about developing applications with MontageJS, refer to the following resources:
-
-* [MontageJS Documentation](http://montagejs.org/docs/)
-* <a href="http://seg.phault.net/montage/cookbook/" target="_blank">MontageJS Cookbook</a>
-* [Getting Started with MontageJS](http://montagejs.org/docs/montagejs-setup.html) steps you through the process of setting up your MontageJS development environment.
-
+- [MontageJS 文档](http://montagejs.org/docs/)
+- [MontageJS 手册](http://seg.phault.net/montage/cookbook/)
+- [开始使用 MontageJS](http://montagejs.org/docs/montagejs-setup.html)，一步一步教你配置MontageJS开发环境。

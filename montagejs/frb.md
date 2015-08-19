@@ -6,191 +6,164 @@ this-page: frb
 
 ---
 
-FAQ - FRB Transition
-===
+FAQ - FRB 语法变化
+====================
+在 [FRB文档](http://docs.montagestudio.com/montagejs/documentup.com/montagejs/frb/)查看更多关于FRB介绍。
 
-For more details on FRB, please see its [docs](http://documentup.com/montagejs/frb/){:target="_blank"}.
+####如何监听对象属性值改变?
 
-**How do I observe a `path` from my object for changes *after* they've happened?**
+以前
 
-Before
+	myObject.addPropertyChangeListener("path", handler)
+	
+当属性path值改变之后会调用`myObject.handleChange(notification)`
 
-```javascript
-myObject.addPropertyChangeListener("path", handler)
-```
+现在
 
-When the path changes ```myObject.handleChange(notification)``` will be called
+		aMontageObject.addPathChangeListener("path", handler, opt_methodName)
+	
+	// or
+	
+	Montage.addPathChangeListener.call(
+	    myObject, "path", handler, opt_methodName
+	)
+	
+`aMontageObject`对象的原型链上需要包含Montage：`Montage.isPrototypeOf(aMontageObject) === true`。
 
-After
-
-```javascript
-aMontageObject.addPathChangeListener("path", handler, opt_methodName)
-
-// or
-
-Montage.addPathChangeListener.call(
-    myObject, "path", handler, opt_methodName
-)
-```
-
-`aMontageObject` is an object that has `Montage` in its prototype chain: `Montage.isPrototypeOf(aMontageObject) === true` holds.
-
-When the value at the path changes (not the content of the value), the first function in this list gets called with the `newValue`, `path`, and `myObject`.
+当属性path值改变（path属性被重新赋值而不是path值对象内部改变）之后，下面列表中的方法按照顺序调用，参数包括`newValue`, `path`, 和 `myObject`（注意，只会调用一个方法）。
 
 * `handler[methodName]`
 * `handler.handlePathChange`
 * `handler`
 
-**How do I observe a `path` from my object for changes *before* they happen?**
+####如何监听对象属性值将要发生改变?
 
-Before
+以前
 
-```javascript
-myObject.addPropertyChangeListener("path", handler, true)
-```
+	myObject.addPropertyChangeListener("path", handler, true)
+	
+现在
 
-After
+		aMontageObject.addPathChangeListener("path", handler, "handleMethodName", true)
+	
+	// or
+	
+	Montage.addPathChangeListener.call(
+	    myObject, "path", handler, "handleMethodName", true
+	)
+	
 
-```javascript
-aMontageObject.addPathChangeListener("path", handler, "handleMethodName", true)
+####如何把一个对象的属性绑定到另外一个对象的属性，两个属性值始终相同?
 
-// or
+以前
 
-Montage.addPathChangeListener.call(
-    myObject, "path", handler, "handleMethodName", true
-)
-```
+	Object.defineBinding(myObject, "myProperty", {
+	    boundObject: anotherObject,
+	    boundObjectPropertyPath: "foo.bar"
+	});
+	
+现在
 
-**How do I bind a property of my object to a property of another object so they are always the same?**
+	aMontageObject.defineBinding("myProperty", {
+	    "<->": "foo.bar",
+	    source: anotherObject
+	});
+	
+	// or
+	
+	var Bindings = require("montage/core/bindings").Bindings;
+	Bindings.defineBinding(myObject, "myProperty", {
+	    "<->": "foo.bar",
+	    source: anotherObject
+	});
+	
+####如何绑定一个对象的属性到另外一个对象的属性，但是当第一个对象属性值发生改变后第二个对象属性值不改变?
 
-Before
+以前
 
-```javascript
-Object.defineBinding(myObject, "myProperty", {
-    boundObject: anotherObject,
-    boundObjectPropertyPath: "foo.bar"
-});
-```
+	Object.defineBinding(myObject, "myProperty", {
+	    boundObject: anotherObject,
+	    boundObjectPropertyPath: "foo.bar",
+	    oneway: true
+	});
+	
+现在
 
-After
+	aMontageObject.defineBinding("myProperty", {
+	    "<-": "foo.bar",
+	    source: anotherObject
+	});
+	
+	// or
+	
+	var Bindings = require("montage/core/bindings").Bindings;
+	Bindings.defineBinding(myObject, "myProperty", {
+	    "<-": "foo.bar",
+	    source: anotherObject
+	});
+	
 
-```javascript
-aMontageObject.defineBinding("myProperty", {
-    "<->": "foo.bar",
-    source: anotherObject
-});
+####如何监听数组添加或者移除元素?
 
-// or
+	aMontageObject.addRangeAtPathChangeListener(
+	    "array", handler, "handleArrayRangeChange"
+	);
+	
+	// or
+	
+	Montage.addRangeAtPathChangeListener(
+	    myObject, "array", handler, "handleArrayRangeChange"
+	);
+	
+`handler.handleArrayRangeChange`方法会传入三个参数： `plus`, `minus`, 和 `index`。
 
-var Bindings = require("montage/core/bindings").Bindings;
-Bindings.defineBinding(myObject, "myProperty", {
-    "<->": "foo.bar",
-    source: anotherObject
-});
-```
+####如何当一个私有属性改变之后，触发公开属性改变?
 
-**How do I bind a property of my object to a property of another object such that changes to myProperty do not affect the otherObject's property?**
+以前
 
-Before
+	myObject.dispatchPropertyChange(
+	    "affectedProperty",
+	    "anotherAffectProperty",
+	    function () {myObject._underlyingProperty = newValue}
+	);
+	
+现在
 
-```javascript
-Object.defineBinding(myObject, "myProperty", {
-    boundObject: anotherObject,
-    boundObjectPropertyPath: "foo.bar",
-    oneway: true
-});
-```
+	myObject.dispatchBeforeOwnPropertyChange(
+	    "affectedProperty", myObject.affectedProperty
+	);
+	
+	myObject.dispatchBeforeOwnPropertyChange(
+	    "anotherAffectedProperty", myObject.anotherAffectedProperty
+	);
+	
+	myObject._underlyingProperty = newValue;
+	
+	myObject.dispatchOwnPropertyChange(
+	    "affectedProperty", myObject.affectedProperty
+	);
+	
+	myObject.dispatchOwnPropertyChange(
+	    "anotherAffectedProperty", myObject.anotherAffectedProperty
+	);
+	
+####如何让checkbox禁用有自动取消选择?
+使用单向绑定`<-` `checked` 值为 `checked && enabled`， 这样就可以实现当checkbox禁用以后自动取消选择，启用以后又恢复之前状态
 
-After
+####如果实现 “全选” 或者 “全部不选” checkbox
+绑定是双向的，checkbox状态包括：是否所有的checkbox全部选中，是否全部没有选。 也需要在checkbox点击之后全选或者全部不选。
 
-```javascript
-aMontageObject.defineBinding("myProperty", {
-    "<-": "foo.bar",
-    source: anotherObject
-});
+	checkboxes.every{checked} <-> allChecked
+	checkboxes.every{!checked} <-> noneChecked
+	
+FRB支持绑定到一组数据的 "every" 或者 "some"。
 
-// or
+####如果Checkbox可以被禁用呢？
 
-var Bindings = require("montage/core/bindings").Bindings;
-Bindings.defineBinding(myObject, "myProperty", {
-    "<-": "foo.bar",
-    source: anotherObject
-});
-```
+	checkbox.checked <- checked && enabled
+	checkboxes.every{checked || !enabled} <-> allChecked
+	checkboxes.every{!checked} <-> noneChecked
+	
+`|| !enabled`	表达式有两个目的。如果checkbox禁用之后，第一个绑定改变它为不选。如果没有`|| !enabled`表达式，会让`allChecked`为false,因为不应该让禁用的checkbox参与到allChecked判断中。 有`|| !enabled`表达式限制，`checked || !enabled`值就是true,这样`allChecked`就是正确的值`true`。
 
-**How do I watch changes to an array at the end of a property path so I know what's added and removed?**
-
-```javascript
-aMontageObject.addRangeAtPathChangeListener(
-    "array", handler, "handleArrayRangeChange"
-);
-
-// or
-
-Montage.addRangeAtPathChangeListener(
-    myObject, "array", handler, "handleArrayRangeChange"
-);
-```
-
-Calls `handler.handleArrayRangeChange` with `plus`, `minus`, and `index`.
-
-**How do I change a private value and dispatch the change on an affected public property?**
-
-Before
-
-```javascript
-myObject.dispatchPropertyChange(
-    "affectedProperty",
-    "anotherAffectProperty",
-    function () {myObject._underlyingProperty = newValue}
-);
-```
-
-After
-
-```javascript
-myObject.dispatchBeforeOwnPropertyChange(
-    "affectedProperty", myObject.affectedProperty
-);
-
-myObject.dispatchBeforeOwnPropertyChange(
-    "anotherAffectedProperty", myObject.anotherAffectedProperty
-);
-
-myObject._underlyingProperty = newValue;
-
-myObject.dispatchOwnPropertyChange(
-    "affectedProperty", myObject.affectedProperty
-);
-
-myObject.dispatchOwnPropertyChange(
-    "anotherAffectedProperty", myObject.anotherAffectedProperty
-);
-```
-
-**How do I make a checkbox automatically uncheck if it becomes disabled**
-
-Bind `checked` flag 1-way via `<-` to flags `checked && enabled`, which will cause the checkbox to retain its state when it is enabled, but unchecks when it becomes disabled.
-
-**How do I make a "select all" or "select none" checkboxes**
-
-The checkbox needs to be useful both for observing whether all the checkboxes are currently checked, none of them are checked, and also for forcing them all to become checked or unchecked.
-
-```
-checkboxes.every{checked} <-> allChecked
-checkboxes.every{!checked} <-> noneChecked
-```
-
-FRB supports binding to "every" and "some" blocks.
-
-**But what if the checkboxes can be disabled?**
-
-```
-checkbox.checked <- checked && enabled
-checkboxes.every{checked || !enabled} <-> allChecked
-checkboxes.every{!checked} <-> noneChecked
-```
-
-The `|| !enabled` clause serves two purposes.  If a checkbox becomes disabled, the first binding will cause it to become unchecked.  Without the `|| !enabled` clause, this might cause `allChecked` to become false, even though the checkbox should not be participating.  With the `|| !enabled` clause, `checked || !enabled` is true so it effectively does not participate in determining whether `allChecked` should become false.
-
-In the other direction, if `allChecked` becomes true, without the `|| !enabled` clause, it would cause all disabled checkboxes to become checked.  With it, `checked || !enabled` is already true so it does not force `checked` to become `true`.
+反方向上，当`allChecked`改变为true，如果没有`|| !enabled`表达，会让所有禁用的checkboxes改变为选中状态。 现在这样`checked || !enabled`表达式的值已经是true，checkbox就不会改变为选中状态。

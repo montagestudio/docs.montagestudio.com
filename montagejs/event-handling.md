@@ -9,196 +9,178 @@ redirect_from: "/docs/Event-handling.html"
 
 ---
 
-Event Handling
-===
+事件处理
+=======
+Montage在浏览器原生事件处理上包装实现了自身的事件处理模块，但是包装对用户如何使用事件是透明的。Montage事件处理提供几个特性，包括让事件处理代码更简单、属性改变监听器和高性能。
 
-Montage includes a custom event manager that transparently wraps the browser’s native event handling mechanism. This enables several features in Montage, including simpler event handling code, property change observing, and results in better performing web applications.
+##事件委托
+Montage使用事件委托来管理事件处理和分发。使用事件委托不需要在每一个元素上面定义监听，只需要在父元素上绑定一个监听， 然后所有的子元素都使用它。 这样的事件处理方式依赖于[DOM Level 3 Event Specification](http://www.w3.org/TR/DOM-Level-3-Events/#event-flow)定义的标准事件“流"。
 
-## About Event Delegation
+事件委托方式有很多好处。比如，因为减少事件监听器的定义，所以性能更高。在Montage应用中只有一个“原生”事件监听器，它负责所有其它事件的接收和分发，可以把它看做是一个主事件监听器。委托也可以让Montage应用可以监听到对象属性值和数组改变事件。
 
-Montage uses _event delegation_ to manage event handling and dispatching. With event delegation, instead of installing event listeners on every element that may dispatch an event, a single event listener is installed on a parent element that listens for and responds to events that target its children. This is made possible by the standard event “flow” defined by the [DOM Level 3 Event Specification](http://www.w3.org/TR/DOM-Level-3-Events/#event-flow).
+##创建事件处理
 
-Event delegation provides several benefits. For instance, application performance is improved since the number of event listeners is reduced. In a Montage application there is only one “native” event listener, which acts as the primary event responder and dispatcher of all events. It also enables Montage applications to observe changes to property values and arrays.
-
-## Creating Event Handlers
-
-You use the standard `addEventListener()` method to register an event handler on a target object. In Montage, the `target` object can be any JavaScript object, not just a DOM element.
+使用标准的`addEventListener()`函数在目标对象上面注册一个事件处理，在Montage事件处理中，目标对象可以是任意的JavaScript对象，而不是像JavaScript事件处理只可以是DOM元素。
 
 `target.addEventListener(eventType, listener[, useCapture]);`
 
-* `eventType ` A string representing the event type.
-* `listener` An object that implements the Montage event listener interface, or a function to call directly.
-* `useCapture` boolean; if true, causes all events of the specified type to be dispatched to the registered listener before being dispatched down to children targets' listeners. Default is `false`, i.e. uses **bubble** to propagate upward, opposit of **capture**.
+* `eventType` 事件名字的字符串。
+* `listener` 事件处理对象（实现Montage事件监听器接口），或者直接就是一个函数
+* `useCapture`是一个布尔参数；如果值为`true`，监听器对象的处理函数会被第一个调用，然后监听器对象子组件对应的监听函数被调用。`useCapture`默认值`false`,也就是冒泡方式(__bubble__)传递事件, 如果是`true`就是捕获方式(__capture__)。
 
-### Montage Event Listener Interface
-The Montage event listener interface extends the [DOM Level 3 EventListener interface](http://dev.w3.org/2006/webapi/DOM-Level-3-Events/html/DOM3-Events.html#interface-EventListener) specification implemented by all modern web browsers. In the standard interface you specify an object as a “listener” object for an event type. The listener object defines an `handleEvent()` method that is invoked by the browser whenever the specified event occurs:
+###Montage事件监听器接口
+Montage事件监听接口实现[DOM Level 3 EventListener interface](http://dev.w3.org/2006/webapi/DOM-Level-3-Events/html/DOM3-Events.html#interface-EventListener)标准定义，这个定义被当前全部浏览器支持。第一步在目标对象上设置一个事件监听器对象，当相应的事件被触发后，浏览器会调用监听器对象的`handleEvent()`方法。
 
-```js
-// DOM Level 3 EventListener interface
-var listenerObj = {};
-listenerObj.handleEvent = function(event) {
-     alert("Got 'mousedown' event.");
-}
-var loginBtn = document.querySelector("#loginBtn");
-loginBtn.addEventListener("mousedown", listenerObj);
-```
+	// DOM Level 3 EventListener interface
+	var listenerObj = {};
+	listenerObj.handleEvent = function(event) {
+	     alert("Got 'mousedown' event.");
+	}
+	var loginBtn = document.querySelector("#loginBtn");
+	loginBtn.addEventListener("mousedown", listenerObj);
+	
+Montage增强了这个接口让开发者更容易使用。在Montage中，不是调用监听器对象的`handleEvent()`方法，而是调用事件对象中与当前事件相应的方法。在事件处理方法的传入参数中包括以下三个数据：
 
-Montage extends this interface to make it more useful for developers. Instead of calling the same `handleEvent()` method on the listener object, Montage infers the name of the specific event handler method to call from below information:
+* 事件阶段（冒泡或者捕获）
+* 事件名字
+* 缺省的，字符串类型标识符，标识目标DOM元素或者Javascript对象。
 
-* The event’s phase, prefixed by `handle` for bubble, `capture` for capture
-* The event name, e.g. `action`
-* The Monrage component's name
-* Optionally, a string `identifier` property on the target element or object, which overrides component's name
+下面的伪代码展示事件模块是如何确定调用监听器对象的什么方法：
 
-E.g. to handle a click event during bubble phase for a component named `FooComponent` without an `identifier` property on `FooComponent`, Montage will invoke the `handleFooComponentClick()` method on the listener object. If we define `identifier` as `bar`, Montage will invoke `handleBarClick()`. Note the method name will be automatically lowerCamelCased.
+	methodToInvoke = "";
+	identifier = eventTarget.identifier;
+	if (event.phase == "bubble" ) {
+	   methodToInvoke = "handle" + 
+	                     (identifier ? identifier.toCapitalized() : "") +
+	                     eventType.toCapitalized();
+	} else {
+	   methodtoInvoke = "capture" + 
+	                    (identifier ? identifier.toCapitalized() : "") + 
+	                     eventType.toCapitalized();
+	}
+	
+理解Montage事件处理最好的方法是通过例子来了解。
 
-### Examples
+##例子
+下面的代码跟上面的例子一样，只是事件处理方法名是`handleMousedown()`而不是`handleEvent()`（Montage事件处理）。当`loginBtn`触发`mousedown`事件之后这个方法会被自动调用，注意只是在事件冒泡阶段。
 
-The following code is almost identical to the previous example without Montage, except that the handler method is named `handleMousedown()` instead of `handleEvent()`. This method will be invoked automatically by the event manager when the `mousedown` event occurs on `loginBtn`, but only during the event’s bubble phase.
+	// Listening for mousedown event during bubble phase
+	var listenerObj = {};
+	listenerObj.handleMousedown = function(event) {
+	     alert("Got 'mousedown' event.");
+	}
+	var loginBtn = document.querySelector("#loginBtn");
+	loginBtn.addEventListener("mousedown", listenerObj);
+	
+如果想监听事件的捕获阶段，你需要设置`addEventListener()`第三个参数为`true`，然后修改处理函数`handleMousedown()`名为`captureMousedown()`。
 
-```js
-// Listening for mousedown event during bubble phase
-var listenerObj = {};
-listenerObj.handleMousedown = function(event) {
-     alert("Got 'mousedown' event.");
-}
-var loginBtn = document.querySelector("#loginBtn");
-loginBtn.addEventListener("mousedown", listenerObj);
-```
+	// Listening for capture events on same element 
+	var listenerObj = {};
+	listenerObj.captureMousedown = function(event) {
+	     alert("Got 'mousedown' event during bubble phase.");
+	}
+	var loginBtn = document.querySelector("#loginBtn");
+	loginBtn.addEventListener("mousedown", listenerObj, true); // useCapture = true
+	
+你还可以指定事件目标对象的`identifier`属性，这样只有相应的事件处理函数会被调用。事件处理模块会调用`identifier`首字面大写的函数。 在下面的例子中，`loginBtn`的`identifier`值为__login__，所以对应的事件处理函数名为`handleLoginMousedown()`。
 
-To listen for the same event during its capture phase, you pass `true` as the third parameter to `addEventListener()`, and change the name of the event handler from `handleMousedown()` to `captureMousedown()`.
+	// Using identifier strings on target elements
+	var listenerObj = {};
+	// Listener for loginBtn
+	listenerObj.handleLoginMousedown = function(event) {
+	    console.log("mousedown on loginBtn");
+	}
+	var loginBtn = document.querySelector("#loginBtn");
+	// Assign string identifier to button
+	loginBtn.identifier = "login";
+	loginBtn.addEventListener("mousedown", listenerObj);
+	
+###事件处理优先级
+事件处理模块会调用更具体的事件处理。比如下面的例子中，定义了两个事件处理函数，一个包含目标的标识符(`handleLoginMousedown()`)， 而另外一个不包含(`handleMousedown()`)。 Montage会调用`handleLoginMousedown()`，因为它比另外一个更具体。
 
-```js
-// Listening for capture events on same element
-var listenerObj = {};
-listenerObj.captureMousedown = function(event) {
-     alert("Got 'mousedown' event during bubble phase.");
-}
-var loginBtn = document.querySelector("#loginBtn");
-loginBtn.addEventListener("mousedown", listenerObj, true); // useCapture = true
-```
+	// Event handler precedence
+	var listenerObj = {};
+	listenerObj.handleMousedown = function(event) {
+	     // This won't get called.
+	     alert("Got 'mousedown' event.");
+	}
+	listenerObj.handleLoginMousedown = function (event) {
+	     alert("Got 'mousedown' event on event.target"); 
+	}
+	var loginBtn = document.querySelector("#loginBtn");
+	loginBtn.identifier = "login";
+	loginBtn.addEventListener("mousedown", listenerObj);
+	
+注意如果`loginBtn`没有定义`identifier`属性，`handleMousedown()`会被调用。
 
-You can further specialize the event handler name by adding an `identifier` to the event target. The event manager includes this string, with its first letter capitalized, in the method name it composes. In the following example, the string “__login__” is assigned to the `loginBtn`‘s `identifier` property, so the event listener defines a `handleLoginMousedown()` function.
+当然如果监听器对象里面没有定义具体的事件处理函数，Montage会调用`handleEvent()`方法。这样就提供了一种对“普通”事件的处理机制。
 
-```js
-// Using identifier strings on target elements
-var listenerObj = {};
-// Listener for loginBtn
-listenerObj.handleLoginMousedown = function(event) {
-    console.log("mousedown on loginBtn");
-}
-var loginBtn = document.querySelector("#loginBtn");
-// Assign string identifier to button
-loginBtn.identifier = "login";
-loginBtn.addEventListener("mousedown", listenerObj);
-```
+	// Using default handleEvent() handler
+	var listenerObj = {};
+	listenerObj.captureClickEvent = function(event) {
+	     alert("Got click event");
+	}
+	listenerObj.handleEvent = function(event) {
+	     alert("No specific handler for " + event.type);
+	}
+	loginBtn.addEventListener("mousedown", listenerObj);
+	loginBtn.addEventListener("click", listenerObj, true);
+	
+##在组件模板中定义事件监听器
+在模板中每个对象可以包含一个"listeners"数组指定监听的事件名字和监听器对象，事件是否是捕获方式（可选）。
 
-### Event handler precedence
-The event manager will always invoke the most specific event handler. For instance, in the following example the listener object defines two event handlers, one that includes the target’s identifier string (`handleLoginMousedown()`) and one that doesn’t (`handleMousedown()`). Montage will always invoke `handleLoginMousedown()` as its purpose is more specific than the other.
+首先在组件JS文件中新建`handleAction()`方法，这个方法的功能是改变触发该事件按钮的标签。
 
-```js
-// Event handler precedence
-var listenerObj = {};
-listenerObj.handleMousedown = function(event) {
-     // This won't get called.
-     alert("Got 'mousedown' event.");
-}
-listenerObj.handleLoginMousedown = function (event) {
-     alert("Got 'mousedown' event on event.target");
-}
-var loginBtn = document.querySelector("#loginBtn");
-loginBtn.identifier = "login";
-loginBtn.addEventListener("mousedown", listenerObj);
-```
+	// controller.js
+	var Component = require("montage/ui/component").Component;
 
-Note that if `loginBtn` did not define an `identifier` property, the event manager would invoke `handleMousedown()`.
+	exports.Controller =  Component.specialize({
+	    handleAction: {
+	        value: function(event) {
+	            event.target.value = "Well done";
+	        }
+	    }
+	})
+	
+接下来在组件模板中定义按钮组件。按钮组件的`listeners`属性包含事件名字(`action`)和用来处理事件的监听器对象。
 
-Also, Montage will invoke the listener’s generic `handleEvent()` method, if it exists, and if a more specifically named handler is not declared. This provides a fallback mechanism to respond to “generic” events.
+	<html>
+	 ...
+	<script type="text/montage-serialization">
+	{
+	    "button" : {
+	        "name": "Button",
+	        "module": "montage/ui/button.reel",
+	        "properties": {
+	            "element": {"#": "btn"}
+	        },
+	        "listeners": [
+	            {
+	                "type": "action",
+	                "listener": {"@": "owner"}
+	            }
+	        ]
+	    }
+	}
+	</script>
+	 ...
+	</html>
+	
+你也可以像下面这样指定`identifier`属性：
 
-```js
-// Using default handleEvent() handler
-var listenerObj = {};
-listenerObj.captureClickEvent = function(event) {
-     alert("Got click event");
-}
-listenerObj.handleEvent = function(event) {
-     alert("No specific handler for " + event.type);
-}
-loginBtn.addEventListener("mousedown", listenerObj);
-loginBtn.addEventListener("click", listenerObj, true);
-```
-
-## Declaring event listeners in a serialization
-Each object in a serialization may include a "listeners" object that specifies the event type, listener object, and (optionally) whether to enable capture for the event.
-
-First you create the listener object, which contains a `handleAction()` method. This method changes the `value` property of the Montage Button component that dispatched the event, setting its label.
-
-```js
-// controller.js
-var Montage = require("montage/core/core").Montage;
-
-exports.Controller = Montage.create(Montage, {
-    handleAction: {
-        value: function(event) {
-            event.target.value = "Well done";
-        }
-    }
-})
-```
-
-Next we create the HTML page that declares the Button component and the custom Controller object. The Button component’s `listeners` property specifies the type of event to listen for (`action`) and the listener object that will handle the event.
-
-```html
-<html>
- ...
-<script type="text/montage-serialization">
-{
-    "button" : {
-        "name": "Button",
-        "module": "montage/ui/button.reel",
-        "properties": {
-            "element": {"#": "btn"}
-        },
-        "listeners": [
-            {
-                "type": "action",
-                "listener": {"@": "controller"}
-            }
-        ]
-    },
-
-    "controller": {
-        "name": "Controller",
-        "module": "controller"
-    }
-}
-</script>
- ...
-</html>
-```
-
-You can also specify the `identifier` string in the serialization, as shown below:
-
-```json
-{
-    "button" : {
-        "name": "Button",
-        "module": "montage/ui/button.reel",
-        "properties": {
-            "element": {"#": "btn"},
-            "identifier": "purchase"
-        },
-        "listeners": [
-            {
-                "type": "action",
-                "listener": {"@": "controller"}
-            }
-        ]
-    },
-
-    "controller": {
-        "name": "Controller",
-        "module": "controller"
-    }
-}
-```
+	{
+	    "button" : {
+	        "name": "Button",
+	        "module": "montage/ui/button.reel",
+	        "properties": {
+	            "element": {"#": "btn"},
+	            "identifier": "purchase"
+	        },
+	        "listeners": [
+	            {
+	                "type": "action",
+	                "listener": {"@": "owner"}
+	            }
+	        ]
+	    }
+	}

@@ -12,80 +12,97 @@ redirect_from:
 
 ---
 
+MontageJS 例子
+=========
 
-# MontageJS Examples
+点击下面的链接查看对应组建的例子以及源码 
 
-Follow the links on this page to explore demos and source code of MontageJS ui components and features in [Mfiddle](http://montagejs.github.com/mfiddle/).
+##MontageJS 组建
 
-## MontageJS Components
-The following examples use prebuilt MontageJS components.
+以下是MotageJS控件库实例
 
-#### Text
+>__现在的源码查看器正在开发调试中，请点击实例页面中的`Gist`链接直接从github查看源码__
+>
+
+####文本
+
 * [Hello World](http://montagejs.github.io/mfiddle/#!/5904314)
-* [Set text programmatically](http://montagejs.github.io/mfiddle/#!/5904331)
-* [Set text with a binding](http://montagejs.github.io/mfiddle/#!/6343006)
+* [使用Javascript设置文本](http://montagejs.github.io/mfiddle/#!/5904331)
+* [使用绑定设置文本](http://montagejs.github.io/mfiddle/#!/6343006)
 
-#### Page Controls
-* [Simple repetition](http://montagejs.github.io/mfiddle/#!/07a089a44c73a908cb40)
-* [Simple substitution](http://montagejs.github.io/mfiddle/#!/5906283)
+####页面控制
 
-#### Converters
-* [Number converters](http://montagejs.github.io/mfiddle/#!/5904344)
+* [简单的repetition](http://montagejs.github.io/mfiddle/#!/07a089a44c73a908cb40)
+* [简单的substitution](http://montagejs.github.io/mfiddle/#!/5906283)
 
-#### Composers
+####转换器
+
+* [数字转换](http://montagejs.github.io/mfiddle/#!/5904344)
+
+####Composers
+
 * [Press composer](http://montagejs.github.io/mfiddle/#!/7852383)
 * [Translate composer](http://montagejs.github.io/mfiddle/#!/7854041)
 
-#### Pattern
-* [Sorting a Repetition](http://montagejs.github.io/mfiddle/#!/aeffafd1efbdd80530d4)
+####方法
 
-#### Controllers
+* [Repetition中排序](http://montagejs.github.io/mfiddle/#!/aeffafd1efbdd80530d4)
+
+####控制器
+
 * [Tree Controller](http://montagejs.github.io/mfiddle/#!/2e012d82ddd3d040cf74)
 
-## UI Components (Digit)
-The following examples use components that are part of the touch-optimized Digit UI set.
 
-#### Button
-* [Button with an explicit identifier](http://montagejs.github.io/mfiddle/#!/5906286) (used to link to a handler method)
-* [Button with a default identifier](http://montagejs.github.io/mfiddle/#!/5906289) (serialization label is the default identifier)
-* [Submit button without a specific handler](http://montagejs.github.io/mfiddle/#!/5906291) (the `handleAction()` method will be called when the "action" event is dispatched)
+##组建(Digit)
 
-#### TextField
-* [A simple text field](http://montagejs.github.io/mfiddle/#!/5906293)
-* [A text field with a placeholder](http://montagejs.github.io/mfiddle/#!/5906294)
-* [A disabled text field enabled by a button click](http://montagejs.github.io/mfiddle/#!/5906296)
-* [A text field action](http://montagejs.github.io/mfiddle/#!/5906297)
+下面的例子展示了针对移动设备优化的digit组建库中的组件的使用方法
 
-#### TextArea
-* [A simple text area](http://montagejs.github.io/mfiddle/#!/5904443)
+###Button
+* [定义了identifier的按钮](http://montagejs.github.io/mfiddle/#!/5906286) (事件处理)
+* [没有定义identifier的按钮](http://montagejs.github.io/mfiddle/#!/5906289)(label作为默认的identifer)
+* [不设置特定监听器的按钮](http://montagejs.github.io/mfiddle/#!/5906291)(`handleAction()`方法在`action`事件发出时会被调用)
 
-#### Slider
-* [A simple slider](http://montagejs.github.io/mfiddle/#!/5904461)
-* [Two-way binding](http://montagejs.github.io/mfiddle/#!/5904468) (between a slider and a text field)
+###TextField
 
-#### NumberField
-* [A simple number field](http://montagejs.github.io/mfiddle/#!/5904473)
-* [Bindings between number fields](http://montagejs.github.io/mfiddle/#!/5904479)
+* [简单例子](http://montagejs.github.io/mfiddle/#!/5906293)
+* [有placeholder的例子](http://montagejs.github.io/mfiddle/#!/5906294)
+* [通过按钮实现禁用/启用的例子](http://montagejs.github.io/mfiddle/#!/5906296)
+* [事件](http://montagejs.github.io/mfiddle/#!/5906297)
 
-#### Select
-* [A simple select](http://montagejs.github.io/mfiddle/#!/5904481)
-* [A select powered by a range controller](http://montagejs.github.io/mfiddle/#!/5904482)
-* [A select synchronized with a repetition](http://montagejs.github.io/mfiddle/#!/179e3a459daf280dabe1)
+###Slider
 
-#### Checkbox
-* [A simple checkbox](http://montagejs.github.io/mfiddle/#!/5904488)
+* [简单例子](http://montagejs.github.io/mfiddle/#!/5904461)
+* [双向绑定](http://montagejs.github.io/mfiddle/#!/5904468)(在Slider和TextField组件间)
 
-#### RadioButton
-* [A radio button group](http://montagejs.github.io/mfiddle/#!/5904493)
+###NumberField
 
-#### Image
-* [An image](http://montagejs.github.io/mfiddle/#!/5904495)
+* [简单例子](http://montagejs.github.io/mfiddle/#!/5904473)
+* [NumberField 组件间的绑定](http://montagejs.github.io/mfiddle/#!/5904479)
 
-#### List
-* [A list of categories](http://montagejs.github.io/mfiddle/#!/85e4c0b3986c31e0a2e3)
+###Select
 
+* [简单例子](http://montagejs.github.io/mfiddle/#!/5904481)
+* [通过RangeConntroller控制的Select](http://montagejs.github.io/mfiddle/#!/5904482)
+* [Select和Repetition](http://montagejs.github.io/mfiddle/#!/179e3a459daf280dabe1)
 
-## Draw Cycle
-The draw cycle is a loop that allows components to change their element's DOM structure without troublesome reflow issues.
+###Checkbox
 
-* Changing the background color of an element with a [slider](http://montagejs.github.io/mfiddle/#!/5904498)
+* [简单例子](http://montagejs.github.io/mfiddle/#!/5904488)
+
+###RadioButton
+
+* [一组RadioButton组建](http://montagejs.github.io/mfiddle/#!/5904493)
+
+###Image
+
+* [简单例子](http://montagejs.github.io/mfiddle/#!/5904495)
+
+###List
+
+* [分类列表](http://montagejs.github.io/mfiddle/#!/85e4c0b3986c31e0a2e3)
+
+###绘制周期
+
+绘制周期是一个让组件在适当的实际操作DOM的机制。
+
+* [使用Slider组建改变元素的背景](http://montagejs.github.io/mfiddle/#!/5904498)

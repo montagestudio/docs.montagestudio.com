@@ -10,12 +10,12 @@ redirect_from:
 
 ---
 
-# Overview: UI Sets
+概述:UI集合
+==========
+Montage框架提供三种类型的UI组件：Digit，Matte和Native。
 
-The Montage framework includes three widget sets or themes for user interface components: Digit, Matte, and Native.
+* Digit 适合在平板电脑或者手机上使用，它对触屏进行了特殊处理。
+* Matte 适合在桌面电脑上使用。
+* Native 使用浏览器原生样式
 
-* Digit is a touch-friendly theme optimized for use with tablets and mobile devices.
-* Matte contains desktop-optimized UI components.
-* Native uses the browser's default styles.
-
-Digit is part of the default MontageJS distribution. If you want to use the Matte and Native themes you have to install them separately.
+Digit 包含在MontageJS框架中。如果你想使用Matte或者Native，你需要单独安装。

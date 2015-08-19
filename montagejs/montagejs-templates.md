@@ -7,6 +7,6 @@ next-page: exploring-components
 
 ---
 
-# MontageJS Templates
-
->**Note:** We are currently in the process of updating our docs. This document is in the process of being finalized. Please check back later.
+MontageJS模板
+============
+>__备注:__ 我们正在不断地更新我们的文档。这个文档正在编写中。敬请稍后。

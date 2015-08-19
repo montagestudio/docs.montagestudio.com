@@ -9,9 +9,8 @@ redirect_from: "/docs/Data-binding.html"
 
 ---
 
+数据绑定
+=======
+>__备注:__ 我们正在编写数据绑定相关文档。现在你可以查看[Functional Reactive](https://github.com/montagejs/frb/blob/master/README.md) 
 
-# Data Binding
-
->**Note:** We are currently in the process of updating our data bindings overview. In the meantime, please refer to the <a href="https://github.com/montagejs/frb/blob/master/README.md" target="_blank">Functional Reactive Bindings</a> document.
-
-For a comparison between our old way of doing bindings and the new, FRB way of doing bindings, see our [FAQ for the FRB transition](/montagejs/frb.html).
+For a comparison between our old way of doing bindings 如果想知道关于老式绑定和FRB绑定的区别，请查看[FAQ for the FRB transition](http://docs.montagestudio.com/montagejs/frb.html)。

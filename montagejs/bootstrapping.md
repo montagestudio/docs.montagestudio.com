@@ -5,86 +5,72 @@ title: MontageJS Bootstrapping
 this-page: bootstrapping
 ---
 
+MontageJS加载过程
+================
 
-MontageJS Bootstrapping
-===
+>__备注:__ "mopped"和'mop'相关，[Monrage优化工具](https://github.com/montagejs/mop)
 
-* TOC
-{:toc}
+MontageJS在初始化一些变量之后调用`exports.initMontage`方法，然后又会调用`getPlatform`方法，`getPlatform`会返回一个跟平台相关的对象（已经支持浏览器和node.js使用方式）
 
-> Note: "mopped" refers to [`mop`, the Montage Optimizer](https://github.com/montagejs/mop)
+##浏览器
+###开发模式（没有进行代码打包优化的模式）
+####platform.bootstrap
 
-MontageJS calls `exports.initMontage` after setting up some variables, which in turn calls `getPlatform`, which returns an object with platform-specific functions (currently the browser and node.js are supported).
+`platform.bootstrap`会被调用，它的回调函数会在初始化完成以后被调用。这时浏览器开始处理Montage进程，在标签中的'data-'属性被识别，montage.js被调用。一个被称作'resolve'的方法也会被创建，它会根据相对路径返回document作为应用的根。
 
+接下来我们添加一个`DOMContentLoaded`的监听器，监听器的`callbackIfReady`方法在上述过程完成之后会被调用。
 
-## Browser
+Montage需要另外的3个文件来完成进一步的加载：
 
+* 使用来自[`Mr`](https://github.com/montagejs/mr)的`require.js` 和 `browser.js`实现浏览器`CommonJS`模块的支持。
+* `q.js` - 对promises的支持
 
-### Development mode, i.e. non-optimized & un-mopped
+它们是通过脚本表签声明的方式注入的，它们在完成加载后会被导出成模块，同事全局的`bootstrap`的方法会被调用，调用参数是它们的id。Mopped：如果代码已经通过Mop进行打包优化，这些文件会直接在项目初始化时被加载，所以就不在需要脚本标签注入。
 
+全局的`bootstrap`方法会一直监视这3个文件的加载情况，一旦它们三个都被加载完成`allModulesLoaded`方法会被调用.
 
-#### platform.bootstrap
+`allModulesLoaded`使用一个简版的require模块`bootRequire`来加载promisse以及导入其他的模块。最终`callbackIfReady`会被调用。
 
-`platform.bootstrap` is called with a callback to use when the initial bootstraping has finished. This kicks off the browser process. The parameters are retrieved from the `data-` attributes of the script tag that loads `montage.js`. A "resolve" function is also created that will return an absolute path from a given relative path, using the location of the document as the base. This is implemented by using `<base>` and `<a>` elements, and using the interaction of these elements in the browser to do the actual resolution.
+`callbackIfReady`检查`DOM`和模块是否都全部加载完成，如果是就调用这个方法的回调函数。
 
-Next we add a listener for `DOMContentLoaded`, which will call `callbackIfReady` when done.
+###回调
+首先我们根据Montage的配置加载Montage的各种包，这表示需要加载器直接读取.reel文件(比如`require("montage/ui/text.reel")`)，接下来编译器会将Montage的元数据附加到被读取的模块中（`SerializationCompiler `），然后将读取的HTML内容作为`内容`(`TemplateCompiler`)
 
-Montage needs 3 files for further bootstrapping:
+[如果是进过mop打包优化的，Montage的加载过程是这样的。](http://docs.montagestudio.com/montagejs/bootstrapping.html#mopped-callback)
 
-- `require.js` and `browser.js` from [`Mr`](https://github.com/montagejs/mr) to set up the `CommonJS` module system in the browser
-- `q.js` - add support for promises
+接下来我们使用`Require`来加载Montage包，当这个过程完成以后我们就可以用使用Montage的require方法`montageRequire`。我们用它来加载Q（Promise）包来获得完整的Promise包的内容。之后我们把已经加载完成的promise模块放入其中，避免重复加载。我们还会用到linter，当加载的文件中有语法错误时，它会给我们清晰的错误报告。
 
-These are loaded by injecting script tags. We know when they are loaded because each of the files call a global `bootstrap` function with their id and a function that returns their exports when ready. **Mopped**: If the package is Mopped then these files will be available in the bootstrapping bundle, and so no script tags are injected.
+加载到这个步骤的时候可以有一段远端的代码控制Montage引导程序，比如用来测试。这里我们就不讲诉了。
 
-The global `bootstrap` function keeps track of the 3 files and once all three have loaded calls the `allModulesLoaded` function.
+如果我们使用`data-auto-package`属性定义了配置包的描述。那么package.json就不需要了，否则我们会检查本地是否有这个json文件（通过`data-pacakge`属性定义），如果存在就使用他。最后，我们开始加载应用程序包。
 
-`allModulesLoaded` uses a miniature `require` implementation called `bootRequire` to set up the promise and require/browser modules. Finally it calls `callbackIfReady`.
+当上述过程完成以后，`montageRequire`和`appliationRequire`就可以使用了，加下来我们在initMontage方法中完成Montage的最终初始化。
 
-`callbackIfReady` checks that both the `DOM` and the modules are loaded, and if so calls the callback given to this function.
+####initMontage
+现在我们需要加载Montage最后需要的依赖，当这些依赖被家在完成之后我们需要配置应用，这意味着设置堆栈长度(设置为0最优)，设置事件管理器以及调用`montageWillLoad`方法。
 
+接下来我们检查`package.json`是否定义了一个应用原型，没有的话使用“core/application”。application实例中的`_load`方法会被调用，它用来加载Montage的组件和模版并让模板中的序列划定义被解析。
 
-#### Callback
+最后，我们检查`data-module`属性是否被定义，如果有的话，加载这些模块。
 
-First we set up the config object to load the Montage package. This involves setting up the loader that lets the us load `.reel` files directly (e.g. `require("montage/ui/text.reel")`), and compilers that attach Montage metadata to the exports of any loaded module (`SerializationCompiler`) and export the HTML of loaded HTML files as `content` (`TemplateCompiler`).
+Montage的加载过程到这就完成了，被加载的模版和模块已经开始正常工作。
 
-If mopped, bundles are loaded at this point.
-
-We then use `Require` to load the Montage package. Once this promise has completed we have the require function for Montage, `montageRequire`. We use this to load the Q (Promise) package so that we have complete information about the Promise package. We then insert the already loaded promise module into it, so that it isn't requested again. We set up the linter, to give us informative errors when there's a syntax error in a loaded file.
-
-At this point there is code to handle controlling the Montage bootstrapper from a remote frame, for example for testing. This won't be covered here.
-
-If there was a `data-auto-package` attribute we create inject a fake package description so that a package.json is not needed, otherwise we check if location is a json file (set through a `data-package` attribute) and if so inject it directly. Finally, we load the application package.
-
-Once this is complete we have the `montageRequire` and the `applicationRequire` and we use these to finish initializing Montage in `initMontage`
-
-#### `initMontage`
-
-Here we load the last of Montage's essential dependencies and once they have completed we configure the application. This involves setting up the stack trace length (set to 0 for optimization), event manager and calling `montageWillLoad`, again for testing.
-
-Next we check to see if the `package.json` specified an application prototype to use, otherwise we use "core/application". Once this is loaded will call `_load` on the application object which in the default implementation loads the Montage component and template modules, and causes any serialization in this HTML page to be parsed.
-
-Finally, we check if a `data-module` attribute was given and if so load this module.
-
-The bootstrapping is complete. The serialization has created components for the user to interact with, or the loaded module is doing its thing.
-
-
-### Production mode, i.e. optimized & mopped
-
+###产品模式（使用mop优化打包的应用）
 When Mopped the bootstrapping bundle defines a global `BUNDLE` array, which contains a list of bundle filenames to load.
 
+当Mop时，会生成一个包含所有需要加载的包的数组，名为`BUNDLE`。
 
-#### `platform.bootstrap`
+####`platform.bootstrap`
 
-As the normal bootstrap, except the 3 bootstrapping modules needed will be available in the bootstrapping bundle, and so no script tags are injected.
+和普通初始化过程相比，3个初始化需要的文件不再需要从脚本标签注入，它们已经存在与初始化包中。
 
+####回调
 
-#### Callback
+在读取Montage各种包之前，`BUNDEL`变量会被查看，如果它存在，那么它描述的文件都会被生成脚本标签注入。每个bundle会传入自己的名字作为参数调用全局的` bundleLoaded`方法。一个名叫`preloaded`的promise会被执行，当所有包加载完成以后promise会做resolved. Mr会在promise完成以后才开始下一步的处理，这意味着Montage的各种包会等到所有bundle加载完成之后才会开始被加载。
 
-Before loading the Montage package the `BUNDLE` variable is checked. If it exists then a script tag is injected for each of the filenames in the array. Each bundle calls a global `bundleLoaded` function with its name. A `preloaded` promise is added to the config object that is resolved once all of the bundles have loaded. Mr waits on this promise before proceeding, which means that the Montage package is not loaded until all the bundles have loaded.
+上述就是开发模式和产品模式Montage初始化的区别
 
-This is where the differences in un-mopped and mopped bootstrapping end.
+[查看开发模式下的初始化过程](http://docs.montagestudio.com/montagejs/bootstrapping.html#un-mopped-load-montage)
 
-
-## Node.js
-
-Montage currently does not support Node.js.
+##Node.js
+TBD

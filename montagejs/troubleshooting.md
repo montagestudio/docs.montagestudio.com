@@ -8,149 +8,124 @@ this-page: troubleshooting
 
 ---
 
-# Troubleshooting
+错误排查
+=======
+####MontageJS应用没有按照预期效果在浏览器里面显示。
+如果你在浏览器中测试一个MontageJS应用的时候，发现应用没有显示为预期效果，你可以打开JavaScript控制台查看错误和警告信息。大多数的浏览器包含JavaScript调试工具、控制台或相关的工具来帮助调试web应用。在新版的Chrome和Safari已经内置了这些开发工具。你可以使用浏览器的`console.log()`函数向控制台输出信息。
 
+* 打开Chrome控制台的方法是，选择 视图 > 开发者 > JavaScript控制台。
+* 打开Safari控制台方法是，首先开启开发者菜单（Safari偏好 > 高级 > 在菜单栏显示开发者菜单），然后选择开发者 > 显示控制台错误信息。
 
-**My MontageJS application does not appear as expected in the browser.**
+####运行MontageJS应用的时候发生“Warning: Element xxx not found in template“错误信息。
+这样的错误发生一般是由于DOM元素的ID和对象的`element`属性值不匹配。例如，在以下的代码片段中，在对象(`"loginButton"`) 中引用的DOM元素ID (`"loginBtn"`)与HTML中div元素不匹配。
 
-If you test a MontageJS application in the browser and don't see what you expect, open the JavaScript console to look for any errors or warnings. Most modern web browsers include a JavaScript debugger, console, and related tools that can help debug problems with MontageJS applications. These tools are built into the latest versions of Chrome and Safari. You use the browser's `console.log()` method to send output to the console.
+	<script type="text/montage-serialization">
+	{
+	    "loginButton": {
+	        "name": "Button",
+	        "module": "montage/ui/button.reel",
+	        "properties": {
+	            "element": {"#": "loginButton"}
+	        }
+	    }
+	}
+	</script>
+	<body>
+	   <div id="loginBtn"/>
+	</body>
+	
+在运行时，以上代码会在控制台输出以下错误信息：
 
-* To open the console in Chrome, select View > Developer > JavaScript console.
-* To open the console in Safari, first enable the Develop menu (Safari Preferences > Advanced > Show Develop menu in menu bar), then select Develop > Show Error Console.
+	Warning: Element "#loginButton" not found in template
+	http://localhost:8081/examples/myapp/mycomponent.reel/mycomponent.html
+	
+####"Object "xxx" not found at "yyy""错误信息。
+如果你设置对象的`"name"`属性为一个不合法的值，MontageJS会输入以上错误信息。例如，下面的示例代码会产生这个错误，因为`"Button"`被错误拼写为 `"Buttonn"`。
 
+	{
+	    "loginButton": {
+	        "name": "Buttonn",
+	        "module": "montage/ui/button.reel",
+	        "properties": {
+	            "element": {"#": "loginButton"}
+	        }
+	    }
+	}
+	</script>
+	
+在控制台中有如下运行时错误：
 
-**I get a "Warning: Element xxx not found in template" message when I try to run my MontageJS application.**
+	Object "Buttonn" not found at "montage/ui/button.reel" referenced from http://localhost:8081/examples/buttonerror/.
+	
+####"Can't XHR "http://localhost: ..."错误信息。
+如果在组件HTML模板中使用无效的模块ID，在控制台中就有"Can't XHR module-id" 404错误信息。例如，在下面的代码中定义了一个Textfield组件，但是模块 ID 错误拼写成 "montage/ui/textfld.reel"。
 
-Invalid element references are usually the result of mismatched element IDs. For example, in the following abbreviated code, the ID of the <div> element referenced in the serialization (`"loginButton"`) does not match the element's actual ID (`"loginBtn"`).
+	{
+	"emailInput": {
+	    "name": "Textfield",
+	    "module": "montage/ui/textfld.reel",
+	    "properties": {
+	        "element": {"#": "email"}
+	    }
+	},
+	
+在Chrome控制台中，会出现如下错误信息：
 
-```html
-<script type="text/montage-serialization">
-{
-    "loginButton": {
-        "name": "Button",
-        "module": "montage/ui/button.reel",
-        "properties": {
-            "element": {"#": "loginButton"}
-        }
-    }
-}
-</script>
-<body>
-   <div id="loginBtn"/>
-</body>
-```
+	GET http://localhost:8081/ui/textfeld.reel/textfld.js 404 (Not Found) browser.js:136
+	Can't XHR "http://localhost:8081/ui/textfield.reel/textfield.js"
+	
+####"unexpected comma"错误信息。
+在对象结尾的逗号在JSON序列化中是不被允许的。JSON序列化必须是合法格式，这样MontageJS才能够成功解析。JSON对象定义的末尾或者是数组的最后一个元素后如果有逗号将产生运行时错误。在下面的例子中，readyState属性后面的逗号将产生解析错误：
 
-At runtime, this would generate the following error message in the JavaScript console:
+	"anObject": {
+	    "id": "123asd",
+	    "colors": ["red", "green", "blue"],
+	    "readystate": false,
+	}
+	
+在下面代码中，`"passwordInput"` JSON 对象末尾的逗号也会产生"unexpected comma"运行时错误。
 
-```
-Warning: Element "#loginButton" not found in template
-http://localhost:8081/examples/myapp/mycomponent.reel/mycomponent.html
-```
+	<script type="text/montage-serialization">
+	{
+	    "emailInput": {
+	        "name": "Textfield",
+	        "module": "montage/ui/textfield.reel",
+	        "properties": {
+	            "element": {"#": "email"}
+	        }
+	    },
+	    "passwordInput": {
+	        "name": "Textfield",
+	        "module": "montage/ui/textfield.reel",
+	        "properties": {
+	            "element": {"#": "password"}
+	        }
+	    },
+	}
+	</script>
+	
+&nbsp;
 
-**I get an "Object "xxx" not found at "yyy"" error message.**
-
-If you provide an invalid value for a serialized object's `"name"` property, MontageJS will generate an error. For example, the following serialization will generate this error, since the symbol name is misspelled `"Buttonn"` instead of `"Button"`.
-
-```json
-<script type="text/montage-serialization">
-{
-    "loginButton": {
-        "name": "Buttonn",
-        "module": "montage/ui/button.reel",
-        "properties": {
-            "element": {"#": "loginButton"}
-        }
-    }
-}
-</script>
-```
-
-This would result in the following runtime error:
-
-```
-Object "Buttonn" not found at "montage/ui/button.reel" referenced from http://localhost:8081/examples/buttonerror/.
-```
-
-**I get a "Can't XHR "http://localhost: ..."" error message.**
-
-If you provide an invalid module ID in a serialization, then the console will report a 404 error "Can't XHR _module-id_". For example, in the following serialization that defines a Textfield component, the module ID is misspelled as "montage/ui/textfld.reel".
-
-```json
-{
-"emailInput": {
-    "name": "Textfield",
-    "module": "montage/ui/textfld.reel",
-    "properties": {
-        "element": {"#": "email"}
-    }
-},
-```
-
-In Chrome, this results in the following error:
-
-```
-GET http://localhost:8081/ui/textfeld.reel/textfld.js 404 (Not Found) browser.js:136
-Can't XHR "http://localhost:8081/ui/textfield.reel/textfield.js"
-```
-
-
-**I get an "unexpected comma" error.**
-
-Trailing "serial" commas are a common JSON formatting concern. The JSON serialization block must be well-formed for MontageJS to parse it successfully. A trailing comma after the last property in a JSON object or array generates runtime errors. In the following example, the comma that trails the `readyState` property would generate a parsing error:
-
-```
-"anObject": {
-    "id": "123asd",
-    "colors": ["red", "green", "blue"],
-    "readystate": false,
-}
-```
-
-Likewise, in the following MontageJS serialization block, the trailing comma after the `"passwordInput"` JSON object would generate an "unexpected comma" error at runtime. 
-
-```json
-<script type="text/montage-serialization">
-{
-    "emailInput": {
-        "name": "Textfield",
-        "module": "montage/ui/textfield.reel",
-        "properties": {
-            "element": {"#": "email"}
-        }
-    },
-    "passwordInput": {
-        "name": "Textfield",
-        "module": "montage/ui/textfield.reel",
-        "properties": {
-            "element": {"#": "password"}
-        }
-    },
-}
-</script>
-```
-
-```console
-Syntax error at line 16 from http://localhost:8081/examples/errors/:
-    },
-Unexpected comma.
-    1 
-    2 {
-    3     "emailInput": {
-    4         "name": "Textfield",
-    5         "module": "montage/ui/textfield.reel",
-    6         "properties": {
-    7             "element": {"#": "email"}
-    8         }
-    9     },
-   10     "passwordInput": {
-   11         "name": "Textfield",
-   12         "module": "montage/ui/textfield.reel",
-   13         "properties": {
-   14             "element": {"#": "password"}
-   15         }
->>>16     },
-   17 }
-   18
-```
-
-Removing the trailing comma on line 16 fixes the error.
+		Syntax error at line 16 from http://localhost:8081/examples/errors/:
+	    },
+	Unexpected comma.
+	    1 
+	    2 {
+	    3     "emailInput": {
+	    4         "name": "Textfield",
+	    5         "module": "montage/ui/textfield.reel",
+	    6         "properties": {
+	    7             "element": {"#": "email"}
+	    8         }
+	    9     },
+	   10     "passwordInput": {
+	   11         "name": "Textfield",
+	   12         "module": "montage/ui/textfield.reel",
+	   13         "properties": {
+	   14             "element": {"#": "password"}
+	   15         }
+	>>>16     },
+	   17 }
+	   18
+	   
+移除第16行末尾的逗号可以修复这个错误。

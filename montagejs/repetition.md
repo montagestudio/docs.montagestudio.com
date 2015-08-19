@@ -9,450 +9,431 @@ next-page: substitution
 
 ---
 
-# Using the `Repetition` Component
+##使用`Repetition`组件
 
-The `Repetition` component is used to produce a repeating group of elements based on an array of values. All elements nested inside of the `Repetition` element will repeat in each iteration. The content inside of a repetition is managed by a controller. You can set `Repetition`'s `content` property manually, with a standard array for a simple repetition, or you can expand the component's capabilities by assigning a `RangeController` component to its `contentController` property.
+`Repetition`组件的作用是根据数组提供的数据重复显示一组元素，`Repetition`对数据的每次循环会生成一个元素。`Repetition`的数据通过一个控制器管理。你可以手动对`Repetition`设置简单的数组数据，或者通过设置`Repetition`的`contentController `属性为`RangeController`来处理复杂类型的数据。
 
-You can use `Repetition` as a building block to repeat any number of user interface components. (The MontageJS List component, for example, uses `Repetition` to support selection management.) Use the bindable `iteration.object` template property to point to the current list item.
+你可以使用`Repetition`来循环显示任意数量的其他组件。（比如MontageJS List组件，它就是使用`Repetition`实现的）使用可绑定的`iteration.object`模版属性表示当前的List项。
 
-## A Simple `Repetition`
+##简单的`Repetition`
 
-The following example shows a simple `Repetition` (`items`) that produces three text items. Each iteration is associated with a corresponding item in a source collection that is populated through `Repetition`'s `content` property.
+下面的例子展示了一个简单的`Repetition`组件的使用方式。它显示3个元素。每次循环都将从`Repetition`的`content`属性中取出一个值，根据这个值渲染当前重复元素。
 
-```html
-<div data-montage-id="content" class="Content">
-    <ul data-montage-id="items">
-        <li data-montage-id="item"></li>
-    </ul>
-</div>
-```
+	<div data-montage-id="content" class="Content">
+	    <ul data-montage-id="items">
+	        <li data-montage-id="item"></li>
+	    </ul>
+	</div>
+	
+&nbsp;
 
-```json
-{
-    "owner": {
-        "properties": {
-            "element": { "#": "content" }
-        }
-    },
-    "items": {
-        "prototype": "montage/ui/repetition.reel",
-        "properties": {
-            "element": { "#": "items" }
-        },
-        "bindings": {
-            "content": { "<-": "@owner.myListProperty" }
-        }
-    },
-    "item": {
-        "prototype": "montage/ui/text.reel",
-        "properties": {
-            "element": { "#": "item" }
-        },
-        "bindings": {
-            "value": { "<-": "@items:iteration.object.quote" },
-            "classList.has('highlight')": { "<-": "@items:iteration.object.important" }
-        }
-    }
-}
-```
+	{
+	    "owner": {
+	        "properties": {
+	            "element": { "#": "content" }
+	        }
+	    },
+	    "items": {
+	        "prototype": "montage/ui/repetition.reel",
+	        "properties": {
+	            "element": { "#": "items" }
+	        },
+	        "bindings": {
+	            "content": { "<-": "@owner.myListProperty" }
+	        }
+	    },
+	    "item": {
+	        "prototype": "montage/ui/text.reel",
+	        "properties": {
+	            "element": { "#": "item" }
+	        },
+	        "bindings": {
+	            "value": { "<-": "@items:iteration.object.quote" },
+	            "classList.has('highlight')": { "<-": "@items:iteration.object.important" }
+	        }
+	    }
+	}
+	
+&nbsp;
 
-```css
-.highlight {
-    font-weight: bold;
-}
-```
+	.highlight {
+	    font-weight: bold;
+	}	
+	
+&nbsp;
 
-```javascript
-var Component = require("montage/ui/component").Component;
+	var Component = require("montage/ui/component").Component;
 
-exports.Content = Component.specialize({
-    myListProperty: {
-        value: [{
-            "quote": "If music be the food of love, play on.",
-            "important": false
-        }, {
-            "quote": "O Romeo, Romeo! wherefore art thou Romeo?",
-            "important": true
-        }, {
-            "quote": "All that glitters is not gold.",
-            "important": false
-        }, {
-            "quote": "I am amazed and know not what to say.",
-            "important": false
-        }]
-    }
-});
-```
+	exports.Content = Component.specialize({
+	    myListProperty: {
+	        value: [{
+	            "quote": "If music be the food of love, play on.",
+	            "important": false
+	        }, {
+	            "quote": "O Romeo, Romeo! wherefore art thou Romeo?",
+	            "important": true
+	        }, {
+	            "quote": "All that glitters is not gold.",
+	            "important": false
+	        }, {
+	            "quote": "I am amazed and know not what to say.",
+	            "important": false
+	        }]
+	    }
+	});
+	
+结果请查看[Mfiddle](http://montagejs.github.io/mfiddle/#!/7882151)
 
-The output looks like this:
+##使用`RangeController`设置`Repetition`
 
-<iframe src="http://montagejs.github.io/mfiddle/preview/#!/7882151" style="border: 0; width: 100%; height: 110px"></iframe>
+在这个例子中：
 
-View in [Mfiddle](http://montagejs.github.io/mfiddle/#!/7882151).
+* `RangeController`被赋值给了`Repetition`的`contentController`属性用于管理`Repetition`数据。
+* `Text`组件是`Repetition`的子组件，它的`value`值来自`iteration.object`属性。
+* 点击Change Content按钮来替换`Repetiion`的数据为新的随机内容。
 
-## Using a `RangeController` with `Repetition`
 
-In this example:
+&nbsp;
 
-* `Repetition`'s `contentController` property is set to be a `RangeController` for managing some content.
-* The `Text` component is a child of `Repetition` and derives its `value` property from its `iteration.object` template property.
-* Clicking the Change Content button replaces the managed content with new random content.
+	<div data-montage-id="component">
+	    <button data-montage-id="button"></button>
+	    <ul data-montage-id="repetition">
+	        <li data-montage-id="value"></li>
+	    </ul>
+	</div>
+	
+&nbsp;
 
-```html
-<div data-montage-id="component">
-    <button data-montage-id="button"></button>
-    <ul data-montage-id="repetition">
-        <li data-montage-id="value"></li>
-    </ul>
-</div>
-```
+	{
+	    "owner": {
+	        "properties": {
+	            "element": {"#": "component"}
+	        }
+	    },
+	    "repetition": {
+	        "prototype": "montage/ui/repetition.reel",
+	        "properties": {
+	            "element": {"#": "repetition"},
+	            "contentController": {"@": "rangeController"}
+	        }
+	    },
+	    "rangeController": {
+	        "prototype": "montage/core/range-controller"
+	    },
+	    "value": {
+	        "prototype": "montage/ui/text.reel",
+	        "properties": {
+	            "element": {"#": "value"}
+	        },
+	        "bindings": {
+	            "value": {"<-": "@repetition:iteration.object.quote"}
+	        }
+	    },
+	    "changeButton": {
+	        "prototype": "digit/ui/button.reel",
+	        "properties": {
+	            "element": {"#": "button"},
+	            "label": "Change Content"
+	        },
+	        "listeners": [
+	            {
+	                "type": "action",
+	                "listener": {"@": "owner"}
+	            }
+	        ]
+	    }
+	}
+	
+&nbsp;
 
-```json
-{
-    "owner": {
-        "properties": {
-            "element": {"#": "component"}
-        }
-    },
-    "repetition": {
-        "prototype": "montage/ui/repetition.reel",
-        "properties": {
-            "element": {"#": "repetition"},
-            "contentController": {"@": "rangeController"}
-        }
-    },
-    "rangeController": {
-        "prototype": "montage/core/range-controller"
-    },
-    "value": {
-        "prototype": "montage/ui/text.reel",
-        "properties": {
-            "element": {"#": "value"}
-        },
-        "bindings": {
-            "value": {"<-": "@repetition:iteration.object.quote"}
-        }
-    },
-    "changeButton": {
-        "prototype": "digit/ui/button.reel",
-        "properties": {
-            "element": {"#": "button"},
-            "label": "Change Content"
-        },
-        "listeners": [
-            {
-                "type": "action",
-                "listener": {"@": "owner"}
-            }
-        ]
-    }
-}
-```
+		var Component = require("montage/ui/component").Component;
 
-```javascript
-var Component = require("montage/ui/component").Component;
+	exports.Owner = Component.specialize({
+	    constructor: {
+	        value: function Owner() {
+	            this.content = [{
+	                "quote": "If music be the food of love, play on.",
+	                "important": false
+	            }, {
+	                "quote": "O Romeo, Romeo! wherefore art thou Romeo?",
+	                "important": true
+	            }, {
+	                "quote": "All that glitters is not gold.",
+	                "important": false
+	            }, {
+	                "quote": "I am amazed and know not what to say.",
+	                "important": false
+	            }];
+	        }
+	    },
 
-exports.Owner = Component.specialize({
-    constructor: {
-        value: function Owner() {
-            this.content = [{
-                "quote": "If music be the food of love, play on.",
-                "important": false
-            }, {
-                "quote": "O Romeo, Romeo! wherefore art thou Romeo?",
-                "important": true
-            }, {
-                "quote": "All that glitters is not gold.",
-                "important": false
-            }, {
-                "quote": "I am amazed and know not what to say.",
-                "important": false
-            }];
-        }
-    },
+	    templateDidLoad: {
+	        value: function () {
+	            this.templateObjects.rangeController.content = this.content;
+	        }
+	    },
 
-    templateDidLoad: {
-        value: function () {
-            this.templateObjects.rangeController.content = this.content;
-        }
-    },
+	    handleChangeButtonAction: {
+	        value: function (evt) {
+	            var randomContentIndex = Math.floor(Math.random() * this.content.length);
+	            this.templateObjects.rangeController.add(this.content[randomContentIndex]);
+	        }
+	    }
+	});
+	
+	
+点击[Middle](http://montagejs.github.io/mfiddle/#!/7883458)查看结果。
 
-    handleChangeButtonAction: {
-        value: function (evt) {
-            var randomContentIndex = Math.floor(Math.random() * this.content.length);
-            this.templateObjects.rangeController.add(this.content[randomContentIndex]);
-        }
-    }
-});
-```
+##`Repetition`中排序和过滤的用法
 
-The output looks like this:
+你可以使用FRB表达式对`Repetition`关联的`RangeController`的数据进行排序或者过滤。
 
-<iframe src="http://montagejs.github.io/mfiddle/preview/#!/7883458" style="border: 0; width: 100%; height: 200px"></iframe>
+* 对数据进行过滤。
+* 当数据的`filterPath`值是`false`，这个数据不会显示在`Repetiiton`中。
+* 使用`sortPath`对数据进行排序。
 
-View in [Mfiddle](http://montagejs.github.io/mfiddle/#!/7883458).
+你当然可以使用复杂的表达式对数据进行排序和过滤，举个例子，`Repetition`的数据里有一个`index`属性是数字类型，我们可以使用`!(index%2)`来过滤掉奇数。
 
-## Sorting and Filtering the Items in `Repetition`
+	<div data-montage-id="component">
+	    <button data-montage-id="filterButton"></button>
+	    <button data-montage-id="sortButton"></button>
 
-To sort and filter items in a repetition you can use FRB expressions on the `RangeController`.
+	    <ul data-montage-id="repetition">
+	        <li data-montage-id="quote"></li>
+	    </ul>
+	</div>
+	
+&nbsp;
 
-* Adding or removing items from the source collection automatically updates the returned items.
-* When the value of the `filterPath` is `false`, the item will not be included in the repetition.
-* Using `sortPath` returns the items in sequential order, sorted by the value of the `property` when the path is a single property.
+	{
+	    "owner": {
+	        "properties": {
+	            "element": {"#": "component"}
+	        }
+	    },
+	    "repetition": {
+	        "prototype": "montage/ui/repetition.reel",
+	        "properties": {
+	            "element": {"#": "repetition"},
+	            "contentController": {"@": "rangeController"}
+	        }
+	    },
+	    "rangeController": {
+	        "prototype": "montage/core/range-controller"
+	    },
 
-You can also use complex expressions inside of sort and filter operations. For example, when `Repetition`'s content has an index property that is a sequence of integers, you can filter out the odd numbers like this: `!(index%2)`.
+	    "quote": {
+	        "prototype": "montage/ui/text.reel",
+	        "properties": {
+	            "element": {"#": "quote"}
+	        },
+	        "bindings": {
+	            "value": {"<-": "@repetition:iteration.object.quote"}
+	        }
+	    },
 
-```html
-<div data-montage-id="component">
-    <button data-montage-id="filterButton"></button>
-    <button data-montage-id="sortButton"></button>
+	    "filterButton": {
+	        "prototype": "digit/ui/button.reel",
+	        "properties": {
+	            "element": {"#": "filterButton"},
+	            "label": "Filter"
+	        },
+	        "listeners": [
+	            {
+	                "type": "action",
+	                "listener": {"@": "owner"}
+	            }
+	        ]
+	    },
 
-    <ul data-montage-id="repetition">
-        <li data-montage-id="quote"></li>
-    </ul>
-</div>
-```
+	    "sortButton": {
+	        "prototype": "digit/ui/button.reel",
+	        "properties": {
+	            "element": {"#": "sortButton"},
+	            "label": "Sort"
+	        },
+	        "listeners": [
+	            {
+	                "type": "action",
+	                "listener": {"@": "owner"}
+	            }
+	        ]
+	    }
+	}
+	
+&nbsp;
 
-```json
-{
-    "owner": {
-        "properties": {
-            "element": {"#": "component"}
-        }
-    },
-    "repetition": {
-        "prototype": "montage/ui/repetition.reel",
-        "properties": {
-            "element": {"#": "repetition"},
-            "contentController": {"@": "rangeController"}
-        }
-    },
-    "rangeController": {
-        "prototype": "montage/core/range-controller"
-    },
-    
-    "quote": {
-        "prototype": "montage/ui/text.reel",
-        "properties": {
-            "element": {"#": "quote"}
-        },
-        "bindings": {
-            "value": {"<-": "@repetition:iteration.object.quote"}
-        }
-    },
-    
-    "filterButton": {
-        "prototype": "digit/ui/button.reel",
-        "properties": {
-            "element": {"#": "filterButton"},
-            "label": "Filter"
-        },
-        "listeners": [
-            {
-                "type": "action",
-                "listener": {"@": "owner"}
-            }
-        ]
-    },
-    
-    "sortButton": {
-        "prototype": "digit/ui/button.reel",
-        "properties": {
-            "element": {"#": "sortButton"},
-            "label": "Sort"
-        },
-        "listeners": [
-            {
-                "type": "action",
-                "listener": {"@": "owner"}
-            }
-        ]
-    }
-}
-```
+	var Component = require("montage/ui/component").Component;
 
-```javascript
-var Component = require("montage/ui/component").Component;
+	exports.Owner = Component.specialize({
+	    constructor: {
+	        value: function Owner() {
+	            this.content = [{
+	                "quote": "If music be the food of love, play on.",
+	                "important": false
+	            }, {
+	                "quote": "O Romeo, Romeo! wherefore art thou Romeo?",
+	                "important": true
+	            }, {
+	                "quote": "All that glitters is not gold.",
+	                "important": false
+	            }, {
+	                "quote": "I am amazed and know not what to say.",
+	                "important": false
+	            }];
+	        }
+	    },
 
-exports.Owner = Component.specialize({
-    constructor: {
-        value: function Owner() {
-            this.content = [{
-                "quote": "If music be the food of love, play on.",
-                "important": false
-            }, {
-                "quote": "O Romeo, Romeo! wherefore art thou Romeo?",
-                "important": true
-            }, {
-                "quote": "All that glitters is not gold.",
-                "important": false
-            }, {
-                "quote": "I am amazed and know not what to say.",
-                "important": false
-            }];
-        }
-    },
+	    templateDidLoad: {
+	        value: function () {
+	            this.templateObjects.rangeController.content = this.content;
+	        }
+	    },
 
-    templateDidLoad: {
-        value: function () {
-            this.templateObjects.rangeController.content = this.content;
-        }
-    },
+	    handleFilterButtonAction: {
+	        value: function () {
+	            var rangeController = this.templateObjects.rangeController;
+	            // toggle filterPath to either filter by "important" key or not filter
+	            rangeController.filterPath = rangeController.filterPath ? "" : "important";
+	        }
+	    },
 
-    handleFilterButtonAction: {
-        value: function () {
-            var rangeController = this.templateObjects.rangeController;
-            // toggle filterPath to either filter by "important" key or not filter
-            rangeController.filterPath = rangeController.filterPath ? "" : "important";
-        }
-    },
+	    handleSortButtonAction: {
+	        value: function () {
+	            var rangeController = this.templateObjects.rangeController;
+	            // toggle sortPath to either filter by "quote" key or not filter
+	            rangeController.sortPath = rangeController.sortPath ? "" : "quote" ;
+	        }
+	    }
+	});
+	
+点击[Mfiddle](http://montagejs.github.io/mfiddle/#!/7884201)查看结果。
 
-    handleSortButtonAction: {
-        value: function () {
-            var rangeController = this.templateObjects.rangeController;
-            // toggle sortPath to either filter by "quote" key or not filter
-            rangeController.sortPath = rangeController.sortPath ? "" : "quote" ;
-        }
-    }
-});
-```
+`RangeController`使用FRB来[过滤](http://documentup.com/montagejs/frb/#tutorial/filter)和[排序](http://documentup.com/montagejs/frb/#tutorial/sorted)。你可以在绑定表达始中使用FRB函数。比如：
 
-The output looks like this:
+	{
+	    "bindings": {
+	        "filteredEvens": {"<-": "numbers.filter{!(%2)}"},
+	        "sorted": {"<-": "numbers.sorted{}"}
+	    }
+	}
+	
+##允许用户选择`Repetiton`循环生成的元素
 
-<iframe src="http://montagejs.github.io/mfiddle/preview/#!/7884201" style="border: 0; width: 100%; height: 150px"></iframe>
-View in [Mfiddle](http://montagejs.github.io/mfiddle/#!/7884201).
+你需要进行以下设置来开启`Repetition`的"选择"功能：
 
-`RangeController` uses FRB to [filter](http://documentup.com/montagejs/frb/#tutorial/filter) and [sort](http://documentup.com/montagejs/frb/#tutorial/sorted) under the hood. You can do the same to filter and sort in a binding, e.g.:
+* 设置`Repetition`的`isSelectionEnabled`属性为`true`。
+* `selected`Css规则会自动被添加给选中的元素。
 
-```json
-{
-    "bindings": {
-        "filteredEvens": {"<-": "numbers.filter{!(%2)}"},
-        "sorted": {"<-": "numbers.sorted{}"}
-    }
-}
-```
+注意用户是可以同时选择多个元素的。
 
-## Allowing Users to Select `Repetition` Items
+	<div data-montage-id="component">
+	    <div data-montage-id="repetition">
+	        <p data-montage-id="value"></p>
+	    </div>
+	    <select data-montage-id="select"></select>
+	    <p data-montage-id="log"></p>
+	</div>
+	
+&nbsp;
 
-To allow users to select an item in a repetition:
+	{
+	    "owner": {
+	        "properties": {
+	            "element": {"#": "component"}
+	        }
+	    },
+	    "repetition": {
+	        "prototype": "montage/ui/repetition.reel",
+	        "properties": {
+	            "element": {"#": "repetition"},
+	            "isSelectionEnabled": true,
+	            "contentController": {"@": "rangeController"}
+	        }
+	    },
+	    "rangeController": {
+	        "prototype": "montage/core/range-controller",
+	        "properties": {
+	            "selection": []
+	        }
+	    },
 
-* Set the `Repetition` component's `isSelectionEnabled` property to `true`.
-* The `selected` CSS rule is automatically applied to the selected item.
+	    "value": {
+	        "prototype": "montage/ui/text.reel",
+	        "properties": {
+	            "element": {"#": "value"}
+	        },
+	        "bindings": {
+	            "value": {"<-": "@repetition:iteration.object.quote"}
+	        }
+	    },
 
-Note that users could select multiple items.
+	    "select": {
+	        "prototype": "digit/ui/select.reel",
+	        "properties": {
+	            "element": {"#": "select"},
+	            "contentController": {"@": "rangeController"},
+	            "labelPropertyName": "quote"
+	        }
+	    },
+	    "log": {
+	       "prototype": "montage/ui/text.reel",
+	       "properties": {
+	           "element": {"#": "log"}
+	       },
+	       "bindings": {
+	           "value": {"<-": "@owner.message"}
+	       }
+	    }
+	}
+	
+&nbsp;
 
-```html
-<div data-montage-id="component">
-    <div data-montage-id="repetition">
-        <p data-montage-id="value"></p>
-    </div>
-    <select data-montage-id="select"></select>
-    <p data-montage-id="log"></p>
-</div>
-```
+	.selected {
+	    color:red;
+	}
+	
+&nbsp;
 
-```json
-{
-    "owner": {
-        "properties": {
-            "element": {"#": "component"}
-        }
-    },
-    "repetition": {
-        "prototype": "montage/ui/repetition.reel",
-        "properties": {
-            "element": {"#": "repetition"},
-            "isSelectionEnabled": true,
-            "contentController": {"@": "rangeController"}
-        }
-    },
-    "rangeController": {
-        "prototype": "montage/core/range-controller",
-        "properties": {
-            "selection": []
-        }
-    },
-    
-    "value": {
-        "prototype": "montage/ui/text.reel",
-        "properties": {
-            "element": {"#": "value"}
-        },
-        "bindings": {
-            "value": {"<-": "@repetition:iteration.object.quote"}
-        }
-    },
-    
-    "select": {
-        "prototype": "digit/ui/select.reel",
-        "properties": {
-            "element": {"#": "select"},
-            "contentController": {"@": "rangeController"},
-            "labelPropertyName": "quote"
-        }
-    },
-    "log": {
-       "prototype": "montage/ui/text.reel",
-       "properties": {
-           "element": {"#": "log"}
-       },
-       "bindings": {
-           "value": {"<-": "@owner.message"}
-       }
-    }
-}
-```
+	var Component = require("montage/ui/component").Component;
 
-```css
-.selected {
-    color:red;
-}
-```
+	exports.Owner = Component.specialize({
+	    constructor: {
+	        value: function Owner() {
+	            this.content = [{
+	                "quote": "If music be the food of love, play on.",
+	                "important": false
+	            }, {
+	                "quote": "O Romeo, Romeo! wherefore art thou Romeo?",
+	                "important": true
+	            }, {
+	                "quote": "All that glitters is not gold.",
+	                "important": false
+	            }, {
+	                "quote": "I am amazed and know not what to say.",
+	                "important": false
+	            }];
+	        }
+	    },
 
-```javascript
-var Component = require("montage/ui/component").Component;
+	    templateDidLoad: {
+	        value: function () {
+	            this.templateObjects.rangeController.content = this.content;
+	            //Observe the selection for changes
+	            this.templateObjects.rangeController.addRangeAtPathChangeListener(
+	                "selection", this, "handleSelectionChange");
+	        }
+	    },
 
-exports.Owner = Component.specialize({
-    constructor: {
-        value: function Owner() {
-            this.content = [{
-                "quote": "If music be the food of love, play on.",
-                "important": false
-            }, {
-                "quote": "O Romeo, Romeo! wherefore art thou Romeo?",
-                "important": true
-            }, {
-                "quote": "All that glitters is not gold.",
-                "important": false
-            }, {
-                "quote": "I am amazed and know not what to say.",
-                "important": false
-            }];
-        }
-    },
+	    handleSelectionChange: {
+	        value: function (plus, minus) {
+	           this.message = "Selection changed from: "
+	                + (minus[0] ? minus[0].quote : "nothing")
+	                + " -> "
+	                + (plus[0] ? plus[0].quote : "nothing");
+	        }
+	    }
+	});
+	
+点击[Mfiddle](http://montagejs.github.io/mfiddle/#!/7884716)查看结果。
 
-    templateDidLoad: {
-        value: function () {
-            this.templateObjects.rangeController.content = this.content;
-            //Observe the selection for changes
-            this.templateObjects.rangeController.addRangeAtPathChangeListener(
-                "selection", this, "handleSelectionChange");
-        }
-    },
-
-    handleSelectionChange: {
-        value: function (plus, minus) {
-           this.message = "Selection changed from: "
-                + (minus[0] ? minus[0].quote : "nothing")
-                + " -> "
-                + (plus[0] ? plus[0].quote : "nothing");
-        }
-    }
-});
-```
-
-The output looks like this:
-
-<iframe src="http://montagejs.github.io/mfiddle/preview/#!/7884716" style="border: 0; width: 100%; height: 260px"></iframe>
-View in [Mfiddle](http://montagejs.github.io/mfiddle/#!/7884716).

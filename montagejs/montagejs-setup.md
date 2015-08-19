@@ -11,87 +11,71 @@ redirect_from:
 
 ---
 
-Getting Started with MontageJS
-===
+开始使用MontageJS
+==============
 
-MontageJS is an HTML5 framework for building rich single-page applications (SPAs). The framework features mobile-optimized user interface widgets, logic-less templates, reusable components, simple and two-way bindings between components and objects, implicit event delegation, a managed draw cycle, and powerful command line tools for kickstarting and compiling SPA projects.
+MontageJS是一个用于创建富单页面应用（SPAs）的HTML5框架，框架中包括以下特性：针对手持设备特殊优化的组件，纯页面模板，可重用组件，组件与对象之间的双向数据绑定，隐式事件委托，可控的页面绘制周期，同时框架也提供了丰富的命令行工具来帮助开发者创建和编译工程项目。
 
-## Next-gen Front-end Development
+##划时代的前端开发框架
+现在如果我们要使用一个框架，大体过程是这样的，下载整个框架包然后导入到我们的项目中，其实大多数的时候我们只会用到框架中的很小的一部分功能，但是却不得不把整个框架引入到项目中。这样做会让我们的项目变的臃肿，运行缓慢，特别是在有网络带宽限制，甚至设备性能限制的的网络应用中。
 
-Most frameworks provide you with a download link to code libraries. The entire framework typically includes a lot more functionality than needed for any given application. Including whole frameworks and libraries creates a lot of overhead and downloaded bytes, problematic in a web app environment with bandwidth and processing constraints.
+MontageJS用一种全新的方式完美地解决了上述问题。我们不用从一个URL去下载框架本身，因为MontageJS使用[CommonJS](http://www.commonjs.org/)的模块方式发布，[CommonJS](http://www.commonjs.org/)属于[npm](http://npmjs.org/)包管理系统的一部分，所以开发者可以非常容易地把框架引入到项目中。在开发的时候我们只需要在项目中用关键字`require`引用相关的包就可以了。最后在项目发布阶段使用Montage的优化工具[mop](http://docs.montagestudio.com/montagejs/tools-mop.html)对项目进行编译，它会分析你的项目，只把你用到的模块，组件编辑到最终结果中，所以你的最终产品是一个高度优化，体积很小的代码包。
 
-MontageJS takes a different approach. You do not need to download or link to a prebuilt, kitchensink-style framework in your application. MontageJS uses the [**CommonJS**](http://commonjs.org) module system and is part of the [**npm**](http://npmjs.org) package ecosystem. This makes it easy for developers to set up a client-side development environment and organize their code base. In development, you `require` the modules and components that provide just the functionality you need. For production, you use [**mop**](tools-mop.html), the Montage optimizer, to analyze your project and its dependencies, and then create a minified and optimized version of your source code, which includes only those modules and components your application actually uses.
+##配置开发环境
 
-## Setting Up MontageJS Development
+通过下面的两个步骤我们可以安装MontageJS的开发环境和命令行工具:
 
-Before you can start building applications with MontageJS, you need to set up your development environment. The setup involves installing the following software package and command line tools:
+- [Node.js 和 npm](https://nodejs.org/)
+- [Minit](http://docs.montagestudio.com/montagejs/tools-minit.html), MontageJS的命令行工具
 
-* [Node.js and npm](http://nodejs.org)
-* [Minit](tools-minit.html), the MontageJS initializer
+当然我们也需要在开发的机器上安装一个常用的浏览器。比如Chrome, Safari, Firefox等等。
 
-You also need a recent stable release of an evergreen browser, e.g. Chrome, Safari, Firefox, etc.
+**准备工作**
 
-### Before You Begin
+[下载](https://nodejs.org/download/)安装Node.js，如果你开发的机器还没用安装。因为MontageJS需要Node.js提供的版本和包依赖管理功能，同时我们也需要用Node.js的npm命令行工具来帮助我们安装MontageJS本身。
 
-<a href="http://nodejs.org/download/" target="_blank">Download</a> and run the prebuilt Node.js installer for your platform from the Node.js website if you haven't already. MontageJS uses Node.js and npm, which is part of the Node.js installation, for its command line tools and for version and code dependency management in development.
+**步骤 1：安装minit**
 
-### Step 1: Install minit
+minit是一个命令行工具，我们可以使用它来很方便的创建一个MontageJS应用的种子项目，创建好的工程项目中已经包括了我们在之后开发的过程中所有需要的东西。通过下面的命令行我们就可以在不同的操作系统上面安装minit:
 
-The minit command line tool provides a convenient way to kickstart your MontageJS projects. With minit you can quickly generate an application template that includes everything you need to start building a mobile-optimized SPA. Use the following commands to install the latest version of minit for your platform:
+* **Mac OS X / Linux:** 打开终端输入下面的命令:
 
-* **Mac OS X / Linux:** Open a Terminal window and type:
+		$ sudo npm install -gq minit@latest
+		
+* **Windows:** 运行命令行工具输入下面得命令
 
-    ```
-    $ sudo npm install -gq minit@latest
-    ```
+		npm install -gq minit@latest
+		
+**步骤 2：创建一个新项目**
 
-    > **Note:** Minit does not need `sudo` access; npm uses `sudo` to make command line utilities such as minit available system wide. Also, when run as root, npm will downgrade permissions before running any build scripts that package authors specified. For more details see the npm <a href="https://npmjs.org/doc/README.html" target="_blank">readme</a>.
+通过下面的命令我们可以创建一个MontageJS的种子项目（参数“app-nam”是工程项目的名称，使用的时候请设置为当前的项目名称）
 
-* **Windows:** Open the Command Prompt and type:
+		$ minit create:app -n app-name
+		
+运行上面的命令之后会在当前目录中新建一个跟我们项目名称一样的文件夹，比如上面的命令行就会新建一个“app-name”的文件夹，在这个文件夹中已经包含所有MontageJS项目需要的东西了。
 
-    ```
-    npm install -gq minit@latest
-    ```
+>__备注:__ 可以打开"app-name"文件夹中的readme文本文件查看新建的MontageJS工程项目的目录结构
 
-### Step 2: Create a New Project
+**步骤 3：验证项目是否初始化成功**
 
-To create a new MontageJS project, enter the following command at the prompt (<em>app-name</em> = a short and descriptive name of your choice):
+通过以下的步骤验证
 
-```
-$ minit create:app -n app-name
-```
+1. 在命令行工具中切换到当前项目的文件夹路径然后运行以下的命令：
 
-This generates the _app-name_ directory—which includes the MontageJS code dependencies—in your current directory.
+		$ cd app-name
+		$ minit serve &
+		
+	>__备注:__ MontageJS运行的时候需要通过XMLHttpRequest (XHR)机制从远端服务器加载相关组件和模块（所以我们需要一个服务器才能使我们的程序运行起来）；命令minit seve &就会启动一个这样的本地服务器。 命令末尾的&表示启动的本地服务器在后台运行，这样我们就可以在启动服务之后把命令行窗口关闭。
+	
+3. 打开浏览器输入网址http://localhost:8083/。
 
->**Note:** For a brief overview of the files and folders included in a default MontageJS project, see the readme file in the "app-name" project directory.
+	如果一切顺利你将看到一个空白的网页，在网页的左上角有版本信息，（如下面的屏幕截图）。
+	![MontageJS开发环境配置成功](http://docs.montagestudio.com/images/docs/montagejs-setup/fig01.jpg)
+	*__图片 1.__ MontageJS开发环境配置成功*
+	
+现在为止，所有的配置已经完成，可以开始编码了。
 
+##下一阶段
 
-### Step 3: Verify Your Setup
-
-To verify your setup:
-
-1. Switch to the _app-name_ directory and use minit to serve your project:
-
-    ```
-    $ cd app-name
-    $ minit serve &
-    ```
-
-    >**Note:** In development, MontageJS applications rely on the XMLHttpRequest (XHR) API to load components and modules (which is why you need a server to preview your project in progress); `minit serve &` sets up a local on-demand web server. The ampersand (`&`) option ensures that you don't have to open a second Terminal window while working on your project.
-
-2. Point your browser to http://localhost:8083/.
-
-    If all went well, you should see a blank page with a version reference in the upper left corner of the page (see Figure 1).
-
-    <figure>
-    	<img src="/images/docs/montagejs-setup/fig01.jpg" alt="MontageJS development is set up." style="width: 451px;">
-    	<figcaption><strong>Figure 1.</strong> MontageJS development is set up.</figcaption>
-    </figure>
-
-You are now ready to start coding.
-
-## Next Steps
-
-* To learn how to build a simple MontageJS application, continue with [Hello MontageJS](http://montagejs.org/docs/hello-montagejs.html)
-* To explore MontageJS on your own, check out other docs, articles & demos using the left navigation
-
+- 如何用MontageJS编写[Hello MontageJS](http://montagejs.org/docs/hello-montagejs.html)
+- 通过左边的菜单查看MontageJS的文档，教程和示例代码
