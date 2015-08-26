@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+	<title>Using Subtitutions</title>
+	
+    <link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+
+    </head>
+
+<body>
+  <header class="header">
+    <div class="header-container">
+        <a class="logo" href="http://montagestudio.com/">Home</a>
+
+        <input id="nav-toggle" class="nav-toggle nav-toggle--main" type="checkbox">
+        <label class="nav-toggleLabel nav-toggleLabel--main" for="nav-toggle" onclick></label>
+
+        <nav class="nav">
+            <a class="nav-item" href="http://montagestudio.com/gallery">Gallery</a>
+            <a class="nav-item" href="http://montagestudio.com/product">Product</a>
+            <a class="nav-item" href="http://montagestudio.com/montagejs">Open Source</a>
+            <a class="nav-item" href="http://montagestudio.com/community">Community</a>
+            <a class="nav-item" href="http://montagestudio.com/blog">Blog</a>
+            <a class="nav-item" href="http://montagestudio.com/company">Company</a>
+            <a class="nav-item nav-item--teaser"
+               href="http://montagestudio.com/reveal">Join our BETA</a>
+        </nav>
+    </div>
+  </header>
+
+  <section id="docs" class="docs withSidenav">
+    <div class="wrapper">
+            
+<input id="sidenav-toggle" class="sidenav-toggle" type="checkbox">
+<label class="sidenav-toggleLabel" for="sidenav-toggle" onclick></label>
+
+        <nav class="sidenav">
+
+    <details open>
+        <summary>Quick Start</summary>
+        <a href="montagejs-setup.html" >Set Up</a>
+        <a href="hello-montagejs.html" >Hello MontageJS</a>
+    </details>
+
+    <details open>
+        <summary>Demos</summary>
+        <a href="montagejs-examples.html" >Examples</a>
+        <a href="http://montagejs.github.com/mfiddle/" target="_blank">Mfiddle</a>
+
+    </details>
+
+    <details open>
+        <summary>Tutorials</summary>
+        <a href="tutorial-using-substitutions-with-montagejs.html" class="active">Using Subtitutions</a>
+        <a href="tutorial-reddit-client-with-montagejs.html" >Building a Reddit Client</a>
+        <a href="tutorial-3d-applications-with-montagejs.html" >Building 3D Applications</a>
+    </details>
+
+    <details open>
+        <summary>Concepts</summary>
+        <a href="bootstrapping.html" >Bootstrapping</a>
+        <a href="application.html" >Application</a>
+        <a href="montagejs-templates.html" >Templates</a>
+        <a href="exploring-components.html" >Components</a>
+        <a href="component-composition.html" >Component Composition</a>
+        <a href="serialization-format.html" >Declaration</a>
+        <a href="montagejs-objects.html" >Objects</a>
+        <a href="data-binding.html" >Data Binding</a>
+        <a href="event-handling.html" >Event Handling</a>
+        <a href="draw-cycle.html" >Draw Cycle</a>
+        <a href="blueprints.html" >Blueprints</a>
+        <a href="gestures-composers.html" >Gestures & Composers</a>
+        <a href="naming-conventions.html" >Naming Conventions</a>
+    </details>
+
+    <details open>
+        <summary>Built-in Components</summary>
+        <a href="repetition.html" >Repetition</a>
+        <a href="substitution.html" >Substitution</a>
+        <a href="overlay.html" >Overlay</a>
+    </details>
+
+    <details open>
+        <summary>UI Component Sets</summary>
+        <a href="themes.html" >Introduction</a>
+        <a href="theme-digit-components.html" >Digit</a>
+        <a href="theme-matte-components.html" >Matte</a>
+        <a href="theme-native-components.html" >Native</a>
+        <a href="autocomplete.html" >Autocomplete</a>
+    </details>
+
+    <details open>
+        <summary>Tools</summary>
+        <a href="tools-minit.html" >Minit</a>
+        <a href="tools-mop.html" >Mop</a>
+    </details>
+
+    <details open>
+        <summary>Help</summary>
+        <a href="faq.html" >FAQ</a>
+        <a href="frb.html" >FAQ - FRB Transition</a>
+        <a href="troubleshooting.html" >Troubleshooting</a>
+    </details>
+
+    <hr />
+
+    <a class="sidenav-mainLink" href="/api">API Reference</a>
+
+    <hr />
+
+    <a class="sidenav-mainLink" href="/montage-studio">Montage Studio</a>
+
+</nav>
+
+<div class="main">
+            <a href="#"
+               class="edit">Improve this Doc</a>
+
+            <article class="content">
+                <h1 id="building-a-simple-reddit-client-with-montagejs">Using Substitutions to Switch Components in MontageJS</h1>
+
+    <h1></h1>
+
+    <p>Many web applications need a way to change out a component with another. For example, imagine you wanted to make an app that had multiple pages. Normally, you would have to make each page a separate html file. This means that whenever the user wants to go to a different section of the website, they have to load a new page. With Montage, you can store a section of your app as a component, and then switch between each component without having to load a page. This is done through the prebuilt Substitution component.</p>
+
+    <p>Substitutions are useful for swapping out which modules are displayed in a specific space. In this tutorial we’ll cover a simple example by creating radio buttons that will be used to select different text modules to be displayed. The end result will also feature the temperature converter from the first tutorial. With substitutions, you can easily embed an existing component into another app. The end result should look something like this:</p>
+
+    <img src="/images/docs/tutorials/using-substitutions/tutorial-substitution-final.jpg" alt="The end result"></img>
+
+    <h1>Creating the Buttons</h1>
+
+    <p>Let’s start by creating the radio buttons. In order for the buttons to make selections we’ll need to include a radio button controller in our declaration:</p>
+
+    <pre id="code1"><code>
+    "owner": {
+        "properties": {
+            "element": {"#": "main"}
+        }
+    },
+    "radioButtonController": {
+        "prototype": "montage/core/radio-button-controller"
+    }
+        
+    </code></pre>
+
+	<p>The controller does not need to be added in html because it doesn’t actually exist on the page, only its buttons do.</p>
+
+    <video id="video1" width="100%" style="display:none;" controls>
+        <source src="/images/docs/tutorials/using-substitutions/1-radioButtonController.webm" type="video/webm">
+        <source src="/images/docs/tutorials/using-substitutions/1-radioButtonController.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <input onclick="change('button1','code1','video1')" type="button" value="See How to do it in Montage Studio" id="button1" />
+
+	<p>Next we’ll add the actual radio buttons using the component provided in Montage:</p>
+
+	<p>1. Add three buttons to the markup. Set each button's type to <i>radio</i>:</p>
+
+    <div id="code2">
+	<pre><code>&lt;input type="radio" data-montage-id="button1"&gt;
+&lt;input type="radio" data-montage-id="button2"&gt;
+&lt;input type="radio" data-montage-id="button3"&gt;</code>
+	<p>2. Now add each button to the declaration:</p></pre><pre><code>"button1": {
+        "prototype": "digit/ui/radio-button.reel",
+        "properties": {
+            "element": {"#": "button1"},
+            "checked": true,
+            "enabled": true,
+            "radioButtonController": {"@": "radioButtonController"}, 
+        }
+    },
+    "button2": {
+        "prototype": "digit/ui/radio-button.reel",
+        "properties": {
+            "element": {"#": "button2"},
+            "enabled": true,
+            "radioButtonController": {"@": "radioButtonController"},
+        }
+    },
+    "button3": {
+        "prototype": "digit/ui/radio-button.reel",
+        "properties": {
+            "element": {"#": "button3"},
+            "enabled": true,
+            "radioButtonController": {"@": "radioButtonController"},
+        }
+    }
+    </code></pre>
+    </div>
+
+    <video id="video2" width="100%" style="display:none;" controls>
+        <source src="/images/docs/tutorials/using-substitutions/2-radioButtons.webm" type="video/webm">
+        <source src="/images/docs/tutorials/using-substitutions/2-radioButtons.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <input onclick="change('button2','code2','video2')" type="button" value="See How to do it in Montage Studio" id="button2" />
+
+	<p>The <i>checked</i> property decides which button is checked (these are radio buttons, so only one should be selected at a time). We set each of these buttons to be <i>enabled</i> so they can be clicked on. Finally we set the <i>radioButtonController</i> property to a reference of our radio button controller that we created earlier.</p>
+
+	<p>By assigning <i>radioButtonController</i> in each of these buttons, we allow the controller to know which button is selected. Now, if you run the app, you should see three radio buttons.</p>
+
+	<h3>Adding Labels</h3>
+
+	<p>In most apps, you will want to have a label on your buttons so the user knows what they are clicking on. This is done by wrapping each input node in a label node, just like regular HTML:</p>
+
+	<pre><code>    &lt;label&gt;
+       &lt;input type="radio" data-montage-id="button1"&gt;
+	Section 1
+    &lt;/label&gt;
+    &lt;label&gt;
+	&lt;input type="radio" data-montage-id="button2"&gt;
+	Section 2
+    &lt;/label&gt;
+    &lt;label&gt;
+	&lt;input type="radio" data-montage-id="button3"&gt;
+	Section 3
+    &lt;/label&gt;</code></pre>
+
+	<p>With these HTML labels, you should have three labeled radio buttons:</p>
+
+	<img src="/images/docs/tutorials/using-substitutions/tutorial-substitution-radio-buttons.png" alt="Three radio buttons with labels"></img>
+
+	<p><a href="http://montagejs.github.io/mfiddle/#!/a3e78e24a0a8525ec967">View source on MFiddle</a></p>
+
+	<h1>Adding the Content</h1>
+
+	<p>We will start by adding three switchable text components under the buttons. In order to be able to switch the content, we will need to add a substitution component:</p>
+
+	<pre id="code3"><code>&lt;div data-montage-id="substitution"&gt;&lt;/div&gt;
+
+"substitution": {
+    "prototype": "montage/ui/substitution.reel",
+    "properties": {
+        "element": {"#": "substitution"}
+    }
+}</code></pre>
+
+    <video id="video3" width="100%" style="display:none;" controls>
+        <source src="/images/docs/tutorials/using-substitutions/3-substitution.webm" type="video/webm">
+            <source src="/images/docs/tutorials/using-substitutions/3-substitution.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <input onclick="change('button3','code3','video3')" type="button" value="See How to do it in Montage Studio" id="button3" />
+
+	<p>Next we need to add the content components. For now, we will make the content as text components with simple text values.</p>
+
+	<p>1. Add three nodes as children of the subsitution node in the markup:</p>
+
+    <div id="code4">
+	<pre><code>&lt;div data-montage-id="substitution"&gt;
+    &lt;div data-arg="component1" data-montage-id="content1"&gt;&lt;/div&gt;
+    &lt;div data-arg="component2" data-montage-id="content2"&gt;&lt;/div&gt;
+    &lt;div data-arg="component3" data-montage-id="content3"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+	<p>The <i>data-arg</i> attribute is the id that the substitution will use to recognize its child components. This attribute can be the same or different from data-montage-id, which is used for serialization.</p>
+
+	<p>2. Add the content as regular text components in the declaration:</p>
+
+	<pre><code>"content1": {
+    "prototype": "montage/ui/text.reel",
+    "properties": {
+        "element": {"#": "content1"},
+        "value": "This is the first sub-component."
+    }
+},
+"content2": {
+    "prototype": "montage/ui/text.reel",
+    "properties": {
+        "element": {"#": "content2"},
+        "value": "This is the second sub-component."
+    }
+},
+"content3": {
+    "prototype": "montage/ui/text.reel",
+    "properties": {
+        "element": {"#": "content3"},
+        "value": "This is the third sub-component."
+    }
+}</code></pre>
+    </div>
+
+    <video id="video4" width="100%" style="display:none;" controls>
+        <source src="/images/docs/tutorials/using-substitutions/4-subComponents.webm" type="video/webm">
+            <source src="/images/docs/tutorials/using-substitutions/4-subComponents.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <input onclick="change('button4','code4','video4')" type="button" value="See How to do it in Montage Studio" id="button4" />
+
+	<p>At this point, the substitution will still not show any content because we never assign it a component. We can tell the substitution to show a component by assigning to its <i>switchValue</i> property. This property should be set equal to the data-arg of a component. We will start by manually setting <i>switchValue</i> to point to the first component:</p>
+
+	<pre id="code5"><code>"substitution": {
+    "prototype": "montage/ui/substitution.reel",
+    "properties": {
+        "element": {"#": "substitution"},
+        "switchValue": "component1"
+    }
+}</code></pre>
+
+    <video id="video5" width="100%" style="display:none;" controls>
+        <source src="/images/docs/tutorials/using-substitutions/5-switchValue.webm" type="video/webm">
+            <source src="/images/docs/tutorials/using-substitutions/5-switchValue.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <input onclick="change('button5','code5','video5')" type="button" value="See How to do it in Montage Studio" id="button5" />
+
+	<p>Now if you run the project you should see the first text component:</p>
+
+	<img src="/images/docs/tutorials/using-substitutions/tutorial-substitution-first-component.png" alt="Showing the first component"></img>
+
+	<p>Now the substitution gets its component value from the first component in our declaration. Next we need to make the buttons change the current component.</p>
+
+	<p><a href="http://montagejs.github.io/mfiddle/#!/f17c3248199a7c4ccbfa">View source on MFiddle</a></p>
+
+	<h1>Linking it Together</h1>
+
+	<p>Now that we have a substitution and three radio buttons, we need to make them interact with each other. First, we will need a way to identify which component each button points to. We will do this by adding an extra property in our buttons:</p>
+
+	<pre><code>"button1": {
+    "prototype": "digit/ui/radio-button.reel",
+    "properties": {
+        "element": {"#": "button1"},
+        "checked": true,
+        "enabled": true,
+        "radioButtonController": {"@": "radioButtonController"},
+        <b>"type": "component1"</b>
+    }
+},
+"button2": {
+    "prototype": "digit/ui/radio-button.reel",
+    "properties": {
+        "element": {"#": "button2"},
+        "enabled": true,
+        "radioButtonController": {"@": "radioButtonController"},
+        <b>"type": "component2"</b>
+    }
+},
+"button3": {
+    "prototype": "digit/ui/radio-button.reel",
+    "properties": {
+        "element": {"#": "button3"},
+        "enabled": true,
+        "radioButtonController": {"@": "radioButtonController"},
+        <b>"type": "component3"</b>
+    }
+}</code></pre>
+
+	<p>By adding these lines in the serialization, we are giving each of our buttons a custom value that points to a component's <i>data-arg</i>. This way, if we get a reference to one of these buttons, we can get information on which component it is linked to.</p>
+
+	<p><b>Note:</b> the <i>type</i> property is a custom property that we arbitrarily assigned, you can name the property whatever you like, as long as you are consistent.</p>
+
+	<p>Now that each button knows the <i>data-arg</i> of its corresponding component, we need to bind the substitution’s <i>switchValue</i> to the currently selected button’s <i>type</i> property. Radio Button Controllers have a <i>selectedRadioButton</i> property that we can use to get a reference to the currently selected button.</p>
+
+	<pre id="code6"><code>"substitution": {
+    "prototype": "montage/ui/substitution.reel",
+    "properties": {
+        "element": {"#": "substitution"}
+    },
+    <b>"bindings": {
+        "switchValue": {"<-": "@radioButtonController.selectedRadioButton.type"}
+    }</b>
+},</code></pre>
+
+    <video id="video6" width="100%" style="display:none;" controls>
+        <source src="/images/docs/tutorials/using-substitutions/6-binding.webm" type="video/webm">
+            <source src="/images/docs/tutorials/using-substitutions/6-binding.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <input onclick="change('button6','code6','video6')" type="button" value="See How to do it in Montage Studio" id="button6" />
+
+    <p><b>Note:</b> We also removed the “switchValue” property from the properties section since the binding will take care of setting the value for us.</p>
+
+    <p>The buttons should now switch between the different text reels as you select the radio buttons.</p>
+
+    <p><a href="http://montagejs.github.io/mfiddle/#!/b7f19617f03cbf859823">View source on MFiddle</a></p>
+
+    <h1>Beyond Text</h1>
+
+    <p>Substitutions aren’t limited to text reels. In this section we will be changing one of our text reels into a static html page.</p>
+
+    <p>First we'll need to create a new Montage component for our HTML page to interact with the rest of our application. You can do this by entering "minit create:component -n static" in the console in the directory where your application is located.</p>
+
+    <p>Once the static component has been created, we can alter the html to display a header, paragraph, and image:</p>
+
+    <pre><code>
+           &lt;!doctype html&gt;<br/>&lt;html&gt;<br/>    &lt;head&gt;<br/>        &lt;meta charset=&quot;UTF-8&quot;&gt;<br/>        &lt;title&gt;Simple HTML page&lt;/title&gt;<br/>         &lt;script type=&quot;text/montage-serialization&quot;&gt;<br/>            {<br/>                &quot;owner&quot;: {<br/>                    &quot;properties&quot;: {<br/>                        &quot;element&quot;: {&quot;#&quot;: &quot;owner&quot;}<br/>                    }<br/>                }<br/>            }<br/>        &lt;/script&gt;<br/>    &lt;/head&gt;<br/>      <br/>    &lt;body&gt;<br/>     &lt;div data-montage-id=&quot;owner&quot; class=&quot;Test&quot;&gt;<br/>        &lt;h1&gt;This is a simple static HTML page&lt;/h1&gt;<br/>        &lt;p&gt;Montage substitutions can be used to swap static HTML pages as well as montage components.&lt;/p&gt;<br/>         &lt;img src=&quot;static.jpg&quot; alt=&quot;montage_logo&quot;&gt;<br/>     &lt;/div&gt;<br/>    &lt;/body&gt;<br/>&lt;/html&gt;
+    </code></pre>
+
+    <p>You can select your own image here or download the montage logo <a href="http://i58.tinypic.com/raoks0.jpg" download="static">Here</a></p>
+
+    <p>Now that we've created our static html page as a component in Montage, we just need to link the component to our existing application:</p>
+    <p>Change This:</p>
+
+    <pre><code>
+            "content1": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": {"#": "content1"},
+                    "value": "This is the first sub-component."
+                }
+            },
+    </code></pre>
+
+    <p>Into This:</p>
+
+    <pre><code>
+            "static": {
+                "prototype": "ui/static.reel",
+                "properties": {
+                    "element": {"#": "static"}
+                }
+            },
+    </code></pre>
+
+    <p>The first button on your application should now display the static HTML page!</p>
+
+    <h1>Adding Full Applications</h1>
+
+    <p>If you’ve completed the temperature converter tutorial you can change one of your text reels into your converter reel.</p>
+
+    <p>There are two ways you could get another component into your project:</p>
+
+    <p>Method 1: Copy every component in the temperature converter's UI folder into your current project's UI folder. You will need to rename the temperature converter's main.reel so that it does not conflict with your current project's main.reel. When you do this, be sure to also rename the files inside the folder, the class name at the top of the HTML markup, and the class name in the css file.</p>
+
+    <p>Method 2: Since the temperature converter's main reel is very small, you can simply copy over just the converter.reel into your project's UI folder. However, the main component in the temperature converter contains some css that you will need to copy over manually into your project.</p>
+
+    <p>Once you have copied the temperature converter's component(s), change the prototype of one of your components in the declaration.</p>
+
+    <pre><code>"content1": {
+    <b>"prototype": "ui/converter.reel"</b>,
+    "properties": {
+        "element": {"#": "content1"}
+    }
+}</code></pre>
+
+    <p>If you copied over both converter.reel and main.reel (method 1), set the prototype to the name of the converter's main component. (E.g. if you renamed the converter's main reel to temperature.reel, use that as the prototype).</p>
+
+    <p>Your app should now show the temperature converter when the first radio button is selected:</p>
+
+    <img src="/images/docs/tutorials/using-substitutions/tutorial-substitution-final.jpg" alt="The end result"></img>
+
+    <p>You can use any component in this way, not just the temperature converter. For example, you could have the temperature converter on the first section, the Reddit Client on the second, and the Montage Popcorn app on the third.</p>
+
+</body>
+</html>
+<script>
+function change(button,swap1,swap2){
+    var mybutton = document.getElementById(button);
+    var myswap1 = document.getElementById(swap1);
+    var myswap2 = document.getElementById(swap2);
+
+    if(mybutton.value=="See How to do it in Montage Studio"){
+        mybutton.value="See the Code";
+        myswap1.style.display="none";
+        myswap2.style.display="inline-block";
+    }
+    else{
+        mybutton.value="See How to do it in Montage Studio";
+        myswap2.style.display="none";
+        myswap1.style.display="inline-block";
+    }
+}</script>
