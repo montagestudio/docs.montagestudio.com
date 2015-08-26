@@ -19,17 +19,14 @@ this-page: tutorial-using-substitutions-with-montagejs
 
     <p>Let’s start by creating the radio buttons. In order for the buttons to make selections we’ll need to include a radio button controller in our declaration:</p>
 
-    <pre id="code1"><code>
-    "owner": {
-        "properties": {
-            "element": {"#": "main"}
-        }
-    },
-    "radioButtonController": {
-        "prototype": "montage/core/radio-button-controller"
+    <pre id="code1"><code>"owner": {
+    "properties": {
+        "element": {"#": "main"}
     }
-        
-    </code></pre>
+},
+"radioButtonController": {
+    "prototype": "montage/core/radio-button-controller"
+}</code></pre>
 
 	<p>The controller does not need to be added in html because it doesn’t actually exist on the page, only its buttons do.</p>
 
@@ -48,33 +45,33 @@ this-page: tutorial-using-substitutions-with-montagejs
     <div id="code2">
 	<pre><code>&lt;input type="radio" data-montage-id="button1"&gt;
 &lt;input type="radio" data-montage-id="button2"&gt;
-&lt;input type="radio" data-montage-id="button3"&gt;</code>
-	<p>2. Now add each button to the declaration:</p></pre><pre><code>"button1": {
-        "prototype": "digit/ui/radio-button.reel",
-        "properties": {
-            "element": {"#": "button1"},
-            "checked": true,
-            "enabled": true,
-            "radioButtonController": {"@": "radioButtonController"}, 
-        }
-    },
-    "button2": {
-        "prototype": "digit/ui/radio-button.reel",
-        "properties": {
-            "element": {"#": "button2"},
-            "enabled": true,
-            "radioButtonController": {"@": "radioButtonController"},
-        }
-    },
-    "button3": {
-        "prototype": "digit/ui/radio-button.reel",
-        "properties": {
-            "element": {"#": "button3"},
-            "enabled": true,
-            "radioButtonController": {"@": "radioButtonController"},
-        }
+&lt;input type="radio" data-montage-id="button3"&gt;</code></pre>
+	<p>2. Now add each button to the declaration:</p>
+    <pre><code>"button1": {
+    "prototype": "digit/ui/radio-button.reel",
+    "properties": {
+        "element": {"#": "button1"},
+        "checked": true,
+        "enabled": true,
+        "radioButtonController": {"@": "radioButtonController"}, 
     }
-    </code></pre>
+},
+"button2": {
+    "prototype": "digit/ui/radio-button.reel",
+    "properties": {
+        "element": {"#": "button2"},
+        "enabled": true,
+        "radioButtonController": {"@": "radioButtonController"},
+    }
+},
+"button3": {
+    "prototype": "digit/ui/radio-button.reel",
+    "properties": {
+        "element": {"#": "button3"},
+        "enabled": true,
+        "radioButtonController": {"@": "radioButtonController"},
+    }
+}</code></pre>
     </div>
 
     <video id="video2" width="100%" style="display:none;" controls>
@@ -93,18 +90,18 @@ this-page: tutorial-using-substitutions-with-montagejs
 
 	<p>In most apps, you will want to have a label on your buttons so the user knows what they are clicking on. This is done by wrapping each input node in a label node, just like regular HTML:</p>
 
-	<pre><code>    &lt;label&gt;
-       &lt;input type="radio" data-montage-id="button1"&gt;
-	Section 1
-    &lt;/label&gt;
-    &lt;label&gt;
-	&lt;input type="radio" data-montage-id="button2"&gt;
-	Section 2
-    &lt;/label&gt;
-    &lt;label&gt;
-	&lt;input type="radio" data-montage-id="button3"&gt;
-	Section 3
-    &lt;/label&gt;</code></pre>
+	<pre><code>&lt;label&gt;
+   &lt;input type="radio" data-montage-id="button1"&gt;
+    Section 1
+&lt;/label&gt;
+&lt;label&gt;
+    &lt;input type="radio" data-montage-id="button2"&gt;
+    Section 2
+&lt;/label&gt;
+&lt;label&gt;
+    &lt;input type="radio" data-montage-id="button3"&gt;
+    Section 3
+&lt;/label&gt;</code></pre>
 
 	<p>With these HTML labels, you should have three labeled radio buttons:</p>
 
@@ -276,8 +273,7 @@ this-page: tutorial-using-substitutions-with-montagejs
 
     <p>Once the static component has been created, we can alter the html to display a header, paragraph, and image:</p>
 
-    <pre><code>
-           &lt;!doctype html&gt;<br/>&lt;html&gt;<br/>    &lt;head&gt;<br/>        &lt;meta charset=&quot;UTF-8&quot;&gt;<br/>        &lt;title&gt;Simple HTML page&lt;/title&gt;<br/>         &lt;script type=&quot;text/montage-serialization&quot;&gt;<br/>            {<br/>                &quot;owner&quot;: {<br/>                    &quot;properties&quot;: {<br/>                        &quot;element&quot;: {&quot;#&quot;: &quot;owner&quot;}<br/>                    }<br/>                }<br/>            }<br/>        &lt;/script&gt;<br/>    &lt;/head&gt;<br/>      <br/>    &lt;body&gt;<br/>     &lt;div data-montage-id=&quot;owner&quot; class=&quot;Test&quot;&gt;<br/>        &lt;h1&gt;This is a simple static HTML page&lt;/h1&gt;<br/>        &lt;p&gt;Montage substitutions can be used to swap static HTML pages as well as montage components.&lt;/p&gt;<br/>         &lt;img src=&quot;static.jpg&quot; alt=&quot;montage_logo&quot;&gt;<br/>     &lt;/div&gt;<br/>    &lt;/body&gt;<br/>&lt;/html&gt;
+    <pre><code>&lt;!doctype html&gt;<br/>&lt;html&gt;<br/>    &lt;head&gt;<br/>        &lt;meta charset=&quot;UTF-8&quot;&gt;<br/>        &lt;title&gt;Simple HTML page&lt;/title&gt;<br/>         &lt;script type=&quot;text/montage-serialization&quot;&gt;<br/>            {<br/>                &quot;owner&quot;: {<br/>                    &quot;properties&quot;: {<br/>                        &quot;element&quot;: {&quot;#&quot;: &quot;owner&quot;}<br/>                    }<br/>                }<br/>            }<br/>        &lt;/script&gt;<br/>    &lt;/head&gt; <br/>    &lt;body&gt;<br/>     &lt;div data-montage-id=&quot;owner&quot; class=&quot;Test&quot;&gt;<br/>        &lt;h1&gt;This is a simple static HTML page&lt;/h1&gt;<br/>        &lt;p&gt;Montage substitutions can be used to swap static HTML pages as well as montage components.&lt;/p&gt;<br/>         &lt;img src=&quot;static.jpg&quot; alt=&quot;montage_logo&quot;&gt;<br/>     &lt;/div&gt;<br/>    &lt;/body&gt;<br/>&lt;/html&gt;
     </code></pre>
 
     <p>You can select your own image here or download the montage logo <a href="http://i58.tinypic.com/raoks0.jpg" download="static">Here</a></p>
@@ -285,26 +281,22 @@ this-page: tutorial-using-substitutions-with-montagejs
     <p>Now that we've created our static html page as a component in Montage, we just need to link the component to our existing application:</p>
     <p>Change This:</p>
 
-    <pre><code>
-            "content1": {
-                "prototype": "montage/ui/text.reel",
-                "properties": {
-                    "element": {"#": "content1"},
-                    "value": "This is the first sub-component."
-                }
-            },
-    </code></pre>
+    <pre><code>"content1": {
+    "prototype": "montage/ui/text.reel",
+    "properties": {
+        "element": {"#": "content1"},
+        "value": "This is the first sub-component."
+    }
+},</code></pre>
 
     <p>Into This:</p>
 
-    <pre><code>
-            "static": {
-                "prototype": "ui/static.reel",
-                "properties": {
-                    "element": {"#": "static"}
-                }
-            },
-    </code></pre>
+    <pre><code>"static": {
+    "prototype": "ui/static.reel",
+    "properties": {
+        "element": {"#": "static"}
+    }
+},</code></pre>
 
     <p>The first button on your application should now display the static HTML page!</p>
 
