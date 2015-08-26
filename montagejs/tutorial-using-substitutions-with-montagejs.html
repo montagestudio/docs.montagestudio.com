@@ -1,129 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+---
 
-	<title>Using Subtitutions</title>
-	
-    <link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+layout: docs
+title: Using Substitutions
 
-    </head>
+this-page: tutorial-using-substitutions-with-montagejs
 
-<body>
-  <header class="header">
-    <div class="header-container">
-        <a class="logo" href="http://montagestudio.com/">Home</a>
+---
 
-        <input id="nav-toggle" class="nav-toggle nav-toggle--main" type="checkbox">
-        <label class="nav-toggleLabel nav-toggleLabel--main" for="nav-toggle" onclick></label>
-
-        <nav class="nav">
-            <a class="nav-item" href="http://montagestudio.com/gallery">Gallery</a>
-            <a class="nav-item" href="http://montagestudio.com/product">Product</a>
-            <a class="nav-item" href="http://montagestudio.com/montagejs">Open Source</a>
-            <a class="nav-item" href="http://montagestudio.com/community">Community</a>
-            <a class="nav-item" href="http://montagestudio.com/blog">Blog</a>
-            <a class="nav-item" href="http://montagestudio.com/company">Company</a>
-            <a class="nav-item nav-item--teaser"
-               href="http://montagestudio.com/reveal">Join our BETA</a>
-        </nav>
-    </div>
-  </header>
-
-  <section id="docs" class="docs withSidenav">
-    <div class="wrapper">
-            
-<input id="sidenav-toggle" class="sidenav-toggle" type="checkbox">
-<label class="sidenav-toggleLabel" for="sidenav-toggle" onclick></label>
-
-        <nav class="sidenav">
-
-    <details open>
-        <summary>Quick Start</summary>
-        <a href="montagejs-setup.html" >Set Up</a>
-        <a href="hello-montagejs.html" >Hello MontageJS</a>
-    </details>
-
-    <details open>
-        <summary>Demos</summary>
-        <a href="montagejs-examples.html" >Examples</a>
-        <a href="http://montagejs.github.com/mfiddle/" target="_blank">Mfiddle</a>
-
-    </details>
-
-    <details open>
-        <summary>Tutorials</summary>
-        <a href="tutorial-using-substitutions-with-montagejs.html" class="active">Using Subtitutions</a>
-        <a href="tutorial-reddit-client-with-montagejs.html" >Building a Reddit Client</a>
-        <a href="tutorial-3d-applications-with-montagejs.html" >Building 3D Applications</a>
-    </details>
-
-    <details open>
-        <summary>Concepts</summary>
-        <a href="bootstrapping.html" >Bootstrapping</a>
-        <a href="application.html" >Application</a>
-        <a href="montagejs-templates.html" >Templates</a>
-        <a href="exploring-components.html" >Components</a>
-        <a href="component-composition.html" >Component Composition</a>
-        <a href="serialization-format.html" >Declaration</a>
-        <a href="montagejs-objects.html" >Objects</a>
-        <a href="data-binding.html" >Data Binding</a>
-        <a href="event-handling.html" >Event Handling</a>
-        <a href="draw-cycle.html" >Draw Cycle</a>
-        <a href="blueprints.html" >Blueprints</a>
-        <a href="gestures-composers.html" >Gestures & Composers</a>
-        <a href="naming-conventions.html" >Naming Conventions</a>
-    </details>
-
-    <details open>
-        <summary>Built-in Components</summary>
-        <a href="repetition.html" >Repetition</a>
-        <a href="substitution.html" >Substitution</a>
-        <a href="overlay.html" >Overlay</a>
-    </details>
-
-    <details open>
-        <summary>UI Component Sets</summary>
-        <a href="themes.html" >Introduction</a>
-        <a href="theme-digit-components.html" >Digit</a>
-        <a href="theme-matte-components.html" >Matte</a>
-        <a href="theme-native-components.html" >Native</a>
-        <a href="autocomplete.html" >Autocomplete</a>
-    </details>
-
-    <details open>
-        <summary>Tools</summary>
-        <a href="tools-minit.html" >Minit</a>
-        <a href="tools-mop.html" >Mop</a>
-    </details>
-
-    <details open>
-        <summary>Help</summary>
-        <a href="faq.html" >FAQ</a>
-        <a href="frb.html" >FAQ - FRB Transition</a>
-        <a href="troubleshooting.html" >Troubleshooting</a>
-    </details>
-
-    <hr />
-
-    <a class="sidenav-mainLink" href="/api">API Reference</a>
-
-    <hr />
-
-    <a class="sidenav-mainLink" href="/montage-studio">Montage Studio</a>
-
-</nav>
-
-<div class="main">
-            <a href="#"
-               class="edit">Improve this Doc</a>
-
-            <article class="content">
-                <h1 id="building-a-simple-reddit-client-with-montagejs">Using Substitutions to Switch Components in MontageJS</h1>
-
-    <h1></h1>
+    <h1 id="building-a-simple-reddit-client-with-montagejs">Using Substitutions to Switch Components in MontageJS</h1>
 
     <p>Many web applications need a way to change out a component with another. For example, imagine you wanted to make an app that had multiple pages. Normally, you would have to make each page a separate html file. This means that whenever the user wants to go to a different section of the website, they have to load a new page. With Montage, you can store a section of your app as a component, and then switch between each component without having to load a page. This is done through the prebuilt Substitution component.</p>
 
@@ -450,9 +334,9 @@
     <img src="/images/docs/tutorials/using-substitutions/tutorial-substitution-final.jpg" alt="The end result"></img>
 
     <p>You can use any component in this way, not just the temperature converter. For example, you could have the temperature converter on the first section, the Reddit Client on the second, and the Montage Popcorn app on the third.</p>
-
+<!-- 
 </body>
-</html>
+</html> -->
 <script>
 function change(button,swap1,swap2){
     var mybutton = document.getElementById(button);
