@@ -11,7 +11,7 @@ this-page: component-composition
 =======
 你的应用是这样被构建出来的，在你的HTML模板文件中定义各种MontageJS的组件，然后把它们组合在一起。
 
-##`Repetition`
+## `Repetition`
 
 它是一个重复`content`数组的组件。以下的定义会告诉`Repetition`组件重复`li`，也就是重复它对应的`Text`组件，重复的次数是`content`数组的长度（在这个列子中是三次）。
 
@@ -40,7 +40,8 @@ this-page: component-composition
 	    </ul>
 	</body>
 	
-##`Condition`
+
+## `Condition`
 例如以下的`Condition`组件设置只有当`condition`属性的值为`true`的时候才显示`span`的`value` "This is the truth"。在这个例子中`condition`为`false`，使得`span`不显示。
 
 	<script type="text/montage-serialization">
@@ -68,7 +69,8 @@ this-page: component-composition
 	    </div>
 	</body>
 	
-##`Substitution`
+
+## `Substitution`
 `Substitution`组件是让一组组件根据`value`的值只显示一个。
 
 	<script type="text/montage-serialization">
@@ -96,7 +98,8 @@ this-page: component-composition
 	    Customer name: <div data-montage-id="customerNameSubstitution"></div>
 	</body>
 	
-##组件模板参数
+
+## 组件模板参数
 `CustomComponent`组件可以使用一个模板参数来替换它里面的内容。模板参数是指具有 `data-arg`属性的DOM节点。这个节点被标识成一个占位符，它的具体内容由外部的使用者提供。
 
 	<script type="text/montage-serialization">{

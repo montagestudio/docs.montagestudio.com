@@ -10,7 +10,7 @@ FAQ - FRB 语法变化
 ====================
 在 [FRB文档](http://docs.montagestudio.com/montagejs/documentup.com/montagejs/frb/)查看更多关于FRB介绍。
 
-####如何监听对象属性值改变?
+#### 如何监听对象属性值改变?
 
 以前
 
@@ -36,7 +36,7 @@ FAQ - FRB 语法变化
 * `handler.handlePathChange`
 * `handler`
 
-####如何监听对象属性值将要发生改变?
+#### 如何监听对象属性值将要发生改变?
 
 以前
 
@@ -53,7 +53,7 @@ FAQ - FRB 语法变化
 	)
 	
 
-####如何把一个对象的属性绑定到另外一个对象的属性，两个属性值始终相同?
+#### 如何把一个对象的属性绑定到另外一个对象的属性，两个属性值始终相同?
 
 以前
 
@@ -77,7 +77,7 @@ FAQ - FRB 语法变化
 	    source: anotherObject
 	});
 	
-####如何绑定一个对象的属性到另外一个对象的属性，但是当第一个对象属性值发生改变后第二个对象属性值不改变?
+#### 如何绑定一个对象的属性到另外一个对象的属性，但是当第一个对象属性值发生改变后第二个对象属性值不改变?
 
 以前
 
@@ -103,7 +103,7 @@ FAQ - FRB 语法变化
 	});
 	
 
-####如何监听数组添加或者移除元素?
+#### 如何监听数组添加或者移除元素?
 
 	aMontageObject.addRangeAtPathChangeListener(
 	    "array", handler, "handleArrayRangeChange"
@@ -117,7 +117,7 @@ FAQ - FRB 语法变化
 	
 `handler.handleArrayRangeChange`方法会传入三个参数： `plus`, `minus`, 和 `index`。
 
-####如何当一个私有属性改变之后，触发公开属性改变?
+#### 如何当一个私有属性改变之后，触发公开属性改变?
 
 以前
 
@@ -147,10 +147,10 @@ FAQ - FRB 语法变化
 	    "anotherAffectedProperty", myObject.anotherAffectedProperty
 	);
 	
-####如何让checkbox禁用有自动取消选择?
+#### 怎么让checkbox禁用有自动取消选择?
 使用单向绑定`<-` `checked` 值为 `checked && enabled`， 这样就可以实现当checkbox禁用以后自动取消选择，启用以后又恢复之前状态
 
-####如果实现 “全选” 或者 “全部不选” checkbox
+#### 怎么实现 “全选” 或者 “全部不选” checkbox
 绑定是双向的，checkbox状态包括：是否所有的checkbox全部选中，是否全部没有选。 也需要在checkbox点击之后全选或者全部不选。
 
 	checkboxes.every{checked} <-> allChecked
@@ -158,7 +158,7 @@ FAQ - FRB 语法变化
 	
 FRB支持绑定到一组数据的 "every" 或者 "some"。
 
-####如果Checkbox可以被禁用呢？
+#### 怎么实现Checkbox禁用呢？
 
 	checkbox.checked <- checked && enabled
 	checkboxes.every{checked || !enabled} <-> allChecked

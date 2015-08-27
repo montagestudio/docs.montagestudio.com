@@ -9,9 +9,10 @@ this-page: tools-minit
 
 使用minit
 ========
+
 MontageJS[minit](https://github.com/montagejs/minit)是一个命令行工具，帮助开发者在开发过程中创建种子项目和在本机启动服务器运行项目。`minit`可以创建一个种子项目或文件目录或在一个已有的项目中新建组件。
 
-##`minit`简单例子
+## `minit`简单例子
 在项目目录运行以下命令：
 
 * 创建一个新项目：

@@ -9,13 +9,13 @@ next-page: substitution
 
 ---
 
-##使用`Repetition`组件
+## 使用`Repetition`组件
 
 `Repetition`组件的作用是根据数组提供的数据重复显示一组元素，`Repetition`对数据的每次循环会生成一个元素。`Repetition`的数据通过一个控制器管理。你可以手动对`Repetition`设置简单的数组数据，或者通过设置`Repetition`的`contentController `属性为`RangeController`来处理复杂类型的数据。
 
 你可以使用`Repetition`来循环显示任意数量的其他组件。（比如MontageJS List组件，它就是使用`Repetition`实现的）使用可绑定的`iteration.object`模版属性表示当前的List项。
 
-##简单的`Repetition`
+## 简单的`Repetition`
 
 下面的例子展示了一个简单的`Repetition`组件的使用方式。它显示3个元素。每次循环都将从`Repetition`的`content`属性中取出一个值，根据这个值渲染当前重复元素。
 
@@ -84,7 +84,7 @@ next-page: substitution
 	
 结果请查看[Mfiddle](http://montagejs.github.io/mfiddle/#!/7882151)
 
-##使用`RangeController`设置`Repetition`
+## 使用`RangeController`设置`Repetition`
 
 在这个例子中：
 
@@ -184,7 +184,7 @@ next-page: substitution
 	
 点击[Middle](http://montagejs.github.io/mfiddle/#!/7883458)查看结果。
 
-##`Repetition`中排序和过滤的用法
+## `Repetition`中排序和过滤的用法
 
 你可以使用FRB表达式对`Repetition`关联的`RangeController`的数据进行排序或者过滤。
 

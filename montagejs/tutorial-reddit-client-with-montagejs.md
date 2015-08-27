@@ -20,20 +20,20 @@ this-page: tutorial-reddit-client-with-montagejs
 
 [查看示例](http://montagejs.github.io/mfiddle/preview/#!/7881457)
 
-#需要的基础知识
+# 需要的基础知识
 要完成这个教程，你需要熟悉MontageJS的基本概念和开发流程。如果你还不熟悉MontageJS框架，你可能需要从[快速入门](http://docs.montagestudio.com/montagejs/montagejs-setup.html)学习如何使用MontageJS组件。
 
-#开始构建应用
+# 开始构建应用
 在这个教程中，你不需要重新创建一个MontageJS项目。你可以使用[MFiddle](http://montagejs.github.io/mfiddle/)，这是一个MontageJS组件的在线编辑器：在这个教程的每一步后面都有一个指向MFiddle的链接，你可以在这个MFiddle中查看应用在当前步骤的状态和源码。
 
 >__备注:__ 如果你想从一个新的项目开始一步一步地构建应用，你需要首先创建一个MontageJS项目（详细步骤在快速入门教程中）。接下来依照推荐方案，你需要创建一个RedditClient组件，然后在项目的Main组件中引用它。（我们已经提到过，Main是一个应用的主界面组件。就像一个网站的首页或者一个单页面应用的开始界面：它可以包含任意数量的子组件来绘制和实现应用的功能。）
 
 在这个教程中，我们首先展示如何使用真实的数据构建新闻目录导航栏，然后展示如何显示热门新闻列表。
 
-#构建导航栏
+# 构建导航栏
 在这个reddit客户端应用中包括两个用户界面元素：一个新闻目录（导航栏）列表和一个热门新闻列表。在这个教程中，我们首先开始创建新闻目录导航栏。
 
-##显示一个简单的重复列表
+## 显示一个简单的重复列表
 新闻目录列表严格的来讲就是一组重复的预先定义好的HTML元素（AKA模板）。要显示这个列表，你需要编辑你的HTML文件和声明。
 
 1. 在HTML模板文件中添加下面两个元素:
@@ -41,7 +41,7 @@ this-page: tutorial-reddit-client-with-montagejs
 	* 列表中的一行.
 	
 			<ul data-montage-id="items">
-    			<li data-montxage-id="item"></li>
+				<li data-montxage-id="item"></li>
 			</ul>
 			
 2. 在模板的声明中添加两个对象，然后把对象与模板中的DOM元素连接起来。在这个例子中:
@@ -49,30 +49,30 @@ this-page: tutorial-reddit-client-with-montagejs
 	* `item`使用Text组件并且跟`li`元素连接在一起。它的`content`属性定义当前行的值。
 
 			{
-    			"owner": {
-	        		"properties": {
-	            		"element": {"#": "component"}
-	        		}
-    			},
-    			"rep": {
-        			"prototype": "montage/ui/repetition.reel",
-        			"properties": {
-            			"element": { "#": "items" },
-            			"content": [ 1, 2, 3, 4, 5 ]
-        			}
-    			},
-    			"item": {
-        			"prototype": "montage/ui/text.reel",
-        			"properties": {
-            			"element": { "#": "item" },
-            			"value": "I am a list item."
-        			}
-    			}
+				"owner": {
+		    		"properties": {
+		        		"element": {"#": "component"}
+		    		}
+				},
+				"rep": {
+					"prototype": "montage/ui/repetition.reel",
+					"properties": {
+		    			"element": { "#": "items" },
+		    			"content": [ 1, 2, 3, 4, 5 ]
+					}
+				},
+				"item": {
+					"prototype": "montage/ui/text.reel",
+					"properties": {
+		    			"element": { "#": "item" },
+		    			"value": "I am a list item."
+					}
+				}
 			}
 
 到现在为止，应用显示一列一共五个元素都是相同的值：I am a list item。 被嵌套在重复组件中的li元素会依次循环重复组件的content数据。（想象重复组件就是一个for循环：每一个重复组件里面的元素就是循环里面的一个实例。）
 
-###绑定列表子元素到循环的当前值
+### 绑定列表子元素到循环的当前值
 下一步，修改子元素对象让每个列表子元素能够显示数组中的值。Repetition组件有个叫做objectAtCurrentIteration的特殊属性，通过它可以获取到数组的当前值。为了让每一个列表子元素能够显示对应的数字，就需要把列表子元素对象的value绑定到重复组件的objectAtCurrentIteration属性。
 
 >__备注:__ MontageJS使用功能反应绑定（FRB）来完成用户界面与数据模型之间的同步。FRB是一种声明式的语言，可以绑定属性和集合查询结果，让它们保持数据的同步。
@@ -92,7 +92,7 @@ this-page: tutorial-reddit-client-with-montagejs
 
 注意数组的内容可以是一个复杂的对象，不是仅仅像上面的列子那样只可以是简单的数字。在重复组件中的子元素也可以绑定到数据对象的一个属性。任何对数组数据的更改将会自动地更新到用户界面。
 
-###绑定Repetition到组件的属性
+### 绑定Repetition到组件的属性
 要绑定一个重复组件到当前组件的一个属性，你需要在当前组件的JS文件中添加一些JavaScript代码。 在这个例子中使用一个叫做`subs`的属性，它是一个包含新闻目录数据的数组。这个数组中的每个数据对象有两个属性：`display_name`和`url`。
 
 * `display_name`是要显示在应用的新闻目录（导航下拉框）组件中的文本。
@@ -142,10 +142,10 @@ this-page: tutorial-reddit-client-with-montagejs
 
 [在MFiddle上查看源码](http://montagejs.github.io/mfiddle/#!/7745939)
 
-##选择重复组件中的元素
+## 选择重复组件中的元素
 Repetition有对元素选择功能的内置支持。当这个功能被开启之后，用户可以通过点击重复组件中的一个项目来标识它被选中。组件有个叫做selection属性(`isSelectionEnabled`打开之后) 可以用来获取当前选中的值，也可以让程序修改或者绑定selection属性的方式来设置值。组件同时也自动地设置当前被选中项目的CSS值，这样就可以很容易地修改选中的样式。
 
-###设置isSelectionEnabled属性
+### 设置isSelectionEnabled属性
 当isSelectionEnabled属性被打开之后，默认的选择方式是单选，意味着只有一个项目会被选中。当选择一个新的项目之后组件会自动清空上一个被选中的项目。为了让项目可选，修改rep对象的属性：
 
 1. 在模板定义中，设置 `isSelectionEnabled`的值为`true`：
@@ -167,7 +167,7 @@ Repetition有对元素选择功能的内置支持。当这个功能被开启之�
 		
 现在为止，点击选择列表中的一个项目。当项目被选中之后，项目变成红色。
 
-###显示被选中项目的名字
+### 显示被选中项目的名字
 下一步，添加一个文本标题并且用绑定的方式来显示被选中项目的名字。（在最终的应用中标题显示在新闻列表的上部）
 
 1. 在HTML模板中，添加h1元素：
@@ -204,9 +204,10 @@ Repetition有对元素选择功能的内置支持。当这个功能被开启之�
 
 [在MFiddle上查看源码](http://montagejs.github.io/mfiddle/#!/7746328)
 
-##用实时数据来填充应用
+## 用实时数据来填充应用
 现在，你已经学习了如何使用Repetition组件来显示一组静态数据。其实你想要的是根据reddit API返回值显示一组真实的数据。Reddit API可以返回JSON的数据格式，这使得它在web应用中可很容易地被获取和显示。
-###传递数据到应用
+
+### 传递数据到应用
 如何把从reddit服务器获取到的数据传递到应用，以下是具体步骤：
 
 1. 在组件的JS文件中，移除掉测试数据，让`subs`属性的初始化值为一个空数组（subs: { value: [] }`）
@@ -235,7 +236,8 @@ Repetition有对元素选择功能的内置支持。当这个功能被开启之�
 		});
 	
 在这个例子中，从远程API获取到的原始JSON数据被直接传递到应用。绑定方法按照定义好的方式让数据在应用中呈现，当数据改变之后应用会做出相应的响应。如果应用重复地从API获取数据，赋值返回值到subs属性，绑定方法会自动不断地根据数据变化来绘制界面。
-###使用实时数据
+
+### 使用实时数据
 跟很多其它的JavaScript MVC框架不一样，MontageJS不需要开发人员把数据抽取出来然后用一个特殊的方法包装起来实现监听；而是直接使用JavaScript原生的数据结构。通常从API返回的数据跟我们之前用的测试数据结构上有点不一样。从reddit API返回的列表里面的每一个数据跟下面的相似：
 
 	{
@@ -305,7 +307,7 @@ Repetition有对元素选择功能的内置支持。当这个功能被开启之�
 	
 到现在为止，你的应用已经显示一列真实的新闻目录。
 
-###列表排序
+### 列表排序
 为了更接近真实应用一些，这里让新闻目录根据订阅者数量降序排列。
 
 Reddit API返回的每个新闻目录数据中有一个`subscriber`属性可以用作排序字段。FRB提供一个简便的排序方法让你可以根据一个指定的属性排序。
@@ -325,8 +327,7 @@ Reddit API返回的每个新闻目录数据中有一个`subscriber`属性可以�
 
 [在MFiddle上查看源码](http://montagejs.github.io/mfiddle/#!/7747359)
 
-###显示新闻列表
-
+### 显示新闻列表
 现在导航栏已经完成，开始实现显示选中新闻目录对应的新闻列表功能。用跟新闻目录一样的方式获取和显示新闻：从reddit API获取JSON数据然后把它放到一个重复组件中。
 
 1. 在模板的文件中添加一些必须的HTML片段。
@@ -426,8 +427,8 @@ Reddit API返回的每个新闻目录数据中有一个`subscriber`属性可以�
 到现在为止，应用的功能部分已经完成。当用户点击一个新闻目录之后，选中的目录数据会被传递到`handleSelection`方法，然后加载这个目录的新闻并且把返回值赋给组件的`stories`属性。当`stories`属性被重新赋值之后，Repetition组件又会自动地把新闻显示在页面上。
 
 [在MFiddle上查看源码](http://montagejs.github.io/mfiddle/#!/7881445)
-###美化应用
 
+### 美化应用
 MontageJS组件是使用标准HTML创建创建的，这就意味着开发者可以使用强大的CSS来美化应用。这个例子中浅色的文字显示在黑色的背景上，并用到高亮紫色的文本标记列表中选中的项目。
 
 首先在HTML中添加一些`class`属性。也可以做一些有用的微小结构变化，比如用一个p标签包装一下评分数文本，让它在一个新的段落里面显示。下面显示的就是最终的HTML结构：
@@ -457,7 +458,7 @@ MontageJS组件是使用标准HTML创建创建的，这就意味着开发者可�
 
 [在MFiddle上查看源码](http://montagejs.github.io/mfiddle/#!/7881457)
 
-##下一步
+## 下一步
 MontageJS灵活和强大的组件结构能够减少构建应用需要的大量代码。你可以用简单、声明式的绑定来定义复杂，相互关联的功能
 
 如果要获取更多关于reddit客户端和MontageJS应用开发的信息，请查看下面的这些资源：

@@ -16,7 +16,7 @@ MontageJS模板声明语法
 
 MontageJS通过声明的方式定义对象、组件、属性、组件的数据绑定和对象与DOM元素之间的关联。MontageJS使用JavaScript的对象定义（JSON）作为序列化的格式。在运行时，MontageJS解析这些JSON内容，反序列化它们为JavaScript，然后在浏览器中执行。
 
-##JSON 概述
+## JSON 概述
 JSON是一个用来序列化结构数据的文本格式，可以包括六种数据类型：
 
 * 四种基本类型：字符串，数字，布尔，和null
@@ -40,7 +40,7 @@ JSON是一个用来序列化结构数据的文本格式，可以包括六种数�
 	
 除了这些标准的数据类型，MontageJS还为能够序列化复杂对象提供了几种特殊类型。这些类型包括引用同一个模板中的其它对象，DOM元素关联，函数，和正则表达式。
 
-##声明例子
+## 声明例子
 以下是一个简单（完整）的MontageJS应用，全部定义在一个HTML文档中。这个例子向你展示在MontageJS中如何使用声明以及为什么它很方便使用。
 
 	<html>
@@ -68,7 +68,7 @@ JSON是一个用来序列化结构数据的文本格式，可以包括六种数�
 * `properties`在MontageJS组件中是一个非常重要的属性，它负责把HTML元素和对应的组件对象关联在一起。在这个例子中TextField组件的`element`属性设置为`<input>`标签的ID"`fName`"。这是MontageJS序列化提供一种特殊JSON格式，让HTML元素和对象关联在一起。键值是一个井号（"#"），值是HTML元素的ID。
 * MontageJS从一个.reel结尾的目录中加载组件。模块系统会重定向`require("x.reel")`为`require("x.reel/x")`。
 
-#声明中的Owner
+# 声明中的Owner
 在MontageJS模板声明中可以定义一个可选的对象"owner"。这个特殊的`owner`对象功能是文档的控制器。例如，下面的代码就创建一个新的模块(main.js)，模块名是`Main`。
 
 	// Module: main.js
@@ -89,11 +89,11 @@ JSON是一个用来序列化结构数据的文本格式，可以包括六种数�
 	}
 	</script>
 	
-##声明格式
+## 声明格式
 
 下面部分开始讲解object-dependent声明。
 
-###序列化自定义对象
+### 序列化自定义对象
 为了序列化自定义JavaScript对象和MontageJS组件，需要定义JSON对象并且设置`prototype`属性。这个属性定义用什么组建来实例化对象。
 
 例如，下面的代码片段定义了一个Button组件：
@@ -121,7 +121,7 @@ JSON是一个用来序列化结构数据的文本格式，可以包括六种数�
 	    }
 	}
 	
-###关联DOM元素
+### 关联DOM元素
 你可以在MontageJS声明中通过一种特殊的JSON对象表示方法将声明中的对象和DOM元素关联在一起。关联DOM元素的方法是把DOM元素的ID设置为组件的`element`属性。
 
 用以下的语法可以通过元素的ID关联，`elementID`是当前文档中DOM元素的ID值：
@@ -148,7 +148,7 @@ JSON是一个用来序列化结构数据的文本格式，可以包括六种数�
 	 <body>
 	</html>
 	
-###引用其它对象
+### 引用其它对象
 
 很多时候你需要在模板定义中的一个对象中引用当前模板中的另外一个对象。例如，在模板定义中定义了一个MontageJS按钮然后你想在控制器（owner）对象中引用它。
 
@@ -207,8 +207,9 @@ JSON是一个用来序列化结构数据的文本格式，可以包括六种数�
 	    </div>
 	<body>
 	</html>
+
 	
-##模板声明中数据绑定
+## 模板声明中数据绑定
 你可以在模板声明中定义事件监听器和数据绑定。为了更容易理解声明中的绑定语法，先讲解下JavaScript数据绑定函数`Object.defineBinding()`。这个函数接收三个参数：
 
 * 绑定目标对象
@@ -266,8 +267,9 @@ JSON是一个用来序列化结构数据的文本格式，可以包括六种数�
 	    <div data-montage-id="slider2"></div>
 	</body>
 	</html>
+
 	
-##模板声明中定义事件监听器
+## 模板声明中定义事件监听器
 你可以在模板声明中通过`listeners`属性设置事件监听器。
 
 用这种方式可以减少很多的事件绑定代码。下面的例子定义两个对象：一个控制器对象（Controller）和一个按钮。控制器对象就是事件监听器的响应对象，当按钮被点击或者触摸之后会发送出"action"事件。
@@ -320,8 +322,9 @@ JSON是一个用来序列化结构数据的文本格式，可以包括六种数�
 	    </div>
 	<body>
 	</html>
+
 	
-##序列化格式
+## 序列化格式
 Serialization must be written in valid JSON format, as MontageJS uses the browser's native JSON parsing APIs to parse the serialization block. If there are formatting errors, MontageJS throws an error and does not attempt to deserialize the JSON object. Two common formatting concerns are:
 
 序列化格式必须是一个合法的JSON格式，因为MontageJS使用浏览器本身的JSON解析APIs解析序列化内容。如果有格式错误，MontageJS抛出一个错误然后停止解析序列化里面的JSON对象。两个需要注意的格式：

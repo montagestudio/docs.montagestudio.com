@@ -12,22 +12,23 @@ Montage blueprints是一种为应用对象添加metadata信息的机制。bluepr
 
 Blueprints就是一组描述信息。Montage为每个组件和控制器创建唯一的blueprint标识，这个标识会在反序列化的时候用到。Blueprints信息一般是从一个JSON文件反序列化得到，当然也可以用代码动态生成。
 
-##组件和控制器对象的Blueprints
+## 组件和控制器对象的Blueprints
 可以通过组件或者控制器对象的`blueprint`属性访问blueprint。它返回一个关于blueprint反序列化的promise。
 
 对象的blueprint包含一组关于对象属性的描述。blueprints数据也可以通过一个函数进行逻辑分组。blueprint同时也提供验证规则和必要绑定。验证规则对组件和控制器对象进行边界检查。
 
-##Blueprints属性
+## Blueprints属性
 一个blueprint属性描述对象的一个属性。除了定义blueprint属性名之外还包括基数，数据类型，合法值。基数定义属性可以使用的值。
 
-##Blueprints关系
+## Blueprints关系
 association属性定义两个对象之间的关系。它定义blueprint关系的目标对象。
 
-##Validation Rules Objects
+## Validation Rules Objects
 TDB
 
-##Creating Blueprints
-##创建Blueprints
+## Creating Blueprints
+
+## 创建Blueprints
 Although most developers will only interact with pre-existing blueprints deserialized from a file, it is quite easy to create a blueprint in memory:
 大多数时候开发者只需要从一个文件反序列化得到Blueprints，我们也可以非常容易地在内存中创建一个blueprint：
 

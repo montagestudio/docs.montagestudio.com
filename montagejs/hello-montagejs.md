@@ -9,7 +9,7 @@ redirect_from: "/docs/Hello-Montage.html"
 
 ---
 
-Hello MontageJSe
+Hello MontageJS
 ================
 
 你已经成功配置并且运行了第一个MontageJS应用，但是只有一个空白的页面：接下来我们做什么呢？
@@ -20,10 +20,11 @@ Hello MontageJSe
 *__图片 1.__ 你的最终目标是构建一个温度转换器*
 
 要完成这个教程，你必须掌握基本的HTML，CSS和JavaScript知识。
-##准备工作
+
+## 准备工作
 确保你已经通过[开始使用MontageJS](http://montagejs.org/docs/montagejs-setup.html)配置好MontageJS开发环境。为了完成这个教程，node.js, npm, 和 minit（MontageJS的初始化命令行工具）也是必须安装的。同时你还需要一个文本编辑器和一个最新稳定版本的浏览器Goolge Chrome, Safari, 或者Firefox。
 
-##新建一个工程
+## 新建一个工程
 >__备注:__ 如果你已经创建了一个新工程并且用minit成功运行了项目，你可以跳过以下步骤直接从“MontageJS 基础知识”继续。
 
 1. 打开终端或者命令行窗口输入
@@ -39,7 +40,7 @@ Hello MontageJSe
 
 你将看到一个空白的网页，在网页的左上角有版本信息。
 
-##MontageJS 基础知识
+## MontageJS 基础知识
 MontageJS应用开发分为开发（构建应用）阶段和产品（优化开发版本）阶段。 在开发阶段我们使用一系列的组件来构建应用。这些组件存放在一个名为ui的文件夹中并且文件名以.reel结尾(如图2所示)。
 
 ![应用初始的目录结构](http://docs.montagestudio.com/images/docs/hello-montagejs/fig02.jpg)
@@ -54,8 +55,7 @@ MontageJS应用开发分为开发（构建应用）阶段和产品（优化开�
 ![应用的组件。](http://docs.montagestudio.com/images/docs/hello-montagejs/fig03.jpg)
 *__图 3.__ 用来构建温度转换器的组件。*
 
-##新建一个converter组件
-
+## 新建一个converter组件
 按照以下步骤在项目中添加一个新的组件:
 
 1. 在命令行窗口，输入:
@@ -90,7 +90,7 @@ data-montage-id [自定义数据属性](http://www.whatwg.org/specs/web-apps/cur
 ![应用的主体样子。](http://docs.montagestudio.com/images/docs/hello-montagejs/fig04.jpg)
 *__图 4.__ 应用的Main组件，Main包含title和MontageJS版本信息*
 
-##添加标记
+## 添加标记
 你将要构建的应用包含四个元素-一个标题，两个数字输入框，和一个滑块，这些你都需要在HTML中声明。你已经在main.html中声明了标题，接下来你需要在converter.html中声明输入框和滑块。
 
 1. 打开ui/converter.reel/converter.html。
@@ -120,7 +120,7 @@ data-montage-id [自定义数据属性](http://www.whatwg.org/specs/web-apps/cur
 
 下一步，你将使用MontageJS来修改这些HTML元素的功能和布局。
 
-##定义模板
+## 定义模板
 首先，修改你想控制的HTML元素的data-montage-id属性。
 
 1. 在ui/converter.reel/converter.html的<body>标签中，把原来的内容替换成下面的代码片段:
@@ -192,8 +192,8 @@ data-montage-id [自定义数据属性](http://www.whatwg.org/specs/web-apps/cur
 Next, you will bind together the properties of the input fields and slider.
 
 下一步，你需要把输入框和滑块的值绑定在一起。
-##添加绑定
 
+## 添加绑定
 MontageJS使用FRB实现绑定，通过一些定义把对象互相绑定在一起。
 
 1. 为了快速的完成教程，把`<script>`标签中的内容替换为下面的代码片段。
@@ -242,11 +242,11 @@ MontageJS使用FRB实现绑定，通过一些定义把对象互相绑定在一�
 		* 对象celsiusNumberfield的值(`(+@fahrenheitTextfield.value - 32) / 1.8`) 绑定到对象fahrenheitNumberfield的值.
 		* thermometer绑定到fahrenheitNumberfield 的值		
 现在当你修改任何一个组件的值之后其它也会相应的做出改变。你可以试一下。在Celsius输入一个值，用鼠标的滚轮增加或者减少Fahrenheit的值，或者左右拖动滑块。
-##美化应用
 
+## 美化应用
 现在为止，应用已经按照预想的工作了但是跟设计(如图1)看起来还不太一样。我们可以轻松地通过添加一下CSS规则来实现这种样式。
 
-###美化Converter组件
+### 美化Converter组件
 首先，你需要在组件的HTML文档中指定CSS的类名称。
 
 1. 打开ui/converter.reel/converter.html，把<body>标签中的内容替换为下面的代码片段：
@@ -346,8 +346,7 @@ MontageJS使用FRB实现绑定，通过一些定义把对象互相绑定在一�
 	
 整个应用差不多已经全部完成了；仅剩最后一个步骤。
 
-##准备部署
-
+## 准备部署
 在前面我们已经提到过，MontageJS应用分为开发阶段和产品阶段。当你的应用已经完成之后，你需要部署它。这个时候就需要使用MontageJS的优化工具mop。
 
 Mop是一个使用简单的命令行工具，使用它可以把一个臃肿的开发阶段应用转换成一个优化的可发布版本。在mop的处理过程中也会最小化你的代码，这将有助于应用的加载速度。
@@ -376,7 +375,7 @@ Yet, you've barely scratched the surface of what you can do with MontageJS.
 
 不过，目前为止你也只是使用了MontageJS提供的很小一部分功能而已。
 
-##下一阶段
+## 下一阶段
 - 学习更多的关于如何使用MontageJS，查看更多的教程和示例代码[文档](http://montagejs.org/docs/)。
 - 查看MontageJS的组件库，打开[主题](http://montagejs.org/docs/themes.html)。
 - 查看MontageJS推荐的命名规范，打开[命名规范](http://montagejs.org/docs/naming-conventions.html)。

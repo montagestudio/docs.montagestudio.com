@@ -9,10 +9,10 @@ redirect_from: /docs/Naming-Conventions.html
 =======
 这个文档总结MontageJS命名规范以及如何在模块、组件和CSS类名中使用。在构建应用或者提交代码到MontageJS框架时需要遵循这些规范。
 
-##模块
+## 模块
 模块名由小写字母和数字组成，可以用中横线分割（如，`child-package`）；
 
-##组件（.reel文件夹）
+## 组件（.reel文件夹）
 组件存放在MontageJS项目的ui文件夹中，组件对应的文件夹名以.reel结尾。
 
 `.reel`文件夹名需要符合以下命名规范：
@@ -20,7 +20,7 @@ redirect_from: /docs/Naming-Conventions.html
 * 组件名是小写字母。
 * 可以用中横杠分割单词。例如：`radio-button.reel`，`text-field.reel`。
 
-##CSS类名
+## CSS类名
 CSS类名遵循中横杠分割规范：`package-Component`，`package-Component-childElement`。 类型和状态相关的样式使用双横杠。比如下面的Digit Progress组件：
 
 	.digit-Progress          /* package-Component */
@@ -45,7 +45,7 @@ CSS类名遵循中横杠分割规范：`package-Component`，`package-Component-
 * __类型:__ 如果组件有几种类型，用双横杠风格。例如： `digit-Button--primary`, `digit-Slider--vertical`。
 * __状态:__ 如果组件有几种状态，用`is-`前缀；例如：`is-hidden`, `is-active`。 这是为了说明组件有几种不同的状态，不应该全局设定。由组件内部控制：`.Component.is-hidden { display: none; }`。
 
-##理论基础
+## 理论基础
 MontageJS CSS命名规范借鉴[BEM](http://bem.info/method/)方法论，然后在语法上做了一些小调整:
 
 * 在名字中包含包名是为了在应用中的多个包互相不冲突。
