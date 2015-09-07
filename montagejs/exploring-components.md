@@ -42,12 +42,10 @@ HTML模板是一个完整和合法的HTML文档。在头部包含组件的CSS文
 * "owner"是序列化中一个特殊的标签，代指当前的组件。（把它想象成JavaScript里面的`this`）
 * {`"#": "foo-bar"`}指向HTML文件body的根元素，根元素使用[custom data-attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#custom-data-attribute)标记，`data-montage-id`值为`foo-bar`：
 
-&nbsp;
-
-	<body>
-		  <div data-montage-id="foo-bar" class="FooBar">
-		   </div>
-	</body>
+		<body>
+			  <div data-montage-id="foo-bar" class="FooBar">
+			  </div>
+		</body>
 	
 >__备注__:在对象序列化JSON树中，“#”标识符指向的是DOM元素（我们也可以使用“@”标识符来指向模板定义的对象或者序列化中的其它组件）。
 
