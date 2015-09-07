@@ -55,10 +55,10 @@ MontageJS 例子
 
 ## 组建(Digit)
 
-下面的例子展示了针对移动设备优化的digit组建库中的组件的使用方法
+下面的例子展示了针对移动设备优化的digit组建库的使用方法
 
 ### Button
-* [定义了identifier的按钮](http://montagejs.github.io/mfiddle/#!/5906286) (事件处理)
+* [定义identifier的按钮](http://montagejs.github.io/mfiddle/#!/5906286) (事件处理)
 * [没有定义identifier的按钮](http://montagejs.github.io/mfiddle/#!/5906289)(label作为默认的identifer)
 * [不设置特定监听器的按钮](http://montagejs.github.io/mfiddle/#!/5906291)(`handleAction()`方法在`action`事件发出时会被调用)
 
@@ -66,7 +66,7 @@ MontageJS 例子
 
 * [简单例子](http://montagejs.github.io/mfiddle/#!/5906293)
 * [有placeholder的例子](http://montagejs.github.io/mfiddle/#!/5906294)
-* [通过按钮实现禁用/启用的例子](http://montagejs.github.io/mfiddle/#!/5906296)
+* [通过按钮实现禁用/启用例子](http://montagejs.github.io/mfiddle/#!/5906296)
 * [事件](http://montagejs.github.io/mfiddle/#!/5906297)
 
 ### Slider
