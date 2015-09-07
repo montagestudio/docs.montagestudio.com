@@ -12,9 +12,9 @@ redirect_from: "/docs/Hello-Montage.html"
 Hello MontageJS
 ================
 
-你已经成功配置并且运行了第一个MontageJS应用，但是只有一个空白的页面：接下来我们做什么呢？
+你已经成功配置并且运行了第一个MontageJS应用，但是只有一个空白页面：接下来实现应用功能。
 
-通过这个教程，你将实现一个简单的并能完美匹配移动设备的MontageJS应用：将摄氏温度转换成华氏温度，或将华氏温度转换为摄氏温度（如图1)。这个应用由三个元素构成，两个输入框，一个滑块，它们的值是互相绑定在一起的。 当你在一个输入框中输入一个数字之后，另外的一个输入框的值会自动改变，滑块也会移动到相应的位置。 同理，当你滑动滑块的时候，两个输入框的值也会改变成滑块元素当前对应的值。
+通过这个教程，你将实现一个简单的并能完美匹配移动设备的MontageJS应用：将摄氏温度转换成华氏温度，或将华氏温度转换为摄氏温度（如图1)。这个应用由三个元素构成，两个输入框，一个滑块，它们的值被互相绑定在一起。 当你在一个输入框中输入一个数字后，另外一个输入框的值会自动改变，滑块也会移动到相应的位置。 同理，当你滑动滑块的时候，两个输入框的值也会改变成滑块元素当前对应的值。
 
 ![应用完成效果](http://docs.montagestudio.com/images/docs/hello-montagejs/fig01.jpg)
 *__图片 1.__ 你的最终目标是构建一个温度转换器*
@@ -22,7 +22,7 @@ Hello MontageJS
 要完成这个教程，你必须掌握基本的HTML，CSS和JavaScript知识。
 
 ## 准备工作
-确保你已经通过[开始使用MontageJS](http://montagejs.org/docs/montagejs-setup.html)配置好MontageJS开发环境。为了完成这个教程，node.js, npm, 和 minit（MontageJS的初始化命令行工具）也是必须安装的。同时你还需要一个文本编辑器和一个最新稳定版本的浏览器Goolge Chrome, Safari, 或者Firefox。
+确保你已经通过[开始使用MontageJS](http://montagejs.org/docs/montagejs-setup.html)配置好MontageJS开发环境。为了完成这个教程，node.js, npm, 和 minit（MontageJS的初始化命令行工具）也是必须安装。同时你还需要一个文本编辑器和一个最新稳定版本的浏览器Goolge Chrome, Safari, 或者Firefox。
 
 ## 新建一个工程
 >__备注:__ 如果你已经创建了一个新工程并且用minit成功运行了项目，你可以跳过以下步骤直接从“MontageJS 基础知识”继续。
@@ -31,14 +31,14 @@ Hello MontageJS
 
 		$ minit create:app -n temp-converter
 
-2. 切换到temp-converter文件夹然后用minit运行你的项目
+2. 切换到temp-converter文件夹然后用minit运行项目
 
 		$ cd temp-converter
 		$ minit serve &
 		
 3. 打开浏览器转到http://localhost:8083/。
 
-你将看到一个空白的网页，在网页的左上角有版本信息。
+你将看到一个空白网页，在网页的左上角有版本信息。
 
 ## MontageJS 基础知识
 MontageJS应用开发分为开发（构建应用）阶段和产品（优化开发版本）阶段。 在开发阶段我们使用一系列的组件来构建应用。这些组件存放在一个名为ui的文件夹中并且文件名以.reel结尾(如图2所示)。
@@ -48,9 +48,9 @@ MontageJS应用开发分为开发（构建应用）阶段和产品（优化开�
 
 在你构建MontageJS应用的时候，通过修改ui文件夹中组件的HTML文件(在MontageJS中我们称为AKA模版)来改变布局，如果要改变组件的样式，你可以修改组件的CSS文件。
 
-图3所示是组件在应用中对应的界面层次结构。 Main.reel是应用的主界面。 就像一个网站的首页一样，或者你也可以把它想象成一个单页面应用的入口: 它可以包含任意数量的子组件来构建应用。 Converter组件封装了应用的全部功能。底部的版本组件显示当前使用的MontageJS版本信息(可以很容易地从应用中移除)。
+图3所示是组件在应用中对应的界面层次结构。 Main.reel是应用的主界面。 就像一个网站的首页，或者你也可以把它想象成一个单页面应用的入口: 它可以包含任意数量的子组件来组成应用。 Converter组件封装了应用的全部功能。底部的版本组件显示当前使用的MontageJS版本信息(可以很容易地从应用中移除)。
 
->__备注:__ 虽然你可以只通过Main一个组件来完成你的应用，但是我们建议你还是拆分为单独的几个组件(就像你把一个网页拆分为几个独立的页面一样) - 这样我们就可以充分地利用MontageJS提供的功能，包括模块化的结构，封装和可重用的组件。
+>__备注:__ 虽然你可以只使用Main一个组件来完成你的应用，但是我们建议你还是拆分为单独的几个组件(就像你把一个网页拆分为几个独立的页面一样) - 这样我们就可以充分地利用MontageJS提供的功能，包括模块化结构，封装和可重用的组件。
 
 ![应用的组件。](http://docs.montagestudio.com/images/docs/hello-montagejs/fig03.jpg)
 *__图 3.__ 用来构建温度转换器的组件。*
@@ -65,14 +65,14 @@ MontageJS应用开发分为开发（构建应用）阶段和产品（优化开�
 	以上命令将在ui文件夹中新建一个converter.reel组件。 要在应用中使用这个组件，你需要在Main组件中声明它。
 	
 2. 在项目目录中，打开ui/main.reel/main.html。
-3. 在`<body>`标签中，`<div data-montage-id="montageVersion"></div>`之后，添加下面的代码片段：
+3. 在`<body>`标签中，`<div data-montage-id="montageVersion"></div>`之后，添加下面的HTML片段：
 		
 		<h1>Temperature Converter</h1>
 		<div data-montage-id="tempConverter"></div>
 
-data-montage-id [自定义数据属性](http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#custom-data-attribute)是用来标识你想控制DOM中哪个元素的功能。 控制对象定义在HTML文档头部的script标签中。
+	data-montage-id [自定义数据属性](http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#custom-data-attribute)是用来标识你想控制DOM中什么元素。 对应的控制对象定义在HTML文档头部的script标签中。
 	
-4. 在`<script>`标签中，owner对象之后(montageVersion对象之前)，添加下面的代码片段(注意结尾的逗号; 你需要它来分开每个对象否则应用不能正常运行)
+4. 在`<script>`标签中，owner对象之后(montageVersion对象之前)，添加下面的代码片段(注意结尾的逗号; 你需要它来分隔每个对象，否则应用不能运行)
 
 		"tempConverter": {
 	    	"prototype": "ui/converter.reel",
@@ -81,7 +81,7 @@ data-montage-id [自定义数据属性](http://www.whatwg.org/specs/web-apps/cur
 	    	}
 		},
 		
-以上定义了一个名称为tempConverter的Converter组件实例(`"prototype": "ui/converter.reel"`)。它的element属性对应你在上一个步骤中添加的HTML元素(`<div data-montage-id="tempConverter"></div>`)。
+	以上定义了一个名称为tempConverter的Converter组件实例(`"prototype": "ui/converter.reel"`)。它的element属性对应你在上一个步骤中添加的HTML元素(`<div data-montage-id="tempConverter"></div>`)。
 
 5. 保存修改然后刷新你的浏览器。
 
@@ -141,7 +141,7 @@ data-montage-id [自定义数据属性](http://www.whatwg.org/specs/web-apps/cur
 	        </fieldset>
 		</div>
 
-下一步，添加一个控制这个HTML元素的组件。
+	下一步，添加一个控制这个HTML元素的组件。
 
 2. 把`<script>`标签中内的内容替换为下面的代码片段:
 
@@ -188,8 +188,6 @@ data-montage-id [自定义数据属性](http://www.whatwg.org/specs/web-apps/cur
 
 ![继承Digit组件库的元素](http://docs.montagestudio.com/images/docs/hello-montagejs/fig06.jpg)
 	*__图 6.__ 继承Digit组件库的元素。*	
-	
-Next, you will bind together the properties of the input fields and slider.
 
 下一步，你需要把输入框和滑块的值绑定在一起。
 
@@ -264,13 +262,13 @@ MontageJS使用FRB实现绑定，通过一些定义把对象互相绑定在一�
 		       <input data-montage-id="thermometer" class="Slider-handle" type="range" min="-13" max="122">
 		    </fieldset>
 		</div>
- 提示：
- * 为输入框(Numbers)，标签 (Label)，滑块（Slider），和滑块按钮（Slider-handle）添加控制布局和显示的样式名称。
- * 设置Fahrenheit允许的最小（-13）和最大值（122）- 滑块组件和华氏温度组件的值是双向绑定的，所以这个范围设置也会被华氏温度组件应用。
- 
- 下一步你需要在组件的样式表中添加CSS规则。
- 
+
+	 提示：
+	 * 为输入框(Numbers)，标签 (Label)，滑块（Slider），和滑块按钮（Slider-handle）添加控制布局和显示的样式名称。
+	 * 设置Fahrenheit允许的最小（-13）和最大值（122）- 滑块组件和华氏温度组件的值是双向绑定的，所以这个范围设置也会被华氏温度组件应用。<br>
+ 	 下一步你需要在组件的样式表中添加CSS规则。
 2. 打开MontageJS项目的ui/converter.reel/converter.css文件。
+
 3. 把下面的规则复制到这个文件中：
 
 		.Converter {
@@ -371,7 +369,6 @@ Mop不包含在MontageJS默认安装中；你需要单独安装它。下面就�
 
 总结。你已经构建了一个简单的MontageJS应用，然后还通过部署优化了源代码。在这个过程中你应该已经发现使用MontageJS开发的很多好处；通过声明式的风格让你只需要几行代码就可以完成复杂的界面要求； 模块化可以让一个复杂应用的代码和组件容易管理；清晰的功能分割能够让开发者和设计者在一个项目中轻松协同工作。
 
-Yet, you've barely scratched the surface of what you can do with MontageJS.
 
 不过，目前为止你也只是使用了MontageJS提供的很小一部分功能而已。
 
