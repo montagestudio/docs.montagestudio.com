@@ -9,11 +9,11 @@ this-page: tutorial-reddit-client-with-montagejs
 
 用MontageJS创建一个简单的Reddit客户端
 =================================
-大多数的数据驱动网页应用需要显示一组数据，表现形式各有不同。比如常见的例子：一个员工列表里面显示一组的员工姓名和电话号码，一个相册里面显示一组的图片和标题，一个聊天室里显示一组的消息并且包括发送者和时间戳。虽然上面的例子数据显示样式不一样，但是它们都有统一的模式：重复显示一组数据
+大多数的数据驱动网页应用需要显示一组数据，表现形式各有不同。比如常见的例子：一个员工列表里面显示一组员工姓名和电话号码，一个相册里面显示一组图片和标题，一个聊天室里显示一组包括发送者和时间戳的消息。虽然上面的例子数据显示结果不一样，但是它们都有统一的模式：重复显示一组数据
 
-在MontageJS应用中，一组重复的数据可以用内置的Repetition组件来显示。这个组件能够让应用按照数据的顺序重复地用同一段HTML显示出来。在MontageJS开发过程中使用Repetition组件来显示数据是一种重要的表现方式，功能跟传统模板语言中的循环表达式类似。典型的应用场景就是显示一组动态的用户界面数据，比如动态创建的列表。
+在MontageJS应用中，一组重复的数据可以用内置的Repetition组件来显示。这个组件能够让应用重复地用同一段HTML显示数据。在MontageJS开发过程中使用Repetition组件来显示数据是一种重要的表现方式，功能跟传统模板语言中的循环表达式类似。典型的应用场景就是显示一组动态的用户界面数据，比如动态创建的数据列表。
 
-这个教程向你展示如何用Repetition组件构建一个简单的reddit客户端。这个应用包括两个列表(如图1)：一个新闻列表（左侧）和一个新闻目录列表（右侧）。当你选择一个新闻目录之后，应用通过reddit API获取当前选中目录的新闻列表。新闻包括标题、创建者和评分数。
+这个教程向你展示如何用Repetition组件构建一个简单的reddit客户端。这个应用包括两个列表(如图1)：一个新闻列表（左侧）和一个新闻目录列表（右侧）。当你选择一个新闻目录之后，应用通过reddit API获取当前选中目录的热门新闻列表。新闻包括标题、创建者和评分数。
 
 ![完整的应用](http://docs.montagestudio.com/images/docs/tutorials/reddit-client/fig01.png)
 *__图 1.__ 一个用MontageJS构建的reddit简单客户端*
@@ -44,9 +44,9 @@ this-page: tutorial-reddit-client-with-montagejs
 				<li data-montxage-id="item"></li>
 			</ul>
 			
-2. 在模板的声明中添加两个对象，然后把对象与模板中的DOM元素连接起来。在这个例子中:
-	* `rep`使用Repetition组件并且跟`ul`关联在一起；组件的`content`属性是用来定义需要Repetition重复绘制的数据。
-	* `item`使用Text组件并且跟`li`元素连接在一起。它的`content`属性定义当前行的值。
+2. 在模板的声明中添加两个对象，然后把对象与模板中的DOM元素关联起来。在这个例子中:
+	* `rep`使用Repetition组件并且跟`ul`关联在一起；组件的`content`属性是用来定义Repetition组件的数据。
+	* `item`使用Text组件并且跟`li`元素关联在一起。它的`content`属性定义当前行的值。
 
 			{
 				"owner": {
@@ -95,8 +95,8 @@ this-page: tutorial-reddit-client-with-montagejs
 ### 绑定Repetition到组件的属性
 要绑定一个重复组件到当前组件的一个属性，你需要在当前组件的JS文件中添加一些JavaScript代码。 在这个例子中使用一个叫做`subs`的属性，它是一个包含新闻目录数据的数组。这个数组中的每个数据对象有两个属性：`display_name`和`url`。
 
-* `display_name`是要显示在应用的新闻目录（导航下拉框）组件中的文本。
-* `url`是每条数据各自对应的数据地址。
+* `display_name`是显示在新闻目录（导航下拉框）组件中的目录名。
+* `url`是每个新闻目录对应的数据地址。
 
 		var Component = require("montage/ui/component").Component;
 
