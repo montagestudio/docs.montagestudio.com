@@ -93,7 +93,7 @@ this-page: tutorial-reddit-client-with-montagejs
 注意数组的内容可以是一个复杂的对象，不是仅仅像上面的列子那样只可以是简单的数字。在重复组件中的子元素也可以绑定到数据对象的一个属性。任何对数组数据的更改将会自动地更新到用户界面。
 
 ### 绑定Repetition到组件的属性
-要绑定一个重复组件到当前组件的一个属性，你需要在当前组件的JS文件中添加一些JavaScript代码。 在这个例子中使用一个叫做`subs`的属性，它是一个包含新闻目录数据的数组。这个数组中的每个数据对象有两个属性：`display_name`和`url`。
+绑定重复组件到组件的属性，首先在当前组件的JS文件中添加一些JavaScript代码。 在这个例子中定义一个叫做`subs`的属性，它是一个包含新闻目录数据的数组。数组中的每个数据有两个属性：`display_name`和`url`。
 
 * `display_name`是显示在新闻目录（导航下拉框）组件中的目录名。
 * `url`是每个新闻目录对应的数据地址。
@@ -116,7 +116,7 @@ this-page: tutorial-reddit-client-with-montagejs
  
  下一步，你需要修改模板定义中的绑定表达式：
  
-* 替换rep对象的content属性，从一个静态的数组到当前组件的subs属性。
+* 替换rep对象的content属性，改变原来得静态的数组为当前组件的subs属性。
 * 编辑子对象的value绑定，让它连接到当前循环实例对象的display_name属性。
 
 		"rep": {
@@ -138,12 +138,12 @@ this-page: tutorial-reddit-client-with-montagejs
 		    }
 		}
 		
-现在为止，应用会显示新闻目录列表。
+现在为止，应用可以显示新闻目录列表。
 
 [在MFiddle上查看源码](http://montagejs.github.io/mfiddle/#!/7745939)
 
 ## 选择重复组件中的元素
-Repetition有对元素选择功能的内置支持。当这个功能被开启之后，用户可以通过点击重复组件中的一个项目来标识它被选中。组件有个叫做selection属性(`isSelectionEnabled`打开之后) 可以用来获取当前选中的值，也可以让程序修改或者绑定selection属性的方式来设置值。组件同时也自动地设置当前被选中项目的CSS值，这样就可以很容易地修改选中的样式。
+Repetition有对元素选择功能的内置支持。当这个功能被开启后，用户可以选取控件中的项目。组件的election属性(`isSelectionEnabled`打开之后) 对应当前被选中的值，也可以让程序修改或者绑定selection属性的方式来设置值。组件同时也自动地设置当前被选中项目的CSS值，这样就可以很容易地修改选中的样式。
 
 ### 设置isSelectionEnabled属性
 当isSelectionEnabled属性被打开之后，默认的选择方式是单选，意味着只有一个项目会被选中。当选择一个新的项目之后组件会自动清空上一个被选中的项目。为了让项目可选，修改rep对象的属性：
@@ -179,7 +179,7 @@ Repetition有对元素选择功能的内置支持。当这个功能被开启之�
 		    </ul>
 		</div>
 		
-2. 在模板定义中，添加一个新的名字叫做`currentsub`的对象，并且和`h1`元素连接在一起。对象的`value`属性被绑定到被选中对象的`display_name`属性：
+2. 在模板定义中，添加一个新的名字叫做`currentsub`的对象，并且和`h1`元素关联在一起。对象的`value`属性被绑定到被选中对象的`display_name`属性：
  
 		"currentsub": {
 		    "prototype": "montage/ui/text.reel",
@@ -211,7 +211,7 @@ Repetition有对元素选择功能的内置支持。当这个功能被开启之�
 如何把从reddit服务器获取到的数据传递到应用，以下是具体步骤：
 
 1. 在组件的JS文件中，移除掉测试数据，让`subs`属性的初始化值为一个空数组（subs: { value: [] }`）
-2. 添加一个`templateDidLoad`方法。这个方法会在组件被加载完成后被自动执行,所以这是一个下载数据的合理地方。
+2. 添加一个`templateDidLoad`方法。这个方法会在组件被加载完成后自动执行,所以这是一个下载数据的合适地方。
 
 	在`templateDidLoad`方法中，应用从reddit服务器获取到一个新闻目录的列表数据。在回调方法中传入一个JSON格式的数组数据，然后把它赋值给subs属性。绑定方法监听到这个变化然后更新重复组件。
 	
@@ -355,7 +355,6 @@ Reddit API返回的每个新闻目录数据中有一个`subscriber`属性可以�
 	* 这里表格中的`score`和`author`两个标签都是Text组件
 	* 这里的`title`标签，被封装成了Anchor组件。
 
-2. Update the template's declaration with four new objects: `stories`, `title`, `author`, and `score`.
 2. 现在我们的模版有了4个新的组件：`stories`, `title`, `author`, 和 `score`
 
 		"stories": {
