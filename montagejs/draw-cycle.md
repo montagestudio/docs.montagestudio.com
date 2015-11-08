@@ -57,7 +57,7 @@ After generating the draw list, the draw manager invokes the `draw()` method on 
 Finally, if the components need to read the final state of a draw cycle, after all `draw()` functions have been performed, `didDraw()` is called on each component in the draw list. This forces the reflow of the DOM at this point in time without having to worry that it is changed again by another component.
 
 
-### Life Cycle Hooks / Callback Methods
+### Callback Methods
 
 The following list summarizes the component callback methods involved in the draw cycle. These methods should never be called directly by an application; they are invoked automatically by the MontageJS framework. Any component that intends to update its DOM structure directly must implement a `draw()` method.
 
