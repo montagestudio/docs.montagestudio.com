@@ -12,6 +12,9 @@ redirect_from: "/docs/Event-handling.html"
 Event Handling
 ===
 
+* TOC
+{:toc}
+
 Montage includes a custom event manager that transparently wraps the browser’s native event handling mechanism. This enables several features in Montage, including simpler event handling code, property change observing, and results in better performing web applications.
 
 ## About Event Delegation
